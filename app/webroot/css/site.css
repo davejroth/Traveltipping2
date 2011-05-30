@@ -1,0 +1,135 @@
+
+/* +++++++++++++++++ START Layout Styles +++++++++++++++++ */
+
+
+
+#layout_header{
+	background:url("../img/header_gradient_bg.png") repeat scroll 0 0 #dff8f8;
+	height:175px;
+	position:relative;
+}
+
+#layout_footer{
+	background:#dadada;
+	
+}
+
+/* +++++++++++++++++ END Layout Styles +++++++++++++++++ */
+
+/* +++++++++++++++++ START Element Styles +++++++++++++++++ */
+
+
+/* Main Nav */
+
+.main_nav{
+    float: right;
+    margin: 22px 15px 0 0;
+}
+
+.main_nav li{
+    border-right: 1px solid #CCCCCC;
+    display: inline;
+    float: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main_nav li a{
+    font-size: 14px;
+    padding: 10px;
+    text-decoration: none;
+	
+}
+
+/* Subscribe CTA */
+
+.subscribe_cta{
+    clear: both;
+    float: right;
+    margin: 21px 0 0;
+}
+
+.subscribe_cta .cta_text{
+    float: right;
+    line-height: 27px;
+}
+
+.subscribe_form{
+    float: right;
+    width: 305px;
+}
+
+.subscribe_form #UserEmail{
+    border: 1px solid #CCCCCC;
+    float: left;
+    font-size: 15px;
+    margin: 0 5px 0 10px;
+    padding: 3px;
+}
+
+.subscribe_form .submit{
+    float: left;
+    margin-top: 2px;
+}
+
+.subscribe_form .submit input{
+	background: url("../img/yellow_btn1_bg.png") no-repeat scroll 0 0 transparent;
+	border: medium none;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    height: 21px;
+    text-transform: uppercase;
+    vertical-align: top;
+    width: 100px;
+}
+
+/* Footer */
+
+#footer2{
+    background: none repeat scroll 0 0 #656565;
+    clear: both;
+    color: #FFFFFF;
+    height: 40px;
+}
+
+.footer_section{
+	margin:15px;
+}
+
+.footer_section p{
+    color: #6C6B6B;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.footer_section_title{
+    color: #565656;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+
+/* +++++++++++++++++ END Elements Styles +++++++++++++++++ */
+
+.clouds{
+    background: url("../img/clouds_bg.png") repeat scroll left bottom transparent;
+    bottom: 0;
+    height: 70px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+.logo{
+	width:294px!important;
+	margin-top: 10px;
+}
+
+.logo a{
+	background: url("../img/logo.png") repeat scroll left bottom transparent;
+	height:91px;
+	width:294px;
+	display:block;
+}

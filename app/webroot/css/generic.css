@@ -1,0 +1,26 @@
+.cta_text{
+	font-weight:normal;
+	font-size:16px;
+}
+
+.facebook_ico{
+    background: url("../img/social_icons.png") no-repeat scroll 0 0 transparent;
+}
+
+.twitter_ico{
+    background: url("../img/social_icons.png") no-repeat scroll top right transparent;
+}
+
+.social_media{
+	float:right;
+	margin:20px 0 0 0;
+}
+
+.social_media a{
+    display: block;
+    float: right;
+    height: 20px;
+    margin: 0 5px 0 0;
+    width: 21px;
+}
+
