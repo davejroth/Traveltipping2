@@ -1,14 +1,40 @@
+
+/* +++++++++++++++++ START Module Styles +++++++++++++++++ */
+
+/* White Module 960 */
+.white_mod_960_wrap{
+    background: url("../img/site/white_mod_bottom_960.png") no-repeat scroll left bottom transparent;
+    margin: 15px auto;
+    padding-bottom: 13px;
+}
+
+.white_mod_960_top{
+    background: url("../img/site/white_mod_top_960.png") no-repeat scroll 0 0 transparent;
+    height: 13px;
+    width:960px;
+    display:block;
+}
+
+.white_mod_960_content{
+    background: url("../img/site/white_mod_center_960.png") repeat-y scroll 0 0 transparent;
+    min-height: 100px;
+    padding: 0 15px;
+}
+
+
+/* +++++++++++++++++ END Module Styles +++++++++++++++++ */
+
 .cta_text{
 	font-weight:normal;
 	font-size:16px;
 }
 
 .facebook_ico{
-    background: url("../img/social_icons.png") no-repeat scroll 0 0 transparent;
+    background: url("../img/site/social_icons.png") no-repeat scroll 0 0 transparent;
 }
 
 .twitter_ico{
-    background: url("../img/social_icons.png") no-repeat scroll top right transparent;
+    background: url("../img/site/social_icons.png") no-repeat scroll top right transparent;
 }
 
 .social_media{

@@ -4,14 +4,14 @@
 
 
 #layout_header{
-	background:url("../img/header_gradient_bg.png") repeat scroll 0 0 #dff8f8;
+	background:url("../img/site/header_gradient_bg.png") repeat scroll 0 0 #dff8f8;
 	height:175px;
 	position:relative;
 }
 
 #layout_footer{
-	background:#dadada;
-	
+    background: none repeat scroll 0 0 #DADADA;
+    clear: both;
 }
 
 /* +++++++++++++++++ END Layout Styles +++++++++++++++++ */
@@ -74,7 +74,7 @@
 }
 
 .subscribe_form .submit input{
-	background: url("../img/yellow_btn1_bg.png") no-repeat scroll 0 0 transparent;
+	background: url("../img/site/yellow_btn1_bg.png") no-repeat scroll 0 0 transparent;
 	border: medium none;
     color: #FFFFFF;
     font-size: 12px;
@@ -83,6 +83,45 @@
     text-transform: uppercase;
     vertical-align: top;
     width: 100px;
+}
+
+/* Region Selection */
+
+#region_selection{
+	display: block;
+    margin: 15px auto 0;
+    width: 840px;
+}
+
+.region{
+	display:block;
+	float:left;
+	width:140px;
+	height:125px;
+}
+
+#rgn_north_america{
+	background: url("../img/site/region_selection_map.png") no-repeat scroll 10px 0 transparent;	
+}
+
+#rgn_latin_america{
+    background: url("../img/site/region_selection_map.png") no-repeat scroll -140px 0 transparent;
+}
+
+#rgn_europe{
+	background: url("../img/site/region_selection_map.png") no-repeat scroll -280px 0 transparent;	
+}
+
+#rgn_africa{
+	background: url("../img/site/region_selection_map.png") no-repeat scroll -439px 0 transparent;	
+}
+
+#rgn_asia{
+	background: url("../img/site/region_selection_map.png") no-repeat scroll -596px 0 transparent;	
+}
+
+#rgn_oceania{
+	background: url("../img/site/region_selection_map.png") no-repeat scroll -768px 0 transparent;	
 }
 
 /* Footer */
@@ -115,7 +154,7 @@
 /* +++++++++++++++++ END Elements Styles +++++++++++++++++ */
 
 .clouds{
-    background: url("../img/clouds_bg.png") repeat scroll left bottom transparent;
+    background: url("../img/site/clouds_bg.png") repeat scroll left bottom transparent;
     bottom: 0;
     height: 70px;
     left: 0;
@@ -128,7 +167,7 @@
 }
 
 .logo a{
-	background: url("../img/logo.png") repeat scroll left bottom transparent;
+	background: url("../img/site/logo.png") repeat scroll left bottom transparent;
 	height:91px;
 	width:294px;
 	display:block;

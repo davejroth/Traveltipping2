@@ -58,11 +58,9 @@
 		<div id="layout_main">
 			<div id="layout_center" class="container_16 clearfix">
 				<?php echo $this->Session->flash(); ?>
-				<div id="layout_left">
+				<div id="layout_content">
 					<?php echo $content_for_layout; ?>
-				</div><!-- layout_left -->
-				<div id="layout_right">
-				</div><!-- #layout_right -->
+				</div><!-- layout_content -->
 			</div><!-- #layout_center -->
 		</div><!-- #layout_main -->
 		<div id="layout_footer">
