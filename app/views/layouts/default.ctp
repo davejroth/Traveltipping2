@@ -24,7 +24,7 @@
 <body>
 	<div id="layout_container">
 		<div id="layout_header">
-			<div id="header" class="container_16">
+			<div id="header" class="container_30">
 				<h1 class="logo grid_5"><?php echo $this->Html->link('', 'http://traveltipping.com',array( 'alt'=>'TravelTipping')); ?></h1>
 				<div class="grid_11 alpha omega">
 					<div class="social_media">
@@ -56,7 +56,7 @@
 			<div class="clouds"></div>
 		</div><!-- #layout_header -->
 		<div id="layout_main">
-			<div id="layout_center" class="container_16 clearfix">
+			<div id="layout_center" class="container_30 clearfix">
 				<?php echo $this->Session->flash(); ?>
 				<div id="layout_left">
 					<?php echo $content_for_layout; ?>
@@ -66,7 +66,7 @@
 			</div><!-- #layout_center -->
 		</div><!-- #layout_main -->
 		<div id="layout_footer">
-			<div id="footer1" class="footer container_16">
+			<div id="footer1" class="footer container_30">
 				<div class="footer_section grid_5">
 					<h4 class="footer_section_title">About TravelTipping</h4>
 				<p>We provide you the greatest destination deals from around the world, helping satisfy your wanderlust at half the cost. Subscribe today and never miss an opportunity to travel</p>
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 			<div id="footer2" class="footer">
-				<div class="container_16"><p>&copy;2011 TravelTipping Inc.  All Rights Reserved</p></div>
+				<div class="container_30"><p>&copy;2011 TravelTipping Inc.  All Rights Reserved</p></div>
 			</div>
 		</div><!-- #layout_footer -->	
 	</div><!-- #layout_container -->

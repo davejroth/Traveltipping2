@@ -14,15 +14,27 @@
 	</div>
 </div>
 
-<div id="find_deals" class="white_mod_960_wrap">
+<div id="find_deals" class="white_mod_960_wrap container_16">
 	<div class="white_mod_960_top"></div>
 	<div class="white_mod_960_content">
-	<p>Where do you want to go?</p>
+		<div id="deal_search_bar" class="blue_rounded_mod clearfix">
+			<div class="clearfix">
+				<h3 class="grid_14 prefix_4">Where do you want to go?</h3>
+				<a href="#" class="find_deals_btn suffix_4"></a>
+			</div>
+			<p class="clear grid_17 center">Select the destinations of your dreams and we'll find you amazing travel deals</p>
+		</div>
 	</div>
 </div>
 
+<h3 class="white_mod_title">Featured Destination Deal</h3>
 <div id="featured_deal" class="white_mod_960_wrap">
 	<div class="white_mod_960_top"></div>
-	<div class="white_mod_960_content">
+	<div class="white_mod_960_content clearfix">
+		<?php echo $this->Html->image('/img/featured/featured_deal1.png', array('class'=>'grid_14 alpha omega','alt' => 'Featured Deal Image'))?>
+		<div class="grid_13 push_1">
+			<h3 class="desination_title">Tuscany, Italy</h3>
+			<p class="deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
+		</div>
 	</div>
 </div>

@@ -2,17 +2,25 @@
 /* +++++++++++++++++ START Module Styles +++++++++++++++++ */
 
 /* White Module 960 */
+
+.white_mod_title{
+    color: #3CAACC;
+    display: block;
+    font-size: 18px;
+    margin: 5px 0 2px 20px;
+}
+
 .white_mod_960_wrap{
     background: url("../img/site/white_mod_bottom_960.png") no-repeat scroll left bottom transparent;
-    margin: 15px auto;
+    margin: 0 auto 15px;
     padding-bottom: 13px;
 }
 
 .white_mod_960_top{
     background: url("../img/site/white_mod_top_960.png") no-repeat scroll 0 0 transparent;
-    height: 13px;
-    width:960px;
-    display:block;
+    display: block;
+    height: 12px;
+    width: 960px;
 }
 
 .white_mod_960_content{
@@ -21,8 +29,42 @@
     padding: 0 15px;
 }
 
+.blue_rounded_mod{
+	-moz-border-radius:7px;
+	background:#3caacc;
+	color:#ffffff;
+	padding:7px;
+}
+
+.desination_title{
+    -moz-border-radius: 7px 7px 7px 7px;
+    background: none repeat scroll 0 0 #3CAACC;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.deal_description{
+	font-size: 24px;
+    font-weight: bold;
+    margin: 40px 5px 0;
+}
+
 
 /* +++++++++++++++++ END Module Styles +++++++++++++++++ */
+
+/* +++++++++++++++++ START Button Styles +++++++++++++++++ */
+
+.find_deals_btn{
+    background: url("../img/site/find_deals_sprite.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 46px;
+    width: 191px;
+}
+
+/* +++++++++++++++++ END Button Styles +++++++++++++++++ */
 
 .cta_text{
 	font-weight:normal;

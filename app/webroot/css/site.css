@@ -124,6 +124,27 @@
 	background: url("../img/site/region_selection_map.png") no-repeat scroll -768px 0 transparent;	
 }
 
+#deal_search_bar{
+	padding-top:20px;
+}
+
+#deal_search_bar h3{
+    font-size: 35px;
+    line-height: 1.2;
+}
+
+#deal_search_bar p{
+    font-size: 16px;
+    margin: 25px auto 10px;
+}
+
+#find_deals{
+	margin-bottom: 50px;
+}
+
+
+
+
 /* Footer */
 
 #footer2{
@@ -151,8 +172,32 @@
     text-transform: uppercase;
 }
 
+.footer_nav{
+	margin: 10px 0;
+}
+
+.footer_nav li{
+	display:inline;
+	border-right:1px solid #CBCACA;
+}
+
+.footer_nav li a{
+    color: #CBCACA;
+    padding: 0 5px 0 0;
+    text-decoration: none;
+}
+
+.last_li{
+	border:none !important;
+}
+
 /* +++++++++++++++++ END Elements Styles +++++++++++++++++ */
 
+.copyright{
+	margin: 10px 0;
+	float:right;
+	color:#CBCACA;
+}
 .clouds{
     background: url("../img/site/clouds_bg.png") repeat scroll left bottom transparent;
     bottom: 0;
