@@ -1,5 +1,6 @@
 <?php $this->layout = 'home'; ?>
-<div id="region_selection" class="clearfix">
+
+<div id="region_selection_map" class="clearfix">
 	<div id="rgn_north_america" class="region">
 	</div>
 	<div id="rgn_latin_america" class="region">
@@ -11,6 +12,32 @@
 	<div id="rgn_asia" class="region">
 	</div>
 	<div id="rgn_oceania" class="region">
+	</div>
+</div>
+<div id="region_selection_text" class="clearfix">
+	<div id="chk_north_america" class="checkbox_field clearfix">
+		<div class="checkbox"></div>
+		<p>North America &amp; Carribean</p>
+	</div>
+	<div id="chk_latin_america" class="checkbox_field clearfix">
+		<div class="checkbox"></div>
+		<p><span>Latin</span>America</p>
+	</div>
+	<div id="chk_europe" class="checkbox_field clearfix">
+		<div class="checkbox"></div>
+		<p>Europe</p>
+	</div>
+	<div id="chk_africa" class="checkbox_field clearfix">
+		<div class="checkbox"></div>
+		<p><span>Africa</span>&amp; Arabia</p>
+	</div>
+	<div id="chk_asia" class="checkbox_field clearfix">
+		<div class="checkbox"></div>
+		<p>Asia</p>
+	</div>
+	<div id="chk_oceania" class="checkbox_field clearfix">
+		<div class="checkbox"></div>
+		<p>Oceania</p>
 	</div>
 </div>
 

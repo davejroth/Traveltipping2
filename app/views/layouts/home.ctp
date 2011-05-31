@@ -17,6 +17,7 @@
 			'helper'
 		));
 		$this->AssetCompress->script('jquery');
+		$this->AssetCompress->script('site');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;
 	?>

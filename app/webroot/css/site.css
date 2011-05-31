@@ -87,7 +87,8 @@
 
 /* Region Selection */
 
-#region_selection{
+#region_selection_map,
+#region_selection_text{
 	display: block;
     margin: 15px auto 0;
     width: 840px;
@@ -97,7 +98,7 @@
 	display:block;
 	float:left;
 	width:140px;
-	height:125px;
+	height: 115px;
 }
 
 #rgn_north_america{
@@ -123,6 +124,61 @@
 #rgn_oceania{
 	background: url("../img/site/region_selection_map.png") no-repeat scroll -768px 0 transparent;	
 }
+
+#region_selection_text {
+    margin: 5px auto 25px;
+}
+
+
+
+.checkbox_field{
+    margin-left: 15px;
+    width: 130px;
+    float:left;
+}
+
+.checkbox_field div{
+    float: left;
+    margin: 0 5px 0 0;
+}
+
+.checkbox_field span{
+	display:block;
+}
+
+.checkbox_field p{
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100px;
+    color:#565656;
+}
+#chk_north_america{
+	
+}
+
+#chk_latin_america{
+    margin-left: 25px;
+    width: 125px;
+}
+#chk_asia{
+    width: 115px;
+}
+#chk_asia p{
+    width: 90px;
+}
+
+#chk_oceania{
+    margin: 0 0 0 12px;
+    width: 110px;
+}
+
+#chk_oceania p{
+	width:80px;
+}
+
+
+/* Deal Search Bar*/
 
 #deal_search_bar{
 	padding-top:20px;
