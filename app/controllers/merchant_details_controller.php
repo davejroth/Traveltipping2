@@ -2,7 +2,16 @@
 class MerchantDetailsController extends AppController {
 
 	var $name = 'MerchantDetails';
-
+	var $components = array('Email', 'Notification');
+/*
+ * Takes the id of a user_detail and calls Notification to send an email to them
+ */
+	function sendNewMerchantMail($id) {
+    $MerchantDetail = $this->MerchantDetail->read(null,$id);
+	$this->set('MerchantDetail', $MerchantDetail); // can this be set in notification?
+	
+	$this->Notification->sendNewMerchantMail($MerchantDetail);
+ }
 	function index() {
 		$this->MerchantDetail->recursive = 2;
 		$this->set('merchantDetails', $this->paginate());
@@ -18,22 +27,16 @@ class MerchantDetailsController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
-			
 			$this->MerchantDetail->User->create();
 			$this->MerchantDetail->create();
 			$merchantid = 4;
-			//$this->data['User']['name'] = $this->data['MerchantDetail']['name'];
-			$this->data['User']['username'] = $this->data['User']['name'];
-			//$this->data['User']['email'] = $this->data['MerchantDetail']['email'];
+			$this->data['User']['username'] = $this->data['User']['email'];
 			$this->data['User']['role_id'] = $merchantid;
 			$this->data['User']['password'] = "1949be75f0f74d49cb8c08f1152c8ae2ff563203";
 			$this->data['User']['status'] = 1;
-			//$user = $this->MerchantDetail->User->save($this->data);
-			//CakeLog::write('merchantdetails', $this->MerchantDetail->User->id);
-			//$this->data['MerchantDetail']['user_id'] = $user['User']['id'];
-			//$this->data['MerchantDetail']['user_id'] = $this->MerchantDetail->User->id;
-			//$this->data['MerchantDetail']['user_id'] = $merchantid;
+
 			if ($this->MerchantDetail->saveAll($this->data)) {
+				$this->sendNewMerchantMail($this->MerchantDetail->id);
 				$this->Session->setFlash(__('The merchant detail has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -46,12 +49,14 @@ class MerchantDetailsController extends AppController {
 	}
 
 	function edit($id = null) {
+	//$this->sendNewMerchantMail($id);
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid merchant detail', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			if ($this->MerchantDetail->save($this->data)) {
+			$this->data['User']['username'] = $this->data['User']['email'];
+			if ($this->MerchantDetail->saveAll($this->data)) {
 				$this->Session->setFlash(__('The merchant detail has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {

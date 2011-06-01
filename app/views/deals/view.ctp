@@ -99,6 +99,11 @@
 			<?php echo $this->Html->link($deal['DealType']['name'], array('controller' => 'deal_types', 'action' => 'view', $deal['DealType']['id'])); ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Reservation Type'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $this->Html->link($deal['ReservationType']['name'], array('controller' => 'reservation_types', 'action' => 'view', $deal['ReservationType']['id'])); ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Private Note'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $deal['Deal']['private_note']; ?>

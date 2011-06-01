@@ -21,13 +21,16 @@ class DealAvailabilitiesController extends AppController {
 		if (!empty($this->data)) {
 			$start_date = new DateTime(implode("-",$this->data['DealAvailability']['start_date']));
 			$end_date = new DateTime(implode("-",$this->data['DealAvailability']['end_date']));
-			$interval = date_diff($start_date, $end_date);
-			
-			for ($i = 0; $i <= $interval; $i++)
+			$interval = $start_date->diff($end_date);
+			$days = $interval->d;
+			Debugger::log($interval->d);
+			for ($i = 0; $i <= $days; $i++)
 			{
 				$this->data['DealAvailability']['reservation_date'] = $start_date->format('Y-m-d');
 				$this->DealAvailability->create();
+				$this->DealAvailability->save($this->data);
 				$start_date->add(new DateInterval('P1D'));
+				
 			}
 			if ($this->DealAvailability->save($this->data)) {
 				$this->Session->setFlash(__('The deal availability has been saved', true));

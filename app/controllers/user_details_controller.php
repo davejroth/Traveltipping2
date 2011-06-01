@@ -5,36 +5,13 @@ class UserDetailsController extends AppController {
 	var $components = array('Email', 'Notification');
 
 /*
- * Takes the id of a user_detail and sends an email to them
+ * Takes the id of a user_detail and calls Notification to send an email to them
  */
 	function sendNewUserMail($id) {
     $UserDetail = $this->UserDetail->read(null,$id);
-	$User = $this->UserDetail->User->read(null, $UserDetail['UserDetail']['user_id']);
-	   /* SMTP Options */
+	$this->set('UserDetail', $UserDetail); // can this be set in notification?
 	
-   $this->Email->smtpOptions = array(
-        'port'=>'25', 
-        'timeout'=>'30',
-        'host' => '67.210.113.84',
-        'username'=>'registration@traveltipping.com',
-        'password'=>'43Temp68',
-   );
-	$this->Email->delivery = 'smtp';
-	//$this->Email->to = 'davejroth@gmail.com';
-    $this->Email->to = $UserDetail['User']['email'];
-    $this->Email->subject = 'Welcome to TravelTipping!';
-    $this->Email->replyTo = 'registration@traveltipping.com';
-    $this->Email->from = 'TravelTipping Registration <registration@traveltipping.com>';
-	$this->Email->template = 'new_registration';
-    //$this->Email->template = 'simple_message'; // note no '.ctp'
-    //Send as 'html', 'text' or 'both' (default is 'text')
-    $this->Email->sendAs = 'text'; // because we like to send pretty mail
-    //Set view variables as normal
-	$this->set('UserDetail', $UserDetail);
-	$this->set('id', $id);
-    //Do not pass any args to send()
-    $this->Email->send();
-	$this->set('smtp_errors', $this->Email->smtpError);
+	$this->Notification->sendNewUserMail($UserDetail);
  }
 
 	function index() {
@@ -61,22 +38,21 @@ class UserDetailsController extends AppController {
 			$this->data['User']['password'] = "1949be75f0f74d49cb8c08f1152c8ae2ff563203";
 			$this->data['User']['status'] = 1;
 			if ($this->UserDetail->saveAll($this->data)) {
-				$this->Session->setFlash(__('The user detail has been saved', true));
 				$this->sendNewUserMail($this->UserDetail->id);
+				$this->Session->setFlash(__('The user detail has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user detail could not be saved. Please, try again.', true));
 			}
 		}
-		
-		$this->sendNewUserMail($this->UserDetail->id );
+
 		$users = $this->UserDetail->User->find('list');
 		$states = $this->UserDetail->State->find('list');
 		$this->set(compact('users', 'states'));
 	}
 
 	function edit($id = null) {
-		//$this->Notification->doComplexOperation(1,2); Testing components
+	$this->sendNewUserMail($id);
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid user detail', true));
 			$this->redirect(array('action' => 'index'));
@@ -85,7 +61,6 @@ class UserDetailsController extends AppController {
 			$this->data['User']['username'] = $this->data['User']['email'];
 			if ($this->UserDetail->saveAll($this->data)) {
 				$this->Session->setFlash(__('The user detail has been saved', true));
-				
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user detail could not be saved. Please, try again.', true));

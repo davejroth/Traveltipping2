@@ -4,7 +4,7 @@
  		<legend><?php __('Add Merchant Detail'); ?></legend>
 	<?php
 		echo $this->Form->input('User.email');
-		echo $this->Form->input('User.name');
+		//echo $this->Form->input('User.name');
 		echo $this->Form->input('MerchantDetail.about_us');
 		echo $this->Form->input('MerchantDetail.website');
 		echo $this->Form->input('MerchantDetail.business_reviews');
@@ -13,7 +13,6 @@
 		echo $this->Form->input('MerchantDetail.postal_code');
 		echo $this->Form->input('MerchantDetail.address');
 		echo $this->Form->input('MerchantDetail.second_address');
-		//echo $this->Form->input('MerchantDetail.user_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

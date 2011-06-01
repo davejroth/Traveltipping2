@@ -3,7 +3,7 @@ class DealsController extends AppController {
 
 	var $name = 'Deals';
 
-	public $helpers = array( 'Text');
+	public $helpers = array('Text');
 	
 	
 	function index() {
@@ -37,7 +37,8 @@ class DealsController extends AppController {
 		$dealTypes = $this->Deal->DealType->find('list');
 		$destinations = $this->Deal->Destination->find('list');
 		$cities = $this->Deal->City->find('list');
-		$this->set(compact('merchantDetails', 'dealStatuses', 'dealTypes', 'destinations', 'cities'));
+		$reservationTypes = $this->Deal->ReservationType->find('list');
+		$this->set(compact('merchantDetails', 'dealStatuses', 'dealTypes', 'reservationTypes', 'destinations', 'cities'));
 	}
 
 	function edit($id = null) {

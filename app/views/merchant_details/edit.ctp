@@ -3,7 +3,9 @@
 	<fieldset>
  		<legend><?php __('Edit Merchant Detail'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
+		echo $this->Form->input('User.id');
+		echo $this->Form->input('MerchantDetail.id');
+		echo $this->Form->input('User.email');
 		echo $this->Form->input('about_us');
 		echo $this->Form->input('website');
 		echo $this->Form->input('business_reviews');
@@ -12,7 +14,6 @@
 		echo $this->Form->input('postal_code');
 		echo $this->Form->input('address');
 		echo $this->Form->input('second_address');
-		echo $this->Form->input('user_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

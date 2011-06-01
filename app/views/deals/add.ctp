@@ -7,6 +7,7 @@
 		//echo $form->input('nodeslist');
 		echo $form->input('Node');
 		echo $this->Form->input('merchant_detail_id');
+		echo $this->Form->input('reservation_type_id');
 		echo $this->Form->input('title');
 		echo $this->Form->input('slug');
 		echo $this->Form->input('description');

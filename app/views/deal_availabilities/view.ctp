@@ -1,6 +1,7 @@
 <div class="dealAvailabilities view">
 <h2><?php  __('Deal Availability');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
+		
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $dealAvailability['DealAvailability']['id']; ?>
@@ -44,3 +45,4 @@
 		<li><?php echo $this->Html->link(__('New Deal', true), array('controller' => 'deals', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php $session->flash(); ?>
