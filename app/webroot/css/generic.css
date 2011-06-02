@@ -3,13 +3,6 @@
 
 /* White Module 960 */
 
-.white_mod_title{
-    color: #3CAACC;
-    display: block;
-    font-size: 18px;
-    margin: 5px 0 2px 20px;
-}
-
 .white_mod_960_wrap{
     background: url("../img/site/white_mod_bottom_960.png") no-repeat scroll left bottom transparent;
     margin: 0 auto 15px;
@@ -29,6 +22,52 @@
     padding: 0 15px;
 }
 
+.white_mod_694_content{
+    background: url("../img/site/white_mod_center_694.png") repeat-y scroll 0 0 transparent;
+    min-height: 100px;
+    padding: 0 10px;
+}
+
+.white_mod_694_wrap{
+    background: url("../img/site/white_mod_bottom_694.png") no-repeat scroll left bottom transparent;
+    margin: 0 auto 15px;
+    padding-bottom: 12px;
+}
+
+.white_mod_694_top{
+    background: url("../img/site/white_mod_top_694.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 12px;
+    width: 694px;
+}
+
+
+.white_mod_246_content{
+    background: url("../img/site/white_mod_center_246.png") repeat-y scroll 0 0 transparent;
+    min-height: 100px;
+    padding: 0 12px 0 11px;
+}
+
+.white_mod_246_wrap{
+    background: url("../img/site/white_mod_bottom_246.png") no-repeat scroll left bottom transparent;
+    margin: 0 auto 15px;
+    padding-bottom: 10px;
+}
+
+.white_mod_246_top{
+    background: url("../img/site/white_mod_top_246.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 9px;
+    width: 246px;
+}
+
+.white_mod_title{
+    color: #3CAACC;
+    display: block;
+    font-size: 18px;
+    margin: 5px 0 2px 20px;
+}
+
 .blue_rounded_mod{
 	-moz-border-radius:7px;
 	background:#3caacc;
@@ -45,12 +84,44 @@
     padding: 5px;
 }
 
-.deal_description{
+.listing_desination_title{
+    -moz-border-radius: 7px 7px 7px 7px;
+    background: none repeat scroll 0 0 #3CAACC;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.module_title{
+    -moz-border-radius: 5px 5px 0 0;
+    background: none repeat scroll 0 0 #3CAACC;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 16px;
+    padding: 10px;
+}
+
+.module_content{
+	background:#eafbfb;
+	min-height:100px;
+}
+
+
+
+
+.featured_deal_description{
 	font-size: 24px;
     font-weight: bold;
     margin: 40px 5px 0;
 }
 
+.listing_deal_description{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 5px 0;
+}
 
 /* +++++++++++++++++ END Module Styles +++++++++++++++++ */
 

@@ -30,10 +30,11 @@
 		<div id="layout_main">
 			<div id="layout_center" class="container_30 clearfix">
 				<?php echo $this->Session->flash(); ?>
-				<div id="layout_left">
+				<div id="layout_left" class="grid_22">
 					<?php echo $content_for_layout; ?>
 				</div><!-- layout_left -->
-				<div id="layout_right">
+				<div id="layout_right" class="grid_8">
+					<?php echo $this->element('static_module'); ?>
 				</div><!-- #layout_right -->
 			</div><!-- #layout_center -->
 		</div><!-- #layout_main -->

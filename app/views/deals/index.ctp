@@ -1,3 +1,53 @@
+
+<div class="filter_bar">
+	<ul id="sort_options">
+		<li class="list_title"><strong>Sort By:</strong></li>
+		<li><a href="#">Availability</a></li>
+		<li><a href="#">Discount %</a></li>
+		<li><a href="#">Price</a></li>
+		<li><a href="#">Expiration</a></li>
+	</ul>
+</div>
+
+
+<div  class="white_mod_694_wrap deal_listing">
+	<div class="white_mod_694_top"></div>
+	<div class="white_mod_694_content clearfix">
+		<?php echo $this->Html->image('/img/listing/deal-name-1.png', array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
+		<div class="grid_12 push_1">
+			<h3 class="listing_desination_title">Tuscany, Italy</h3>
+			<p class="listing_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
+		</div>
+	</div>
+</div>
+
+<div  class="white_mod_694_wrap deal_listing">
+	<div class="white_mod_694_top"></div>
+	<div class="white_mod_694_content clearfix">
+		<?php echo $this->Html->image('/img/listing/deal-name-1.png', array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
+		<div class="grid_12 push_1">
+			<h3 class="listing_desination_title">Tuscany, Italy</h3>
+			<p class="listing_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
+		</div>
+	</div>
+</div>
+
+<div  class="white_mod_694_wrap deal_listing">
+	<div class="white_mod_694_top"></div>
+	<div class="white_mod_694_content clearfix">
+		<?php echo $this->Html->image('/img/listing/deal-name-1.png', array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
+		<div class="grid_12 push_1">
+			<h3 class="listing_desination_title">Tuscany, Italy</h3>
+			<p class="listing_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
 <div class="deals index">
 	<h2><?php __('Deals');?></h2>
 	<table cellpadding="0" cellspacing="0">

@@ -198,7 +198,35 @@
 	margin-bottom: 50px;
 }
 
+/* Deal Listings */
+.filter_bar{
+    background: url("../img/site/filter_bar.png") no-repeat scroll 0 0 transparent;
+    height: 65px;
+}
 
+#sort_options{
+	margin: 22px 20px;
+	float:left;
+}
+
+
+
+
+#sort_options li{
+    border-right: 1px solid #AAAAAA;
+    display: inline;
+    list-style-type: none;
+}
+
+#sort_options .list_title{
+	border:none;
+}
+
+#sort_options li a{
+    color: #6C6B6B;
+    padding: 0 10px;
+    text-decoration: none;
+}
 
 
 /* Footer */

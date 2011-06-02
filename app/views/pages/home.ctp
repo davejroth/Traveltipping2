@@ -41,7 +41,7 @@
 	</div>
 </div>
 
-<div id="find_deals" class="white_mod_960_wrap container_16">
+<div id="find_deals" class="white_mod_960_wrap">
 	<div class="white_mod_960_top"></div>
 	<div class="white_mod_960_content">
 		<div id="deal_search_bar" class="blue_rounded_mod clearfix">
@@ -61,7 +61,7 @@
 		<?php echo $this->Html->image('/img/featured/featured_deal1.png', array('class'=>'grid_14 alpha omega','alt' => 'Featured Deal Image'))?>
 		<div class="grid_13 push_1">
 			<h3 class="desination_title">Tuscany, Italy</h3>
-			<p class="deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
+			<p class="featured_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
 		</div>
 	</div>
 </div>
