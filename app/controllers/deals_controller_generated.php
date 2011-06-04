@@ -3,9 +3,6 @@ class DealsController extends AppController {
 
 	var $name = 'Deals';
 
-	public $helpers = array('Text');
-	
-	
 	function index() {
 		$this->Deal->recursive = 0;
 		$this->set('deals', $this->paginate());
@@ -35,7 +32,7 @@ class DealsController extends AppController {
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchantDetails', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));	
+		$this->set(compact('merchantDetails', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
 	}
 
 	function edit($id = null) {
@@ -100,10 +97,11 @@ class DealsController extends AppController {
 		}
 		$merchantDetails = $this->Deal->MerchantDetail->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
-		$dealTypes = $this->Deal->DealType->find('list');
 		$destinations = $this->Deal->Destination->find('list');
-		$cities = $this->Deal->City->find('list');
-		$this->set(compact('merchantDetails', 'dealStatuses', 'dealTypes', 'destinations', 'cities'));
+		$reservationTypes = $this->Deal->ReservationType->find('list');
+		$categories = $this->Deal->Category->find('list');
+		$regions = $this->Deal->Region->find('list');
+		$this->set(compact('merchantDetails', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
 	}
 
 	function admin_edit($id = null) {
@@ -124,10 +122,11 @@ class DealsController extends AppController {
 		}
 		$merchantDetails = $this->Deal->MerchantDetail->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
-		$dealTypes = $this->Deal->DealType->find('list');
 		$destinations = $this->Deal->Destination->find('list');
-		$cities = $this->Deal->City->find('list');
-		$this->set(compact('merchantDetails', 'dealStatuses', 'dealTypes', 'destinations', 'cities'));
+		$reservationTypes = $this->Deal->ReservationType->find('list');
+		$categories = $this->Deal->Category->find('list');
+		$regions = $this->Deal->Region->find('list');
+		$this->set(compact('merchantDetails', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
 	}
 
 	function admin_delete($id = null) {
@@ -143,4 +142,3 @@ class DealsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 }
-?>

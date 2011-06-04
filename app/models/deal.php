@@ -19,13 +19,6 @@ class Deal extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'DealType' => array(
-			'className' => 'DealType',
-			'foreignKey' => 'deal_type_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Destination' => array(
 			'className' => 'Destination',
 			'foreignKey' => 'destination_id',
@@ -33,14 +26,76 @@ class Deal extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'City' => array(
-			'className' => 'City',
-			'foreignKey' => 'city_id',
+		'ReservationType' => array(
+			'className' => 'ReservationType',
+			'foreignKey' => 'reservation_type_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
 	);
-	 
+
+	var $hasMany = array(
+		'DealAvailability' => array(
+			'className' => 'DealAvailability',
+			'foreignKey' => 'deal_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'DealPurchase' => array(
+			'className' => 'DealPurchase',
+			'foreignKey' => 'deal_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
+
+	var $hasAndBelongsToMany = array(
+		'Category' => array(
+			'className' => 'Category',
+			'joinTable' => 'deals_categories',
+			'foreignKey' => 'deal_id',
+			'associationForeignKey' => 'category_id',
+			'unique' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+		'Region' => array(
+			'className' => 'Region',
+			'joinTable' => 'deals_regions',
+			'foreignKey' => 'deal_id',
+			'associationForeignKey' => 'region_id',
+			'unique' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		)
+	);
+
 }
-?>

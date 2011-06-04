@@ -1,24 +1,25 @@
 <?php
-class DealType extends AppModel {
-	var $name = 'DealType';
+class Region extends AppModel {
+	var $name = 'Region';
 	var $displayField = 'name';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-	var $hasMany = array(
+	var $hasAndBelongsToMany = array(
 		'Deal' => array(
 			'className' => 'Deal',
-			'foreignKey' => 'deal_type_id',
-			'dependent' => false,
+			'joinTable' => 'deals_regions',
+			'foreignKey' => 'region_id',
+			'associationForeignKey' => 'deal_id',
+			'unique' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
 			'limit' => '',
 			'offset' => '',
-			'exclusive' => '',
 			'finderQuery' => '',
-			'counterQuery' => ''
+			'deleteQuery' => '',
+			'insertQuery' => ''
 		)
 	);
 
 }
-?>
