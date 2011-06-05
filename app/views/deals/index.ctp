@@ -1,155 +1,99 @@
 
+<div id="layout_left" class="grid_22">
 <div class="filter_bar">
 	<ul id="sort_options">
 		<li class="list_title"><strong>Sort By:</strong></li>
 		<li><a href="#">Availability</a></li>
-		<li><a href="#">Discount %</a></li>
+		<li><?php echo $this->Paginator->sort('Discounted %','discounted_price');?></li>
 		<li><a href="#">Price</a></li>
 		<li><a href="#">Expiration</a></li>
 	</ul>
 </div>
+<?php
+$i = 0;
+foreach ($deals as $deal):
 
+$image = $deal['Deal']['image1'];
+$deal_id = $deal['Deal']['id'];
+$max_quantity = $deal['Deal']['max_purchases'];
+$current_quantity = $deal['Deal']['current_purchases'];
+$remaining_quantity = $max_quantity - $current_quantity;
 
-<div  class="white_mod_694_wrap deal_listing">
+//Progress Bar Calculation
+$progress_value = ($current_quantity/$max_quantity)*100;
+
+?>
+
+<div id="deal_<?php echo$deal_id?>"  class="white_mod_694_wrap deal_listing">
 	<div class="white_mod_694_top"></div>
 	<div class="white_mod_694_content clearfix">
-		<?php echo $this->Html->image('/img/listing/deal-name-1.png', array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
+		<?php echo $this->Html->image("/img/listing/$image", array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
 		<div class="grid_12 push_1">
 			<h3 class="listing_desination_title">Tuscany, Italy</h3>
-			<p class="listing_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
+			<p class="listing_deal_description"><?php echo $deal['Deal']['title']; ?></p>
+			<p class="listing_prices grid_5"><?php echo __('Your Price: $').(int)$deal['Deal']['discounted_price']; ?></p>
+			<p class="listing_prices grid_5"><?php echo __('Original Value: $').(int)$deal['Deal']['original_price']; ?></p>
+			<div class="progressbar">
+				<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
+			</div>
+			<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
+			<p id="remaining_quantity" class="grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
 		</div>
+		
+		
 	</div>
 </div>
 
-<div  class="white_mod_694_wrap deal_listing">
-	<div class="white_mod_694_top"></div>
-	<div class="white_mod_694_content clearfix">
-		<?php echo $this->Html->image('/img/listing/deal-name-1.png', array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
-		<div class="grid_12 push_1">
-			<h3 class="listing_desination_title">Tuscany, Italy</h3>
-			<p class="listing_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
-		</div>
-	</div>
-</div>
-
-<div  class="white_mod_694_wrap deal_listing">
-	<div class="white_mod_694_top"></div>
-	<div class="white_mod_694_content clearfix">
-		<?php echo $this->Html->image('/img/listing/deal-name-1.png', array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
-		<div class="grid_12 push_1">
-			<h3 class="listing_desination_title">Tuscany, Italy</h3>
-			<p class="listing_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
-		</div>
-	</div>
-</div>
-
-
-
-
-
-
-<div class="deals index">
-	<h2><?php __('Deals');?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('Business Name');?></th>
-			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('slug');?></th>
-			<th><?php echo $this->Paginator->sort('description');?></th>
-			<th><?php echo $this->Paginator->sort('details');?></th>
-			<th><?php echo $this->Paginator->sort('original_price');?></th>
-			<th><?php echo $this->Paginator->sort('discounted_price');?></th>
-			<th><?php echo $this->Paginator->sort('deal_start_date');?></th>
-			<th><?php echo $this->Paginator->sort('deal_end_date');?></th>
-			<th><?php echo $this->Paginator->sort('trip_start_date');?></th>
-			<th><?php echo $this->Paginator->sort('trip_end_date');?></th>
-			<th><?php echo $this->Paginator->sort('max_purchases');?></th>
-			<th><?php echo $this->Paginator->sort('current_purchases');?></th>
-			<th><?php echo $this->Paginator->sort('comission_percentage');?></th>
-			<th><?php echo $this->Paginator->sort('deal_status_id');?></th>
-			<th><?php //echo $this->Paginator->sort('deal_type_id');?></th>
-			<th><?php echo $this->Paginator->sort('private_note');?></th>
-			<th><?php echo $this->Paginator->sort('destination_id');?></th>
-			<th><?php echo $this->Paginator->sort('street_address');?></th>
-			<th><?php echo $this->Paginator->sort('city_id');?></th>
-			<th><?php echo $this->Paginator->sort('zip_code');?></th>
-			<th class="actions"><?php __('Actions');?></th>
-	</tr>
-	<?php
-	$i = 0;
-	foreach ($deals as $deal):
-		$class = null;
-		if ($i++ % 2 == 0) {
-			$class = ' class="altrow"';
-		}
-	?>
-	<tr<?php echo $class;?>>
-		<td>
-			<?php echo $this->Html->link($deal['MerchantDetail']['business_name'], array('controller' => 'merchant_details', 'action' => 'view', $deal['MerchantDetail']['id'])); ?>
-		</td>
-		<td><?php echo $deal['Deal']['title']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['slug']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['description']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['details']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['original_price']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['discounted_price']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['deal_start_date']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['deal_end_date']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['trip_start_date']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['trip_end_date']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['max_purchases']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['current_purchases']; ?>&nbsp;</td>
-		<td><?php echo $deal['Deal']['comission_percentage']; ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($deal['DealStatus']['name'], array('controller' => 'deal_statuses', 'action' => 'view', $deal['DealStatus']['id'])); ?>
-		</td>
-		<td>
-			<?php //echo $this->Html->link($deal['DealType']['name'], array('controller' => 'deal_types', 'action' => 'view', $deal['DealType']['id'])); ?>
-		</td>
-		<td><?php echo $deal['Deal']['private_note']; ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($deal['Destination']['title'], array('controller' => 'destinations', 'action' => 'view', $deal['Destination']['id'])); ?>
-		</td>
-		<td><?php echo $deal['Deal']['street_address']; ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($deal['City']['name'], array('controller' => 'cities', 'action' => 'view', $deal['City']['id'])); ?>
-		</td>
-		<td><?php echo $deal['Deal']['zip_code']; ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $deal['Deal']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $deal['Deal']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $deal['Deal']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $deal['Deal']['id'])); ?>
-		</td>
-	</tr>
 <?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-	));
-	?>	</p>
-
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
-	 | 	<?php echo $this->Paginator->numbers();?>
- |
-		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+</div><!-- layout_left -->
+<div id="layout_right" class="grid_8">
+	<div id="search_mod"  class="white_mod_246_wrap">
+	<div class="white_mod_246_top"></div>
+	<div class="white_mod_246_content clearfix">
+		<h3 class="module_title">Search</h3>
+		<div class="module_content clearfix">
+			<form>
+				<div class="checkbox_field">
+					<div type="checkbox" class="checkbox" ></div>
+					<label>Everywhere</label>
+				</div>
+				<div class="checkbox_field">
+					<div type="checkbox" class="checkbox" ></div>
+					<label>North America &amp; Carribean</label>
+				</div>
+				<div class="checkbox_field">
+					<div type="checkbox" class="checkbox" ></div>
+					<label>Latin America</label>
+				</div>
+				<div class="checkbox_field">
+					<div type="checkbox" class="checkbox" ></div>
+					<label>Europe</label>
+				</div>
+				<div class="checkbox_field">
+					<div type="checkbox" class="checkbox" ></div>
+					<label>Africa &amp; Arabia</label>
+				</div>
+				<div class="checkbox_field">
+					<div type="checkbox" class="checkbox" ></div>
+					<label>Asia</label>
+				</div>
+				<div class="checkbox_field">
+					<div type="checkbox" class="checkbox" ></div>
+					<label>Oceania</label>
+				</div>
+			</form>
+		</div>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Deal', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Merchant Details', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant Detail', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Deal Statuses', true), array('controller' => 'deal_statuses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Deal Status', true), array('controller' => 'deal_statuses', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('List Deal Types', true), array('controller' => 'deal_types', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Deal Type', true), array('controller' => 'deal_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Destinations', true), array('controller' => 'destinations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Destination', true), array('controller' => 'destinations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Cities', true), array('controller' => 'cities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New City', true), array('controller' => 'cities', 'action' => 'add')); ?> </li>
-	</ul>
+
+<div  class="white_mod_246_wrap deal_listing">
+	<div class="white_mod_246_top"></div>
+	<div class="white_mod_246_content clearfix">
+		<h3 class="module_title">FAQ</h3>
+		<div class="module_content">
+		</div>
+	</div>
 </div>
+
+
+</div><!-- #layout_right -->

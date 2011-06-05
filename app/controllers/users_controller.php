@@ -14,12 +14,12 @@ function login() {
 function logout() {
     //Leave empty for now.
 }
-/*
+
 function beforeFilter() {
     parent::beforeFilter(); 
     $this->Auth->allow(array('*'));
 }
-*/
+
 	
 	function index() {
 		$this->User->recursive = 0;

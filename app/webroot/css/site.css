@@ -153,6 +153,7 @@
     width: 100px;
     color:#565656;
 }
+
 #chk_north_america{
 	
 }
@@ -198,6 +199,13 @@
 	margin-bottom: 50px;
 }
 
+/* Deal Search Module*/
+
+#search_mod .checkbox_field{
+    clear: both;
+    margin: 10px 0 8px 12px;
+}
+
 /* Deal Listings */
 .filter_bar{
     background: url("../img/site/filter_bar.png") no-repeat scroll 0 0 transparent;
@@ -228,6 +236,55 @@
     text-decoration: none;
 }
 
+.listing_prices{
+	margin: 10px 5px;
+    text-transform: uppercase;
+}
+
+/* Deal Details */
+
+#deal_detail_cta{
+	border-left: 1px solid #EEEEEE;	
+}
+
+#deal_detail_cta p{
+	font-size: 25px;
+    font-weight: bold;
+    line-height: 41px;
+    margin-left: 10px;
+}
+
+#book_now_bar{
+    clear: both;
+    margin: 10px 5px;
+    padding: 10px 7px;
+    width: 650px;
+}
+
+#book_now_bar h3{
+	font-size:20px;
+	font-weight:bold;
+}
+
+#deal_view_description h3{
+	font-size:16px;	
+}
+
+#detail_prices span{
+    font-size: 11px;
+    margin: 5px 0;
+    vertical-align: bottom;
+}
+
+#detail_prices p{
+	text-align: center;
+    text-transform: uppercase;
+    margin:0;
+}
+
+#detail_prices #original_price{
+	clear:both;
+}
 
 /* Footer */
 

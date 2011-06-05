@@ -69,10 +69,11 @@
 }
 
 .blue_rounded_mod{
-	-moz-border-radius:7px;
-	background:#3caacc;
-	color:#ffffff;
-	padding:7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    background: none repeat scroll 0 0 #3CAACC;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    padding: 7px;
 }
 
 .desination_title{
@@ -108,7 +109,13 @@
 	min-height:100px;
 }
 
-
+.highlights_mod{
+    -moz-border-radius: 5px 5px 5px 5px;
+    background: none repeat scroll 0 0 #EAFBFB;
+    border: 1px solid #CCCCCC;
+    min-height: 100px;
+    padding: 10px;
+}
 
 
 .featured_deal_description{
@@ -125,7 +132,63 @@
 
 /* +++++++++++++++++ END Module Styles +++++++++++++++++ */
 
+#progressbar_wrap{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.progressbar{
+    -moz-border-radius: 7px 7px 7px 7px;
+    background: none repeat scroll 0 0 #E2E2E2;
+    border: 1px solid #CCCCCC;
+    clear: both;
+    height: 12px;
+}
+
+.progress_val{
+    -moz-border-radius: 7px 7px 7px 7px;
+    background: url("../img/site/progress_value_bg.png") repeat-x scroll 0 0 transparent;
+    height: 12px;
+    width: 0;
+}
+
+#current_quantity,
+#remaining_quantity{
+    font-size: 11px;
+    font-weight: bold;
+    margin: 3px 0;
+    text-transform: uppercase;
+}
+
+#remaining_quantity{
+	float:right;
+}
+
+.prices{
+	color: #3CAACC;
+    font-weight: bold;
+}
+
+.strike{
+    background: url("../img/site/strike.png") repeat scroll 0 0 transparent;
+    display: block;
+    height: 2px;
+    left: 33px;
+    margin: 0 auto;
+    position: absolute;
+    top: 2px;
+    width: 30px;
+}
+
 /* +++++++++++++++++ START Button Styles +++++++++++++++++ */
+
+.book_now_btn{
+	background: url("../img/site/book_now_btn.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 41px;
+    width: 138px;
+}
 
 .find_deals_btn{
     background: url("../img/site/find_deals_sprite.png") no-repeat scroll 0 0 transparent;

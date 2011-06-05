@@ -6,7 +6,6 @@
 		<?php __('CakePHP: the rapid development php framework:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
-	
 	<?php
 		echo $this->Html->meta('icon');
 		$this->AssetCompress->css(array(
@@ -18,11 +17,9 @@
 			'helper'
 		));
 		$this->AssetCompress->script('jquery');
-		$this->AssetCompress->script('jquery-ui');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;
 	?>
-	<link href="/css/ui-lightness/jquery-ui.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 	<div id="layout_container">

@@ -1,152 +1,112 @@
-<div class="deals view">
-<h2><?php  __('Deal');?>
-	<?php echo $this->Html->link(__('Buy', true), array('controller' => 'deal_purchases', 'action' => 'add', $deal['Deal']['id'])); ?>
-</h2>
+<?php 
+$this->layout = 'deal_view'; 
 
-	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['id']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['created']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['modified']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Business Name'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($deal['MerchantDetail']['business_name'], array('controller' => 'merchant_details', 'action' => 'view', $deal['MerchantDetail']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Title'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['title']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Slug'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['slug']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Description'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['description']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Details'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['details']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Original Price'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['original_price']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Discounted Price'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['discounted_price']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Deal Start Date'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['deal_start_date']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Deal End Date'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['deal_end_date']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Trip Start Date'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['trip_start_date']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Trip End Date'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['trip_end_date']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Max Purchases'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['max_purchases']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Current Purchases'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['current_purchases']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Comission Percentage'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['comission_percentage']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Deal Status'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($deal['DealStatus']['name'], array('controller' => 'deal_statuses', 'action' => 'view', $deal['DealStatus']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Deal Type'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($deal['DealType']['name'], array('controller' => 'deal_types', 'action' => 'view', $deal['DealType']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Reservation Type'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($deal['ReservationType']['name'], array('controller' => 'reservation_types', 'action' => 'view', $deal['ReservationType']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Private Note'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['private_note']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Destination'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($deal['Destination']['title'], array('controller' => 'destinations', 'action' => 'view', $deal['Destination']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Street Address'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['street_address']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('City'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($deal['City']['name'], array('controller' => 'cities', 'action' => 'view', $deal['City']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Zip Code'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $deal['Deal']['zip_code']; ?>
-			&nbsp;
-		</dd>
-	</dl>
+$image = $deal['Deal']['image1'];
+$deal_id = $deal['Deal']['id'];
+$max_quantity = $deal['Deal']['max_purchases'];
+$current_quantity = $deal['Deal']['current_purchases'];
+$remaining_quantity = $max_quantity - $current_quantity;
+
+$original_price = (int)$deal['Deal']['original_price'];
+$discounted_price = (int)$deal['Deal']['discounted_price'];
+
+
+$savings = $original_price - $discounted_price;
+$discounted_price_pct = ($savings/$original_price)*100;
+
+//Progress Bar Calculation
+$progress_value = ($current_quantity/$max_quantity)*100;
+
+
+?>
+
+<div id="layout_left" class="grid_22">
+	<div id="deal_view_details"  class="white_mod_694_wrap deal_listing">
+		<div class="white_mod_694_top"></div>
+		<div class="white_mod_694_content clearfix">
+			<div class="thumb_nails">
+					<?php echo $this->Html->image('/img/deals/deal-detail-1-tmb.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'))?>
+			</div>
+			<?php echo $this->Html->image('/img/deals/deal-detail-1.png', array('class'=>'grid_18 omega','alt' => 'Featured Deal Image'))?>
+			
+			<div id="book_now_bar" class="blue_rounded_mod clearfix grid_21 alpha omega">
+				<h3 class="grid_12"><?php echo $deal['Deal']['title']; ?></h3>
+				<div id="deal_detail_cta" class="grid_8 clearfix">
+					<p class="grid_3"><?php echo __('$').$discounted_price; ?></p>
+					<a href="#" class="book_now_btn"></a>
+				</div>
+			</div>
+			<div id="progressbar_wrap" class="grid_12">
+				<div class="progressbar">
+					<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
+				</div>
+				<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
+				<p id="remaining_quantity" class="grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
+			</div>
+			<div id="detail_prices" class="grid_8 push_1">
+				<p>
+					<span class="grid_3"><?php echo __('Original Price')?></span>
+					<span class="grid_3"><?php echo __('Discount')?></span>
+					<span class="grid_2"><?php echo __('Savings')?></span>
+				</p>
+				<p id="original_price" class="grid_3 prices"><span class="strike"></span><?php echo __('$').$original_price; ?></p>
+				<p id="discount_price" class="grid_3 prices"><?php echo $discounted_price_pct.'%'; ?></p>
+				<p id="savings" class="grid_2 prices"><?php echo __('$').$savings; ?></p>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="deal_view_description"  class="white_mod_694_wrap deal_listing">
+	
+		<div class="white_mod_694_top"></div>
+		
+		<div class="white_mod_694_content clearfix">
+			<div class="grid_14">
+				<h3>Description</h3>
+				<?php echo $deal['Deal']['description']; ?>
+				
+				<h3>The Fine Print</h3>
+				<?php echo $deal['Deal']['details']; ?>
+			</div>
+			<div class="grid_7">
+				<div class="highlights_mod">
+					<h3>Highlights</h3>
+					<?php echo $deal['Deal']['highlights']; ?>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- layout_left -->
+
+<div id="layout_right" class="grid_8">
+	<div  class="white_mod_246_wrap deal_listing">
+	<div class="white_mod_246_top"></div>
+	<div class="white_mod_246_content clearfix">
+		<h3 class="module_title">About Your Host</h3>
+		<div class="module_content">
+			<?php echo $deal['Deal']['about_host']; ?>
+		</div>
+	</div>
 </div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Deal', true), array('action' => 'edit', $deal['Deal']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Delete Deal', true), array('action' => 'delete', $deal['Deal']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $deal['Deal']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Deals', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Deal', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Merchant Details', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant Detail', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Deal Statuses', true), array('controller' => 'deal_statuses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Deal Status', true), array('controller' => 'deal_statuses', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Deal Types', true), array('controller' => 'deal_types', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Deal Type', true), array('controller' => 'deal_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Destinations', true), array('controller' => 'destinations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Destination', true), array('controller' => 'destinations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Cities', true), array('controller' => 'cities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New City', true), array('controller' => 'cities', 'action' => 'add')); ?> </li>
-	</ul>
+
+<div  class="white_mod_246_wrap deal_listing">
+	<div class="white_mod_246_top"></div>
+	<div class="white_mod_246_content clearfix">
+		<h3 class="module_title">Things To Do</h3>
+		<div class="module_content">
+		</div>
+	</div>
 </div>
+
+<div  class="white_mod_246_wrap deal_listing">
+	<div class="white_mod_246_top"></div>
+	<div class="white_mod_246_content clearfix">
+		<h3 class="module_title">Getting There</h3>
+		<div class="module_content">
+			<?php echo $deal['Deal']['getting_there']; ?>
+		</div>
+	</div>
+</div>
+</div><!-- #layout_right -->

@@ -2,9 +2,10 @@
 class DealsController extends AppController {
 
 	var $name = 'Deals';
-
-	public $helpers = array('Text');
 	
+	var $components = array('RequestHandler');
+
+	public $helpers = array('Text','Js');
 	
 	function index() {
 		$this->Deal->recursive = 0;
