@@ -38,7 +38,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('City'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($merchantDetail['City']['name'], array('controller' => 'cities', 'action' => 'view', $merchantDetail['City']['id'])); ?>
+			<?php echo $merchantDetail['MerchantDetail']['city'];?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Postal Code'); ?></dt>
@@ -54,6 +54,11 @@
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Second Address'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $merchantDetail['MerchantDetail']['second_address']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Country'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $merchantDetail['Country']['name']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('User'); ?></dt>

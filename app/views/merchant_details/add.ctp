@@ -5,14 +5,21 @@
 	<?php
 		echo $this->Form->input('User.email');
 		//echo $this->Form->input('User.name');
+		echo $this->Form->input('MerchantDetail.business_name');
 		echo $this->Form->input('MerchantDetail.about_us');
 		echo $this->Form->input('MerchantDetail.website');
 		echo $this->Form->input('MerchantDetail.business_reviews');
-		echo $this->Form->input('MerchantDetail.business_name');
-		echo $this->Form->input('MerchantDetail.city_id');
-		echo $this->Form->input('MerchantDetail.postal_code');
 		echo $this->Form->input('MerchantDetail.address');
 		echo $this->Form->input('MerchantDetail.second_address');
+		echo $this->Form->input('MerchantDetail.city');
+		echo $this->Form->input('MerchantDetail.state');
+		echo $this->Form->input('MerchantDetail.country_id');
+		echo $this->Form->input('MerchantDetail.first_name');
+		echo $this->Form->input('MerchantDetail.last_name');
+		echo $this->Form->input('MerchantDetail.phone');
+		echo $this->Form->input('MerchantDetail.postal_code');
+		
+		
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

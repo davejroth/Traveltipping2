@@ -1,4 +1,13 @@
 <div class="deals form">
+
+<script type="text/javascript"> 
+    tinyMCE.init({ 
+        theme : "advanced", 
+        mode : "textareas", 
+		theme_advanced_toolbar_location : "top", 
+        convert_urls : false 
+    }); 
+</script> 
 <?php echo $this->Form->create('Deal');?>
 	<fieldset>
  		<legend><?php __('Add Deal'); ?></legend>
@@ -36,7 +45,7 @@
 		echo $this->Form->input('displayed_email');
 		echo $this->Form->input('max_nights');
 		echo $this->Form->input('flat_fee');
-		echo $this->Form->input('image1');
+		echo $this->Form->input('image1', array('label' => __('image1', true), 'type' => 'file',));
 		echo $this->Form->input('image2');
 		echo $this->Form->input('image3');
 		echo $this->Form->input('image4');
@@ -60,8 +69,6 @@
 		<li><?php echo $this->Html->link(__('New Merchant Detail', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deal Statuses', true), array('controller' => 'deal_statuses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal Status', true), array('controller' => 'deal_statuses', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('List Deal Types', true), array('controller' => 'deal_types', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Deal Type', true), array('controller' => 'deal_types', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Destinations', true), array('controller' => 'destinations', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Destination', true), array('controller' => 'destinations', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Cities', true), array('controller' => 'cities', 'action' => 'index')); ?> </li>

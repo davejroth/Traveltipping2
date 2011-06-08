@@ -1,7 +1,7 @@
 <?php
 class AppController extends Controller {
     var $components = array('Acl', 'Auth', 'Session');
-    var $helpers = array('Html', 'Form', 'Session', 'AssetCompress.AssetCompress');
+    var $helpers = array('Html', 'Form', 'Session', 'AssetCompress.AssetCompress', 'Javascript');
     
     var $view = 'Theme';
     //var $theme = 'cake_default';

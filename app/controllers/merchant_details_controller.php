@@ -43,9 +43,9 @@ class MerchantDetailsController extends AppController {
 				$this->Session->setFlash(__('The merchant detail could not be saved. Please, try again.', true));
 			}
 		}
-		$cities = $this->MerchantDetail->City->find('list');
+		$countries = $this->MerchantDetail->Country->find('list');
 		$users = $this->MerchantDetail->User->find('list');
-		$this->set(compact('cities', 'users'));
+		$this->set(compact('countries', 'users'));
 	}
 
 	function edit($id = null) {
@@ -66,9 +66,9 @@ class MerchantDetailsController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->MerchantDetail->read(null, $id);
 		}
-		$cities = $this->MerchantDetail->City->find('list');
+		$countries = $this->MerchantDetail->Country->find('list');
 		$users = $this->MerchantDetail->User->find('list');
-		$this->set(compact('cities', 'users'));
+		$this->set(compact('countries', 'users'));
 	}
 
 	function delete($id = null) {

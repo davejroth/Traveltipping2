@@ -3,26 +3,6 @@
 	<fieldset>
  		<legend><?php __('Edit Deal'); ?></legend>
 	<?php
-		echo "<h2>";
-		echo "All Uploaded images <br>";
-		//Show all available images
-		foreach ($images as $node) {
-		//echo $this->Html->image('/uploads/' . $node['Node']['slug']);
-		//echo $node['Node']['title'];
-		$mimeType = explode('/', $node['Node']['mime_type']);
-        $mimeType = $mimeType['0'];
-        if ($mimeType == 'image') {
-		echo $this->Html->link($this->Image->resize('/uploads/' . $node['Node']['slug'], 100, 200), array('controller' => 'attachments', 'action' => 'edit', $node['Node']['id']), array('escape' => false));
-		}
-		}
-		//Show attached pictures
-		echo "<br> Attached images <br>";
-		$nodeCount = count($thisdeal['Node']);
-		for ($i = 0; $i < $nodeCount; $i++){
-			echo $this->Html->link($this->Image->resize('/uploads/' . $thisdeal['Node'][$i]['slug'], 100, 200), array('controller' => 'attachments', 'action' => 'edit', $thisdeal['Node'][$i]['id']), array('escape' => false));
-		}
-		echo "</h2>";
-		echo $form->input('Node');		
 		echo $this->Form->input('id');
 		echo $this->Form->input('merchant_detail_id');
 		echo $this->Form->input('title');
@@ -42,11 +22,30 @@
 		echo $this->Form->input('comission_percentage');
 		echo $this->Form->input('deal_status_id');
 		echo $this->Form->input('deal_type_id');
-		echo $this->Form->input('private_note');
+echo $this->Form->input('private_note');
 		echo $this->Form->input('destination_id');
 		echo $this->Form->input('street_address');
-		echo $this->Form->input('city_id');
 		echo $this->Form->input('zip_code');
+		echo $this->Form->input('is_timed');
+		echo $this->Form->input('city');
+		echo $this->Form->input('state');
+		echo $this->Form->input('country');
+		echo $this->Form->input('reservation_type_id');
+		echo $this->Form->input('company_name');
+		echo $this->Form->input('displayed_email');
+		echo $this->Form->input('max_nights');
+		echo $this->Form->input('flat_fee');
+		echo $this->Form->input('image1');
+		echo $this->Form->input('image2');
+		echo $this->Form->input('image3');
+		echo $this->Form->input('image4');
+		echo $this->Form->input('image5');
+		echo $this->Form->input('image6');
+		echo $this->Form->input('about_host');
+		echo $this->Form->input('highlights');
+		echo $this->Form->input('getting_there');
+		echo $this->Form->input('Category',  array('multiple' => 'checkbox'));
+		echo $this->Form->input('Region',  array('multiple' => 'checkbox'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

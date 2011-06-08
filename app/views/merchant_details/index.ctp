@@ -9,7 +9,7 @@
 			<th><?php echo $this->Paginator->sort('website');?></th>
 			<th><?php echo $this->Paginator->sort('business_reviews');?></th>
 			<th><?php echo $this->Paginator->sort('business_name');?></th>
-			<th><?php echo $this->Paginator->sort('city_id');?></th>
+			<th><?php echo $this->Paginator->sort('city');?></th>
 			<th><?php echo $this->Paginator->sort('postal_code');?></th>
 			<th><?php echo $this->Paginator->sort('address');?></th>
 			<th><?php echo $this->Paginator->sort('second_address');?></th>
@@ -33,7 +33,7 @@
 		<td><?php echo $merchantDetail['MerchantDetail']['business_reviews']; ?>&nbsp;</td>
 		<td><?php echo $merchantDetail['MerchantDetail']['business_name']; ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($merchantDetail['City']['name'], array('controller' => 'cities', 'action' => 'view', $merchantDetail['City']['id'])); ?>
+			<?php echo $merchantDetail['MerchantDetail']['city']; ?>
 		</td>
 		<td><?php echo $merchantDetail['MerchantDetail']['postal_code']; ?>&nbsp;</td>
 		<td><?php echo $merchantDetail['MerchantDetail']['address']; ?>&nbsp;</td>
