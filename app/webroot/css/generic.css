@@ -1,4 +1,47 @@
 
+/* +++++++++++++++++ START Page Styles +++++++++++++++++ */
+
+.page_title{
+    -moz-border-radius: 7px 7px 7px 7px;
+    background: none repeat scroll 0 0 #3CAACC;
+    color: #FFFFFF;
+    font-size: 17px;
+    margin-bottom: 15px;
+    padding: 7px 15px;
+    text-transform: uppercase;
+}
+
+/* +++++++++++++++++ END Page Styles +++++++++++++++++ */
+
+
+
+
+/* +++++++++++++++++ START Form Styles +++++++++++++++++ */
+label{
+	font-size:14px;
+}
+
+.submit{
+	clear:both;	
+}
+
+.text{
+    margin: 15px 0;
+}
+
+.text input{
+    border: 1px solid #CCCCCC;
+    font-size: 14px;
+    padding: 5px;
+    width: 235px;
+}
+
+.text label{
+	display:block;
+}
+
+/* +++++++++++++++++ END Form Styles +++++++++++++++++ */
+
 /* +++++++++++++++++ START Module Styles +++++++++++++++++ */
 
 /* White Module 960 */
