@@ -1,7 +1,15 @@
 <div class="deals form">
+<script type="text/javascript"> 
+    tinyMCE.init({ 
+        theme : "advanced", 
+        mode : "textareas", 
+		theme_advanced_toolbar_location : "top", 
+        convert_urls : false 
+    }); 
+</script> 
 <?php echo $this->Form->create('Deal');?>
 	<fieldset>
- 		<legend><?php __('Admin Edit Deal'); ?></legend>
+ 		<legend><?php __('Edit Deal'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('merchant_detail_id');
@@ -11,6 +19,8 @@
 		echo $this->Form->input('details');
 		echo $this->Form->input('original_price');
 		echo $this->Form->input('discounted_price');
+		echo $this->Form->input('is_timed',  array( 'label' => 'This deal should based on :',
+		'options' => array('0' => 'Deal Max Quantity Reached', '1' => 'Deal Date End Reached' )));
 		echo $this->Form->input('deal_start_date');
 		echo $this->Form->input('deal_end_date');
 		echo $this->Form->input('trip_start_date');
@@ -23,8 +33,28 @@
 		echo $this->Form->input('private_note');
 		echo $this->Form->input('destination_id');
 		echo $this->Form->input('street_address');
-		echo $this->Form->input('city_id');
 		echo $this->Form->input('zip_code');
+		echo $this->Form->input('is_timed',  array( 'label' => 'This deal should based on :',
+		'options' => array('0' => 'Deal Max Quantity Reached', '1' => 'Deal Date End Reached' )));
+		echo $this->Form->input('city');
+		echo $this->Form->input('state');
+		echo $this->Form->input('country');
+		echo $this->Form->input('reservation_type_id');
+		echo $this->Form->input('company_name');
+		echo $this->Form->input('displayed_email');
+		echo $this->Form->input('max_nights');
+		echo $this->Form->input('flat_fee');
+		echo $this->Form->input('image1', array('label' => __('image1', true), 'type' => 'file',));
+		echo $this->Form->input('image2');
+		echo $this->Form->input('image3');
+		echo $this->Form->input('image4');
+		echo $this->Form->input('image5');
+		echo $this->Form->input('image6');
+		echo $this->Form->input('about_host');
+		echo $this->Form->input('highlights');
+		echo $this->Form->input('getting_there');
+		echo $this->Form->input('Category',  array('multiple' => 'checkbox'));
+		echo $this->Form->input('Region',  array('multiple' => 'checkbox'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
