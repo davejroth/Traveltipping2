@@ -1,4 +1,5 @@
 <?php $this->layout = 'home'; ?>
+<?php debug($deals); ?>
 <form id="region_search">
 <div id="region_selection_map" class="clearfix">
 	<div id="rgn_north_america" class="region">

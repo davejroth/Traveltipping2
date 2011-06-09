@@ -10,7 +10,7 @@
 		$business_name = $merchantDetail['MerchantDetail']['business_name'];
 		$address = $merchantDetail['MerchantDetail']['address'];
 		$address2 = $merchantDetail['MerchantDetail']['second_address'];
-		$city = $merchantDetail['City']['name'];
+		$city = $merchantDetail['MerchantDetail']['city'];
 		$state = "";//$merchantDetail['State']['name'];
 		$postal_code = $merchantDetail['MerchantDetail']['postal_code'];
 		//$country = $merchantDetail['Country']['name'];
