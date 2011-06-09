@@ -1,5 +1,5 @@
 <?php $this->layout = 'home'; ?>
-
+<form id="region_search">
 <div id="region_selection_map" class="clearfix">
 	<div id="rgn_north_america" class="region">
 	</div>
@@ -18,29 +18,35 @@
 	<div id="chk_north_america" class="checkbox_field clearfix">
 		<div class="checkbox"></div>
 		<p>North America &amp; Carribean</p>
+		<input type="hidden" value="0" name="chk_north_america"/>
 	</div>
 	<div id="chk_latin_america" class="checkbox_field clearfix">
 		<div class="checkbox"></div>
 		<p><span>Latin</span>America</p>
+		<input type="hidden" value="0" name="chk_latin_america"/>
 	</div>
 	<div id="chk_europe" class="checkbox_field clearfix">
 		<div class="checkbox"></div>
 		<p>Europe</p>
+		<input type="hidden" value="0" name="chk_europe"/>
 	</div>
 	<div id="chk_africa" class="checkbox_field clearfix">
 		<div class="checkbox"></div>
-		<p><span>Africa</span>&amp; Arabia</p>
+		<p><span>Africa</span> &amp; Arabia</p>
+		<input type="hidden" value="0" name="chk_africa"/>
 	</div>
 	<div id="chk_asia" class="checkbox_field clearfix">
 		<div class="checkbox"></div>
 		<p>Asia</p>
+		<input type="hidden" value="0" name="chk_asia"/>
 	</div>
 	<div id="chk_oceania" class="checkbox_field clearfix">
 		<div class="checkbox"></div>
 		<p>Oceania</p>
+		<input type="hidden" value="0" name="chk_oceania"/>
 	</div>
 </div>
-
+</form>
 <div id="find_deals" class="white_mod_960_wrap">
 	<div class="white_mod_960_top"></div>
 	<div class="white_mod_960_content">

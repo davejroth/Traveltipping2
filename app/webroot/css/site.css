@@ -69,6 +69,7 @@
 }
 
 .subscribe_form .submit{
+    clear: none;
     float: left;
     margin-top: 2px;
 }
@@ -132,9 +133,10 @@
 
 
 .checkbox_field{
+    float: left;
     margin-left: 15px;
+    position: relative;
     width: 130px;
-    float:left;
 }
 
 .checkbox_field div{
@@ -182,7 +184,8 @@
 /* Deal Search Bar*/
 
 #deal_search_bar{
-	padding-top:20px;
+    margin-bottom: 0;
+    padding-top: 20px;
 }
 
 #deal_search_bar h3{
