@@ -1,10 +1,12 @@
 <?php 
+
 $this->layout = 'deal_view'; 
 
 $image = $deal['Deal']['image1'];
 $deal_id = $deal['Deal']['id'];
 $max_quantity = $deal['Deal']['max_purchases'];
-$current_quantity = $deal['Deal']['current_purchases'];
+//$current_quantity = $deal['Deal']['current_purchases'];
+$current_quantity = $count;
 $remaining_quantity = $max_quantity - $current_quantity;
 
 $original_price = (int)$deal['Deal']['original_price'];

@@ -7,9 +7,25 @@ class DealsController extends AppController {
 
 	public $helpers = array('Text','Js');
 	
+	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
 	function index() {
-		$this->Deal->recursive = 0;
-		$this->set('deals', $this->paginate());
+		//$this->Deal->recursive = 0;
+		$test = $_POST['chk_north_america'];
+		$conditions = null;
+		$regions = array(1, 3);  //Set this to regions passed from home page.
+		if(!empty($regions)) {
+			$conditions = array('DealsRegion.region_id' => $regions);
+		}
+		$this->Deal->bindModel(array('hasOne' => array('DealsRegion')), false);
+		$deals = $this->paginate('Deal', array($conditions));
+		$count = count($deals);
+		for ($i = 0; $i < $count; $i++) {
+		$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
+		array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
+		}
+		$this->set('deals', $deals);
+		$this->set('count', $count);
+		$this->set('test', $test);
 	}
 
 	function view($id = null) {
@@ -18,6 +34,8 @@ class DealsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('deal', $this->Deal->read(null, $id));
+		$this->set('count', $this->Deal->DealPurchase->find('count',
+		array('conditions' => array('DealPurchase.deal_id' => $id ))));
 	}
 
 	function add() {
@@ -145,4 +163,13 @@ class DealsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 }
+
+// Filter deals by regions$deals = $this->Deal->find('all');
+		/*$this->set('nadeals', $this->Deal->find('all', array(
+		'fields' => array('Deal.*'),
+		'conditions'=>$conditions,  'group' => array('Deal.id')))); */
+		/*$conditions = null;
+		if(!empty($regions)) {
+			$conditions = array('DealsRegion.region_id' => $regions);
+		} */
 ?>

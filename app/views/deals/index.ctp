@@ -1,5 +1,6 @@
 
 <div id="layout_left" class="grid_22">
+<?php echo $test; ?>
 <div class="filter_bar">
 	<ul id="sort_options">
 		<li class="list_title"><strong>Sort By:</strong></li>
