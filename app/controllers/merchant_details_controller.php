@@ -45,7 +45,8 @@ class MerchantDetailsController extends AppController {
 		}
 		$countries = $this->MerchantDetail->Country->find('list');
 		$users = $this->MerchantDetail->User->find('list');
-		$this->set(compact('countries', 'users'));
+		$businessTypes = $this->MerchantDetail->BusinessType->find('list');
+		$this->set(compact('countries', 'users', 'businessTypes'));
 	}
 
 	function edit($id = null) {

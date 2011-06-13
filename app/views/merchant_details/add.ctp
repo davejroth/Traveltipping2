@@ -6,6 +6,7 @@
 		echo $this->Form->input('User.email');
 		//echo $this->Form->input('User.name');
 		echo $this->Form->input('MerchantDetail.business_name');
+		echo $this->Form->input('MerchantDetail.business_type_id');
 		echo $this->Form->input('MerchantDetail.about_us');
 		echo $this->Form->input('MerchantDetail.website');
 		echo $this->Form->input('MerchantDetail.business_reviews');

@@ -30,7 +30,7 @@
 		echo $this->Form->input('trip_start_date');
 		echo $this->Form->input('trip_end_date');
 		echo $this->Form->input('max_purchases');
-		echo $this->Form->input('current_purchases');
+		//echo $this->Form->input('current_purchases');
 		echo $this->Form->input('comission_percentage');
 		echo $this->Form->input('deal_status_id');
 		//echo $this->Form->input('deal_type_id');
