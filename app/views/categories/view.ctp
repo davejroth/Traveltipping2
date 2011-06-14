@@ -42,7 +42,7 @@
 		<th><?php __('Id'); ?></th>
 		<th><?php __('Created'); ?></th>
 		<th><?php __('Modified'); ?></th>
-		<th><?php __('Merchant Detail Id'); ?></th>
+		<th><?php __('Merchant Id'); ?></th>
 		<th><?php __('Title'); ?></th>
 		<th><?php __('Slug'); ?></th>
 		<th><?php __('Description'); ?></th>
@@ -94,7 +94,7 @@
 			<td><?php echo $deal['id'];?></td>
 			<td><?php echo $deal['created'];?></td>
 			<td><?php echo $deal['modified'];?></td>
-			<td><?php echo $deal['merchant_detail_id'];?></td>
+			<td><?php echo $deal['merchant_id'];?></td>
 			<td><?php echo $deal['title'];?></td>
 			<td><?php echo $deal['slug'];?></td>
 			<td><?php echo $deal['description'];?></td>

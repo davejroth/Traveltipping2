@@ -4,7 +4,7 @@
  		<legend><?php __('Admin Add Deal Purchase'); ?></legend>
 	<?php
 		echo $this->Form->input('deal_id');
-		echo $this->Form->input('user_detail_id');
+		echo $this->Form->input('traveler_id');
 		echo $this->Form->input('confirmation_code');
 		echo $this->Form->input('start_date');
 		echo $this->Form->input('end_date');
@@ -19,7 +19,7 @@
 		<li><?php echo $this->Html->link(__('List Deal Purchases', true), array('action' => 'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Deals', true), array('controller' => 'deals', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal', true), array('controller' => 'deals', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List User Details', true), array('controller' => 'user_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User Detail', true), array('controller' => 'user_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Travelers', true), array('controller' => 'user_details', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Traveler', true), array('controller' => 'user_details', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

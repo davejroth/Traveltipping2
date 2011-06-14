@@ -30,13 +30,13 @@
 		<li><?php echo $this->Html->link(__('Delete Business Type', true), array('action' => 'delete', $businessType['BusinessType']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $businessType['BusinessType']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Business Types', true), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Business Type', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Merchant Details', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant Detail', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Related Merchant Details');?></h3>
-	<?php if (!empty($businessType['MerchantDetail'])):?>
+	<h3><?php __('Related Merchant');?></h3>
+	<?php if (!empty($businessType['Merchant'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php __('Id'); ?></th>
@@ -61,35 +61,35 @@
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($businessType['MerchantDetail'] as $merchantDetail):
+		foreach ($businessType['Merchant'] as $merchant):
 			$class = null;
 			if ($i++ % 2 == 0) {
 				$class = ' class="altrow"';
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $merchantDetail['id'];?></td>
-			<td><?php echo $merchantDetail['created'];?></td>
-			<td><?php echo $merchantDetail['modified'];?></td>
-			<td><?php echo $merchantDetail['about_us'];?></td>
-			<td><?php echo $merchantDetail['website'];?></td>
-			<td><?php echo $merchantDetail['business_reviews'];?></td>
-			<td><?php echo $merchantDetail['business_name'];?></td>
-			<td><?php echo $merchantDetail['city'];?></td>
-			<td><?php echo $merchantDetail['postal_code'];?></td>
-			<td><?php echo $merchantDetail['address'];?></td>
-			<td><?php echo $merchantDetail['second_address'];?></td>
-			<td><?php echo $merchantDetail['user_id'];?></td>
-			<td><?php echo $merchantDetail['state'];?></td>
-			<td><?php echo $merchantDetail['first_name'];?></td>
-			<td><?php echo $merchantDetail['last_name'];?></td>
-			<td><?php echo $merchantDetail['phone'];?></td>
-			<td><?php echo $merchantDetail['country_id'];?></td>
-			<td><?php echo $merchantDetail['business_type_id'];?></td>
+			<td><?php echo $merchant['id'];?></td>
+			<td><?php echo $merchant['created'];?></td>
+			<td><?php echo $merchant['modified'];?></td>
+			<td><?php echo $merchant['about_us'];?></td>
+			<td><?php echo $merchant['website'];?></td>
+			<td><?php echo $merchant['business_reviews'];?></td>
+			<td><?php echo $merchant['business_name'];?></td>
+			<td><?php echo $merchant['city'];?></td>
+			<td><?php echo $merchant['postal_code'];?></td>
+			<td><?php echo $merchant['address'];?></td>
+			<td><?php echo $merchant['second_address'];?></td>
+			<td><?php echo $merchant['user_id'];?></td>
+			<td><?php echo $merchant['state'];?></td>
+			<td><?php echo $merchant['first_name'];?></td>
+			<td><?php echo $merchant['last_name'];?></td>
+			<td><?php echo $merchant['phone'];?></td>
+			<td><?php echo $merchant['country_id'];?></td>
+			<td><?php echo $merchant['business_type_id'];?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View', true), array('controller' => 'merchant_details', 'action' => 'view', $merchantDetail['id'])); ?>
-				<?php echo $this->Html->link(__('Edit', true), array('controller' => 'merchant_details', 'action' => 'edit', $merchantDetail['id'])); ?>
-				<?php echo $this->Html->link(__('Delete', true), array('controller' => 'merchant_details', 'action' => 'delete', $merchantDetail['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $merchantDetail['id'])); ?>
+				<?php echo $this->Html->link(__('View', true), array('controller' => 'merchant_details', 'action' => 'view', $merchant['id'])); ?>
+				<?php echo $this->Html->link(__('Edit', true), array('controller' => 'merchant_details', 'action' => 'edit', $merchant['id'])); ?>
+				<?php echo $this->Html->link(__('Delete', true), array('controller' => 'merchant_details', 'action' => 'delete', $merchant['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $merchant['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -98,7 +98,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Merchant Detail', true), array('controller' => 'merchant_details', 'action' => 'add'));?> </li>
+			<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchant_details', 'action' => 'add'));?> </li>
 		</ul>
 	</div>
 </div>

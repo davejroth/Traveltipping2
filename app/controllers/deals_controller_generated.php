@@ -26,13 +26,13 @@ class DealsController extends AppController {
 				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 			}
 		}
-		$merchantDetails = $this->Deal->MerchantDetail->find('list');
+		$merchant = $this->Deal->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$destinations = $this->Deal->Destination->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchantDetails', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
+		$this->set(compact('merchant', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
 	}
 
 	function edit($id = null) {
@@ -51,13 +51,13 @@ class DealsController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Deal->read(null, $id);
 		}
-		$merchantDetails = $this->Deal->MerchantDetail->find('list');
+		$merchant = $this->Deal->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$destinations = $this->Deal->Destination->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchantDetails', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
+		$this->set(compact('merchant', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
 	}
 
 	function delete($id = null) {
@@ -95,13 +95,13 @@ class DealsController extends AppController {
 				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 			}
 		}
-		$merchantDetails = $this->Deal->MerchantDetail->find('list');
+		$merchant = $this->Deal->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$destinations = $this->Deal->Destination->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchantDetails', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
+		$this->set(compact('merchant', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
 	}
 
 	function admin_edit($id = null) {
@@ -120,13 +120,13 @@ class DealsController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Deal->read(null, $id);
 		}
-		$merchantDetails = $this->Deal->MerchantDetail->find('list');
+		$merchant = $this->Deal->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$destinations = $this->Deal->Destination->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchantDetails', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
+		$this->set(compact('merchant', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
 	}
 
 	function admin_delete($id = null) {

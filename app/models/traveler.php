@@ -1,17 +1,10 @@
 <?php
-class Merchant extends AppModel {
-	var $name = 'Merchant';
-	var $displayField = 'about_us';
+class Traveler extends AppModel {
+	var $name = 'Traveler';
+	var $displayField = 'first_name';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Country' => array(
-			'className' => 'Country',
-			'foreignKey' => 'country_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
@@ -19,18 +12,19 @@ class Merchant extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'BusinessType' => array(
-			'className' => 'BusinessType',
-			'foreignKey' => 'business_type_id',
+		'State' => array(
+			'className' => 'State',
+			'foreignKey' => 'state_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
 	);
-		var $hasMany = array(
-		'Deal' => array(
-			'className' => 'Deal',
-			'foreignKey' => 'merchant_id',
+	
+	var $hasMany = array(
+		'DealPurchase' => array(
+			'className' => 'DealPurchases',
+			'foreignKey' => 'traveler_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

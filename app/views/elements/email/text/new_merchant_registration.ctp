@@ -1,7 +1,7 @@
- Dear <?php echo $MerchantDetail['MerchantDetail']['business_name']?>,
+ Dear <?php echo $Merchant['Merchant']['business_name']?>,
    Thank you for your interest.
    <?php
    		echo "<pre>";
-		print_r($MerchantDetail);
+		print_r($Merchant);
 		echo "</pre>";
 ?>

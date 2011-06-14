@@ -15,7 +15,7 @@
 		//echo $this->Form->input('image', array('label' => __('Upload', true), 'type' => 'file',));
 		//echo $form->input('nodeslist');
 		//echo $form->input('Node');
-		echo $this->Form->input('merchant_detail_id');
+		echo $this->Form->input('merchant_id');
 		//echo $this->Form->input('reservation_type_id');
 		echo $this->Form->input('title');
 		echo $this->Form->input('slug');
@@ -65,8 +65,8 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Deals', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Merchant Details', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant Detail', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deal Statuses', true), array('controller' => 'deal_statuses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal Status', true), array('controller' => 'deal_statuses', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Destinations', true), array('controller' => 'destinations', 'action' => 'index')); ?> </li>

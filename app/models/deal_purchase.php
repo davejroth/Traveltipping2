@@ -11,9 +11,9 @@ class DealPurchase extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'UserDetail' => array(
-			'className' => 'UserDetail',
-			'foreignKey' => 'user_detail_id',
+		'Traveler' => array(
+			'className' => 'Traveler',
+			'foreignKey' => 'traveler_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

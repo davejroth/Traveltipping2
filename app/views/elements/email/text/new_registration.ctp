@@ -1,7 +1,7 @@
- Dear <?php echo $UserDetail['UserDetail']['first_name']. ' ' . $UserDetail['UserDetail']['last_name'] ?>,
+ Dear <?php echo $Traveler['Traveler']['first_name']. ' ' . $Traveler['Traveler']['last_name'] ?>,
    Thank you for your interest.
    <?php
    		echo "<pre>";
-		print_r($UserDetail);
+		print_r($Traveler);
 		echo "</pre>";
 ?>

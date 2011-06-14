@@ -1,20 +1,20 @@
 <?php
 class Merchant extends AppModel {
 	var $name = 'Merchant';
-	var $displayField = 'about_us';
+	var $displayField = 'business_name';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Country' => array(
-			'className' => 'Country',
-			'foreignKey' => 'country_id',
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
+		'Country' => array(
+			'className' => 'Country',
+			'foreignKey' => 'country_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -27,7 +27,8 @@ class Merchant extends AppModel {
 			'order' => ''
 		)
 	);
-		var $hasMany = array(
+
+	var $hasMany = array(
 		'Deal' => array(
 			'className' => 'Deal',
 			'foreignKey' => 'merchant_id',
@@ -42,5 +43,5 @@ class Merchant extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
 }
-?>

@@ -16,9 +16,9 @@
 			<?php echo $deal['Deal']['modified']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Merchant Detail'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Merchant'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($deal['MerchantDetail']['about_us'], array('controller' => 'merchant_details', 'action' => 'view', $deal['MerchantDetail']['id'])); ?>
+			<?php echo $this->Html->link($deal['Merchant']['about_us'], array('controller' => 'merchant_details', 'action' => 'view', $deal['Merchant']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Title'); ?></dt>
@@ -215,8 +215,8 @@
 		<li><?php echo $this->Html->link(__('Delete Deal', true), array('action' => 'delete', $deal['Deal']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $deal['Deal']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deals', true), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Merchant Details', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant Detail', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deal Statuses', true), array('controller' => 'deal_statuses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal Status', true), array('controller' => 'deal_statuses', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Destinations', true), array('controller' => 'destinations', 'action' => 'index')); ?> </li>
@@ -286,7 +286,7 @@
 		<th><?php __('Created'); ?></th>
 		<th><?php __('Modified'); ?></th>
 		<th><?php __('Deal Id'); ?></th>
-		<th><?php __('User Detail Id'); ?></th>
+		<th><?php __('Traveler Id'); ?></th>
 		<th><?php __('Confirmation Code'); ?></th>
 		<th><?php __('Start Date'); ?></th>
 		<th><?php __('End Date'); ?></th>
@@ -305,7 +305,7 @@
 			<td><?php echo $dealPurchase['created'];?></td>
 			<td><?php echo $dealPurchase['modified'];?></td>
 			<td><?php echo $dealPurchase['deal_id'];?></td>
-			<td><?php echo $dealPurchase['user_detail_id'];?></td>
+			<td><?php echo $dealPurchase['traveler_id'];?></td>
 			<td><?php echo $dealPurchase['confirmation_code'];?></td>
 			<td><?php echo $dealPurchase['start_date'];?></td>
 			<td><?php echo $dealPurchase['end_date'];?></td>

@@ -5,7 +5,7 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th><?php echo $this->Paginator->sort('merchant_detail_id');?></th>
+			<th><?php echo $this->Paginator->sort('merchant_id');?></th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
 			<th><?php echo $this->Paginator->sort('slug');?></th>
 			<th><?php echo $this->Paginator->sort('description');?></th>
@@ -58,7 +58,7 @@
 		<td><?php echo $deal['Deal']['created']; ?>&nbsp;</td>
 		<td><?php echo $deal['Deal']['modified']; ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($deal['MerchantDetail']['about_us'], array('controller' => 'merchant_details', 'action' => 'view', $deal['MerchantDetail']['id'])); ?>
+			<?php echo $this->Html->link($deal['Merchant']['about_us'], array('controller' => 'merchant_details', 'action' => 'view', $deal['Merchant']['id'])); ?>
 		</td>
 		<td><?php echo $deal['Deal']['title']; ?>&nbsp;</td>
 		<td><?php echo $deal['Deal']['slug']; ?>&nbsp;</td>
@@ -129,8 +129,8 @@
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Deal', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Merchant Details', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant Detail', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deal Statuses', true), array('controller' => 'deal_statuses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal Status', true), array('controller' => 'deal_statuses', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Destinations', true), array('controller' => 'destinations', 'action' => 'index')); ?> </li>

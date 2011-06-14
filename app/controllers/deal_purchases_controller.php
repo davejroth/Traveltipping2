@@ -31,8 +31,8 @@ class DealPurchasesController extends AppController {
 		}
 		$this->set('deal', $this->DealPurchase->Deal->read(null, $id));
 		$deals = $this->DealPurchase->Deal->find('list');
-		$userDetails = $this->DealPurchase->UserDetail->find('list');
-		$this->set(compact('deals', 'userDetails'));
+		$travelers = $this->DealPurchase->Traveler->find('list');
+		$this->set(compact('deals', 'travelers'));
 	}
 
 	function edit($id = null) {
@@ -52,8 +52,8 @@ class DealPurchasesController extends AppController {
 			$this->data = $this->DealPurchase->read(null, $id);
 		}
 		$deals = $this->DealPurchase->Deal->find('list');
-		$userDetails = $this->DealPurchase->UserDetail->find('list');
-		$this->set(compact('deals', 'userDetails'));
+		$travelers = $this->DealPurchase->Traveler->find('list');
+		$this->set(compact('deals', 'travelers'));
 	}
 
 	function delete($id = null) {
@@ -92,8 +92,8 @@ class DealPurchasesController extends AppController {
 			}
 		}
 		$deals = $this->DealPurchase->Deal->find('list');
-		$userDetails = $this->DealPurchase->UserDetail->find('list');
-		$this->set(compact('deals', 'userDetails'));
+		$travelers = $this->DealPurchase->Traveler->find('list');
+		$this->set(compact('deals', 'travelers'));
 	}
 
 	function admin_edit($id = null) {
@@ -113,8 +113,8 @@ class DealPurchasesController extends AppController {
 			$this->data = $this->DealPurchase->read(null, $id);
 		}
 		$deals = $this->DealPurchase->Deal->find('list');
-		$userDetails = $this->DealPurchase->UserDetail->find('list');
-		$this->set(compact('deals', 'userDetails'));
+		$travelers = $this->DealPurchase->Traveler->find('list');
+		$this->set(compact('deals', 'travelers'));
 	}
 
 	function admin_delete($id = null) {

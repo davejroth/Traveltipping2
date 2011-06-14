@@ -5,9 +5,9 @@ class Deal extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'MerchantDetail' => array(
-			'className' => 'MerchantDetail',
-			'foreignKey' => 'merchant_detail_id',
+		'Merchant' => array(
+			'className' => 'Merchant',
+			'foreignKey' => 'merchant_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

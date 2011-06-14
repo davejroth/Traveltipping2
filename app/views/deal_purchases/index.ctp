@@ -6,7 +6,7 @@
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort('deal_id');?></th>
-			<th><?php echo $this->Paginator->sort('user_detail_id');?></th>
+			<th><?php echo $this->Paginator->sort('traveler_id');?></th>
 			<th><?php echo $this->Paginator->sort('confirmation_code');?></th>
 			<th><?php echo $this->Paginator->sort('start_date');?></th>
 			<th><?php echo $this->Paginator->sort('end_date');?></th>
@@ -28,7 +28,7 @@
 			<?php echo $this->Html->link($dealPurchase['Deal']['title'], array('controller' => 'deals', 'action' => 'view', $dealPurchase['Deal']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($dealPurchase['UserDetail']['id'], array('controller' => 'user_details', 'action' => 'view', $dealPurchase['UserDetail']['id'])); ?>
+			<?php echo $this->Html->link($dealPurchase['Traveler']['id'], array('controller' => 'user_details', 'action' => 'view', $dealPurchase['Traveler']['id'])); ?>
 		</td>
 		<td><?php echo $dealPurchase['DealPurchase']['confirmation_code']; ?>&nbsp;</td>
 		<td><?php echo $dealPurchase['DealPurchase']['start_date']; ?>&nbsp;</td>
@@ -60,7 +60,7 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('List Deals', true), array('controller' => 'deals', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal', true), array('controller' => 'deals', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List User Details', true), array('controller' => 'user_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User Detail', true), array('controller' => 'user_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Travelers', true), array('controller' => 'user_details', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Traveler', true), array('controller' => 'user_details', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

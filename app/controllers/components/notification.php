@@ -5,7 +5,7 @@ class NotificationComponent extends Object {
 /*
  * Takes the id of a user_detail and sends a new registration email to them
  */
-	function sendNewUserMail($UserDetail) {
+	function sendNewUserMail($Traveler) {
 	/* SMTP Options */
     $this->Email->smtpOptions = array(
         'port'=>'25', 
@@ -15,7 +15,7 @@ class NotificationComponent extends Object {
         'password'=>'43Temp68',
     );
 	$this->Email->delivery = 'smtp';
-    $this->Email->to = $UserDetail['User']['email'];
+    $this->Email->to = $Traveler['User']['email'];
     $this->Email->subject = 'Welcome to TravelTipping!';
     $this->Email->replyTo = 'registration@traveltipping.com';
     $this->Email->from = 'TravelTipping Registration <registration@traveltipping.com>';
@@ -25,7 +25,7 @@ class NotificationComponent extends Object {
 
  }
  
- 	function sendNewMerchantMail($MerchantDetail) {
+ 	function sendNewMerchantMail($Merchant) {
 	/* SMTP Options */
     $this->Email->smtpOptions = array(
         'port'=>'25', 
@@ -35,7 +35,7 @@ class NotificationComponent extends Object {
         'password'=>'43Temp68',
     );
 	$this->Email->delivery = 'smtp';
-    $this->Email->to = $MerchantDetail['User']['email'];
+    $this->Email->to = $Merchant['User']['email'];
     $this->Email->subject = 'Welcome to TravelTipping!';
     $this->Email->replyTo = 'registration@traveltipping.com';
     $this->Email->from = 'TravelTipping Registration <registration@traveltipping.com>';
