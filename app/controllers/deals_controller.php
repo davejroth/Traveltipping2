@@ -8,11 +8,22 @@ class DealsController extends AppController {
 	public $helpers = array('Text','Js');
 	
 	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
+	
 	function index() {
 		//$this->Deal->recursive = 0;
-		$test = $_POST['chk_north_america'];
+		$regions = array();
+		if(!empty($_POST)){
+			 
+			$x = 0;
+			foreach ($_POST['region_select'] as $region){
+				if($region == 1){
+					array_push($regions,$x+1);
+				}
+				$x++;
+			}
+		}
 		$conditions = null;
-		$regions = array(1, 3);  //Set this to regions passed from home page.
+		
 		if(!empty($regions)) {
 			$conditions = array('DealsRegion.region_id' => $regions);
 		}
@@ -25,7 +36,8 @@ class DealsController extends AppController {
 		}
 		$this->set('deals', $deals);
 		$this->set('count', $count);
-		$this->set('test', $test);
+		$this->set('regions', $regions );
+
 	}
 
 	function view($id = null) {

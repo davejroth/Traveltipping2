@@ -1,51 +1,71 @@
-<?php $this->layout = 'home'; ?>
+<?php 
+$this->layout = 'home'; 
+$max_quantity = $deals['Deal']['max_purchases'];
+$current_quantity = $deals['Deal']['current_purchases'];
+$remaining_quantity = $max_quantity - $current_quantity;
+
+//Progress Bar Calculation
+$progress_value = ($current_quantity/$max_quantity)*100;
+?>
 <?php debug($deals); ?>
-<form id="region_search">
+
+
+<form id="region_search" accept-charset="utf-8" action="/deals" method="post">
 <div id="region_selection_map" class="clearfix">
 	<div id="rgn_north_america" class="region">
+		<div id="chk_north_america" class="checkbox_field clearfix">
+			<div class="checkbox"></div>
+			<p>North America &amp; Carribean</p>
+			<input type="hidden" value="0" name="region_select[]"/>
+		</div>
 	</div>
+	
+	
+	
 	<div id="rgn_latin_america" class="region">
+		<div id="chk_latin_america" class="checkbox_field clearfix">
+			<div class="checkbox"></div>
+			<p><span>Latin</span>America</p>
+			<input type="hidden" value="0" name="region_select[]"/>
+		</div>
 	</div>
+	
 	<div id="rgn_europe" class="region">
+		<div id="chk_europe" class="checkbox_field clearfix">
+			<div class="checkbox"></div>
+			<p>Europe</p>
+			<input type="hidden" value="0" name="region_select[]"/>
+		</div>
 	</div>
 	<div id="rgn_africa" class="region">
+		<div id="chk_africa" class="checkbox_field clearfix">
+			<div class="checkbox"></div>
+			<p><span>Africa</span> &amp; Arabia</p>
+			<input type="hidden" value="0" name="region_select[]"/>
+		</div>
 	</div>
 	<div id="rgn_asia" class="region">
+		<div id="chk_asia" class="checkbox_field clearfix">
+			<div class="checkbox"></div>
+			<p>Asia</p>
+			<input type="hidden" value="0" name="region_select[]"/>
+		</div>
 	</div>
 	<div id="rgn_oceania" class="region">
+		<div id="chk_oceania" class="checkbox_field clearfix">
+			<div class="checkbox"></div>
+			<p>Oceania</p>
+			<input type="hidden" value="0" name="region_select[]"/>
+		</div>
 	</div>
 </div>
 <div id="region_selection_text" class="clearfix">
-	<div id="chk_north_america" class="checkbox_field clearfix">
-		<div class="checkbox"></div>
-		<p>North America &amp; Carribean</p>
-		<input type="hidden" value="0" name="chk_north_america"/>
-	</div>
-	<div id="chk_latin_america" class="checkbox_field clearfix">
-		<div class="checkbox"></div>
-		<p><span>Latin</span>America</p>
-		<input type="hidden" value="0" name="chk_latin_america"/>
-	</div>
-	<div id="chk_europe" class="checkbox_field clearfix">
-		<div class="checkbox"></div>
-		<p>Europe</p>
-		<input type="hidden" value="0" name="chk_europe"/>
-	</div>
-	<div id="chk_africa" class="checkbox_field clearfix">
-		<div class="checkbox"></div>
-		<p><span>Africa</span> &amp; Arabia</p>
-		<input type="hidden" value="0" name="chk_africa"/>
-	</div>
-	<div id="chk_asia" class="checkbox_field clearfix">
-		<div class="checkbox"></div>
-		<p>Asia</p>
-		<input type="hidden" value="0" name="chk_asia"/>
-	</div>
-	<div id="chk_oceania" class="checkbox_field clearfix">
-		<div class="checkbox"></div>
-		<p>Oceania</p>
-		<input type="hidden" value="0" name="chk_oceania"/>
-	</div>
+	
+	
+	
+	
+	
+	
 </div>
 </form>
 <div id="find_deals" class="white_mod_960_wrap">
@@ -69,6 +89,11 @@
 		<div class="grid_13 push_1">
 			<h3 class="desination_title">Tuscany, Italy</h3>
 			<p class="featured_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
+			<div class="progressbar">
+				<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
+			</div>
+			<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
+			<p id="remaining_quantity" class="grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
 		</div>
 	</div>
 </div>
