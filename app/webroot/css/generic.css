@@ -241,6 +241,17 @@ label{
     width: 191px;
 }
 
+.find_more_deals{
+    background: url("../img/site/find_more_deals.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    clear: both;
+    display: block;
+    float: none;
+    height: 36px;
+    margin: 15px auto;
+    width: 164px;
+}
+
 /* +++++++++++++++++ END Button Styles +++++++++++++++++ */
 
 .cta_text{

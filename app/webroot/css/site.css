@@ -92,38 +92,39 @@
 #region_selection_text{
 	display: block;
     margin: 15px auto 0;
-    width: 840px;
+    width: 900px;
 }
 
 .region{
-	display:block;
-	float:left;
-	width:140px;
-	height: 115px;
+   cursor: pointer;
+    display: block;
+    float: left;
+    padding-top: 115px;
+    width: 150px;
 }
 
 #rgn_north_america{
-	background: url("../img/site/region_selection_map.png") no-repeat scroll 10px 0 transparent;	
+	background: url("../img/site/region_selection_map.png") no-repeat scroll 0 0 transparent;	
 }
 
 #rgn_latin_america{
-    background: url("../img/site/region_selection_map.png") no-repeat scroll -140px 0 transparent;
+    background: url("../img/site/region_selection_map.png") no-repeat scroll -157px 0 transparent;
 }
 
 #rgn_europe{
-	background: url("../img/site/region_selection_map.png") no-repeat scroll -280px 0 transparent;	
+	background: url("../img/site/region_selection_map.png") no-repeat scroll -315px 0 transparent;	
 }
 
 #rgn_africa{
-	background: url("../img/site/region_selection_map.png") no-repeat scroll -439px 0 transparent;	
+	background: url("../img/site/region_selection_map.png") no-repeat scroll -469px 0 transparent;	
 }
 
 #rgn_asia{
-	background: url("../img/site/region_selection_map.png") no-repeat scroll -596px 0 transparent;	
+	background: url("../img/site/region_selection_map.png") no-repeat scroll -625px 0 transparent;	
 }
 
 #rgn_oceania{
-	background: url("../img/site/region_selection_map.png") no-repeat scroll -768px 0 transparent;	
+	background: url("../img/site/region_selection_map.png") no-repeat scroll -778px 0 transparent;	
 }
 
 #region_selection_text {
@@ -133,10 +134,11 @@
 
 
 .checkbox_field{
+    cursor: pointer;
     float: left;
     margin-left: 15px;
     position: relative;
-    width: 130px;
+    width: 145px;
 }
 
 .checkbox_field div{
