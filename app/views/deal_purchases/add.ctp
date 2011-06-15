@@ -24,7 +24,7 @@
 		<li><?php echo $this->Html->link(__('List Deal Purchases', true), array('action' => 'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Deals', true), array('controller' => 'deals', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal', true), array('controller' => 'deals', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Travelers', true), array('controller' => 'user_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Traveler', true), array('controller' => 'user_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Travelers', true), array('controller' => 'travelers', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Traveler', true), array('controller' => 'travelers', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

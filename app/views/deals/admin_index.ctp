@@ -41,7 +41,7 @@
 		<td><?php echo $deal['Deal']['created']; ?>&nbsp;</td>
 		<td><?php echo $deal['Deal']['modified']; ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($deal['Merchant']['id'], array('controller' => 'merchant_details', 'action' => 'view', $deal['Merchant']['id'])); ?>
+			<?php echo $this->Html->link($deal['Merchant']['id'], array('controller' => 'merchants', 'action' => 'view', $deal['Merchant']['id'])); ?>
 		</td>
 		<td><?php echo $deal['Deal']['title']; ?>&nbsp;</td>
 		<td><?php echo $deal['Deal']['slug']; ?>&nbsp;</td>
@@ -97,8 +97,8 @@
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Deal', true), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchants', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchants', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deal Statuses', true), array('controller' => 'deal_statuses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal Status', true), array('controller' => 'deal_statuses', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deal Types', true), array('controller' => 'deal_types', 'action' => 'index')); ?> </li>

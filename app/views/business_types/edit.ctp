@@ -15,7 +15,7 @@
 
 		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('BusinessType.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('BusinessType.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Business Types', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchants', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchants', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

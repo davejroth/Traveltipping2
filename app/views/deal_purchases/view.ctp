@@ -23,7 +23,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Traveler'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($dealPurchase['Traveler']['id'], array('controller' => 'user_details', 'action' => 'view', $dealPurchase['Traveler']['id'])); ?>
+			<?php echo $this->Html->link($dealPurchase['Traveler']['id'], array('controller' => 'travelers', 'action' => 'view', $dealPurchase['Traveler']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Confirmation Code'); ?></dt>
@@ -52,7 +52,7 @@
 		<li><?php echo $this->Html->link(__('New Deal Purchase', true), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deals', true), array('controller' => 'deals', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal', true), array('controller' => 'deals', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Travelers', true), array('controller' => 'user_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Traveler', true), array('controller' => 'user_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Travelers', true), array('controller' => 'travelers', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Traveler', true), array('controller' => 'travelers', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

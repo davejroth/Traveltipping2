@@ -115,4 +115,16 @@ App :: build(array('locales' => APP . 'plugins' . DS . 'acl' . DS . 'locale'));
  */
 Configure :: write('acl.gui.roles_permissions.ajax', false);
 
+
+/*
+ * Global Variables created for TravelTipping
+ */
+
+ Configure :: write('Deal.Status_Listed', 1); 
+ Configure :: write('Deal.Status_Closed', 3);
+ Configure :: write('Deal.Status_Initiated', 4);  
+ Configure :: write('Deal.Status_Submitted', 5); 
+ Configure :: write('Deal.Status_Pending_Approval', 6);
+ Configure :: write('Deal.Status_Approved', 7);
+ Configure :: write('Deal.Status_Listed', 8);   
 ?>

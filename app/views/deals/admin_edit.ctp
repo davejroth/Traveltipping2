@@ -29,7 +29,7 @@
 		//echo $this->Form->input('current_purchases');
 		echo $this->Form->input('comission_percentage');
 		echo $this->Form->input('deal_status_id');
-		echo $this->Form->input('deal_type_id');
+		//echo $this->Form->input('deal_type_id');
 		echo $this->Form->input('private_note');
 		echo $this->Form->input('destination_id');
 		echo $this->Form->input('street_address');
@@ -65,8 +65,8 @@
 
 		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Deal.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Deal.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Deals', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchant_details', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchant_details', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Merchant', true), array('controller' => 'merchants', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchants', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deal Statuses', true), array('controller' => 'deal_statuses', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Deal Status', true), array('controller' => 'deal_statuses', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Deal Types', true), array('controller' => 'deal_types', 'action' => 'index')); ?> </li>
