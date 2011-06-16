@@ -73,7 +73,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 			</div>
 			<div class="grid_7">
 				<div class="highlights_mod">
-					<h3>Highlights</h3>
+				<h3>Highlights</h3>
 					<?php echo $deal['Deal']['highlights']; ?>
 					
 				</div>

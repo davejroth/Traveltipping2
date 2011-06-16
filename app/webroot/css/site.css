@@ -367,3 +367,25 @@
 .checkbox  {
 
 }
+
+/* +++++++++++++++++ START Account Page +++++++++++++++++ */
+
+.deal_nav{
+	margin:0;
+}
+
+.deal_nav li{
+	display:inline;
+	border-right:1px solid #fff;
+}
+
+.deal_nav a{
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+/* +++++++++++++++++ END Account Page +++++++++++++++++ */
+

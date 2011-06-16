@@ -152,6 +152,21 @@ label{
 	min-height:100px;
 }
 
+.gray_module_title{
+    -moz-border-radius: 5px 5px 0 0;
+    background: none repeat scroll 0 0 #cccccc;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 16px;
+    padding: 10px;
+}
+
+.gray_module_content{
+	background:#ffffff;
+	min-height:100px;
+}
+
 .highlights_mod{
     -moz-border-radius: 5px 5px 5px 5px;
     background: none repeat scroll 0 0 #EAFBFB;

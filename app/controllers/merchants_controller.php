@@ -12,7 +12,12 @@ class MerchantsController extends AppController {
 	
 	$this->Notification->sendNewMerchantMail($Merchant);
  }
-	function index() {
+ 
+	function deals($deal_status) {
+
+	}
+	
+	function index($deal_status) {
 		$this->Merchant->recursive = 2;
 		$this->set('merchant', $this->paginate());
 	}

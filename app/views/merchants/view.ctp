@@ -3,7 +3,7 @@
 	
 	<?php echo $this->Form->create(); ?>
 	
-	<div class="grid_10">
+	<div class="grid_10 prefix_1 suffix_1">
 	<h3>Business Details</h3>
 	<?php
 		// Data Variables

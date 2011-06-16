@@ -7,7 +7,7 @@ $remaining_quantity = $max_quantity - $current_quantity;
 //Progress Bar Calculation
 $progress_value = ($current_quantity/$max_quantity)*100;
 ?>
-<?php debug($deals); ?>
+
 
 
 <form id="region_search" accept-charset="utf-8" action="/deals" method="post">
