@@ -13,9 +13,6 @@ class MerchantsController extends AppController {
 	$this->Notification->sendNewMerchantMail($Merchant);
  }
  
-	function deals($deal_status) {
-
-	}
 	
 	function index($deal_status) {
 		$this->Merchant->recursive = 2;
@@ -34,7 +31,7 @@ class MerchantsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Merchant->User->create();
 			$this->Merchant->create();
-			$merchantid = 4;
+			$merchantid = Configure::read('Merchant.Role_ID');
 			$this->data['User']['username'] = $this->data['User']['email'];
 			$this->data['User']['role_id'] = $merchantid;
 			$this->data['User']['password'] = "1949be75f0f74d49cb8c08f1152c8ae2ff563203";
@@ -149,6 +146,41 @@ class MerchantsController extends AppController {
 		}
 		$this->Session->setFlash(__('Merchant detail was not deleted', true));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	function deals($deal_status) {
+		$this->loadModel('Deal');
+		$deals;
+		if(strcmp($deal_status, "open") == 0)
+		{
+			$deals = $this->Deal->find('all', array('conditions' => 
+			array("NOT" => array('Deal.deal_status_id' => 
+			array(Configure::Read('Deal.Status_Listed'), Configure::Read('Deal.Status_Closed'),
+			Configure::Read('Deal.Status_Cancelled'))))));
+		}
+		
+		if(strcmp($deal_status, "live") == 0)
+		{
+			$deals = $this->Deal->find('all', array('conditions' => 
+			array('Deal.deal_status_id' => Configure::Read('Deal.Status_Listed'))));
+			$count = count($deals);
+			for ($i = 0; $i < $count; $i++) {
+				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
+				array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
+			}
+		}
+		
+		if(strcmp($deal_status, "past") == 0)
+		{
+			$deals = $this->Deal->find('all', array('conditions' => 
+			array('Deal.deal_status_id' => Configure::Read('Deal.Status_Closed'))));
+			$count = count($deals);
+				for ($i = 0; $i < $count; $i++) {
+				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
+				array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
+			}
+		}
+	$this->set(compact('deals'));
 	}
 }
 ?>

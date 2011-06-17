@@ -22,10 +22,10 @@ class DealsController extends AppController {
 				$x++;
 			}
 		}
-		$conditions = null;
+		$conditions = array('Deal.deal_status_id' => Configure::read('Deal.Status_Listed'));
 		
 		if(!empty($regions)) {
-			$conditions = array('DealsRegion.region_id' => $regions);
+			$conditions['DealsRegion.region_id'] = $regions;
 		}
 		$this->Deal->bindModel(array('hasOne' => array('DealsRegion')), false);
 		$deals = $this->paginate('Deal', array($conditions));

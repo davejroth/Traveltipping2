@@ -1,4 +1,4 @@
-<?php 
+<?php
 $this->layout = 'home'; 
 $max_quantity = $deals['Deal']['max_purchases'];
 $current_quantity = $deals['Deal']['current_purchases'];

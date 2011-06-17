@@ -32,7 +32,7 @@ class TravelersController extends AppController {
 			
 			$this->Traveler->User->create();
 			$this->Traveler->create();
-			$userid = 3;
+			$userid = Configure :: read('Traveler.Role_ID');
 			$this->data['User']['username'] = $this->data['User']['email'];
 			$this->data['User']['role_id'] = $userid;
 			$this->data['User']['password'] = "1949be75f0f74d49cb8c08f1152c8ae2ff563203";

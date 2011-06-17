@@ -80,7 +80,12 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->set('deals', $this->Deal->find('first'));
+		$deals = $this->Deal->find('first');
+
+		$deals['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
+			array('conditions' => array('DealPurchase.deal_id' => $deals['Deal']['id'])));
+		
+		$this->set('deals', $deals);
 		$this->render(implode('/', $path));
 	}
 }
