@@ -36,9 +36,17 @@ label{
     width: 235px;
 }
 
-.text label{
+.text label,.select label{
 	display:block;
 }
+
+.select select{
+	  font-size: 15px;
+    padding: 5px 0;
+    width: 245px;
+}
+
+
 
 /* +++++++++++++++++ END Form Styles +++++++++++++++++ */
 
@@ -154,8 +162,8 @@ label{
 
 .gray_module_title{
     -moz-border-radius: 5px 5px 0 0;
-    background: none repeat scroll 0 0 #cccccc;
-    color: #FFFFFF;
+    background: none repeat scroll 0 0 #CCCCCC;
+    color: #4D4D4D;
     font-size: 16px;
     font-weight: bold;
     line-height: 16px;
@@ -255,6 +263,18 @@ label{
     height: 46px;
     width: 191px;
 }
+
+.update_account_btn{
+    background: url("../img/site/btn_update_account.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: right;
+    font-size: 0;
+    height: 46px;
+    margin: 5px 15px 0 0;
+    width: 191px;
+}
+
 
 .find_more_deals{
     background: url("../img/site/find_more_deals.png") no-repeat scroll 0 0 transparent;

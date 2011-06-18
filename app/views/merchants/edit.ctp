@@ -1,37 +1,66 @@
-<div class="merchant form">
-<?php echo $this->Form->create('Merchant');?>
-	<fieldset>
- 		<legend><?php __('Edit Merchant'); ?></legend>
-	<?php
-		echo $this->Form->input('User.id');
-		echo $this->Form->input('Merchant.id');
-		echo $this->Form->input('User.email');
-		echo $this->Form->input('Merchant.business_name');
-		echo $this->Form->input('Merchant.about_us');
-		echo $this->Form->input('Merchant.website');
-		echo $this->Form->input('Merchant.business_reviews');
-		echo $this->Form->input('Merchant.address');
-		echo $this->Form->input('Merchant.second_address');
-		echo $this->Form->input('Merchant.city');
-		echo $this->Form->input('Merchant.state');
-		echo $this->Form->input('Merchant.country_id');
-		echo $this->Form->input('Merchant.first_name');
-		echo $this->Form->input('Merchant.last_name');
-		echo $this->Form->input('Merchant.phone');
-		echo $this->Form->input('Merchant.postal_code');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit', true));?>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Merchant.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Merchant.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Merchant', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Cities', true), array('controller' => 'cities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New City', true), array('controller' => 'cities', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users', true), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User', true), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<?php //debug($merchant); 
+?>
+
+<div id="layout_left" class="grid_22">
+	<h2 class="page_title">Account Details </h2>
+	
+	<?php echo $this->Form->create('Merchant'); ?>
+	
+	<div class="grid_10 prefix_1 suffix_1">
+	<h3>Business Details</h3>
+	<?php
+		// Data Variables
+		$business_name = $merchant['Merchant']['business_name'];
+		$business_type = $merchant['Merchant']['business_type_id'];
+		$address = $merchant['Merchant']['address'];
+		$address2 = $merchant['Merchant']['second_address'];
+		$city = $merchant['Merchant']['city'];
+		$state = "";//$merchant['State']['name'];
+		$postal_code = $merchant['Merchant']['postal_code'];
+		$country = $merchant['Country']['name'];
+		$website = $merchant['Merchant']['website'];
+		$user_name = $merchant['User']['name'];
+		$first_name = $merchant['Merchant']['first_name'];
+		$last_name = $merchant['Merchant']['last_name'];
+		$phone = $merchant['Merchant']['phone'];
+		$email = $merchant['User']['email'];
+		
+        echo $this->Form->input('business_name', array('label'=>'Corporate Business Name:',"value"=>"$business_name"));
+        echo $this->Form->input('Merchant.business_type_id', array('label'=>'Select Your Primary Business Type:',"value"=>"$business_type")); 
+        echo $this->Form->input('address', array('label'=>'Address 1:',"value"=>"$address")); 
+        echo $this->Form->input('second_address', array('label'=>'Address 2:',"value"=>"$address2"));
+        echo $this->Form->input('city', array('label'=>'City:',"value"=>"$city"));
+        echo $this->Form->input('state', array('label'=>'State:',"value"=>"$state"));
+        echo $this->Form->input('postal_code', array('label'=>'Postal Code:',"value"=>"$postal_code"));
+        echo $this->Form->input('country', array('label'=>'Country:',"value"=>"$country"));
+        echo $this->Form->input('website', array('label'=>'Website:',"value"=>"$website"));
+    ?>
+	
+	</div>
+	
+	<div class="grid_9"> 
+		<h3>Contact Details</h3>	
+	<?php
+		
+        echo $this->Form->input('first_name', array('label'=>'First Name:',"value"=>"$first_name")); 
+        echo $this->Form->input('last_name', array('label'=>'Last Name:',"value"=>"$last_name"));
+        echo $this->Form->input('phone', array('label'=>'Phone:',"value"=>"$phone")); 
+        echo $this->Form->input('email', array('label'=>'Email:',"value"=>"$email"));
+        echo $this->Form->input('new_password', array('label'=>'New Password:',"value"=>""));
+        echo $this->Form->input('confirm_password', array('label'=>'Confirm New Password:',"value"=>"")); 
+        
+    ?>
+	</div>
+	
+ 
+    
+ 
+<?php echo $this->Form->end(array('value'=>'','class'=>'update_account_btn')); ?>
+	
+</div><!-- layout_left -->
+
+<div id="layout_right" class="grid_8">
+<?php echo $this->element('manage_account'); ?>
+
+</div><!-- #layout_right -->

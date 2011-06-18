@@ -12,20 +12,6 @@ class MerchantsController extends AppController {
 	
 	$this->Notification->sendNewMerchantMail($Merchant);
  }
- 
-	
-	function index($deal_status) {
-		$this->Merchant->recursive = 2;
-		$this->set('merchant', $this->paginate());
-	}
-
-	function view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid merchant detail', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->set('merchant', $this->Merchant->read(null, $id));
-	}
 
 	function add() {
 		if (!empty($this->data)) {
@@ -50,12 +36,12 @@ class MerchantsController extends AppController {
 		$businessTypes = $this->Merchant->BusinessType->find('list');
 		$this->set(compact('countries', 'users', 'businessTypes'));
 	}
-
+	/* Merchant Account Details */
 	function edit($id = null) {
 	//$this->sendNewMerchantMail($id);
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid merchant detail', true));
-			$this->redirect(array('action' => 'index'));
+			$this->redirect(array('action' => 'edit'));
 		}
 		if (!empty($this->data)) {
 			$this->data['User']['username'] = $this->data['User']['email'];
@@ -72,6 +58,7 @@ class MerchantsController extends AppController {
 		$countries = $this->Merchant->Country->find('list');
 		$users = $this->Merchant->User->find('list');
 		$this->set(compact('countries', 'users'));
+		$this->set('merchant', $this->Merchant->read(null, $id));
 	}
 
 	function delete($id = null) {
