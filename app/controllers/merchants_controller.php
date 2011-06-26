@@ -57,7 +57,8 @@ class MerchantsController extends AppController {
 		}
 		$countries = $this->Merchant->Country->find('list');
 		$users = $this->Merchant->User->find('list');
-		$this->set(compact('countries', 'users'));
+		$businessTypes = $this->Merchant->BusinessType->find('list');
+		$this->set(compact('countries', 'users', 'businessTypes'));
 		$this->set('merchant', $this->Merchant->read(null, $id));
 	}
 
