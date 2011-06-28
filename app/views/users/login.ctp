@@ -1,10 +1,23 @@
-<?php
+
+
+
+<div class="white_mod_960_wrap">
+	<div class="white_mod_960_top"></div>
+	<div class="white_mod_960_content">
+	<h2 class="page_title">Login To Your Account</h2>
+	<div class="page_content">
+	<?php
 echo $this->Session->flash('auth');
 echo $this->Form->create('User', array('action' => 'login'));
 echo $this->Form->inputs(array(
-	'legend' => __('Login', true),
+	'legend' => __('', true),
 	'email',
 	'password'
 ));
 echo $this->Form->end('Login');
 ?>
+ 
+	</div>
+
+	</div>
+</div

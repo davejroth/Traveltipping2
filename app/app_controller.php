@@ -5,7 +5,7 @@ class AppController extends Controller {
     
     var $view = 'Theme';
     //var $theme = 'cake_default';
-	//Define all global variables here
+	  //Define all global variables here
 	
     function beforeFilter() {
         //Configure AuthComponent
