@@ -5,10 +5,45 @@
     -moz-border-radius: 7px 7px 7px 7px;
     background: none repeat scroll 0 0 #3CAACC;
     color: #FFFFFF;
-    font-size: 17px;
+    font-size: 20px;
     margin-bottom: 15px;
-    padding: 7px 15px;
+    padding: 10px 15px;
     text-transform: uppercase;
+}
+
+.sub_heading{
+	display:block;
+	color:#3CAACC;
+	font-weight:bold;
+}
+
+.sub_heading_border{
+	display:block;
+	color:#444444;
+	font-weight:bold;
+	border-bottom:1px solid #cccccc;
+	margin-bottom:5px;
+}
+
+.page_content{
+    margin: 15px;
+    min-height: 200px;
+}
+
+
+.white_mod_960_content .page_content{
+	margin-bottom:0;
+}
+
+.header_img{
+	-moz-border-radius: 7px 7px 7px 7px;
+}
+
+.yellow_arrow{
+    background: url("../img/site/yellow_arrow.png") no-repeat scroll 0 0 transparent;
+    height: 29px;
+    margin-left: 30px;
+    margin-top: 19px;
 }
 
 /* +++++++++++++++++ END Page Styles +++++++++++++++++ */
@@ -29,14 +64,17 @@ label{
     margin: 15px 0;
 }
 
-.text input{
+.text input,
+.password input{
     border: 1px solid #CCCCCC;
     font-size: 14px;
     padding: 5px;
     width: 235px;
 }
 
-.text label,.select label{
+.text label,
+.select label,
+.password label{
 	display:block;
 }
 

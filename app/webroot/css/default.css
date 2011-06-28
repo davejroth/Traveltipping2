@@ -10,3 +10,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
 a, a:active, a:visited { color: #4ebdde; }
 a:hover { color: #036; }
+
+p{
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-size:14px;
+}

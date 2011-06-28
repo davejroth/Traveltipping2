@@ -319,7 +319,7 @@
 }
 
 .footer_nav{
-	margin: 10px 0;
+	margin: 10px 15px;
 }
 
 .footer_nav li{
@@ -331,6 +331,18 @@
     color: #CBCACA;
     padding: 0 5px 0 0;
     text-decoration: none;
+}
+.footer_section_nav{
+margin:0;	
+}
+
+.footer_section_nav li,
+.footer_section_nav li a{
+	color:#565656;
+}
+
+.footer_section_nav li{
+		border-right:1px solid #565656;
 }
 
 .last_li{
@@ -404,3 +416,38 @@
 
 /* +++++++++++++++++ END Account Page Modules +++++++++++++++++ */
 
+
+/* +++++++++++++++++ START How it works +++++++++++++++++ */
+#how_it_works{
+	margin-top:10px;
+	margin-bottom:10px;	
+}
+
+#how_it_works div{
+	text-align:right;
+}
+
+
+#how_it_works div span{
+	display:block;
+	color:#3CAACC;
+	font-weight:bold;
+	font-size:50px;
+}
+
+#how_it_works div p{
+    color: #777777;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+/* +++++++++++++++++ END How It Works +++++++++++++++++ */
+
+
+/* +++++++++++++++++ START Login Page +++++++++++++++++ */
+
+#UserLoginForm{
+	
+}
+
+/* +++++++++++++++++ END Login Page +++++++++++++++++ */
