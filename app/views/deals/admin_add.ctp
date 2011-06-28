@@ -39,7 +39,7 @@
 		echo $this->Form->input('street_address');
 		echo $this->Form->input('city');
 		echo $this->Form->input('state');
-		echo $this->Form->input('country');
+		echo $this->Form->input('country_id');
 		echo $this->Form->input('reservation_type_id');
 		echo $this->Form->input('company_name');
 		echo $this->Form->input('displayed_email');

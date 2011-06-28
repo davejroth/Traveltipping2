@@ -66,7 +66,8 @@ class DealsController extends AppController {
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));	
+		$countries = $this->Deal->Country->find('list');
+		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
 	}
 
 	function edit($id = null) {
@@ -135,7 +136,8 @@ class DealsController extends AppController {
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));	}
+		$countries = $this->Deal->Country->find('list');
+		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	}
 
 	function admin_edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -159,7 +161,8 @@ class DealsController extends AppController {
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
+		$countries = $this->Deal->Country->find('list');
+		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));
 	}
 
 	function admin_delete($id = null) {

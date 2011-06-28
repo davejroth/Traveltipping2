@@ -32,6 +32,13 @@ class Deal extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Country' => array(
+			'className' => 'Country',
+			'foreignKey' => 'country_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
