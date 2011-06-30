@@ -21,14 +21,15 @@ class MerchantsController extends AppController {
 * @param int $id unique identifier for the merchant.
 *
 */
-	function profile($id = null) {
+	function profile() {
 	//$this->sendNewMerchantMail($id);
+		$id = $this->Session->read('Merchant.id');
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid merchant profile', true));
 			$this->redirect(array('action' => 'edit'));
 		}
 		if (!empty($this->data)) {
-			$this->data['User']['username'] = $this->data['User']['email'];
+			//$this->data['User']['username'] = $this->data['User']['email'];
 			if ($this->Merchant->saveAll($this->data)) {
 				$this->Session->setFlash(__('The merchant profile has been saved', true));
 				$this->redirect(array('action' => 'index'));
@@ -56,7 +57,7 @@ class MerchantsController extends AppController {
 	function deals($deal_status) {
 		$this->loadModel('Deal');
 		$deals;
-		if(strcmp($deal_status, "open") == 0)
+		if(strcmp($deal_status, "upcoming") == 0)
 		{
 			$deals = $this->Deal->find('all', array('conditions' => 
 			array("NOT" => array('Deal.deal_status_id' => 

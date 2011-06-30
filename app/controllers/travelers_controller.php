@@ -12,17 +12,18 @@ class TravelersController extends AppController {
 	$this->set('Traveler', $Traveler); // can this be set in notification?
 	
 	$this->Notification->sendNewUserMail($Traveler);
- }
+	}
 	
 	/* Traveler Account Detail Page */
-	function profile($id = null) {
-	//$this->sendNewUserMail($id);
+	function profile() {
+		$id = $this->Session->read('Traveler.id');
+		//$this->sendNewUserMail($id);
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid user detail', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			$this->data['User']['username'] = $this->data['User']['email'];
+			//$this->data['User']['username'] = $this->data['User']['email'];
 			if ($this->Traveler->saveAll($this->data)) {
 				$this->Session->setFlash(__('The user detail has been saved', true));
 				$this->redirect(array('action' => 'index'));

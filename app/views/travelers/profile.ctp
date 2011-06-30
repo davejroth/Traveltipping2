@@ -8,12 +8,18 @@
 	<h3>Contact Details</h3>
 	<?php
 		// Data Variables
-		//$business_name = $merchant['Merchant']['business_name'];
-		$fn = $traveler["Traveler"]["first_name"];
 		
-        echo $this->Form->input('first_name', array('label'=>'First Name:','value'=>""));
-        echo $this->Form->input('last_name', array('label'=>'Last Name:','value'=>""));
-        echo $this->Form->input('User.email', array('label'=>'Email Address:','value'=>""));
+		$first_name = $traveler['Traveler']['first_name'];
+		$last_name = $traveler['Traveler']['last_name'];
+		$email = $traveler['User']['email'];
+		$id = $traveler['Traveler']['id'];
+		
+		
+		echo $this->Form->input('id');
+		echo $this->Form->input('User.id');
+        echo $this->Form->input('first_name', array('label'=>'First Name:','value'=>"$first_name"));
+        echo $this->Form->input('last_name', array('label'=>'Last Name:','value'=>"$last_name"));
+        echo $this->Form->input('User.email', array('label'=>'Email Address:','value'=>"$email"));
 
     ?>
 	
