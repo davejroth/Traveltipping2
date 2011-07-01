@@ -37,6 +37,8 @@ class User extends AppModel {
  * @var array
  * @access public
  */
+ 
+	var $uses = array('Auth');
     public $validate = array(
         'username' => array(
             'isUnique' => array(
@@ -58,16 +60,28 @@ class User extends AppModel {
                 'message' => 'Email address already in use.',
             ),
         ),
-        'password' => array(
-            'rule' => array('minLength', 6),
-            'message' => 'Passwords must be at least 6 characters long.',
-        ),
+		'password' => array(
+			'passwordlength' => array('rule' => 'passwordLength','message' => 'Enter between 5 and 20 characters'),
+			'passwordequal'  => array('rule' =>'checkpasswords','message' => 'Passwords do not match')
+		),
         'name' => array(
             'rule' => 'notEmpty',
             'message' => 'This field cannot be left blank.',
         ),
     );
 
+
+
+function checkpasswords()
+{
+   return strcmp($this->data['User']['password'], Security::hash($this->data['User']['password2'], null, true)) == 0;
+}
+
+function passwordlength()
+{
+	$length = strlen($this->data['User']['password2']);
+	return ($length > 5 && $length < 20);
+}
     public function parentNode() {
         if (!$this->id && empty($this->data)) {
             return null;

@@ -27,8 +27,8 @@
 	
 	<div class="grid_9"> 
 		<?php
-				echo $this->Form->input('new_password', array('label'=>'New Password:','value'=>""));
-        echo $this->Form->input('confirm_password', array('label'=>'Confirm New Password:','value'=>""));
+				echo $this->Form->input('User.password', array('label'=>'New Password:','value'=>""));
+        echo $this->Form->input('User.password2', array('label'=>'Confirm New Password:','value'=>"", 'type' =>'password'));
     ?>
 	</div>
 	

@@ -3,7 +3,7 @@ class UsersController extends AppController {
 
 	var $name = 'Users';
 	
-	var $uses = array('Merchant', 'Traveler');
+	var $uses = array('Merchant', 'Traveler', 'User');
 
 function login() {
 	if ($this->Session->read('Auth.User')) {
