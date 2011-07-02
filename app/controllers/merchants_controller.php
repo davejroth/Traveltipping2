@@ -60,15 +60,17 @@ class MerchantsController extends AppController {
 		if(strcmp($deal_status, "upcoming") == 0)
 		{
 			$deals = $this->Deal->find('all', array('conditions' => 
-			array("NOT" => array('Deal.deal_status_id' => 
-			array(Configure::Read('Deal.Status_Listed'), Configure::Read('Deal.Status_Closed'),
-			Configure::Read('Deal.Status_Cancelled'))))));
+				array('Deal.merchant_id' => $this->Session->read('Merchant.id'), 
+				"NOT" => array('Deal.deal_status_id' => 
+				array(Configure::Read('Deal.Status_Listed'), Configure::Read('Deal.Status_Closed'),
+				Configure::Read('Deal.Status_Cancelled'))))));
 		}
 		
 		if(strcmp($deal_status, "live") == 0)
 		{
 			$deals = $this->Deal->find('all', array('conditions' => 
-			array('Deal.deal_status_id' => Configure::Read('Deal.Status_Listed'))));
+			array('Deal.deal_status_id' => Configure::Read('Deal.Status_Listed'),
+				'Deal.merchant_id' => $this->Session->read('Merchant.id'))));
 			$count = count($deals);
 			for ($i = 0; $i < $count; $i++) {
 				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
@@ -79,7 +81,8 @@ class MerchantsController extends AppController {
 		if(strcmp($deal_status, "past") == 0)
 		{
 			$deals = $this->Deal->find('all', array('conditions' => 
-			array('Deal.deal_status_id' => Configure::Read('Deal.Status_Closed'))));
+			array('Deal.deal_status_id' => Configure::Read('Deal.Status_Closed'),
+				'Deal.merchant_id' => $this->Session->read('Merchant.id'))));
 			$count = count($deals);
 				for ($i = 0; $i < $count; $i++) {
 				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
