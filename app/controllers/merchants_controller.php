@@ -4,47 +4,69 @@ class MerchantsController extends AppController {
 	var $name = 'Merchants';
 	var $components = array('Email', 'Notification');
 	
-/*
+/**
  * Takes the id of a user_detail and calls Notification to send an email to them
  */
- 
 	function sendNewMerchantMail($id) {
 	  $Merchant = $this->Merchant->read(null,$id);
 		$this->set('Merchant', $Merchant); // can this be set in notification?
-	
 		$this->Notification->sendNewMerchantMail($Merchant);
 	}
 	
+	
+
 /**
 * Merchant Profile 
 * Displays the merchant's profile information
 * @param int $id unique identifier for the merchant.
 *
 */
-	function profile() {
-	//$this->sendNewMerchantMail($id);
-		$id = $this->Session->read('Merchant.id');
+	function profile($id = null) {
+		
+		/**
+		* Retrieve merchant and associated data from Models
+		*/
+		$this->Merchant->recursive = 0;
+		$merchant = $this->Merchant->read(null, $id);
+		$countries = $this->Merchant->Country->find('list');
+		$businessTypes = $this->Merchant->BusinessType->find('list');
+		$users = $this->Merchant->User->find('list');
+		
+		/**
+		* Check to see if the URL contains a valid ID
+		*/
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid merchant profile', true));
-			$this->redirect(array('action' => 'edit'));
+			$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
 		}
+		
+		/**
+		* Check to make sure Merchant ID ($id) is associated with the user
+		*/
+		if(!$id == $this->Session->read('Merchant.id')){
+				$this->Session->setFlash(__('Invalid merchant profile', true));
+				$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
+		}
+
 		if (!empty($this->data)) {
-			//$this->data['User']['username'] = $this->data['User']['email'];
-			if ($this->Merchant->saveAll($this->data)) {
+			if ($this->Merchant->save($this->data)) {
+				$updatedEmail = $this->data['User']['email'];
+				$this->Merchant->User->id = $merchant['Merchant']['user_id'];
 				$this->Session->setFlash(__('The merchant profile has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
+				$this->redirect(array('action' => 'profile',$id));
+			} 
+			else {
 				$this->Session->setFlash(__('The merchant profile could not be saved. Please, try again.', true));
-			}
+			}	
 		}
+		
+		/**
+		* If no POSTed Data retrieve merchant record and set to view
+		*/
 		if (empty($this->data)) {
 			$this->data = $this->Merchant->read(null, $id);
 		}
-		$countries = $this->Merchant->Country->find('list');
-		$users = $this->Merchant->User->find('list');
-		$businessTypes = $this->Merchant->BusinessType->find('list');
-		$this->set(compact('countries', 'users', 'businessTypes'));
-		$this->set('merchant', $this->Merchant->read(null, $id));
+		$this->set(compact('merchant','countries', 'users', 'businessTypes'));
 	}
 
 
