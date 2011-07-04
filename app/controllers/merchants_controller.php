@@ -22,10 +22,10 @@ class MerchantsController extends AppController {
 *
 */
 	function profile($id = null) {
+		
 		/**
 		* Retrieve merchant and associated data from Models
 		*/
-		
 		$this->Merchant->recursive = 0;
 		$merchant = $this->Merchant->read(null, $id);
 		$countries = $this->Merchant->Country->find('list');
@@ -79,7 +79,7 @@ class MerchantsController extends AppController {
 	function deals($deal_status) {
 		$this->loadModel('Deal');
 		$deals;
-		if(strcmp($deal_status, "open") == 0)
+		if(strcmp($deal_status, "upcoming") == 0)
 		{
 			$deals = $this->Deal->find('all', array('conditions' => 
 			array("NOT" => array('Deal.deal_status_id' => 

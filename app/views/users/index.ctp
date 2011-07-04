@@ -1,3 +1,8 @@
+<?php echo "Merchant_id:" . $this->Session->read('Merchant.id');
+	echo "\r Traveler_id:" . $this->Session->read('Traveler.id');
+	echo "\r Role_id:" . $this->Session->read('User.role_id'); 
+	echo "\r Test:" . $this->Session->read('test');
+	//echo "Auth.User" . print_r($this->Session->read('Auth.User'));?>
 <div class="users index">
 	<h2><?php __('Users');?></h2>
 	<table cellpadding="0" cellspacing="0">

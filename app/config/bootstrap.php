@@ -127,6 +127,6 @@ Configure :: write('acl.gui.roles_permissions.ajax', false);
  Configure :: write('Deal.Status_Pending_Approval', 6);
  Configure :: write('Deal.Status_Approved', 7);
  Configure :: write('Deal.Status_Cancelled', 8); 
- Configure :: write('Merchant.Role_ID', 5);
- Configure :: write('Traveler.Role_ID', 6); 
+ Configure :: write('Role.Merchant_ID', 5);
+ Configure :: write('Role.Traveler_ID', 6); 
 ?>

@@ -2,24 +2,30 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
+	
+	var $uses = array('Merchant', 'Traveler');
 
 function login() {
 	if ($this->Session->read('Auth.User')) {
 		$this->Session->setFlash('You are logged in!');
 		$this->redirect('/', null, false);
 	}
-}       
+} 
 
- 
-function logout() {
-    //Leave empty for now.
-}
-
+	function logout() {
+		
+		if ($this->Session->valid())
+		{
+		$this->Session->destroy();
+		$this->redirect('/');
+		}
+	}
+/*
 function beforeFilter() {
     parent::beforeFilter(); 
     $this->Auth->allow(array('*'));
 }
-
+*/
 	
 	function index() {
 		$this->User->recursive = 0;
@@ -103,8 +109,8 @@ function beforeFilter() {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
 			}
 		}
-		$roles = $this->User->Role->find('list');
-		$this->set(compact('roles'));
+		//$roles = $this->User->Role->find('list');
+		//$this->set(compact('roles'));
 	}
 
 	function admin_edit($id = null) {

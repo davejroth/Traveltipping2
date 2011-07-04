@@ -1,4 +1,9 @@
+<?php /* echo $this->Session->read('Traveler.id');
+echo $this->Session->read('test');
 
+echo ($user['role_id'] == Configure::Read('Role.Traveler_ID'));
+	echo $user['id'];
+	print_r($traveler); */?>
 
 
 <div class="white_mod_960_wrap">
@@ -20,4 +25,4 @@ echo $this->Form->end('Login');
 	</div>
 
 	</div>
-</div
+</div>

@@ -1,7 +1,7 @@
 <div id="layout_left" class="grid_22">
 	<div class="blue_rounded_mod clearfix">
 	<ul class="deal_nav">
-		<li><a href="#">Open Deals</a></li>
+		<li><a href="#">Upcoming Deals</a></li>
 		<li><a href="#">Live Deals</a></li>
 		<li><a href="#">Past Deals</a></li>
 				
