@@ -4,69 +4,49 @@ class MerchantsController extends AppController {
 	var $name = 'Merchants';
 	var $components = array('Email', 'Notification');
 	
-/**
+/*
  * Takes the id of a user_detail and calls Notification to send an email to them
  */
+ 
 	function sendNewMerchantMail($id) {
 	  $Merchant = $this->Merchant->read(null,$id);
 		$this->set('Merchant', $Merchant); // can this be set in notification?
+	
 		$this->Notification->sendNewMerchantMail($Merchant);
 	}
 	
-	
-
 /**
 * Merchant Profile 
 * Displays the merchant's profile information
 * @param int $id unique identifier for the merchant.
 *
 */
-	function profile($id = null) {
-		
-		/**
-		* Retrieve merchant and associated data from Models
-		*/
-		$this->Merchant->recursive = 0;
-		$merchant = $this->Merchant->read(null, $id);
-		$countries = $this->Merchant->Country->find('list');
-		$businessTypes = $this->Merchant->BusinessType->find('list');
-		$users = $this->Merchant->User->find('list');
-		
-		/**
-		* Check to see if the URL contains a valid ID
-		*/
+	function profile() {
+	//$this->sendNewMerchantMail($id);
+		$id = $this->Session->read('Merchant.id');
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid merchant profile', true));
-			$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
+			$this->redirect(array('action' => 'edit'));
 		}
-		
-		/**
-		* Check to make sure Merchant ID ($id) is associated with the user
-		*/
-		if(!$id == $this->Session->read('Merchant.id')){
-				$this->Session->setFlash(__('Invalid merchant profile', true));
-				$this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
-		}
-
 		if (!empty($this->data)) {
-			if ($this->Merchant->save($this->data)) {
-				$updatedEmail = $this->data['User']['email'];
-				$this->Merchant->User->id = $merchant['Merchant']['user_id'];
-				$this->Session->setFlash(__('The merchant profile has been saved', true));
-				$this->redirect(array('action' => 'profile',$id));
-			} 
-			else {
-				$this->Session->setFlash(__('The merchant profile could not be saved. Please, try again.', true));
-			}	
+			//$this->data['User']['username'] = $this->data['User']['email'];
+			$this->data['Merchant']['id'] = $this->Session->read('Merchant.id');
+			$this->data['User']['id'] = $this->Session->read('User.id');
+			if ($this->Merchant->saveAll($this->data)) {
+				$this->Session->setFlash(__('Your profile has been saved.', true));
+				$this->redirect('/merchants/profile');
+			} else {
+				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true));
+			}
 		}
-		
-		/**
-		* If no POSTed Data retrieve merchant record and set to view
-		*/
 		if (empty($this->data)) {
 			$this->data = $this->Merchant->read(null, $id);
 		}
-		$this->set(compact('merchant','countries', 'users', 'businessTypes'));
+		$countries = $this->Merchant->Country->find('list');
+		$users = $this->Merchant->User->find('list');
+		$businessTypes = $this->Merchant->BusinessType->find('list');
+		$this->set(compact('countries', 'users', 'businessTypes'));
+		$this->set('merchant', $this->Merchant->read(null, $id));
 	}
 
 
@@ -131,6 +111,33 @@ class MerchantsController extends AppController {
 	function reservations(){
 	
 		
+	}
+/**
+* Merchant Signup
+* Signup form for merchants
+*
+*/	
+	function signup() {
+		if (!empty($this->data)) {
+			$this->Merchant->User->create();
+			$this->Merchant->create();
+		
+			$this->data['User']['role_id'] = Configure::read('Role.Merchant_ID');
+			//$this->data['User']['password'] = "1949be75f0f74d49cb8c08f1152c8ae2ff563203";
+			$this->data['User']['status'] = 1;
+
+			if ($this->Merchant->saveAll($this->data)) {
+				$this->sendNewMerchantMail($this->Merchant->id);
+				$this->Session->setFlash(__('The merchant detail has been saved', true));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The merchant detail could not be saved. Please, try again.', true));
+			}
+		}
+		$countries = $this->Merchant->Country->find('list');
+		$users = $this->Merchant->User->find('list');
+		$businessTypes = $this->Merchant->BusinessType->find('list');
+		$this->set(compact('countries', 'users', 'businessTypes'));
 	}
 	
 	

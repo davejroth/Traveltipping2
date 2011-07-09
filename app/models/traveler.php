@@ -36,5 +36,11 @@ class Traveler extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	
+	public $validate = array(
+		'first_name' => array(
+            'nameCheck' => array('rule' => 'notEmpty','message' => ' field cannot be left blank.')
+        ) 
+	); 
 }
 ?>

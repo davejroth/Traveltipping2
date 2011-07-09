@@ -6,10 +6,25 @@
 						<?php echo $this->Html->link('', 'http://traveltipping.com',array('class'=>'twitter_ico', 'alt'=>'Follow Us on Twitter')); ?>
 					</div>
 					<ul class="main_nav">
-					<li><?php echo $this->Html->link('How it Works',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')); ?></li>
-					<li><?php echo $this->Html->link('Create an Account', 'http://traveltipping.com',array( 'alt'=>'Create an Account')); ?></li>
-					<li><?php echo $this->Html->link('Login', 'http://traveltipping.com',array( 'alt'=>'Login')); ?></li>
-					</ul>
+					
+					<?php 	if(!$this->Session->read('Auth.User')) { //Not logged in
+								echo '<li>' . $this->Html->link('How it Works',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
+								echo '<li>' . $this->Html->link('Create an Account', array('controller' => 'travelers', 'action' => 'signup'),array( 'alt'=>'Create an Account')) . '</li>';
+								echo '<li>' . $this->Html->link('Login', array('controller' => 'users', 'action' => 'login'),array( 'alt'=>'Login')) . '</li>';
+							}
+						 
+							elseif($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID')) { //Merchant is logged in
+								echo '<li>' . $this->Html->link('My Deals',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
+								echo '<li>' . $this->Html->link('Account Details', array('controller' => 'merchants', 'action' => 'profile'),array( 'alt'=>'Create an Account')) . '</li>';
+								echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'alt'=>'Logout')) . '</li>';
+							}
+							
+							elseif($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID')) { //Traveler is logged in
+								echo '<li>' . $this->Html->link('My Trips',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
+								echo '<li>' . $this->Html->link('Account Details', array('controller' => 'travelers', 'action' => 'profile'),array( 'alt'=>'Create an Account')) . '</li>';
+								echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'alt'=>'Logout')) . '</li>';
+							}
+				?></ul>
 					<div class="subscribe_cta">
 						<?php 
 							echo $this->Form->create('User',array(

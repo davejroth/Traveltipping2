@@ -40,16 +40,6 @@ class User extends AppModel {
  
 	var $uses = array('Auth');
     public $validate = array(
-        'username' => array(
-            'isUnique' => array(
-                'rule' => 'isUnique',
-                'message' => 'The username has already been taken.',
-            ),
-            'notEmpty' => array(
-                'rule' => 'notEmpty',
-                'message' => 'This field cannot be left blank.',
-            ),
-        ),
         'email' => array(
             'email' => array(
                 'rule' => 'email',
@@ -64,23 +54,33 @@ class User extends AppModel {
 			'passwordlength' => array('rule' => 'passwordLength','message' => 'Enter between 5 and 20 characters'),
 			'passwordequal'  => array('rule' =>'checkpasswords','message' => 'Passwords do not match')
 		),
-        'name' => array(
-            'rule' => 'notEmpty',
-            'message' => 'This field cannot be left blank.',
-        ),
+		'current_password' => array(
+			'passwordCheck' => array('rule' => 'passwordCheck', 'message' => 'Password entered does not match your saved password.')
+		)
     );
 
 
 
 function checkpasswords()
 {
-   return strcmp($this->data['User']['password'], Security::hash($this->data['User']['password2'], null, true)) == 0;
-}
+   return strcmp($this->data['User']['password'], Security::hash($this->data['User']['confirm_password'], null, true)) == 0;
+	//return strcmp($this->data['User']['password'], $this->data['User']['password2']) == 0;
+   }
 
 function passwordlength()
 {
-	$length = strlen($this->data['User']['password2']);
+	$length = strlen($this->data['User']['confirm_password']);
 	return ($length > 5 && $length < 20);
+}
+
+function passwordCheck()
+{
+	$currentUser = $this->find('first', array('conditions' => array('User.id' => $this->data['User']['id'])));
+	$currentPassword = $currentUser['User']['password'];
+	//debug($currentUser);
+	//debug($currentPassword);
+	
+	return strcmp(Security::hash($this->data['User']['current_password'], null, true), $currentPassword) == 0; 
 }
     public function parentNode() {
         if (!$this->id && empty($this->data)) {

@@ -5,12 +5,12 @@ class UsersController extends AppController {
 	
 	var $uses = array('Merchant', 'Traveler', 'User');
 
-function login() {
-	if ($this->Session->read('Auth.User')) {
-		$this->Session->setFlash('You are logged in!');
-		$this->redirect('/', null, false);
-	}
-} 
+	function login() {
+		if ($this->Session->read('Auth.User')) {
+			$this->Session->setFlash('You are logged in!');
+			$this->redirect('/', null, false);
+		}
+	} 
 
 	function logout() {
 		
@@ -20,6 +20,39 @@ function login() {
 		$this->redirect('/');
 		}
 	}
+	
+	function editPassword() {
+		$id = $this->Session->read('User.id');
+		if (!$id && empty($this->data)) {  //This if statement seems like it should be removed.
+			$this->Session->setFlash(__('Invalid user profile', true));
+			$this->redirect(array('action' => 'edit'));
+		}
+		if (!empty($this->data)) {
+			$this->data['User']['id'] = $this->Session->read('User.id');
+			$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
+			if ($this->User->save($this->data)) {
+				$this->Session->setFlash(__('Your password has been saved.', true));
+				//If merchant, redirect to merchant profile.  If traveler, redirect to traveler)
+				if($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID')) 
+				{
+					$this->redirect('/merchants/profile');
+				}
+				if($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID'))
+				{
+					$this->redirect('/travelers/profile');
+				}
+				//debug($this->Session->read('role_id'));
+				
+				
+			} else {
+				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->User->read(null, $id);
+		}
+	}
+	
 /*
 function beforeFilter() {
     parent::beforeFilter(); 

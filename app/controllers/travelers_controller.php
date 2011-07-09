@@ -23,23 +23,44 @@ class TravelersController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			//$this->data['User']['username'] = $this->data['User']['email'];
+			$this->data['Traveler']['id'] = $this->Session->read('Traveler.id');
+			$this->data['User']['id'] = $this->Session->read('User.id');
+			if ($this->Traveler->saveAll($this->data, array('validate' => 'first'))) {
+				$this->Session->setFlash(__('Your profile has been saved', true));
+				$this->redirect('/travelers/profile');
+			} else {
+				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Traveler->read(null, $id);
+		}
+		$errors = $this->Traveler->invalidFields();
+		$users = $this->Traveler->User->find('list');
+		$states = $this->Traveler->State->find('list');
+		$this->set(compact('users', 'states', 'errors'));
+		$this->set('traveler', $this->Traveler->read(null, $id));
+	}
+	
+	function signup() {
+		if (!empty($this->data)) {
+			
+			$this->Traveler->User->create();
+			$this->Traveler->create();
+
+			$this->data['User']['role_id'] = Configure::read('Role.Traveler_ID');
+			//$this->data['User']['password'] = "1949be75f0f74d49cb8c08f1152c8ae2ff563203";
+			$this->data['User']['status'] = 1;
 			if ($this->Traveler->saveAll($this->data)) {
+				$this->sendNewUserMail($this->Traveler->id);
 				$this->Session->setFlash(__('The user detail has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user detail could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Traveler->read(null, $id);
-		}
-		
-		$users = $this->Traveler->User->find('list');
-		$states = $this->Traveler->State->find('list');
-		$this->set(compact('users', 'states'));
-		$this->set('traveler', $this->Traveler->read(null, $id));
 	}
+	
 
 }
 

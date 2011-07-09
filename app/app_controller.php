@@ -1,6 +1,6 @@
 <?php
 class AppController extends Controller {
-    var $components = array('Acl', 'Auth', 'Session');
+    var $components = array('Acl', 'Auth', 'Session', 'Cookie');
     var $helpers = array('Html', 'Form', 'Session', 'AssetCompress.AssetCompress', 'Javascript');
     
     var $view = 'Theme';
@@ -18,6 +18,9 @@ class AppController extends Controller {
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
         $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'logout');
         $this->Auth->loginRedirect = array('controller' => 'users', 'action' => 'index');
+		//$this->Auth->loginRedirect = '/';
+		//$this->Auth->autoRedirect = false;
+		$this->Cookie->name = 'TravelTipping';
 		
 		//Set Session variables.  I'm not sure if this is the right place to do this?
 		//I'm hoping that the !User.role_id will prevent it from running this code every pageload.
@@ -37,6 +40,7 @@ class AppController extends Controller {
 			$this->Session->write('Traveler.id', $traveler['Traveler']['id']);
 		}
 		$this->Session->write('User.role_id', $user['role_id']);
+		$this->Session->write('User.id', $user['id']);
 	}
     }
 }
