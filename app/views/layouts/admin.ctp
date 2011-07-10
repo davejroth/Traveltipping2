@@ -10,10 +10,16 @@
 	
 	<?php
 		echo $this->Html->meta('icon');
+		$this->AssetCompress->css(array(
+			'admin',
+			'uploadify'
+		));
 		
 		echo $this->Html->css('styles');
-		$this->AssetCompress->script('jquery');
-		$this->AssetCompress->script('jquery-ui');
+		echo $this->Html->script('jquery');
+		echo $this->Html->script('jquery-ui');
+		//echo $this->Html->script('/uploadify/swfobject');
+		//echo $this->Html->script('/uploadify/jquery.uploadify.v2.1.4');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;
 	?>
@@ -22,7 +28,7 @@
 <body>
 	<div id="layout_container">
 		<div id="layout_header">
-			<?php echo $this->element('header'); ?>
+		
 			<div class="clouds"></div>
 		</div><!-- #layout_header -->
 		<div id="layout_main">
@@ -37,5 +43,7 @@
 			<?php echo $this->element('footer'); ?>
 		</div><!-- #layout_footer -->	
 	</div><!-- #layout_container -->
+	
+
 </body>
 </html>
