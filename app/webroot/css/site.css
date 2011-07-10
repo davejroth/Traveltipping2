@@ -201,8 +201,19 @@
 }
 
 #find_deals{
-	margin-bottom: 50px;
+	
 }
+
+#DealIndexForm{
+	position:relative;
+}
+
+#home_find_deals{
+    left: 619px;
+    position: absolute;
+    top: 244px;
+}
+
 
 /* Deal Search Module*/
 

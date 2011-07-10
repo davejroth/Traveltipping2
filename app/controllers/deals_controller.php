@@ -3,7 +3,7 @@ class DealsController extends AppController {
 
 	var $name = 'Deals';
 	
-	var $components = array('RequestHandler');
+	var $components = array('RequestHandler','Attachment');
 
 	public $helpers = array('Text','Js');
 	
@@ -12,10 +12,10 @@ class DealsController extends AppController {
 	function index() {
 		//$this->Deal->recursive = 0;
 		$regions = array();
-		if(!empty($_POST)){
+		if(!empty($this->data)){
 			 
 			$x = 0;
-			foreach ($_POST['region_select'] as $region){
+			foreach ($this->data['Deal']['region'] as $region){
 				if($region == 1){
 					array_push($regions,$x+1);
 				}
@@ -37,7 +37,6 @@ class DealsController extends AppController {
 		$this->set('deals', $deals);
 		$this->set('count', $count);
 		$this->set('regions', $regions );
-
 	}
 
 	function view($id = null) {
@@ -137,7 +136,10 @@ class DealsController extends AppController {
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
 		$countries = $this->Deal->Country->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	}
+		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
+		 $this->layout = 'admin';
+	
+	}
 
 	function admin_edit($id = null) {
 		if (!$id && empty($this->data)) {
