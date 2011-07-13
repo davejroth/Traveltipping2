@@ -128,8 +128,10 @@ class MerchantsController extends AppController {
 
 			if ($this->Merchant->saveAll($this->data)) {
 				$this->sendNewMerchantMail($this->Merchant->id);
-				$this->Session->setFlash(__('The merchant detail has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
+				$this->Auth->login();
+				$this->Session->write('User.new', 1);
+				$this->redirect(array('controller' => 'users', 'action' => 'loginredirect'));
 			} else {
 				$this->Session->setFlash(__('The merchant detail could not be saved. Please, try again.', true));
 			}

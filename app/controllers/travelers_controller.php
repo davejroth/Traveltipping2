@@ -49,12 +49,13 @@ class TravelersController extends AppController {
 			$this->Traveler->create();
 
 			$this->data['User']['role_id'] = Configure::read('Role.Traveler_ID');
-			//$this->data['User']['password'] = "1949be75f0f74d49cb8c08f1152c8ae2ff563203";
 			$this->data['User']['status'] = 1;
 			if ($this->Traveler->saveAll($this->data)) {
 				$this->sendNewUserMail($this->Traveler->id);
-				$this->Session->setFlash(__('The user detail has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
+				$this->Auth->login();
+				$this->Session->write('User.new', 1);
+				$this->redirect(array('controller' => 'users', 'action' => 'loginredirect'));
 			} else {
 				$this->Session->setFlash(__('The user detail could not be saved. Please, try again.', true));
 			}

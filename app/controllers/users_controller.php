@@ -5,6 +5,50 @@ class UsersController extends AppController {
 	
 	var $uses = array('Merchant', 'Traveler', 'User');
 
+	/*
+	 *This is called from loginAction in appController
+	 *Sets Session variables and redirects to appropriate login page.
+	 */
+	function loginredirect() {
+	if ($this->Session->read('Auth.User') && !$this->Session->read('User.role_id')) {
+		$user = $this->Session->read('Auth.User');
+		if($user['role_id'] == Configure::Read('Role.Merchant_ID'))
+		{
+			$merchant = $this->Merchant->find('first',
+				array('conditions' => array('Merchant.user_id' => $user['id'])));
+			$this->Session->write('Merchant.id', $merchant['Merchant']['id']);
+			$this->Auth->loginRedirect = array('controller' => 'merchants', 'action' => 'profile');
+		} 
+		
+		if($user['role_id'] == Configure::Read('Role.Traveler_ID'))
+		{
+			$traveler = $this->Traveler->find('first',
+				array('conditions' => array('Traveler.user_id' => $user['id'])));
+			$this->Session->write('Traveler.id', $traveler['Traveler']['id']);
+		}
+		$this->Session->write('User.role_id', $user['role_id']);
+		$this->Session->write('User.id', $user['id']);	
+		}
+		if($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID'))
+		{
+			if($this->Session->read('User.new') == 1)
+			{
+				$this->redirect(array('controller' => 'merchants', 'action' => 'profile'));
+			}
+			$this->redirect(array('controller' => 'merchants', 'action' => 'profile'));
+		}
+		elseif($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID'))
+		{	if($this->Session->read('User.new') == 1)
+			{
+				$this->redirect(array('controller' => 'deals', 'action' => 'index'));
+			}
+			else 
+			{
+				$this->redirect(array('controller' => 'travelers', 'action' => 'profile'));
+			}
+		}
+		
+	}
 	function login() {
 		if ($this->Session->read('Auth.User')) {
 			$this->Session->setFlash('You are logged in!');
@@ -13,7 +57,6 @@ class UsersController extends AppController {
 	} 
 
 	function logout() {
-		
 		if ($this->Session->valid())
 		{
 		$this->Session->destroy();
