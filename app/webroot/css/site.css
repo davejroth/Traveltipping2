@@ -451,3 +451,40 @@ margin:0;
 }
 
 /* +++++++++++++++++ END Login Page +++++++++++++++++ */
+
+/**
+* Merchant Accounts
+*/
+
+.merchant_deals table th {
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    width: 110px;
+}
+
+.merchant_deals table{
+	margin:10px 0;
+}
+
+.horizontal_list{
+	   float: right;
+    margin: 10px 0;
+}
+
+.horizontal_list li{
+    float: left;
+    list-style: none outside none;
+    margin-left: 10px;
+}
+
+.horizontal_list li a{
+    padding: 0;
+    text-decoration: none;
+	}
+	
+td.status,
+td.revenue{
+    color: green;
+    font-weight: bold;
+}
