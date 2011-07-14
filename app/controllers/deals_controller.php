@@ -31,8 +31,8 @@ class DealsController extends AppController {
 		$deals = $this->paginate('Deal', array($conditions));
 		$count = count($deals);
 		for ($i = 0; $i < $count; $i++) {
-		$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
-		array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
+			$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
+				array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
 		}
 		$this->set('deals', $deals);
 		$this->set('count', $count);

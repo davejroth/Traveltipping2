@@ -48,7 +48,7 @@ class Merchant extends AppModel {
 			'first_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Your custom message here',
+				'message' => 'Please enter your first name',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -56,5 +56,6 @@ class Merchant extends AppModel {
 			)
 		)
 	);
+
 
 }

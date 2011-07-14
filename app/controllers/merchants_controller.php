@@ -43,10 +43,9 @@ class MerchantsController extends AppController {
 			$this->data = $this->Merchant->read(null, $id);
 		}
 		$countries = $this->Merchant->Country->find('list');
-		$users = $this->Merchant->User->find('list');
+		//$users = $this->Merchant->User->find('list');
 		$businessTypes = $this->Merchant->BusinessType->find('list');
 		$this->set(compact('countries', 'users', 'businessTypes'));
-		$this->set('merchant', $this->Merchant->read(null, $id));
 	}
 
 
@@ -109,7 +108,13 @@ class MerchantsController extends AppController {
 *
 */
 	function reservations(){
-	
+		$this->loadModel('DealPurchase');
+		$reservations = $this->Paginate('DealPurchase');
+		//$reservations = $this->DealPurchase->find('all');
+		$count = count($reservations);
+
+		
+		$this->set(compact('reservations'));
 		
 	}
 /**

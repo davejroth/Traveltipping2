@@ -19,5 +19,10 @@ class DealPurchase extends AppModel {
 			'order' => ''
 		)
 	);
+	
+		var $virtualFields = array(
+    'nights' => 'DATEDIFF(end_date, start_date)'
+	);
+
 }
 ?>

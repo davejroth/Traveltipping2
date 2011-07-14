@@ -14,7 +14,7 @@
 							}
 						 
 							elseif($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID')) { //Merchant is logged in
-								echo '<li>' . $this->Html->link('My Deals',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
+								echo '<li>' . $this->Html->link('My Deals',array('controller'=>'merchants', 'action'=>'deals', '/upcoming'),array( 'alt'=>'My Deals')) . '</li>';
 								echo '<li>' . $this->Html->link('Account Details', array('controller' => 'merchants', 'action' => 'profile'),array( 'alt'=>'Create an Account')) . '</li>';
 								echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'alt'=>'Logout')) . '</li>';
 							}
