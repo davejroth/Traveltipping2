@@ -12,7 +12,8 @@
 		echo $this->Html->meta('icon');
 		
 		echo $this->Html->css('styles');
-		$this->AssetCompress->script('jquery');
+		echo $this->Html->script('jquery');
+		echo $this->Html->script('site');
 		$this->AssetCompress->script('jquery-ui');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;

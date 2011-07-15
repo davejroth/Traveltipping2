@@ -37,9 +37,26 @@ $(document).ready(function() {
 	
 	
 
-	
-	
-	
+	/**
+	* Deal Listing Hover
+	*/
+	$('.deal_listing').each(function(index){
+		$(this).hover(function(){
+			//var x = e.data.index
+				
+				$('.deal_content').eq(index).addClass('highlight');
+				//$('#deal_1 .highlight').css('-moz-border-raduis','5px');
+				//alert(x)
+			},
+			function(){
+				$('.deal_content').eq(index).removeClass('highlight');
+				//alert(x)
+			}
+			);
+			
+
+		
+	});
 	
 	
 	

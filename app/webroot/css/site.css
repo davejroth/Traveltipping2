@@ -488,3 +488,29 @@ td.revenue{
     color: green;
     font-weight: bold;
 }
+
+.deal_listing:hover{
+	cursor:pointer;
+}
+
+.deal_content{
+	padding:5px;
+	position:relative;
+}
+
+.deal_content_highlight{
+	position:absolute;
+	height:100px;
+	width:100px;
+	z-index:0;
+}
+.highlight{
+	-moz-border-radius:5px;
+	background:#fffad5;
+}
+
+a.deal_listing{
+	color:#4d4d4d;
+	text-decoration:none;
+	display:block;
+}

@@ -115,6 +115,7 @@ label{
     background: url("../img/site/white_mod_center_694.png") repeat-y scroll 0 0 transparent;
     min-height: 100px;
     padding: 0 10px;
+    position:relative;
 }
 
 .white_mod_694_wrap{
@@ -247,6 +248,7 @@ label{
     border: 1px solid #CCCCCC;
     clear: both;
     height: 12px;
+    z-index:100;
 }
 
 .progress_val{
@@ -254,6 +256,7 @@ label{
     background: url("../img/site/progress_value_bg.png") repeat-x scroll 0 0 transparent;
     height: 12px;
     width: 0;
+    z-index:1000;
 }
 
 #current_quantity,
