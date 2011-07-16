@@ -1,9 +1,8 @@
 <div class="deals form">
 <?php echo $this->Form->create('Deal');?>
 	<fieldset>
-		<legend><?php __('Admin Edit Deal'); ?></legend>
+		<legend><?php __('Add Deal'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('title');
 		echo $this->Form->input('slug');
@@ -52,7 +51,6 @@
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Deal.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Deal.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Deals', true), array('action' => 'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Merchants', true), array('controller' => 'merchants', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Merchant', true), array('controller' => 'merchants', 'action' => 'add')); ?> </li>

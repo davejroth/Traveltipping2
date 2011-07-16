@@ -19,13 +19,6 @@ class Deal extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Destination' => array(
-			'className' => 'Destination',
-			'foreignKey' => 'destination_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'ReservationType' => array(
 			'className' => 'ReservationType',
 			'foreignKey' => 'reservation_type_id',

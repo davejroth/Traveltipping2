@@ -62,7 +62,6 @@ class DealsController extends AppController {
 		}
 		$merchants = $this->Deal->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
-		$destinations = $this->Deal->Destination->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
@@ -132,7 +131,6 @@ class DealsController extends AppController {
 		}
 		$merchants = $this->Deal->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
-		$destinations = $this->Deal->Destination->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
