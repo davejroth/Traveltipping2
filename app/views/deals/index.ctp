@@ -1,12 +1,6 @@
+<?php debug($this->data); ?>
 
 <div id="layout_left" class="grid_22">
-<?php 
-$search_array = array();
-$x = 0;
-foreach($regions as $region){
-	$search_array[$region - 1] = 1; 	
-}
-?>
 <div class="filter_bar">
 	<ul id="sort_options">
 		<li class="list_title"><strong>Sort By:</strong></li>
@@ -62,80 +56,81 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div class="white_mod_246_content clearfix">
 		<h3 class="module_title">Search</h3>
 		<div class="module_content clearfix">
-			<form id="deal_region_filter" accept-charset="utf-8" action="/deals" method="post">
+			<?php echo $this->Form->create('Deal',array('action'=>'index','class'=>'clearfix')); ?>
 				<div class="checkbox_field">
 					<div type="checkbox" class="checkbox" ></div>
 					<label>North America &amp; Carribean</label>
-					<input name="region_select[]" type="hidden" value="<?php 
-					if(!empty($search_array[0])){
-						echo "1";
+					<?php 
+					if(!empty($this->data['Deal']['region'][1])){
+						echo $this->Form->input('Deal.region.1',array('type'=>'hidden','value'=>1,'class'=>'search_input'));
 					}
 					else{
-						echo "0";
+						echo $this->Form->input('Deal.region.1',array('type'=>'hidden','value'=>0,'class'=>'search_input'));
 					}
-					?>" />
+					?>
+
 				</div>
 				<div class="checkbox_field">
 					<div type="checkbox" class="checkbox" ></div>
 					<label>Latin America</label>
-					<input name="region_select[]" type="hidden" value="<?php 
-					if(!empty($search_array[1])){
-						echo "1";
+					<?php 
+					if(!empty($this->data['Deal']['region'][2])){
+						echo $this->Form->input('Deal.region.2',array('type'=>'hidden','value'=>1,'class'=>'search_input'));
 					}
 					else{
-						echo "0";
+						echo $this->Form->input('Deal.region.2',array('type'=>'hidden','value'=>0,'class'=>'search_input'));
 					}
-					?>" />
+					?>
 				</div>
 				<div class="checkbox_field">
 					<div type="checkbox" class="checkbox" ></div>
 					<label>Europe</label>
-					<input name="region_select[]" type="hidden" value="<?php 
-					if(!empty($search_array[2])){
-						echo "1";
+					<?php 
+					if(!empty($this->data['Deal']['region'][3])){
+						echo $this->Form->input('Deal.region.3',array('type'=>'hidden','value'=>1,'class'=>'search_input'));
 					}
 					else{
-						echo "0";
+						echo $this->Form->input('Deal.region.3',array('type'=>'hidden','value'=>0,'class'=>'search_input'));
 					}
-					?>" />
+					?>
 				</div>
 				<div class="checkbox_field">
 					<div type="checkbox" class="checkbox" ></div>
 					<label>Africa &amp; Arabia</label>
-					<input name="region_select[]" type="hidden" value="<?php 
-					if(!empty($search_array[3])){
-						echo "1";
+					<?php 
+					if(!empty($this->data['Deal']['region'][4])){
+						echo $this->Form->input('Deal.region.4',array('type'=>'hidden','value'=>1,'class'=>'search_input'));
 					}
 					else{
-						echo "0";
+						echo $this->Form->input('Deal.region.4',array('type'=>'hidden','value'=>0,'class'=>'search_input'));
 					}
-					?>" />
+					?>
 				</div>
 				<div class="checkbox_field">
 					<div type="checkbox" class="checkbox" ></div>
 					<label>Asia</label>
-					<input name="region_select[]" type="hidden" value="<?php 
-					if(!empty($search_array[4])){
-						echo "1";
+					<?php 
+					if(!empty($this->data['Deal']['region'][5])){
+						echo $this->Form->input('Deal.region.5',array('type'=>'hidden','value'=>1,'class'=>'search_input'));
 					}
 					else{
-						echo "0";
+						echo $this->Form->input('Deal.region.5',array('type'=>'hidden','value'=>0,'class'=>'search_input'));
 					}
-					?>" />
+					?>
 				</div>
 				<div class="checkbox_field">
 					<div type="checkbox" class="checkbox" ></div>
 					<label>Oceania</label>
-					<input name="region_select[]" type="hidden" value="<?php 
-					if(!empty($search_array[5])){
-						echo "1";
+					<?php 
+					if(!empty($this->data['Deal']['region'][6])){
+						echo $this->Form->input('Deal.region.6',array('type'=>'hidden','value'=>1,'class'=>'search_input'));
 					}
 					else{
-						echo "0";
+						echo $this->Form->input('Deal.region.6',array('type'=>'hidden','value'=>0,'class'=>'search_input'));
 					}
-					?>" />
+					?>
 				</div>
-				<input type="submit" value="" class="find_more_deals"/>
+<?php echo $this->Form->end(array('value'=>'','class'=>'find_more_deals','id'=>'index_find_deals')); ?>
 				
 			</form>
 		</div>
@@ -157,7 +152,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 $(document).ready(function() {
 	
 /* Deals Index Filter */
-$('input[name="region_select[]"]').each(function(e){
+$('.checkbox_field input').each(function(e){
 	//alert($(this).val());
 	
 	if($(this).val() == 1){
@@ -175,11 +170,11 @@ $('.checkbox_field').each(function(e){
 	$(this).toggle(
 		function(){
 			$('.checkbox').eq(e).css({backgroundPosition: "0 0"});
-			$('input[name="region_select[]"]').eq(e).attr('value',1);
+			$('#DealRegion'+(e+1)).val('1');
 		},
 		function(){
 			$('.checkbox').eq(e).css({backgroundPosition: "0 -18px"});
-			$('input[name="region_select[]"]').eq(e).attr('value',0);
+			$('#DealRegion'+(e+1)).val('0');
 		}
 	);
 	

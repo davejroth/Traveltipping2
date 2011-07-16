@@ -299,8 +299,10 @@ label{
 
 .find_deals_btn{
     background: url("../img/site/find_deals_sprite.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
     display: block;
     float: right;
+    font-size: 0;
     height: 46px;
     width: 191px;
 }
@@ -326,6 +328,7 @@ label{
     height: 36px;
     margin: 15px auto;
     width: 164px;
+    font-size:0;
 }
 
 .reservations{

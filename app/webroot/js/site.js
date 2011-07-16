@@ -20,22 +20,22 @@ $(document).ready(function() {
 				$('.checkbox').eq(e).css({backgroundPosition: "0 0"});
 				var check_input = $('.checkbox_field').eq(e).parent().attr('id');
 				//alert(check_input);
-				$('#'+ check_input +' input[name="region_select[]"]').val('1');
+				$('#DealRegion'+(e+1)).val('1');
 			},
 			function(){
 				$('.checkbox').eq(e).css({backgroundPosition: "0 -18px"});
 				var check_input = $('.checkbox_field').eq(e).parent().attr('id');
-				$('#'+ check_input +' input[name="region_select[]"]').val('0');
+				$('#DealRegion'+(e+1)).val('0');
 			}
 		);
 		
 	});
-	/* Home Search Submit */
+	/* Home Search Submit 
 	$('.find_deals_btn').click(function(){
 		$('#region_search').submit();
 	});
 	
-	
+	*/
 
 	/**
 	* Deal Listing Hover

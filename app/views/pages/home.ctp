@@ -10,13 +10,13 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 
 
 
-<form id="region_search" accept-charset="utf-8" action="/deals" method="post">
+<?php echo $this->Form->create('Deal',array('action'=>'index','class'=>'clearfix')); ?>
 <div id="region_selection_map" class="clearfix">
 	<div id="rgn_north_america" class="region">
 		<div id="chk_north_america" class="checkbox_field clearfix">
 			<div class="checkbox"></div>
 			<p>North America &amp; Carribean</p>
-			<input type="hidden" value="0" name="region_select[]"/>
+			<?php echo $this->Form->input('Deal.region.1',array('type'=>'hidden','value'=>0)); ?>
 		</div>
 	</div>
 	
@@ -26,7 +26,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 		<div id="chk_latin_america" class="checkbox_field clearfix">
 			<div class="checkbox"></div>
 			<p><span>Latin</span>America</p>
-			<input type="hidden" value="0" name="region_select[]"/>
+			<?php echo $this->Form->input('Deal.region.2',array('type'=>'hidden','value'=>0)); ?>
 		</div>
 	</div>
 	
@@ -34,28 +34,28 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 		<div id="chk_europe" class="checkbox_field clearfix">
 			<div class="checkbox"></div>
 			<p>Europe</p>
-			<input type="hidden" value="0" name="region_select[]"/>
+			<?php echo $this->Form->input('Deal.region.3',array('type'=>'hidden','value'=>0)); ?>
 		</div>
 	</div>
 	<div id="rgn_africa" class="region">
 		<div id="chk_africa" class="checkbox_field clearfix">
 			<div class="checkbox"></div>
 			<p><span>Africa</span> &amp; Arabia</p>
-			<input type="hidden" value="0" name="region_select[]"/>
+			<?php echo $this->Form->input('Deal.region.4',array('type'=>'hidden','value'=>0)); ?>
 		</div>
 	</div>
 	<div id="rgn_asia" class="region">
 		<div id="chk_asia" class="checkbox_field clearfix">
 			<div class="checkbox"></div>
 			<p>Asia</p>
-			<input type="hidden" value="0" name="region_select[]"/>
+			<?php echo $this->Form->input('Deal.region.5',array('type'=>'hidden','value'=>0)); ?>
 		</div>
 	</div>
 	<div id="rgn_oceania" class="region">
 		<div id="chk_oceania" class="checkbox_field clearfix">
 			<div class="checkbox"></div>
 			<p>Oceania</p>
-			<input type="hidden" value="0" name="region_select[]"/>
+			<?php echo $this->Form->input('Deal.region.6',array('type'=>'hidden','value'=>0)); ?>
 		</div>
 	</div>
 </div>
@@ -67,20 +67,20 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	
 	
 </div>
-</form>
+
 <div id="find_deals" class="white_mod_960_wrap">
 	<div class="white_mod_960_top"></div>
 	<div class="white_mod_960_content">
 		<div id="deal_search_bar" class="blue_rounded_mod clearfix">
 			<div class="clearfix">
 				<h3 class="grid_14 prefix_4">Where do you want to go?</h3>
-				<a href="#" class="find_deals_btn suffix_4"></a>
+
 			</div>
 			<p class="clear grid_17 center">Select the destinations of your dreams and we'll find you amazing travel deals</p>
 		</div>
 	</div>
 </div>
-
+<?php echo $this->Form->end(array('value'=>'','class'=>'find_deals_btn suffix_4','id'=>'home_find_deals')); ?>
 <h3 class="white_mod_title">Featured Destination Deal</h3>
 <div id="featured_deal" class="white_mod_960_wrap">
 	<div class="white_mod_960_top"></div>
