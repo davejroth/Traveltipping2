@@ -114,7 +114,7 @@ label{
 .white_mod_694_content{
     background: url("../img/site/white_mod_center_694.png") repeat-y scroll 0 0 transparent;
     min-height: 100px;
-    padding: 0 10px;
+    padding: 0 12px;
     position:relative;
 }
 
@@ -195,8 +195,21 @@ label{
 }
 
 .module_content{
-	background:#eafbfb;
-	min-height:100px;
+    background: none repeat scroll 0 0 #EAFBFB;
+    min-height: 100px;
+    padding: 10px;
+}
+
+.module_content_white{
+    background: none repeat scroll 0 0 #FFFFFF;
+    min-height: 100px;
+    padding: 10px;
+ }
+
+.white_mod_246_content p{
+	font-size: 13px;
+  line-height: 1.2;
+  margin-bottom: 5px;
 }
 
 .gray_module_title{

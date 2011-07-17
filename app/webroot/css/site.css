@@ -272,7 +272,7 @@
 
 #book_now_bar{
     clear: both;
-    margin: 10px 5px;
+    margin: 0 5px;
     padding: 10px 7px;
     width: 650px;
 }
@@ -500,12 +500,16 @@ td.revenue{
     font-weight: bold;
 }
 
+/**
+* Deals
+*/
+
 .deal_listing:hover{
 	cursor:pointer;
 }
 
 .deal_content{
-	padding:5px;
+	padding:10px 5px;
 	position:relative;
 }
 
@@ -524,4 +528,70 @@ a.deal_listing{
 	color:#4d4d4d;
 	text-decoration:none;
 	display:block;
+}
+
+/**
+* Deal Details
+*/
+.deal_view .white_mod_694_content{
+	padding:0 10px;
+}
+
+
+.deal_view .container_30 .grid_18{
+	width:570px;
+}
+.thumb_nails img{
+    border: 3px solid #CCCCCC;
+    clear: both;
+    margin: 0 0 11px;
+}
+
+.venue_name{
+    font-weight: bold;
+    margin: 0 0 5px;
+}
+
+.venue_contacts{
+	margin:0;
+}
+
+.venue_contacts li{
+    border-top: 1px solid #CCCCCC;
+    list-style: none outside none;
+    margin: 5px 0 0;
+    padding: 5px 0;
+}
+
+
+.venue_contacts li.venue_email{
+    background: url("../img/site/email_icon.png") no-repeat scroll 0 8px transparent;
+    padding-left: 23px;
+}
+
+.venue_contacts li.venue_website{
+    background: url("../img/site/website_icon.png") no-repeat scroll 0 8px transparent;
+    padding-left: 23px;
+}
+.venue_contacts li a{
+	text-decoration:none;
+}
+
+.highlight_list ul{
+	list-style:none;
+	margin:0;
+}
+
+.highlight_list ul li{
+    background: url("../img/site/highlight_bullet.png") no-repeat scroll 0 4px transparent;
+    margin: 5px 0 15px 0;
+    padding-left: 15px;
+}
+
+#things_to_do img{
+	margin-bottom:5px;
+}
+.things_to_do_content{
+    margin: 10px 0;
+    padding: 0 7px;
 }

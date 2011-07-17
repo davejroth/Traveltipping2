@@ -26,10 +26,16 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div id="deal_view_details"  class="white_mod_694_wrap deal_listing">
 		<div class="white_mod_694_top"></div>
 		<div class="white_mod_694_content clearfix">
-			<div class="thumb_nails">
-					<?php echo $this->Html->image('/img/deals/deal-detail-1-tmb.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'))?>
+			<div class="thumb_nails grid_3">
+					<?php 
+					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					?>
 			</div>
-			<?php echo $this->Html->image('/img/deals/deal-detail-1.png', array('class'=>'grid_18 omega','alt' => 'Featured Deal Image'))?>
+			<?php echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_18 omega','alt' => 'Featured Deal Image'))?>
 			
 			<div id="book_now_bar" class="blue_rounded_mod clearfix grid_21 alpha omega">
 				<h3 class="grid_12"><?php echo $deal['Deal']['title']; ?></h3>
@@ -69,13 +75,14 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 				<?php echo $deal['Deal']['description']; ?>
 				
 				<h3>The Fine Print</h3>
-				<?php echo $deal['Deal']['details']; ?>
+				<?php echo $deal['Deal']['fine_print']; ?>
 			</div>
 			<div class="grid_7">
 				<div class="highlights_mod">
 				<h3>Highlights</h3>
+				<div class="highlight_list">
 					<?php echo $deal['Deal']['highlights']; ?>
-					
+				</div>
 				</div>
 			</div>
 		</div>
@@ -88,16 +95,22 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div class="white_mod_246_content clearfix">
 		<h3 class="module_title">About Your Host</h3>
 		<div class="module_content">
-			<?php echo $deal['Deal']['about_host']; ?>
+			<p class="venue_name"><?php echo $deal['Deal']['venue_name']; ?></p>
+			<?php echo $deal['Deal']['venue_info']; ?>
+			<ul class="venue_contacts">
+				<li class="venue_email"><?php echo $this->Html->link($deal['Deal']['venue_email'],'mailto:'.$deal['Deal']['venue_email']) ?></li>
+				<li class="venue_website"><?php echo $this->Html->link($deal['Deal']['venue_website'], $deal['Deal']['venue_website']) ?></li>
+			</ul>
 		</div>
 	</div>
 </div>
 
-<div  class="white_mod_246_wrap deal_listing">
+<div id="things_to_do"  class="white_mod_246_wrap">
 	<div class="white_mod_246_top"></div>
 	<div class="white_mod_246_content clearfix">
 		<h3 class="module_title">Things To Do</h3>
 		<div class="module_content">
+			<?php echo $deal['Deal']['things_to_do']; ?>
 		</div>
 	</div>
 </div>
@@ -106,7 +119,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div class="white_mod_246_top"></div>
 	<div class="white_mod_246_content clearfix">
 		<h3 class="module_title">Getting There</h3>
-		<div class="module_content">
+		<div class="module_content_white">
 			<?php echo $deal['Deal']['getting_there']; ?>
 		</div>
 	</div>

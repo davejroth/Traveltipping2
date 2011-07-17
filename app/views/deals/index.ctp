@@ -1,4 +1,8 @@
-<?php debug($this->data); ?>
+<?php 
+//debug($this->Session); 
+//debug($deals); 
+
+?>
 
 <div id="layout_left" class="grid_22">
 <div class="filter_bar">
@@ -32,10 +36,10 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 			<div>
 				<?php echo $this->Html->image("/img/listing/$image", array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
 				<div class="grid_12 push_1">
-					<h3 class="listing_desination_title">Tuscany, Italy</h3>
+					<h3 class="listing_desination_title"><?php echo $deal['Deal']['destination']; ?></h3>
 					<p class="listing_deal_description"><?php echo $deal['Deal']['title']; ?></p>
 					<p class="listing_prices grid_5"><?php echo __('Your Price: $').(int)$deal['Deal']['discounted_price']; ?></p>
-					<p class="listing_prices grid_5"><?php echo __('Original Value: $').(int)$deal['Deal']['original_price']; ?></p>
+					<p class="listing_prices grid_6"><?php echo __('Original Value: $').(int)$deal['Deal']['original_price']; ?></p>
 					<div class="progressbar">
 						<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
 					</div>

@@ -9,20 +9,14 @@
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-		$this->AssetCompress->css(array(
-			'reset',
-			'layout',
-			'default',
-			'generic',
-			'site',
-			'helper'
-		));
-		$this->AssetCompress->script('jquery');
+		echo $this->Html->css('styles');
+		echo $this->Html->script('jquery');
+		echo $this->Html->script('site');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;
 	?>
 </head>
-<body>
+<body class="deal_view">
 	<div id="layout_container">
 		<div id="layout_header">
 			<?php echo $this->element('header'); ?>
