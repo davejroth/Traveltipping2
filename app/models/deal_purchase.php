@@ -20,6 +20,22 @@ class DealPurchase extends AppModel {
 		)
 	);
 	
+		var $hasMany = array(
+		'Passenger' => array(
+			'className' => 'Passenger',
+			'foreignKey' => 'deal_purchase_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+	
 		var $virtualFields = array(
     'nights' => 'DATEDIFF(end_date, start_date)'
 	);

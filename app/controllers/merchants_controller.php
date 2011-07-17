@@ -4,6 +4,10 @@ class MerchantsController extends AppController {
 	var $name = 'Merchants';
 	var $components = array('Email', 'Notification');
 	
+	var $paginate = array(
+		'DealPurchase' => array('limit' => 2)
+		);
+	
 /*
  * Takes the id of a user_detail and calls Notification to send an email to them
  */
@@ -107,15 +111,20 @@ class MerchantsController extends AppController {
 * View reservations from all merchant deals
 *
 */
-	function reservations(){
-		$this->loadModel('DealPurchase');
-		$reservations = $this->Paginate('DealPurchase');
-		//$reservations = $this->DealPurchase->find('all');
-		$count = count($reservations);
-
+	function reservations($id = null){
+		$this->loadModel('Deal');
+		$deal = $this->Deal->read(null, $id);
 		
-		$this->set(compact('reservations'));
-		
+		if($deal['Deal']['reservation_type_id'] != 3) {
+			$this->loadModel('DealPurchase');
+			//$this->Paginate = array('limit' => 2);
+			$reservations = $this->Paginate('DealPurchase');	
+		}
+		elseif($deal['Deal']['reservation_type_id'] == 3) {
+			$this->loadModel('Passenger');
+			$reservations = $this->Paginate('Passenger');
+		}
+		$this->set(compact('reservations', 'deal'));
 	}
 /**
 * Merchant Signup
