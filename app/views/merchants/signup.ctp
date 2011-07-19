@@ -29,7 +29,7 @@
 		echo $this->Form->input('Merchant.last_name');
 		echo $this->Form->input('User.email');
 		echo $this->Form->input('Merchant.phone');
-		echo $this->Form->input('User.password');
+		echo $this->Form->input('User.password', array('value' => ''));
 		echo $this->Form->input('User.confirm_password',array('type' => 'password'));
     ?>
 	</div>
@@ -37,7 +37,7 @@
  
     
  
-<?php echo $this->Form->end(array('value'=>'','class'=>'update_account_btn')); echo "Fix my button.  After signing up, should you be logged in?"; ?>
+<?php echo $this->Form->end(array('value'=>'','class'=>'update_account_btn')); ?>
 	
 </div><!-- layout_left -->
 

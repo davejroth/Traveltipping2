@@ -44,17 +44,50 @@ class Merchant extends AppModel {
 		)
 	);
 	
-	public $validate = array (
-			'first_name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			)
-		)
+var $validate = array(
+		'business_name' => array(
+			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter a name for your business',),
+		),
+		'business_type_id' => array(
+			'numeric' => array('rule' => array('numeric')),
+		),
+		'address' => array(
+			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter an address',),
+		),
+		'second_address' => array(
+			//Second address field is optional
+			//'notempty' => array('rule' => array('notempty'),'message' => 'Please enter a state or province',),
+		),
+		'city' => array(
+			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter a city',),
+		),
+		'state' => array(
+			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter a state or province',),
+		),
+		'postal_code' => array(
+			'postal' => array('rule' => array('postal'), 'message' => 'Please enter a valid zip',),
+		),
+		'country_id' => array(
+			'numeric' => array('rule' => array('numeric')),
+		),
+		'website' => array(
+			//Website field is optional
+			//'url' => array('rule' => array('url'),'message' => 'Please enter a valid url',),
+		),
+		'first_name' => array(
+			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter your first name'),
+		),
+		'last_name' => array(
+			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter your last name',),
+		),
+		'phone' => array(
+			//Allow empty phone numbers or various formatting
+			//'phone' => array('rule' => array('phone'),'message' => 'Please enter your phone number',),
+		),
+		'user_id' => array(
+			'numeric' => array('rule' => array('numeric')),
+		),
 	);
+
 
 }
