@@ -35,16 +35,10 @@ class TravelersController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Traveler->read(null, $id);
 		}
-		$errors = $this->Traveler->invalidFields();
-		$users = $this->Traveler->User->find('list');
-		$states = $this->Traveler->State->find('list');
-		$this->set(compact('users', 'states', 'errors'));
-		$this->set('traveler', $this->Traveler->read(null, $id));
 	}
 	
 	function signup() {
 		if (!empty($this->data)) {
-			
 			$this->Traveler->User->create();
 			$this->Traveler->create();
 

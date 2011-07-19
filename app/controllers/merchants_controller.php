@@ -47,9 +47,8 @@ class MerchantsController extends AppController {
 			$this->data = $this->Merchant->read(null, $id);
 		}
 		$countries = $this->Merchant->Country->find('list');
-		//$users = $this->Merchant->User->find('list');
 		$businessTypes = $this->Merchant->BusinessType->find('list');
-		$this->set(compact('countries', 'users', 'businessTypes'));
+		$this->set(compact('countries', 'businessTypes'));
 	}
 
 
@@ -117,7 +116,7 @@ class MerchantsController extends AppController {
 		
 		if($deal['Deal']['reservation_type_id'] != 3) {
 			$this->loadModel('DealPurchase');
-			//$this->Paginate = array('limit' => 2);
+			//$this->Paginate = array('limit' => 2);  This should work but for some reason it needs to be set as a class var
 			$reservations = $this->Paginate('DealPurchase');	
 		}
 		elseif($deal['Deal']['reservation_type_id'] == 3) {

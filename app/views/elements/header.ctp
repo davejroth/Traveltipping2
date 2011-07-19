@@ -35,7 +35,8 @@
 									'class'=>'subscribe_form'
 								)
 							); 
-							echo $this->Form->input('email',array('value'=>'enter your email...'));
+							//This input should not be just "email" because the validation rules display for the traveler signup page 
+							echo $this->Form->input('subscribe_email',array('value'=>'enter your email...'));
 							echo $this->Form->end('subscribe');
 						?>
 						<?php echo $this->Html->tag('h3', 'Never Miss an Opportunity to Travel.', array('class' => 'cta_text'));?>

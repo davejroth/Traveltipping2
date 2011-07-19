@@ -37,10 +37,14 @@ class Traveler extends AppModel {
 		)
 	);
 	
+	//These rules should be expanded to protect against SQL injection
 	public $validate = array(
 		'first_name' => array(
-            'nameCheck' => array('rule' => 'notEmpty','message' => ' field cannot be left blank.')
-        ) 
+            'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter your first name.'),
+		),
+		'last_name' => array(
+            'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter your last name.')
+        )
 	); 
 }
 ?>
