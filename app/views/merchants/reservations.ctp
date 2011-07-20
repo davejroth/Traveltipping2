@@ -1,8 +1,16 @@
+<?php echo $this->Html->script('jquery'); 
+		$this->Paginator->options(array(
+			'update' => '#content',
+			'evalScripts' => true
+		));?>
+
 <div id="layout_left" class="grid_22">
 	<div class="blue_rounded_mod clearfix">
 	
 	</div>
-<?php if($deal['Deal']['reservation_type_id'] != 3) { //Print page for deal type 1 and 2?>
+<?php if($deal['Deal']['reservation_type_id'] != 3) { //Print page for deal type 1 and 2
+echo $chosenDate;
+echo $form->input('dateChosen',array('type'=>'select','options'=>$dates));?>
 <table>
 	<tr> 
 		<th><?php echo "#"; ?></th> 
@@ -13,7 +21,9 @@
 		<th><?php echo $this->Paginator->sort('Check-In', 'start_date'); ?></th>
 		<th><?php echo $this->Paginator->sort('Check-Out', 'end_date'); ?></th> 
 	</tr> 
-	   <?php $count = 1;
+	   <?php 	$count = $this->Paginator->counter(array(
+	'format' => __('%start%', true)
+	));
 			foreach($reservations as $reservation): ?> 
 	<tr> 
 		<td><?php echo $count; $count++;?> </td> 
@@ -57,10 +67,13 @@
 	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 	));
 	?>	</p>
+<div id="pagination">
 <?php echo $this->Paginator->prev('<< ', array(), null, array('class'=>'disabled'));?>
 <!-- Shows the page numbers --><?php echo $this->Paginator->numbers(); ?>
 <!-- Shows the next and previous links -->
 <?php echo $this->Paginator->next(' >>', array(), null, array('class' => 'disabled'));?>
+</div>
+<?php echo $this->Js->writeBuffer(); ?>
 
 </div><!-- layout_left -->
 

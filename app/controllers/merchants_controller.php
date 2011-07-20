@@ -2,10 +2,12 @@
 class MerchantsController extends AppController {
 
 	var $name = 'Merchants';
-	var $components = array('Email', 'Notification');
+	var $components = array('Email', 'Notification', 'RequestHandler');
+	var $helpers = array('JavaScript', 'Html', 'Form');
+
 	
 	var $paginate = array(
-		'DealPurchase' => array('limit' => 2)
+		'DealPurchase' => array('limit' => 10)
 		);
 	
 /*
@@ -110,20 +112,29 @@ class MerchantsController extends AppController {
 * View reservations from all merchant deals
 *
 */
-	function reservations($id = null){
+	function reservations($id = null, $chosenDate = null){
 		$this->loadModel('Deal');
 		$deal = $this->Deal->read(null, $id);
+
+
+		$dates = array();
+		for ($i = 1; $i<=31; $i++) {
+			$dates['2011-6-'. $i] = '2011-6-' . $i;
+		}
+		//$chosenDate = '2011-6-11';
+		$conditions = array('start_date <=' => $chosenDate, 'end_date >=' => $chosenDate);
 		
 		if($deal['Deal']['reservation_type_id'] != 3) {
 			$this->loadModel('DealPurchase');
 			//$this->Paginate = array('limit' => 2);  This should work but for some reason it needs to be set as a class var
-			$reservations = $this->Paginate('DealPurchase');	
+			
+			$reservations = $this->Paginate('DealPurchase', $conditions);	
 		}
 		elseif($deal['Deal']['reservation_type_id'] == 3) {
 			$this->loadModel('Passenger');
 			$reservations = $this->Paginate('Passenger');
 		}
-		$this->set(compact('reservations', 'deal'));
+		$this->set(compact('reservations', 'deal', 'dates', 'chosenDate'));
 	}
 /**
 * Merchant Signup
@@ -155,6 +166,9 @@ class MerchantsController extends AppController {
 		$this->set(compact('countries', 'users', 'businessTypes'));
 	}
 	
+	function reservation_paginate() {
+	
+	}
 	
 	
 }
