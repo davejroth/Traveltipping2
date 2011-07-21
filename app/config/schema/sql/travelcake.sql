@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2011 at 11:46 AM
+-- Generation Time: Jul 21, 2011 at 12:23 AM
 -- Server version: 5.1.41
--- PHP Version: 5.3.1 
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -694,18 +694,10 @@ CREATE TABLE IF NOT EXISTS `deals` (
   `image4` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image5` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image6` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `venue_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `venue_email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `venue_website` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address1` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address2` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `city` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `state` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `postal_code` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `country_id` bigint(20) unsigned NOT NULL,
   `deal_status_id` bigint(20) DEFAULT NULL,
   `merchant_id` bigint(20) unsigned NOT NULL,
   `reservation_type_id` bigint(20) unsigned NOT NULL,
+  `venue_id` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
@@ -713,8 +705,8 @@ CREATE TABLE IF NOT EXISTS `deals` (
 -- Dumping data for table `deals`
 --
 
-INSERT INTO `deals` (`id`, `created`, `modified`, `name`, `title`, `slug`, `description`, `fine_print`, `highlights`, `venue_info`, `getting_there`, `things_to_do`, `destination`, `original_price`, `discounted_price`, `deal_live`, `deal_close`, `deal_valid`, `deal_expire`, `is_timed`, `max_purchases`, `max_nights`, `flat_fee`, `comission_percentage`, `private_note`, `image1`, `image2`, `image3`, `image4`, `image5`, `image6`, `venue_name`, `venue_email`, `venue_website`, `address1`, `address2`, `city`, `state`, `postal_code`, `country_id`, `deal_status_id`, `merchant_id`, `reservation_type_id`) VALUES
-(1, '2011-07-16 10:30:56', '2011-07-16 10:30:56', 'Deal 1', 'Awesome Trip', 'deal1', 'This is the Description', 'This is the Fine Print', '<ul>\r\n<li>HIghtlight 1</li>\r\n<li>HIghtlight 2</li>\r\n<li>HIghtlight 3</li>\r\n</ul>', 'This is the host info', '<p><strong>Plane</strong></p>\r\n<p>\r\nLorem ipsum dolor sit amet, con\r\nsectetur adipiscing elit. Aenean\r\nscelerisque, quam ut viverra sec\r\ntetur, nibh tellus ultrices metus,\r\nac vestibulu neque massa qu.</p>', '<div class="slide">\r\n<img src="/img/static/things_to_do1.png" />\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>ctetur adipiscing elit. Aenean sce\r\nris que, quam ut viverra consecte\r\nur, nibh tellus ultrices metus, ac \r\nvestibuluneque massa quis arcu. \r\nNulla sagittis blandit ante. Morbi \r\nmassa id libero tempor fringilla. \r\nSed quis fringilla enim</p>\r\n</div>\r\n</div>', 'Paris, France', 100.00, 50.00, '2011-07-22', '2011-07-30', '2011-08-16', '2011-10-16', 0, 25, NULL, NULL, 10.00, '', '', '', '', '', '', '', 'Hotel Motel', 'someone@hotel.com', 'www.website.com', '123 Hotel St.', '', 'Paris', '', '', 1, 1, 13, 1);
+INSERT INTO `deals` (`id`, `created`, `modified`, `name`, `title`, `slug`, `description`, `fine_print`, `highlights`, `venue_info`, `getting_there`, `things_to_do`, `destination`, `original_price`, `discounted_price`, `deal_live`, `deal_close`, `deal_valid`, `deal_expire`, `is_timed`, `max_purchases`, `max_nights`, `flat_fee`, `comission_percentage`, `private_note`, `image1`, `image2`, `image3`, `image4`, `image5`, `image6`, `deal_status_id`, `merchant_id`, `reservation_type_id`, `venue_id`) VALUES
+(1, '2011-07-16 10:30:56', '2011-07-16 10:30:56', 'Deal 1', 'Awesome Trip', 'deal1', 'This is the Description', 'This is the Fine Print', '<ul>\r\n<li>HIghtlight 1</li>\r\n<li>HIghtlight 2</li>\r\n<li>HIghtlight 3</li>\r\n</ul>', 'This is the host info', '<p><strong>Plane</strong></p>\r\n<p>\r\nLorem ipsum dolor sit amet, con\r\nsectetur adipiscing elit. Aenean\r\nscelerisque, quam ut viverra sec\r\ntetur, nibh tellus ultrices metus,\r\nac vestibulu neque massa qu.</p>', '<div class="slide">\r\n<img src="/img/static/things_to_do1.png" />\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>ctetur adipiscing elit. Aenean sce\r\nris que, quam ut viverra consecte\r\nur, nibh tellus ultrices metus, ac \r\nvestibuluneque massa quis arcu. \r\nNulla sagittis blandit ante. Morbi \r\nmassa id libero tempor fringilla. \r\nSed quis fringilla enim</p>\r\n</div>\r\n</div>', 'Paris, France', 100.00, 50.00, '2011-07-22', '2011-07-30', '2011-08-16', '2011-10-16', 0, 25, NULL, NULL, 10.00, '', '', '', '', '', '', '', 1, 13, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -944,7 +936,7 @@ CREATE TABLE IF NOT EXISTS `merchants` (
 
 INSERT INTO `merchants` (`id`, `created`, `modified`, `about_us`, `website`, `business_reviews`, `business_name`, `city`, `postal_code`, `address`, `second_address`, `user_id`, `state`, `first_name`, `last_name`, `phone`, `country_id`, `business_type_id`) VALUES
 (11, '2011-04-14 18:17:51', '2011-06-07 19:36:35', 'We are a fantastic company', 'http://www.test.com', 'They are great!', 'Awesome Get Aways', 'Oakland', '937891', '788 Nevah!', 'My 2nd address', 21, 'CA', '', '', '', 1, 0),
-(13, '2011-06-16 19:14:24', '2011-07-11 21:25:53', 'We are...the B Bizzle!', 'bbizzle.com', 'They''re bizzlin!', 'The B Bizzle', 'San Francico', '94618', '6616 Ave', '', 24, 'California', 'Buster', 'Blackmail', '+1 01 23 490', 1, 2);
+(13, '2011-06-16 19:14:24', '2011-07-19 23:21:19', 'We are...the B Bizzle!', 'bbizzle.com', 'They''re bizzlin!', 'The B Bizzle', 'San Francico', '94618', '6616 Ave', '', 24, '', 'Buster', 'Blackmail', '+1 01 23 490', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -1110,7 +1102,43 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `role_id`, `password`, `name`, `email`, `website`, `activation_key`, `image`, `bio`, `timezone`, `status`, `updated`, `created`) VALUES
 (20, 1, 'aa361d06c20a989716f6747d0041a47f90bbf920', 'Admin', 'admin@traveltipping.com', '', '', '', '', '', 1, '2011-05-27 23:49:06', '2011-05-27 23:49:06'),
 (22, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'traveler@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-06-29 20:27:15', '2011-06-14 08:31:52'),
-(24, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'bamboozle3@thabiz.com', NULL, '', NULL, NULL, '0', 1, '2011-07-11 21:25:53', '2011-06-16 19:14:24');
+(24, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'bamboozle3@thabiz.com', NULL, '', NULL, NULL, '0', 1, '2011-07-19 23:21:19', '2011-06-16 19:14:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `venues`
+--
+
+CREATE TABLE IF NOT EXISTS `venues` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `website` varchar(100) DEFAULT NULL,
+  `address1` varchar(100) DEFAULT NULL,
+  `address2` varchar(100) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `postal_code` varchar(100) DEFAULT NULL,
+  `country_id` bigint(20) unsigned NOT NULL,
+  `business_type_id` bigint(20) unsigned NOT NULL,
+  `merchant_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `venues`
+--
+
+INSERT INTO `venues` (`id`, `created`, `modified`, `name`, `email`, `website`, `address1`, `address2`, `city`, `state`, `postal_code`, `country_id`, `business_type_id`, `merchant_id`) VALUES
+(1, NULL, NULL, 'Hotel Motel', 'hotel@hotel.com', 'www.website.com', NULL, NULL, 'Paris', NULL, '43563', 1, 0, 13),
+(2, '2011-07-20 22:08:43', '2011-07-20 22:08:43', 'Venue 1', 'venue1@tt.com', 'www.venue1.com', NULL, NULL, NULL, NULL, NULL, 0, 0, 13),
+(3, '2011-07-20 22:10:59', '2011-07-20 22:10:59', 'Venue 1', 'venue1@tt.com', 'www.venue1.com', 'Test', '', 'sd', 'ca', '12345', 0, 0, 0),
+(4, '2011-07-20 22:13:29', '2011-07-20 22:13:29', 'Venue 2', 'venue2@tt.com', 'www.venue14.com', 'Test', '', 'sd', 'ca', '12345', 0, 0, 13),
+(5, '2011-07-21 00:13:31', '2011-07-21 00:13:31', 'Venue 3', 'venue2@tt.com', 'www.travel.com', '2314', '', 'sd', 'ca', '3421', 0, 0, 0),
+(6, '2011-07-21 00:17:22', '2011-07-21 00:17:22', 'Hotel 1', 'venue1@tt.com', 'www.travel.com', '23144', '', 'sf', 'ca', '123456', 8, 1, 13);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
