@@ -31,7 +31,7 @@
         echo $this->Form->input('city', array('label'=>'City:',"value"=>"$city"));
         echo $this->Form->input('state', array('label'=>'State:',"value"=>"$state"));
         echo $this->Form->input('postal_code', array('label'=>'Postal Code:',"value"=>"$postal_code"));
-        echo $this->Form->input('country', array('label'=>'Country:',"value"=>"$country"));
+        echo $this->Form->input('country');
         echo $this->Form->input('website', array('label'=>'Website:',"value"=>"$website"));
     ?>
 	

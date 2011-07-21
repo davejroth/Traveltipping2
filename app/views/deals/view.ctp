@@ -1,5 +1,5 @@
 <?php 
-
+//debug($deal);
 $this->layout = 'deal_view'; 
 
 $image = $deal['Deal']['image1'];
@@ -95,11 +95,11 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div class="white_mod_246_content clearfix">
 		<h3 class="module_title">About Your Host</h3>
 		<div class="module_content">
-			<p class="venue_name"><?php echo $deal['Deal']['venue_name']; ?></p>
+			<p class="venue_name"><?php echo $deal['Venue']['name']; ?></p>
 			<?php echo $deal['Deal']['venue_info']; ?>
 			<ul class="venue_contacts">
-				<li class="venue_email"><?php echo $this->Html->link($deal['Deal']['venue_email'],'mailto:'.$deal['Deal']['venue_email']) ?></li>
-				<li class="venue_website"><?php echo $this->Html->link($deal['Deal']['venue_website'], $deal['Deal']['venue_website']) ?></li>
+				<li class="venue_email"><?php echo $this->Html->link($deal['Venue']['email'],'mailto:'.$deal['Venue']['email']) ?></li>
+				<li class="venue_website"><?php echo $this->Html->link($deal['Venue']['website'], $deal['Venue']['website']) ?></li>
 			</ul>
 		</div>
 	</div>

@@ -18,8 +18,8 @@ class Country extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'Deal' => array(
-			'className' => 'Deal',
+		'Venue' => array(
+			'className' => 'Venue',
 			'foreignKey' => 'country_id',
 			'dependent' => false,
 			'conditions' => '',

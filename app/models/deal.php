@@ -5,9 +5,9 @@ class Deal extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'Merchant' => array(
-			'className' => 'Merchant',
-			'foreignKey' => 'merchant_id',
+		'Venue' => array(
+			'className' => 'Venue',
+			'foreignKey' => 'venue_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -22,13 +22,6 @@ class Deal extends AppModel {
 		'ReservationType' => array(
 			'className' => 'ReservationType',
 			'foreignKey' => 'reservation_type_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Country' => array(
-			'className' => 'Country',
-			'foreignKey' => 'country_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

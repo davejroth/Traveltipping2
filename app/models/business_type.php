@@ -17,6 +17,19 @@ class BusinessType extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
+		),
+		'Venue' => array(
+			'className' => 'Venue',
+			'foreignKey' => 'business_type_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 
