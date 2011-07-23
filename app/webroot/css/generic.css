@@ -60,7 +60,7 @@ label{
 	clear:both;	
 }
 
-.text,.password{
+.text,.password,.select{
     margin: 15px 0;
 }
 
@@ -84,6 +84,15 @@ label{
     width: 245px;
 }
 
+.input label span{
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#VenueInitiateForm .input label{
+	font-size:12px;
+}
 
 
 /* +++++++++++++++++ END Form Styles +++++++++++++++++ */
@@ -322,6 +331,17 @@ label{
 
 .update_account_btn{
     background: url("../img/site/btn_update_account.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: right;
+    font-size: 0;
+    height: 46px;
+    margin: 5px 15px 0 0;
+    width: 191px;
+}
+
+.create_deal_btn{
+    background: url("../img/site/btn_create_deal.png") no-repeat scroll 0 0 transparent;
     border: medium none;
     display: block;
     float: right;

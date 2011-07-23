@@ -29,5 +29,10 @@
     ?>
 	</div>
 	
-	<?php echo $this->Form->end(__('Submit', true));?>
+	<?php echo $this->Form->end(array('value'=>'','class'=>'create_deal_btn')); ?>
 </div><!-- layout_left -->
+
+<div id="layout_right" class="grid_8">
+<?php echo $this->element('manage_account'); ?>
+
+</div><!-- #layout_right -->
