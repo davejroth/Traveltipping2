@@ -104,11 +104,14 @@ class MerchantsController extends AppController {
 		$this->loadModel('Deal');
 		if (!empty($this->data)) {
 			$this->Deal->create();
-			if ($this->Venue->save($this->data)) {
-				$this->Session->setFlash(__('The venue has been saved', true));
+			$this->data['Deal']['venue_id'] = $this->data['Venue']['id'];
+			$this->data['Deal']['merchant_id'] = $this->Session->read('Merchant.id');
+			$this->data['Deal']['deal_status_id'] = Configure::Read('Deal.Status_Initiated');
+			if ($this->Deal->save($this->data,false)) {
+				$this->Session->setFlash(__('The Deal has been saved', true));
 				$this->redirect(array('action' => 'deals','upcoming'));
 			} else {
-				$this->Session->setFlash(__('The venue could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 			}
 		}
 		if (empty($this->data)) {
