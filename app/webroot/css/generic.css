@@ -60,7 +60,10 @@ label{
 	clear:both;	
 }
 
-.text,.password,.select{
+.text,
+.password,
+.select,
+.checkbox{
     margin: 15px 0;
 }
 
@@ -90,8 +93,52 @@ label{
     font-weight: bold;
 }
 
+.checkbox{
+	display:block;
+}
+
+.checkbox input,
+.checkbox label{
+	float:left;
+}
+
 #VenueInitiateForm .input label{
 	font-size:12px;
+}
+
+.add_deal{
+	padding:0 15px;
+}
+.add_deal .input{
+    float: left;
+    margin-right: 30px;
+    width:275px;
+}
+
+.add_deal fieldset{
+    border-bottom: 1px solid #CCCCCC;
+    clear: both;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+.add_deal fieldset legend{
+	font-weight:bold;
+}
+.add_deal .textarea{
+    clear: both;
+    float: none;
+    margin: 15px 0;
+}
+
+.textarea label{
+	display:block;
+	margin-bottom:5px;
+}
+
+.field_row{
+	clear:both;
+	margin:5px 0;
 }
 
 
@@ -381,7 +428,7 @@ label{
 }
 
 
-.checkbox{
+#DealIndexForm .checkbox{
     background: url("../img/site/checkbox_sprite.png") no-repeat scroll 0 -18px transparent;
     height: 17px;
     width: 17px;
