@@ -128,13 +128,14 @@ class DealsController extends AppController {
 				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 			}
 		}
-		$merchants = $this->Deal->Merchant->find('list');
+		$merchants = $this->Deal->Venue->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$countries = $this->Deal->Country->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
+		$countries = $this->Deal->Venue->Country->find('list');
+		$venues = $this->Deal->Venue->find('list');
+		$this->set(compact('venues','merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
 		 $this->layout = 'admin';
 	
 	}
