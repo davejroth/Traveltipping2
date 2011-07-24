@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2011 at 11:46 AM
+-- Generation Time: Jul 23, 2011 at 08:04 PM
 -- Server version: 5.1.41
--- PHP Version: 5.3.1 
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -288,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `aros` (
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `aros`
@@ -302,8 +302,9 @@ INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (17, NULL, 'User', 22, NULL, 27, 28),
 (18, NULL, 'User', 23, NULL, 29, 30),
 (19, NULL, 'Role', 5, NULL, 31, 32),
-(20, NULL, 'User', 24, NULL, 35, 36),
-(21, NULL, 'Role', 6, NULL, 33, 34);
+(20, NULL, 'User', 24, NULL, 37, 38),
+(21, NULL, 'Role', 6, NULL, 33, 36),
+(22, 21, 'User', 25, NULL, 34, 35);
 
 -- --------------------------------------------------------
 
@@ -714,7 +715,7 @@ CREATE TABLE IF NOT EXISTS `deals` (
 --
 
 INSERT INTO `deals` (`id`, `created`, `modified`, `name`, `title`, `slug`, `description`, `fine_print`, `highlights`, `venue_info`, `getting_there`, `things_to_do`, `destination`, `original_price`, `discounted_price`, `deal_live`, `deal_close`, `deal_valid`, `deal_expire`, `is_timed`, `max_purchases`, `max_nights`, `flat_fee`, `comission_percentage`, `private_note`, `image1`, `image2`, `image3`, `image4`, `image5`, `image6`, `venue_name`, `venue_email`, `venue_website`, `address1`, `address2`, `city`, `state`, `postal_code`, `country_id`, `deal_status_id`, `merchant_id`, `reservation_type_id`) VALUES
-(1, '2011-07-16 10:30:56', '2011-07-16 10:30:56', 'Deal 1', 'Awesome Trip', 'deal1', 'This is the Description', 'This is the Fine Print', '<ul>\r\n<li>HIghtlight 1</li>\r\n<li>HIghtlight 2</li>\r\n<li>HIghtlight 3</li>\r\n</ul>', 'This is the host info', '<p><strong>Plane</strong></p>\r\n<p>\r\nLorem ipsum dolor sit amet, con\r\nsectetur adipiscing elit. Aenean\r\nscelerisque, quam ut viverra sec\r\ntetur, nibh tellus ultrices metus,\r\nac vestibulu neque massa qu.</p>', '<div class="slide">\r\n<img src="/img/static/things_to_do1.png" />\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>ctetur adipiscing elit. Aenean sce\r\nris que, quam ut viverra consecte\r\nur, nibh tellus ultrices metus, ac \r\nvestibuluneque massa quis arcu. \r\nNulla sagittis blandit ante. Morbi \r\nmassa id libero tempor fringilla. \r\nSed quis fringilla enim</p>\r\n</div>\r\n</div>', 'Paris, France', 100.00, 50.00, '2011-07-22', '2011-07-30', '2011-08-16', '2011-10-16', 0, 25, NULL, NULL, 10.00, '', '', '', '', '', '', '', 'Hotel Motel', 'someone@hotel.com', 'www.website.com', '123 Hotel St.', '', 'Paris', '', '', 1, 1, 13, 1);
+(1, '2011-07-16 10:30:56', '2011-07-16 10:30:56', 'Deal 1', 'Awesome Trip', 'deal1', 'This is the Description', 'This is the Fine Print', '<ul>\r\n<li>HIghtlight 1</li>\r\n<li>HIghtlight 2</li>\r\n<li>HIghtlight 3</li>\r\n</ul>', 'This is the host info', '<p><strong>Plane</strong></p>\r\n<p>\r\nLorem ipsum dolor sit amet, con\r\nsectetur adipiscing elit. Aenean\r\nscelerisque, quam ut viverra sec\r\ntetur, nibh tellus ultrices metus,\r\nac vestibulu neque massa qu.</p>', '<div class="slide">\r\n<img src="/img/static/things_to_do1.png" />\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>ctetur adipiscing elit. Aenean sce\r\nris que, quam ut viverra consecte\r\nur, nibh tellus ultrices metus, ac \r\nvestibuluneque massa quis arcu. \r\nNulla sagittis blandit ante. Morbi \r\nmassa id libero tempor fringilla. \r\nSed quis fringilla enim</p>\r\n</div>\r\n</div>', 'Paris, France', 100.00, 50.00, '2011-03-22', '2011-04-30', '2011-05-01', '2011-07-30', 0, 25, NULL, NULL, 10.00, '', '', '', '', '', '', '', 'Hotel Motel', 'someone@hotel.com', 'www.website.com', '123 Hotel St.', '', 'Paris', '', '', 1, 1, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -784,14 +785,15 @@ CREATE TABLE IF NOT EXISTS `deal_availabilities` (
   `reservation_date` date DEFAULT NULL,
   `num_available` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `deal_availabilities`
 --
 
 INSERT INTO `deal_availabilities` (`id`, `created`, `modified`, `deal_id`, `reservation_date`, `num_available`) VALUES
-(2, '2011-05-18 05:55:12', '2011-05-18 05:55:12', 1, '2011-05-19', 10);
+(2, '2011-05-18 05:55:12', '2011-05-18 05:55:12', 1, '2011-05-13', 10),
+(3, '2011-07-21 20:00:26', '2011-07-21 20:00:26', 1, '2011-05-14', 5);
 
 -- --------------------------------------------------------
 
@@ -816,12 +818,8 @@ CREATE TABLE IF NOT EXISTS `deal_purchases` (
 --
 
 INSERT INTO `deal_purchases` (`id`, `created`, `modified`, `deal_id`, `traveler_id`, `confirmation_code`, `start_date`, `end_date`) VALUES
-(33, '2011-05-11 20:29:29', '2011-05-11 20:29:29', 1, 3, NULL, '2011-05-11', '2011-05-11'),
-(34, '2011-05-11 20:41:46', '2011-05-11 20:41:46', 2, 11, 'a2335fb3', '2011-05-11', '2011-05-11'),
-(35, '2011-05-11 20:43:49', '2011-05-11 20:43:49', 4, 8, '32b72621a2', '2011-05-11', '2011-05-11'),
-(36, '2011-06-11 09:44:06', '2011-06-11 09:44:06', 3, 3, '207caa3063', '2011-06-11', '2011-06-13'),
-(37, '2011-06-11 09:44:22', '2011-06-11 09:44:22', 3, 8, '304351097f', '2011-06-11', '2011-06-18'),
-(38, '2011-06-11 09:44:42', '2011-06-11 09:44:42', 3, 3, '354c6642d5', '2011-06-15', '2011-06-20');
+(37, '2011-06-11 09:44:22', '2011-06-11 09:44:22', 1, 8, '304351097f', '2011-06-11', '2011-06-18'),
+(38, '2011-06-11 09:44:42', '2011-06-11 09:44:42', 1, 3, '354c6642d5', '2011-06-15', '2011-06-20');
 
 -- --------------------------------------------------------
 
@@ -949,6 +947,34 @@ INSERT INTO `merchants` (`id`, `created`, `modified`, `about_us`, `website`, `bu
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `passengers`
+--
+
+CREATE TABLE IF NOT EXISTS `passengers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `birthday` date NOT NULL,
+  `country_id` bigint(20) unsigned NOT NULL,
+  `is_primary` tinyint(1) DEFAULT NULL,
+  `deal_purchase_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `passengers`
+--
+
+INSERT INTO `passengers` (`id`, `created`, `modified`, `first_name`, `last_name`, `birthday`, `country_id`, `is_primary`, `deal_purchase_id`) VALUES
+(1, '2011-07-16 20:16:07', '2011-07-16 20:16:07', 'Josh', 'Maas-Howard', '2005-07-16', 1, 1, 37),
+(3, '2011-07-16 20:17:15', '2011-07-16 20:17:15', 'Tessa', 'Strauss', '1997-11-08', 1, 1, 38),
+(4, '2011-07-23 19:12:05', '2011-07-23 19:12:05', 'Jason', 'Roth', '1991-07-23', 1, 0, 37);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `regions`
 --
 
@@ -1065,7 +1091,7 @@ CREATE TABLE IF NOT EXISTS `travelers` (
   `first_name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `last_name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `travelers`
@@ -1078,7 +1104,8 @@ INSERT INTO `travelers` (`id`, `created`, `modified`, `user_id`, `is_male`, `bir
 (10, '2011-04-28 08:17:00', '2011-04-28 08:17:00', 16, 1, '2011-04-28', 1, '93618', 'Testy', 'tester'),
 (11, '2011-04-28 18:54:15', '2011-04-28 19:41:53', 17, 1, '2011-04-28', 1, '95612', 'David', 'Roth'),
 (12, '2011-04-28 19:42:16', '2011-04-28 19:42:16', 18, 1, '2011-04-28', 1, '94618', 'Faker', 'Roth'),
-(13, '2011-06-14 08:31:52', '2011-06-29 20:27:15', 22, 1, '2011-06-14', 1, '9412', 'Michael2', 'Myers');
+(13, '2011-06-14 08:31:52', '2011-06-29 20:27:15', 22, 1, '2011-06-14', 1, '9412', 'Michael2', 'Myers'),
+(14, '2011-07-18 21:01:59', '2011-07-18 21:01:59', 25, NULL, NULL, NULL, NULL, 'David', 'Roth');
 
 -- --------------------------------------------------------
 
@@ -1101,7 +1128,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated` datetime NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `users`
@@ -1110,7 +1137,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `role_id`, `password`, `name`, `email`, `website`, `activation_key`, `image`, `bio`, `timezone`, `status`, `updated`, `created`) VALUES
 (20, 1, 'aa361d06c20a989716f6747d0041a47f90bbf920', 'Admin', 'admin@traveltipping.com', '', '', '', '', '', 1, '2011-05-27 23:49:06', '2011-05-27 23:49:06'),
 (22, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'traveler@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-06-29 20:27:15', '2011-06-14 08:31:52'),
-(24, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'bamboozle3@thabiz.com', NULL, '', NULL, NULL, '0', 1, '2011-07-11 21:25:53', '2011-06-16 19:14:24');
+(24, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'merchant@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-07-11 21:25:53', '2011-06-16 19:14:24'),
+(25, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'david@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-07-18 21:01:59', '2011-07-18 21:01:59');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,79 +1,54 @@
-<?php echo $this->Html->script('jquery'); 
-		$this->Paginator->options(array(
-			'update' => '#content',
-			'evalScripts' => true
-		));?>
+<?php echo $this->Html->script('jquery');?>
 
 <div id="layout_left" class="grid_22">
 	<div class="blue_rounded_mod clearfix">
 	
 	</div>
-<?php if($deal['Deal']['reservation_type_id'] != 3) { //Print page for deal type 1 and 2
-echo $chosenDate;
-echo $form->input('dateChosen',array('type'=>'select','options'=>$dates));?>
-<table>
-	<tr> 
-		<th><?php echo "#"; ?></th> 
-		<th><?php echo $this->Paginator->sort('First Name', 'Traveler.first_name'); ?></th> 
-		<th><?php echo $this->Paginator->sort('Last Name', 'Traveler.last_name'); ?></th> 
-		<th><?php echo $this->Paginator->sort('Amount Paid', 'Deal.discounted_price'); ?></th>
-		<th><?php echo $this->Paginator->sort('Nights', 'nights'); //This field is a virtual field?></th> 		
-		<th><?php echo $this->Paginator->sort('Check-In', 'start_date'); ?></th>
-		<th><?php echo $this->Paginator->sort('Check-Out', 'end_date'); ?></th> 
-	</tr> 
-	   <?php 	$count = $this->Paginator->counter(array(
-	'format' => __('%start%', true)
-	));
-			foreach($reservations as $reservation): ?> 
-	<tr> 
-		<td><?php echo $count; $count++;?> </td> 
-		<td><?php echo $reservation['Traveler']['first_name']; ?> </td> 
-		<td><?php echo $reservation['Traveler']['last_name']; ?> </td> 
-		<td><?php echo "$" . $reservation['Deal']['discounted_price']; ?> </td> 
-		<td><?php echo $reservation['DealPurchase']['nights']; ?> </td> 
-		<td><?php echo date_format(date_create($reservation['DealPurchase']['start_date']), 'l, F jS, Y'); ?> </td>
-		<td><?php echo date_format(date_create($reservation['DealPurchase']['end_date']), 'l, F jS, Y'); ?> </td> 
-	</tr> 
-	<?php endforeach; //debug($reservation);?> 
-</table> 
+	
+	<?php 
+	//print_r($availableDates);
+	//print_r($reservedDates);
+	
+	echo $form->input('dateChosen',array('type'=>'select','options'=>$dates, 'id' => 'dateChosen')); 
+	 ?> 
+    <script type="text/javascript"> 
+	/** 
+ * Loads in a URL into a specified divName, and applies the function to 
+ * all the links inside the pagination div of that page (to preserve the ajax-request) 
+ * @param string href The URL of the page to load 
+ * @param string divName The name of the DOM-element to load the data into 
+ * @return boolean False To prevent the links from doing anything on their own. 
+ */ 
+function loadPiece(href,divName) {     
+    $(divName).load(href, {}, function(){ 
+        var divPaginationLinks = divName+" #pagination a"; 
+        $(divPaginationLinks).click(function() {      
+            var thisHref = $(this).attr("href"); 
+            loadPiece(thisHref,divName); 
+            return false; 
+        }); 
+    }); 
+} 
+	$(document).ready(function() {
+		var thisPath = document.location.pathname;
+		//We need to pull the id from the pathname to pass it to the reservation_paginate
+		//This code assumes that the id of the deal will be the last URL parameter
+		var lastSlash = thisPath.lastIndexOf("/") + 1;
+		var dealID = thisPath.slice(lastSlash);
 
-<?php } elseif($deal['Deal']['reservation_type_id'] == 3) { ?>
-<table>
-	<tr> 
-		<th><?php echo $this->Paginator->sort('First Name', 'Passenger.first_name'); ?></th> 
-		<th><?php echo $this->Paginator->sort('Last Name', 'Passenger.last_name'); ?></th> 
-		<th><?php echo $this->Paginator->sort('Birth Date', 'Passenger.birthday'); ?></th>
-		<th><?php echo $this->Paginator->sort('Age', 'Passenger.birthday'); ?></th> 		
-		<th><?php echo $this->Paginator->sort('Citizenship', 'Passenger.country_id'); ?></th>
-		<th><?php echo $this->Paginator->sort('Departure Date', 'DealPurchase.start_date'); ?></th> 
-	</tr> 
-	   <?php foreach($reservations as $reservation): 
-				?> 
-	<tr> 
-		<td><?php echo $reservation['Passenger']['first_name']; ?> </td> 
-		<td><?php echo $reservation['Passenger']['last_name']; ?> </td> 
-		<td><?php echo date_format(date_create($reservation['Passenger']['birthday']), 'd-M-Y'); ?> </td> 
-		<td><?php echo $reservation['Passenger']['age']; ?> </td> 
-		<td><?php echo $reservation['Country']['name']; ?> </td> 
-		<td><?php echo date_format(date_create($reservation['Passenger']['birthday']), 'l, F jS, Y'); ?> </td> 
-	</tr> 
-	<?php endforeach; //debug($reservation);
-	} //End DealType 3?> 
-</table>
+		//for debugging $("#displayDate").html(selectedDate ? dealID : "");
+		loadPiece("/merchants/reservation_paginate/" + dealID, "#reservationList");  //This loads the pagination links before a date is selected
+		$("#dateChosen").change(function() {
+			var selectedDate = $(this).val();
+			//original code - loadPiece("<?php echo $html->url(array('controller'=>'merchants','action'=>'reservations',1, '2011-06-11'));?>","#reservationList");
+			loadPiece("/merchants/reservation_paginate/" + dealID +"/" + selectedDate, "#reservationList");
+		});
+	});
+	
+    </script> 
+<div id="reservationList"> 
 
-<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-	));
-	?>	</p>
-<div id="pagination">
-<?php echo $this->Paginator->prev('<< ', array(), null, array('class'=>'disabled'));?>
-<!-- Shows the page numbers --><?php echo $this->Paginator->numbers(); ?>
-<!-- Shows the next and previous links -->
-<?php echo $this->Paginator->next(' >>', array(), null, array('class' => 'disabled'));?>
-</div>
-<?php echo $this->Js->writeBuffer(); ?>
+</div> 
 
 </div><!-- layout_left -->
 

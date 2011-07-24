@@ -7,7 +7,7 @@ class MerchantsController extends AppController {
 
 	
 	var $paginate = array(
-		'DealPurchase' => array('limit' => 10)
+		'Passengers' => array('limit' => 2),
 		);
 	
 /*
@@ -35,7 +35,7 @@ class MerchantsController extends AppController {
 			$this->redirect(array('action' => 'edit'));
 		}
 		if (!empty($this->data)) {
-			//$this->data['User']['username'] = $this->data['User']['email'];
+			//Set ids so that they are not loaded on the page
 			$this->data['Merchant']['id'] = $this->Session->read('Merchant.id');
 			$this->data['User']['id'] = $this->Session->read('User.id');
 			if ($this->Merchant->saveAll($this->data)) {
@@ -106,35 +106,37 @@ class MerchantsController extends AppController {
 	function initiate(){
 	
 	}
-	
-/**
-* Reservations
-* View reservations from all merchant deals
-*
-*/
-	function reservations($id = null, $chosenDate = null){
+/*
+ * Reservation_Paginate
+ * This controller and view are not called directly.  They are loading using JS 
+ * by the reservations view and contain the list of passengers who have registered
+ * for the deal on the date selected by the merchant.
+ */ 
+
+	function reservation_paginate($id = null, $chosenDate = null){
 		$this->loadModel('Deal');
 		$deal = $this->Deal->read(null, $id);
-
-
-		$dates = array();
-		for ($i = 1; $i<=31; $i++) {
-			$dates['2011-6-'. $i] = '2011-6-' . $i;
-		}
-		//$chosenDate = '2011-6-11';
-		$conditions = array('start_date <=' => $chosenDate, 'end_date >=' => $chosenDate);
+		
+		$conditions = array('DealPurchase.start_date <=' => $chosenDate, 
+			'DealPurchase.end_date >=' => $chosenDate);
 		
 		if($deal['Deal']['reservation_type_id'] != 3) {
+			$this->loadModel('Passenger');
 			$this->loadModel('DealPurchase');
-			//$this->Paginate = array('limit' => 2);  This should work but for some reason it needs to be set as a class var
+			$this->Paginate = array('limit' => 2);
+			$this->Passenger->recursive = 2;
 			
-			$reservations = $this->Paginate('DealPurchase', $conditions);	
+			$reservations = $this->Paginate('Passenger', $conditions);	
 		}
 		elseif($deal['Deal']['reservation_type_id'] == 3) {
 			$this->loadModel('Passenger');
-			$reservations = $this->Paginate('Passenger');
+			$conditions = array('DealPurchase.start_date <=' => $chosenDate, 
+			'DealPurchase.end_date >=' => $chosenDate , 'Passenger.is_primary' => 1);
+			
+			$reservations = $this->Paginate('Passenger', $conditions);
+			$secondaryPassengers = $this->Passenger->find('all', array('conditions' => array('Passenger.is_primary' => 0)));
 		}
-		$this->set(compact('reservations', 'deal', 'dates', 'chosenDate'));
+		$this->set(compact('reservations', 'deal', 'secondaryPassengers'));
 	}
 /**
 * Merchant Signup
@@ -165,8 +167,24 @@ class MerchantsController extends AppController {
 		$businessTypes = $this->Merchant->BusinessType->find('list');
 		$this->set(compact('countries', 'users', 'businessTypes'));
 	}
-	
-	function reservation_paginate() {
+/**
+* Reservations
+* View reservations from all merchant deals
+*
+*/	
+	function reservations($id = null) {
+		$this->loadModel('DealAvailability');
+		$availableDates = $this->DealAvailability->getAvailableDates($id);
+		
+		$this->loadModel('DealPurchase');
+		$reservedDates = $this->DealPurchase->getReservations($id);
+		
+		$dates = array();
+		for ($i = 1; $i<=31; $i++) {
+			$dates['2011-6-'. $i] = '2011-6-' . $i;
+		} 
+		
+		$this->set(compact('availableDates', 'dates', 'reservedDates'));
 	
 	}
 	
