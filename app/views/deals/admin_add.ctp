@@ -98,7 +98,7 @@
 		<legend><?php __('Admin Details'); ?></legend>
 		<?php
 		echo '<div class="field_row clearfix">';
-			echo $this->Form->input('deal_status');
+			echo $this->Form->input('deal_status_id');
 		echo '</div>';
 			echo $this->Form->input('private_note');
 			

@@ -4,10 +4,11 @@
 <div id="layout_left" class="merchant_deals grid_22">
 	<div class="blue_rounded_mod clearfix">
 	<ul class="deal_nav">
-		<li><a href="#">Upcoming Deals</a></li>
-		<li><a href="#">Live Deals</a></li>
-		<li><a href="#">Past Deals</a></li>
-				
+	<?php 
+	echo '<li>' . $this->Html->link('Upcoming Deals',array('controller'=>'merchants', 'action'=>'deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '</li>';
+	echo '<li>' . $this->Html->link('Live Deals',array('controller'=>'merchants', 'action'=>'deals', 'live'),array( 'alt'=>'Live Deals')) . '</li>';
+	echo '<li>' . $this->Html->link('Past Deals',array('controller'=>'merchants', 'action'=>'deals', 'past'),array( 'alt'=>'Past Deals')) . '</li>';
+		?>		
 	</ul>	
 	</div>
 

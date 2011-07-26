@@ -48,7 +48,7 @@ class DealsController extends AppController {
 		$this->set('count', $this->Deal->DealPurchase->find('count',
 		array('conditions' => array('DealPurchase.deal_id' => $id ))));
 	}
-
+/* This is deprecated - Use admin_add
 	function add() {
 		if (!empty($this->data)) {
 			$this->Deal->create();
@@ -59,7 +59,7 @@ class DealsController extends AppController {
 				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 			}
 		}
-		$merchants = $this->Deal->Merchant->find('list');
+		$merchants = $this->Deal->Venue->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
@@ -67,7 +67,7 @@ class DealsController extends AppController {
 		$countries = $this->Deal->Country->find('list');
 		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
 	}
-
+*/
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid deal', true));

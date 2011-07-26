@@ -8,7 +8,7 @@
 	<div class="grid_10 prefix_1 suffix_1">
 	<h3>Business Details</h3>
 	<?php
-	
+		print_r($errors);
 		echo $this->Form->input('Merchant.business_name');
 		echo $this->Form->input('Merchant.business_type_id');
 		echo $this->Form->input('Merchant.address');

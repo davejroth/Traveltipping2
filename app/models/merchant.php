@@ -29,8 +29,8 @@ class Merchant extends AppModel {
 	);
 
 	var $hasMany = array(
-		'Deal' => array(
-			'className' => 'Deal',
+		'Venue' => array(
+			'className' => 'Venue',
 			'foreignKey' => 'merchant_id',
 			'dependent' => false,
 			'conditions' => '',
@@ -85,7 +85,7 @@ var $validate = array(
 			//'phone' => array('rule' => array('phone'),'message' => 'Please enter your phone number',),
 		),
 		'user_id' => array(
-			'numeric' => array('rule' => array('numeric')),
+			//'numeric' => array('rule' => array('numeric')), - This prevents user creation
 		),
 	);
 

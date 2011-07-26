@@ -66,7 +66,7 @@ class MerchantsController extends AppController {
 		if(strcmp($deal_status, "upcoming") == 0)
 		{
 			$deals = $this->Deal->find('all', array('conditions' => 
-				array('Deal.merchant_id' => $this->Session->read('Merchant.id'), 
+				array('Venue.merchant_id' => $this->Session->read('Merchant.id'), 
 				"NOT" => array('Deal.deal_status_id' => 
 				array(Configure::Read('Deal.Status_Listed'), Configure::Read('Deal.Status_Closed'),
 				Configure::Read('Deal.Status_Cancelled'))))));
@@ -76,7 +76,7 @@ class MerchantsController extends AppController {
 		{
 			$deals = $this->Deal->find('all', array('conditions' => 
 			array('Deal.deal_status_id' => Configure::Read('Deal.Status_Listed'),
-				'Deal.merchant_id' => $this->Session->read('Merchant.id'))));
+				'Venue.merchant_id' => $this->Session->read('Merchant.id'))));
 			$count = count($deals);
 			for ($i = 0; $i < $count; $i++) {
 				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
@@ -88,7 +88,7 @@ class MerchantsController extends AppController {
 		{
 			$deals = $this->Deal->find('all', array('conditions' => 
 			array('Deal.deal_status_id' => Configure::Read('Deal.Status_Closed'),
-				'Deal.merchant_id' => $this->Session->read('Merchant.id'))));
+				'Venue.merchant_id' => $this->Session->read('Merchant.id'))));
 			$count = count($deals);
 				for ($i = 0; $i < $count; $i++) {
 				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
@@ -184,14 +184,13 @@ class MerchantsController extends AppController {
 			$this->Merchant->create();
 		
 			$this->data['User']['role_id'] = Configure::read('Role.Merchant_ID');
-			//$this->data['User']['password'] = "1949be75f0f74d49cb8c08f1152c8ae2ff563203";
 			$this->data['User']['status'] = 1;
 
 			if ($this->Merchant->saveAll($this->data)) {
 				$this->sendNewMerchantMail($this->Merchant->id);
 				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
-				$this->Session->write('User.new', 1);
+				$this->Session->write('User.new', 1); //Used for redirecting on first login
 				$this->redirect(array('controller' => 'users', 'action' => 'loginredirect'));
 			} else {
 				$this->Session->setFlash(__('The merchant detail could not be saved. Please, try again.', true));
@@ -201,6 +200,7 @@ class MerchantsController extends AppController {
 		$users = $this->Merchant->User->find('list');
 		$businessTypes = $this->Merchant->BusinessType->find('list');
 		$this->set(compact('countries', 'users', 'businessTypes'));
+		$this->set('errors', $this->Merchant->validationErrors);
 	}
 /**
 * Reservations
