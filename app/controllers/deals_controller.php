@@ -8,12 +8,14 @@ class DealsController extends AppController {
 	public $helpers = array('Text','Js');
 	
 	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
-	
+/*
+ * Index
+ * Controller for main deal searching and listing page
+ */
 	function index() {
-		//$this->Deal->recursive = 0;
+		//Create regions array for filtering purposes
 		$regions = array();
-		if(!empty($this->data)){
-			 
+		if(!empty($this->data)){ 
 			$x = 0;
 			foreach ($this->data['Deal']['region'] as $region){
 				if($region == 1){
@@ -38,7 +40,10 @@ class DealsController extends AppController {
 		$this->set('count', $count);
 		$this->set('regions', $regions );
 	}
-
+/**
+ * View
+ * Controller for the main details page that users view
+ */
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid deal', true));
@@ -49,32 +54,6 @@ class DealsController extends AppController {
 		array('conditions' => array('DealPurchase.deal_id' => $id ))));
 	}
 
-	function edit($id = null) {
-		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid deal', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		if (!empty($this->data)) {
-			if ($this->Deal->save($this->data)) {
-				$this->Session->setFlash(__('The deal has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
-			}
-		}
-		if (empty($this->data)) {
-			$this->data = $this->Deal->read(null, $id);
-		}
-		$merchants = $this->Deal->Merchant->find('list');
-		$dealStatuses = $this->Deal->DealStatus->find('list');
-		$destinations = $this->Deal->Destination->find('list');
-		$reservationTypes = $this->Deal->ReservationType->find('list');
-		$categories = $this->Deal->Category->find('list');
-		$regions = $this->Deal->Region->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
-	}
-
-	
 	function admin_index() {
 		$this->Deal->recursive = 0;
 		$this->set('deals', $this->paginate());
@@ -147,6 +126,17 @@ class DealsController extends AppController {
 		}
 		$this->Session->setFlash(__('Deal was not deleted', true));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+/*
+ * Book
+ * First page of deal purchase process.  Users book their dates on this page.
+ */ 
+	function book($id = null) {
+		$deal = $this->Deal->read(null, $id);
+		
+		$this->set(compact('deal'));
+	
 	}
 }
 
