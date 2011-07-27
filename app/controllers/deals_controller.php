@@ -136,7 +136,12 @@ class DealsController extends AppController {
 	function book($id = null) {
 		$deal = $this->Deal->read(null, $id);
 		
-		$this->set(compact('deal'));
+		$dates = array();
+		for ($i = 1; $i<=31; $i++) {
+			$dates['2011-6-'. $i] = '2011-6-' . $i;
+		} 
+		
+		$this->set(compact('deal', 'dates'));
 	
 	}
 }
