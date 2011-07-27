@@ -83,11 +83,13 @@ Total
 </div>
 </div>
 <?php echo $this->Form->end('Continue')?>
+
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">
 	
 	<?php echo $this->element('book_reservation'); ?>
+
 <div>
 
 

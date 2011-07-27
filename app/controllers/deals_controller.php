@@ -17,7 +17,6 @@ class DealsController extends AppController {
  * Controller for main deal searching and listing page
  */
 	function index() {
-		//Load regions array for filtering purposes
 		$regions = array();
 		if(!empty($this->data)){ 
 			$x = 0;
@@ -136,6 +135,7 @@ class DealsController extends AppController {
 /*
  * Book
  * First page of deal purchase process.  Users book their dates on this page.
+<<<<<<< HEAD
  * The controller checks the reservation type of the deal then takes different actions
  * based on the type.  On form submission, the controller calculates the trip start, end, nights,
  * and cost and passes to the purchase controller.
@@ -252,6 +252,7 @@ class DealsController extends AppController {
 		$this->set(compact('deal'));
 		} 
 	}
+
 
 function confirmation($id = null) {
 	$deal = $this->Deal->read(null, $id);
