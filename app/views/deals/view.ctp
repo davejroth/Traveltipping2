@@ -28,14 +28,15 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 		<div class="white_mod_694_content clearfix">
 			<div class="thumb_nails grid_3">
 					<?php 
-					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
-					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
-					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
-					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
-					echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image($deal['Deal']['image2'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image($deal['Deal']['image3'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image($deal['Deal']['image4'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+					echo $this->Html->image($deal['Deal']['image5'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
 					?>
 			</div>
-			<?php echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_18 omega','alt' => 'Featured Deal Image'))?>
+			<div class="grid_18 omega main_image" style="display:block; width:570px; height:300px;background:url(<?php echo $deal['Deal']['image1']?>)"></div>
+			
 			
 			<div id="book_now_bar" class="blue_rounded_mod clearfix grid_21 alpha omega">
 				<h3 class="grid_12"><?php echo $deal['Deal']['title']; ?></h3>
@@ -125,3 +126,21 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	</div>
 </div>
 </div><!-- #layout_right -->
+
+
+
+<script>
+$(document).ready(function() {
+	$('.thumb_nails img').each(function(){
+		$(this).click(function(){
+			image_src = $(this).attr('src');
+			$('.main_image').css('background-image', 'url('+image_src+')')
+			
+			
+			//alert("Hello");
+		});
+		
+	});
+
+});
+</script>
