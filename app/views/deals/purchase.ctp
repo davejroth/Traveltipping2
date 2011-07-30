@@ -30,20 +30,34 @@ function loadPiece(href,divName) {
         }); 
     }); 
 } 
+
+$.ajax({
+  success: function(){
+    alert('success');
+  },
+  error: function(){
+    alert('failure');
+  }
+});
 	$(document).ready(function() {
 		loadPiece("/travelers/ajax_sign_in", "#reservationList");
 		loadPiece("/travelers/ajax_signup", "#wtfTest");
+		$("#reservationList").live("change", function() {
+			//alert("wtf");
+			$("#loginBox").load("wtf");
+		});
 		//$("#wtfTest").load("blah");
 	//This loads the pagination links before a date is selected
 	});
 		</script>
+<div id='loginbox'>
 <div id='reservationList'>
 
 </div>
 
 <div id='wtfTest'>
 </div>
-
+</div>
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">
