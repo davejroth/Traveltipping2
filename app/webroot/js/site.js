@@ -70,8 +70,7 @@ $(document).ready(function() {
 		}
 	);
 	
-	//$('#featured_deal').css('cursor','poitner');
-	
+	//$('#featured_deal').css('cursor','poitner');	
 	$('.thumb_nails img').hover(
 		function(){
 		$(this).css('cursor','pointer')
@@ -79,6 +78,7 @@ $(document).ready(function() {
 			//alert(x)
 		}
 	);
+
 	
 	
 	
