@@ -45,6 +45,7 @@ function loadPiece(href,divName) {
 	});
 		</script>
 
+
 <div id='ajax_account_info'>
 </div>
 <div id='billing_info'>
@@ -55,7 +56,7 @@ function loadPiece(href,divName) {
 	  echo $this->Form->end('Purchase')?>
 
 </div>
-
+</div>
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">
