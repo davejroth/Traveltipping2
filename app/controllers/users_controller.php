@@ -49,6 +49,28 @@ class UsersController extends AppController {
 		}
 		
 	}
+	/*
+	 * This is for travelers who sign up during the purchase process
+	 * or for travelers who are already signed in when they come to the purchase
+	 */
+	function ajax_logged_in() {
+		$user = $this->Session->read('Auth.User');
+		
+		$traveler = $this->Traveler->find('first',
+			array('conditions' => array('Traveler.user_id' => $user['id'])));
+			$this->set(compact('traveler'));
+	//If new traveler is logging in
+		if ($this->Session->read('Auth.User') && !$this->Session->read('User.role_id')) {
+			$this->Session->write('Traveler.id', $traveler['Traveler']['id']);
+			$this->Session->write('User.role_id', $user['role_id']);
+			$this->Session->write('User.id', $user['id']);
+		}
+	//Traveler is already logged in
+	
+	$this->render('ajax_logged_in', 'ajax');
+	}
+	
+	
 	function login() {
 		if ($this->Session->read('Auth.User')) {
 			$this->Session->setFlash('You are logged in!');

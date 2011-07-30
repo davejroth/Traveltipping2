@@ -36,7 +36,6 @@ function loadPiece(href,divName) {
 		var lastSlash = thisPath.lastIndexOf("/") + 1;
 		var dealID = thisPath.slice(lastSlash);
 
-		//for debugging $("#displayDate").html(selectedDate ? dealID : "");
 		loadPiece("/merchants/reservation_paginate/" + dealID, "#reservationList");  //This loads the pagination links before a date is selected
 		$("#dateChosen").change(function() {
 			var selectedDate = $(this).val();

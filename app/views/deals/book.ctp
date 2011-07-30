@@ -7,7 +7,7 @@
 	
 	<?php echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
 		  echo $deal['Deal']['title'];  
-		  echo "         " . "$" . $deal['Deal']['discounted_price'] . "<br/>";
+		  echo "         " . "$" . $deal['Deal']['discounted_price'] . " per night" . "<br/>";
 		
 		  echo "1. Select your check-in date";
 
@@ -37,48 +37,57 @@
 		$("#start_date").change(function() {
 			var formattedDate = Date.parse($(this).val());
 			var dateString = formattedDate.toString("MMMM dd, yyyy");
-			
-			var endDate = Date.parse(document.getElementById('end_date').value);
-			var days = days_between(formattedDate, endDate);
-			
-			var costPerNight = <?php echo $deal['Deal']['discounted_price']; ?>;
-			var totalCost = parseInt(costPerNight) * parseInt(days);
-			
+						
 			$("#display_start_date").html(formattedDate ? dateString : "");
-			$("#days").html(formattedDate ? days : "");
-			$("#total_cost").html(formattedDate ? totalCost : "");
 		});
 		$("#end_date").change(function() {
-			var selectedDate = $(this).val();
-			var formattedDate = Date.parse(selectedDate);
+			var formattedDate = Date.parse( $(this).val());
 			var dateString = formattedDate.toString("MMMM dd, yyyy");
+			$("#display_end_date").html(formattedDate ? dateString : "");
 			
-			$("#display_end_date").html(selectedDate ? dateString : "");
+			var endDate = Date.parse(document.getElementById('start_date').value);
+			var nights = days_between(formattedDate, endDate);
+			
+			$("#nights").html(formattedDate ? nights : "");
+			
+			var costPerNight = <?php echo $deal['Deal']['discounted_price']; ?>;
+			var totalCost = "$" + parseInt(costPerNight) * parseInt(nights);
+			
+			
+			$("#total_cost").html(formattedDate ? totalCost : "");
 		});
 	});
 	
     </script> 
+<div id = "start_date_text">
+Check-In Date:
 <div id="display_start_date">
-Test1
+</div>
 </div>
 
+<div id = "end_date_text">
+Check-Out Date:
 <div id="display_end_date">
-Test2
+</div>
 </div>
 
-<div id = "days">
+<div id = "nights_text">
+Number of Nights:
+<div id = "nights">
 
 </div>
-
+</div>
+<div id = "cost_text">
+Total
 <div id = "total_cost">
-
 </div>
-
+</div>
+<?php echo $this->Html->link('Continue',array('controller' => 'deals', 'action'=>'purchase',$deal['Deal']['id']))?>
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">
 	
-	<?php echo $this->element('Manage_Reservations'); ?>
+	<?php echo $this->element('book_reservation'); ?>
 <div>
 
 
