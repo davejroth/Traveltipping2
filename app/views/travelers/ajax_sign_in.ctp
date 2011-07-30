@@ -21,4 +21,5 @@ echo $ajax->submit('Submit', array('url'=> array('controller'=>'travelers', 'act
 ?>
 </div>
 </div>
+
  

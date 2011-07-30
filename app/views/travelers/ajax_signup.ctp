@@ -20,6 +20,7 @@ echo $ajax->submit('Submit', array('url'=> array('controller'=>'travelers', 'act
 	
 <div id='new_account'>
 <h2>Create New Account</h2>
+
 <?php
 	echo $form->create('Traveler');
 	echo $this->Form->input('first_name', array('label'=>'First Name:'));

@@ -1,9 +1,3 @@
-<?php //echo $html->script('prototype');
-	  //echo $html->script('scriptaculous'); 
-	  echo $this->Html->script('jquery');
-	  //echo $this->Html->script('myscripts');
-	 
-	 ?>
 
 <div id="layout_left" class="grid_22">
 	<h2 class="page_title">Summary</h2>
@@ -39,7 +33,6 @@ function loadPiece(href,divName) {
     }); 
 } 
 
-
 	$(document).ready(function() {
 		//json_encode converts the PHP variable to JS.
 		if(<?php echo json_encode($this->Session->read('Auth.User')); ?>) {
@@ -62,6 +55,7 @@ function loadPiece(href,divName) {
 	  echo $this->Form->end('Purchase')?>
 
 </div>
+
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">

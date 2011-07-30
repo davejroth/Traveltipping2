@@ -1,12 +1,9 @@
 <?php
 class DealsController extends AppController {
 
-	var $name = 'Deals';
-	
-
+	var $name = 'Deals';	
 	var $components = array('Email', 'Notification', 'RequestHandler','Attachment');
 	var $helpers = array('JavaScript', 'Html', 'Form');
-
 
 	//var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript', 'Form');
 	 //var $helpers = array('Html','Ajax','Javascript');
@@ -135,7 +132,6 @@ class DealsController extends AppController {
 /*
  * Book
  * First page of deal purchase process.  Users book their dates on this page.
-<<<<<<< HEAD
  * The controller checks the reservation type of the deal then takes different actions
  * based on the type.  On form submission, the controller calculates the trip start, end, nights,
  * and cost and passes to the purchase controller.
@@ -251,6 +247,7 @@ class DealsController extends AppController {
 		$deal['Deal']['cost'] = $this->Session->read('Trip.cost');
 		$this->set(compact('deal'));
 		} 
+
 	}
 
 
