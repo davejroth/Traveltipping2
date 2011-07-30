@@ -3,9 +3,12 @@ class DealsController extends AppController {
 
 	var $name = 'Deals';
 	
-	var $components = array('Attachment');
 
-	public $helpers = array('Text','Js');
+	var $components = array('Email', 'Notification', 'RequestHandler','Attachment');
+	var $helpers = array('JavaScript', 'Html', 'Form');
+
+	//var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript', 'Form');
+	 //var $helpers = array('Html','Ajax','Javascript');
 	
 	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
 /*
@@ -13,7 +16,7 @@ class DealsController extends AppController {
  * Controller for main deal searching and listing page
  */
 	function index() {
-		//Create regions array for filtering purposes
+		//Load regions array for filtering purposes
 		$regions = array();
 		if(!empty($this->data)){ 
 			$x = 0;
@@ -136,12 +139,24 @@ class DealsController extends AppController {
 	function book($id = null) {
 		$deal = $this->Deal->read(null, $id);
 		
+		$this->loadModel('DealAvailability');
+		$availableDates = $this->DealAvailability->getAvailableDates($id);
+		
+		$this->loadModel('DealPurchase');
+		$reservedDates = $this->DealPurchase->getReservations($id);
+		
 		$dates = array();
 		for ($i = 1; $i<=31; $i++) {
 			$dates['2011-6-'. $i] = '2011-6-' . $i;
 		} 
 		
 		$this->set(compact('deal', 'dates'));
+	}
+	
+	function purchase($id = null) {
+	$deal = $this->Deal->read(null, $id);
+	
+	$this->set(compact('deal'));
 	
 	}
 }

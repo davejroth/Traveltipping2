@@ -3,6 +3,7 @@ class TravelersController extends AppController {
 
 	var $name = 'Travelers';
 	var $components = array('Email', 'Notification');
+	var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript');
 
 /*
  * Takes the id of a user_detail and calls Notification to send an email to them
@@ -55,6 +56,40 @@ class TravelersController extends AppController {
 			}
 		}
 	}
+	
+	function ajax_signup() {
+			if (!empty($this->data)) {
+			$this->Traveler->User->create();
+			$this->Traveler->create();
+
+			$this->data['User']['role_id'] = Configure::read('Role.Traveler_ID');
+			$this->data['User']['status'] = 1;
+			if ($this->Traveler->saveAll($this->data)) {
+				$this->sendNewUserMail($this->Traveler->id);
+				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
+				$this->Auth->login();
+				$this->Session->write('User.new', 1);
+				$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
+			} else {
+				$this->Session->setFlash(__('The user detail could not be saved. Please, try again.', true));
+			}
+		}
+		$this->render('ajax_signup','ajax');
+	}
+	
+	function ajax_sign_in() {
+	//$this->Auth->loginAction = array('admin' => false, 'controller' => 'travelers', 'action' => 'ajax_sign_in');
+	
+	if(!empty($this->data)) {
+		$this->Auth->login();
+		$this->Session->write('User.new', 1);
+		$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));	
+	}
+	$this->render('ajax_sign_in','ajax');
+	}
+	
+
+	
 	
 
 }
