@@ -39,7 +39,12 @@ class UsersController extends AppController {
 			{
 				$this->redirect(array('controller' => 'merchants', 'action' => 'profile'));
 			}
+			elseif($this->Session->read('User.purchasing') == 1) {
+				$this->redirect(array('controller' => 'deals', 'action' => 'purchase'));
+			}
+			else {
 			$this->redirect(array('controller' => 'merchants', 'action' => 'profile'));
+			}
 		}
 		
 		elseif($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID'))
