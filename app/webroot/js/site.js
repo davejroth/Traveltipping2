@@ -53,11 +53,24 @@ $(document).ready(function() {
 				//alert(x)
 			}
 			);
-			
-
-		
 	});
 	
+	/**
+	* Featured Deal Hover
+	*/
+	$('#featured_deal').hover(
+		function(){
+		$('.deal_content').addClass('highlight');
+			//$('#deal_1 .highlight').css('-moz-border-raduis','5px');
+			//alert(x)
+		},
+		function(){
+			$('.deal_content').removeClass('highlight');
+			//alert(x)
+		}
+	);
+	
+	//$('#featured_deal').css('cursor','poitner');
 	
 	
 	

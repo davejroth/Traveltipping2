@@ -7,38 +7,11 @@
 					</div>
 					<ul class="main_nav">
 					
-					<?php 	if(!$this->Session->read('Auth.User')) { //Not logged in
-								echo '<li>' . $this->Html->link('How it Works',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
-								echo '<li>' . $this->Html->link('Create an Account', array('controller' => 'travelers', 'action' => 'signup'),array( 'alt'=>'Create an Account')) . '</li>';
-								echo '<li>' . $this->Html->link('Login', array('controller' => 'users', 'action' => 'login'),array( 'alt'=>'Login')) . '</li>';
-							}
-						 
-							elseif($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID')) { //Merchant is logged in
-								echo '<li>' . $this->Html->link('My Deals',array('controller'=>'merchants', 'action'=>'deals', '/upcoming'),array( 'alt'=>'My Deals')) . '</li>';
-								echo '<li>' . $this->Html->link('Account Details', array('controller' => 'merchants', 'action' => 'profile'),array( 'alt'=>'Create an Account')) . '</li>';
-								echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'alt'=>'Logout')) . '</li>';
-							}
-							
-							elseif($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID')) { //Traveler is logged in
-								echo '<li>' . $this->Html->link('My Trips',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
-								echo '<li>' . $this->Html->link('Account Details', array('controller' => 'travelers', 'action' => 'profile'),array( 'alt'=>'Create an Account')) . '</li>';
-								echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'alt'=>'Logout')) . '</li>';
-							}
-				?></ul>
+					<li><a href="#">How it Works</a></li>
+					<li><a alt="Create an Account" href="#">Create an Account</a></li>
+					<li><a alt="Login" href="#">Login</a></li></ul>
 					<div class="subscribe_cta">
-						<?php 
-							echo $this->Form->create('User',array(
-									'inputDefaults' => array(
-										'label' => false,
-										'div'   => false
-									),
-									'class'=>'subscribe_form'
-								)
-							); 
-							//This input should not be just "email" because the validation rules display for the traveler signup page 
-							echo $this->Form->input('subscribe_email',array('value'=>'enter your email...'));
-							echo $this->Form->end('subscribe');
-						?>
+
 						<?php echo $this->Html->tag('h3', 'Never Miss an Opportunity to Travel.', array('class' => 'cta_text'));?>
 					</div>
 				</div>

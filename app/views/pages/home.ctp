@@ -6,6 +6,8 @@ $remaining_quantity = $max_quantity - $current_quantity;
 
 //Progress Bar Calculation
 $progress_value = ($current_quantity/$max_quantity)*100;
+
+//debug($deals);
 ?>
 
 
@@ -82,18 +84,20 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 </div>
 <?php echo $this->Form->end(array('value'=>'','class'=>'find_deals_btn suffix_4','id'=>'home_find_deals')); ?>
 <h3 class="white_mod_title">Featured Destination Deal</h3>
-<div id="featured_deal" class="white_mod_960_wrap">
+<a href="/deals/view/<?php echo $deals['Deal']['id'] ?>" id="featured_deal" class="white_mod_960_wrap">
 	<div class="white_mod_960_top"></div>
 	<div class="white_mod_960_content clearfix">
-		<?php echo $this->Html->image('/img/featured/featured_deal1.png', array('class'=>'grid_14 alpha omega','alt' => 'Featured Deal Image'))?>
-		<div class="grid_13 push_1">
-			<h3 class="desination_title">Tuscany, Italy</h3>
-			<p class="featured_deal_description">67% Off One Week Stay at Tuscany Villa In The Heart Of Italy</p>
-			<div class="progressbar">
-				<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
+		<div class="deal_content clearfix">
+		<?php echo $this->Html->image($deals['Deal']['image1'], array('class'=>'grid_14 alpha omega','alt' => 'Featured Deal Image'))?>
+			<div class="grid_14 push_1">
+				<h3 class="desination_title"><?php echo $deals['Deal']['destination'] ?></h3>
+				<p class="featured_deal_description"><?php echo $deals['Deal']['title'] ?></p>
+				<div class="progressbar">
+					<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
+				</div>
+				<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
+				<p id="remaining_quantity" class="grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
 			</div>
-			<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
-			<p id="remaining_quantity" class="grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
 		</div>
 	</div>
-</div>
+</a>

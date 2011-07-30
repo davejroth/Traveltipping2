@@ -599,3 +599,16 @@ a.deal_listing{
     margin: 10px 0;
     padding: 0 7px;
 }
+
+
+#featured_deal {
+    color: #444444;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+}
+
+#featured_deal .deal_content {
+    padding: 10px 5px 10px 9px;
+    position: relative;
+}
