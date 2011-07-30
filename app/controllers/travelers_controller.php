@@ -2,7 +2,7 @@
 class TravelersController extends AppController {
 
 	var $name = 'Travelers';
-	var $components = array('Email', 'Notification');
+	var $components = array('Email', 'Notification', 'Auth', 'RequestHandler');
 	var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript');
 
 /*
@@ -78,12 +78,9 @@ class TravelersController extends AppController {
 	}
 	
 	function ajax_sign_in() {
-	//$this->Auth->loginAction = array('admin' => false, 'controller' => 'travelers', 'action' => 'ajax_sign_in');
-	
 	if(!empty($this->data)) {
 		$this->Auth->login();
-		$this->Session->write('User.new', 1);
-		$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));	
+		$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
 	}
 	$this->render('ajax_sign_in','ajax');
 	}
