@@ -7,6 +7,7 @@ class DealsController extends AppController {
 	var $components = array('Email', 'Notification', 'RequestHandler','Attachment');
 	var $helpers = array('JavaScript', 'Html', 'Form');
 
+
 	//var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript', 'Form');
 	 //var $helpers = array('Html','Ajax','Javascript');
 	
@@ -56,7 +57,6 @@ class DealsController extends AppController {
 		$this->set('count', $this->Deal->DealPurchase->find('count',
 		array('conditions' => array('DealPurchase.deal_id' => $id ))));
 	}
-
 
 	function admin_index() {
 		$this->Deal->recursive = 0;
@@ -262,4 +262,5 @@ function confirmation($id = null) {
 }
 
 }//End Class
+
 ?>

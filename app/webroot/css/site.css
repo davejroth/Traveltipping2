@@ -604,6 +604,16 @@ a.deal_listing{
     padding: 0 7px;
 }
 
+#things_to_do .slide{
+	display:none;
+}
+
+#things_to_do .first_slide{
+	display:block;
+}
+
+
+
 
 #featured_deal {
     color: #444444;
