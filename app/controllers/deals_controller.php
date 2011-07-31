@@ -3,7 +3,7 @@ class DealsController extends AppController {
 
 	var $name = 'Deals';
 	
-	var $components = array('RequestHandler','Attachment');
+	var $components = array('Attachment');
 
 	public $helpers = array('Text','Js');
 	
@@ -48,26 +48,7 @@ class DealsController extends AppController {
 		$this->set('count', $this->Deal->DealPurchase->find('count',
 		array('conditions' => array('DealPurchase.deal_id' => $id ))));
 	}
-/* This is deprecated - Use admin_add
-	function add() {
-		if (!empty($this->data)) {
-			$this->Deal->create();
-			if ($this->Deal->save($this->data)) {
-				$this->Session->setFlash(__('The deal has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
-			}
-		}
-		$merchants = $this->Deal->Venue->Merchant->find('list');
-		$dealStatuses = $this->Deal->DealStatus->find('list');
-		$reservationTypes = $this->Deal->ReservationType->find('list');
-		$categories = $this->Deal->Category->find('list');
-		$regions = $this->Deal->Region->find('list');
-		$countries = $this->Deal->Country->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
-	}
-*/
+
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid deal', true));
@@ -93,18 +74,7 @@ class DealsController extends AppController {
 		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions'));
 	}
 
-	function delete($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for deal', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->Deal->delete($id)) {
-			$this->Session->setFlash(__('Deal deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('Deal was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-	}
+	
 	function admin_index() {
 		$this->Deal->recursive = 0;
 		$this->set('deals', $this->paginate());
@@ -180,12 +150,6 @@ class DealsController extends AppController {
 	}
 }
 
-// Filter deals by regions$deals = $this->Deal->find('all');
-		/*$this->set('nadeals', $this->Deal->find('all', array(
-		'fields' => array('Deal.*'),
-		'conditions'=>$conditions,  'group' => array('Deal.id')))); */
-		/*$conditions = null;
-		if(!empty($regions)) {
-			$conditions = array('DealsRegion.region_id' => $regions);
-		} */
+
+
 ?>

@@ -464,3 +464,53 @@ label{
     font-size: 11px;
     font-style: italic;
 }
+
+
+/*
+* Pagination Controls
+*/
+
+.pagination_controls{
+	margin:15px 0 0 0;
+}
+
+.pagination_controls a{
+	float:left;
+	display: block;
+}
+
+.pagination_controls a.prev{
+    background: url("../img/site/pagination.png") no-repeat scroll 0 0 transparent;
+    height: 20px;
+    width: 44px;
+}
+
+.pagination_controls a.next{
+    background: url("../img/site/pagination.png") no-repeat scroll -48px 0 transparent;
+    height: 20px;
+    width: 44px;
+}
+
+.pagination_controls a.page_num{
+    color: #3CAACC;
+    margin: 0 0 0 5px;
+    padding: 2px 5px;
+    text-decoration: none;
+}
+
+.pagination_controls a.last{
+	margin-right:5px;
+}
+
+.pagination_controls a.current{
+	color:#444444;
+	background:#cccccc;
+}
+.pages_controler{
+	float:left;
+}
+
+.pages_controler a:hover{
+	color:#444444;
+	background:#cccccc;
+}

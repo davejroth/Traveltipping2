@@ -111,7 +111,25 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div class="white_mod_246_content clearfix">
 		<h3 class="module_title">Things To Do</h3>
 		<div class="module_content">
-			<?php echo $deal['Deal']['things_to_do']; ?>
+				<?php 
+					echo $deal['Deal']['things_to_do']; 
+					echo $deal['Deal']['things_to_do2']; 
+					echo $deal['Deal']['things_to_do3']; 
+					echo $deal['Deal']['things_to_do4']; 
+					echo $deal['Deal']['things_to_do5']; 
+				?>
+			<div class="pagination_controls clearfix">
+				<a href="#" class="prev"></a>
+				<div class="clearfix pages_controler">
+					<a href="#" alt="1" class="page_num first current">1</a>
+					<a href="#" alt="2" class="page_num">2</a>
+					<a href="#" alt="3" class="page_num">3</a>
+					<a href="#" alt="4" class="page_num">4</a>
+					<a href="#" alt="5" class="page_num last">5</a>
+				</div>
+				<a href="#" class="next"></a>
+			</div>
+			
 		</div>
 	</div>
 </div>
@@ -131,16 +149,59 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 
 <script>
 $(document).ready(function() {
+	
+	/**
+	* Main Deal Images
+	*/
+	
 	$('.thumb_nails img').each(function(){
 		$(this).click(function(){
 			image_src = $(this).attr('src');
 			$('.main_image').css('background-image', 'url('+image_src+')')
-			
-			
-			//alert("Hello");
 		});
-		
+	});
+	
+	/**
+	* Things To Do
+	*/
+	
+	$('.slide').eq(0).addClass('first_slide');
+	$('.page_num').each(function(){
+		$(this).click(function(){
+			pageNum = $(this).attr('alt');
+			currentPage = $('.current').attr('alt');
+			$('.current').removeClass('current');
+			$(this).addClass('current');
+
+			$('.slide').eq(currentPage - 1).hide();
+			$('.slide').eq(pageNum - 1).show();
+			return false;
+		});
+	});
+	
+	$('.prev').click(function(){
+		currentPage = $('.current').attr('alt');
+		if(currentPage != 1){
+			$('.current').removeClass('current');
+			$('.page_num').eq(currentPage - 2).addClass('current');
+			$('.slide').eq(currentPage - 1).hide();
+			$('.slide').eq(currentPage - 2).show();
+		}
+		return false;
+	});
+	
+	$('.next').click(function(){
+		currentPage = $('.current').attr('alt');
+		if(currentPage != 5){
+			$('.current').removeClass('current');
+			$('.page_num').eq(currentPage).addClass('current');
+			$('.slide').eq(currentPage - 1).hide();
+			$('.slide').eq(currentPage).show();
+		}
+		return false;
 	});
 
 });
+
+
 </script>

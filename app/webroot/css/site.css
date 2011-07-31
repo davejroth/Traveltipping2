@@ -512,6 +512,10 @@ td.revenue{
 	cursor:pointer;
 }
 
+.deal_view .deal_listing:hover{
+	cursor:default;
+}
+
 .deal_content{
 	padding:10px 5px;
 	position:relative;
@@ -599,6 +603,16 @@ a.deal_listing{
     margin: 10px 0;
     padding: 0 7px;
 }
+
+#things_to_do .slide{
+	display:none;
+}
+
+#things_to_do .first_slide{
+	display:block;
+}
+
+
 
 
 #featured_deal {
