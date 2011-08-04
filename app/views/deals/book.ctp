@@ -84,7 +84,6 @@ Total
 </div>
 <?php echo $this->Form->end('Continue')?>
 
-
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">

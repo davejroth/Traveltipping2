@@ -80,10 +80,14 @@ class TravelersController extends AppController {
 	function ajax_sign_in() {
 
 	if(!empty($this->data)) {
-		$this->Auth->login();
-		$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
+		if($this->Auth->login()) {
+			$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
+		}
+		else {
+			$this->Session->setFlash(__('Invalid credentials. Please try again.', true));
+		}
 	}
-	$this->render('ajax_sign_in','ajax');
+	$this->render('ajax_signup','ajax');
 	}
 	
 

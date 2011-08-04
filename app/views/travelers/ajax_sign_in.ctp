@@ -1,6 +1,5 @@
 <?php echo $html->script('prototype');
 	  echo $html->script('scriptaculous');	  ?>
-
 <div id="sign_in">
 	<h2>Sign In To Existing Account</h2>
 	<div id="content">
@@ -20,5 +19,3 @@ echo $ajax->submit('Submit', array('url'=> array('controller'=>'travelers', 'act
 ?>
 </div>
 </div>
-
- 

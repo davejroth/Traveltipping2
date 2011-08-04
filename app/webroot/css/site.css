@@ -604,6 +604,12 @@ a.deal_listing{
     padding: 0 7px;
 }
 
+/**
+ * Deal Purchase Page
+ */
+#sign_in{
+float:right;
+}
 #things_to_do .slide{
 	display:none;
 }

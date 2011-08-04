@@ -1,4 +1,5 @@
 
+
 <div id="layout_left" class="grid_22">
 	<h2 class="page_title">Summary</h2>
 	<?php echo $deal['Deal']['title'];
@@ -45,7 +46,6 @@ function loadPiece(href,divName) {
 	});
 		</script>
 
-
 <div id='ajax_account_info'>
 </div>
 <div id='billing_info'>
@@ -54,8 +54,9 @@ function loadPiece(href,divName) {
 
 	  echo $this->Form->input('Transaction.name', array('label'=>'Cardholder\'s Name'));
 	  echo $this->Form->end('Purchase')?>
-
 </div>
+<div id='billing_info'>
+<h2 class="page_title">Billing Info</h2>
 </div>
 </div><!-- layout_left -->
 

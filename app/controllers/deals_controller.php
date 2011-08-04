@@ -133,13 +133,18 @@ class DealsController extends AppController {
  * Book
  * First page of deal purchase process.  Users book their dates on this page.
  * The controller checks the reservation type of the deal then takes different actions
+<<<<<<< HEAD
  * based on the type.  On form submission, the controller calculates the trip start, end, nights,
  * and cost and passes to the purchase controller.
+=======
+ * based on the type.
+>>>>>>> Working booking and purchase page (w/o purchase button).  Comitting before refactor
  */ 
 	function book($id = null) {
 		$deal = $this->Deal->read(null, $id);
 		$reservationType = $this->Deal->GetReservationType($id);
 		if(!empty($this->data)) { //If form is submitted
+<<<<<<< HEAD
 			if($reservationType == Configure::read('ReservationType.Fixed')){
 			
 			$nights = $deal['Deal']['max_nights'];
@@ -177,6 +182,33 @@ class DealsController extends AppController {
 				
 			}
 			elseif($reservationType == Configure::read('ReservationType.Set')) {
+=======
+			if($reservationType = Configure::read('ReservationType.Fixed')){
+
+				$date2 = new DateTime($this->data['Deal']['start_date']);
+				$date1 = new DateTime($this->data['Deal']['end_date']);
+				$interval = $date1->diff($date2);
+				$days = $interval->d;
+				
+				//There is some kind of rounding issue that floors the discounted_price 
+				//when it's done this way.
+				//$cost = (floatval($days) * floatval($deal['Deal']['discounted_price'] ));
+				//$this->Session->write('Trip.cost', $cost);
+				
+				$this->Session->delete('Trip');
+				$this->Session->write('Trip.start_date', $this->data['Deal']['start_date']);
+				$this->Session->write('Trip.end_date', $this->data['Deal']['end_date']);
+				$this->Session->write('Trip.price', $deal['Deal']['discounted_price']);
+				
+				$this->Session->write('Trip.days', $days);
+					
+				$this->redirect(array('controller' => 'deals', 'action'=>'purchase',$id));
+			}
+			elseif($reservationType = Configure::read('ReservationType.Variable')) {  
+				
+			}
+			elseif($reservationType = Configure::read('ReservationType.Set')) {
+>>>>>>> Working booking and purchase page (w/o purchase button).  Comitting before refactor
 			
 			}
 		}
@@ -194,6 +226,7 @@ class DealsController extends AppController {
 				$dates['2011-6-'. $i] = '2011-6-' . $i;
 			} 
 			$this->set(compact('dates', 'deal'));
+<<<<<<< HEAD
 			if($reservationType == Configure::read('ReservationType.Fixed')){
 			  	$this->render('book_fixed');
 			}
@@ -201,6 +234,9 @@ class DealsController extends AppController {
 			  	$this->render('book_variable');
 			}
 			elseif($reservationType == Configure::read('ReservationType.Set')){
+=======
+			if($reservationType = Configure::read('ReservationType.Fixed')){
+>>>>>>> Working booking and purchase page (w/o purchase button).  Comitting before refactor
 			  	$this->render('book');
 			}
 		}
