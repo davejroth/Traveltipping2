@@ -1,13 +1,12 @@
 <?php echo $html->script('prototype');
 	  echo $html->script('scriptaculous'); 
 	 ?>
-<div id="layout_left" class="grid_22">
 	
-<div id='testdiv'>
+<div id='logged_in'>
 <?php
 	echo "You are logged in under <br/>" . $traveler['User']['email'];
 ?>
 </div>
+</div> <!-- Close extra div from purchase page. -->
 	
-</div><!-- layout_left -->
 

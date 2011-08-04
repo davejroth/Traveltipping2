@@ -4,8 +4,8 @@
 
 <div id="layout_left" class="grid_22">
 	<h2 class="page_title">Reservations</h2>
-	
-	<?php echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+	<?php echo $this->Form->create('Deal',  array('url' => '/deals/book/' . $deal['Deal']['id']));
+		  echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
 		  echo $deal['Deal']['title'];  
 		  echo "         " . "$" . $deal['Deal']['discounted_price'] . " per night" . "<br/>";
 		
@@ -82,7 +82,7 @@ Total
 <div id = "total_cost">
 </div>
 </div>
-<?php echo $this->Html->link('Continue',array('controller' => 'deals', 'action'=>'purchase',$deal['Deal']['id']))?>
+<?php echo $this->Form->end('Continue')?>
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">

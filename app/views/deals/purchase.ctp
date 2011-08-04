@@ -2,14 +2,22 @@
 	  //echo $html->script('scriptaculous'); 
 	  echo $this->Html->script('jquery');
 	  //echo $this->Html->script('myscripts');
+	 
 	 ?>
 
 <div id="layout_left" class="grid_22">
 	<h2 class="page_title">Summary</h2>
-	<?php echo $deal['Deal']['title']; ?>
-	Check-In:
-	<br>
-	Check-Out:
+	<?php echo $deal['Deal']['title'];
+		  echo "<br>";
+		  echo "Check-in:" . date_format(date_create($deal['Deal']['trip_start_date']), 'l, F jS, Y');
+		  echo "<br>";
+		  echo "Check-out:" . date_format(date_create($deal['Deal']['trip_end_date']), 'l, F jS, Y');
+		  echo "<br>";
+		  echo "Days:" . $deal['Deal']['days'];
+		  echo "<br>";
+		  echo "Cost:$" . $deal['Deal']['cost'];
+?>
+
 	<h2 class="page_title">Account Info</h2>
 	
     <script type="text/javascript"> 
@@ -31,32 +39,23 @@ function loadPiece(href,divName) {
     }); 
 } 
 
-$.ajax({
-  success: function(){
-    alert('success');
-  },
-  error: function(){
-    alert('failure');
-  }
-});
+
 	$(document).ready(function() {
-		loadPiece("/travelers/ajax_sign_in", "#reservationList");
-		loadPiece("/travelers/ajax_signup", "#wtfTest");
-		$("#reservationList").live("change", function() {
-			//alert("wtf");
-			$("#loginBox").load("wtf");
-		});
-		//$("#wtfTest").load("blah");
+		//json_encode converts the PHP variable to JS.
+		if(<?php echo json_encode($this->Session->read('Auth.User')); ?>) {
+			loadPiece("/users/ajax_logged_in", "#ajax_account_info");
+		}
+		else {
+			loadPiece("/travelers/ajax_signup", "#ajax_account_info");
+		}
 	//This loads the pagination links before a date is selected
 	});
 		</script>
-<div id='loginbox'>
-<div id='reservationList'>
 
+<div id='ajax_account_info'>
 </div>
-
-<div id='wtfTest'>
-</div>
+<div id='billing_info'>
+<h2 class="page_title">Billing Info</h2>
 </div>
 </div><!-- layout_left -->
 
