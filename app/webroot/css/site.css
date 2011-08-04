@@ -599,3 +599,10 @@ a.deal_listing{
     margin: 10px 0;
     padding: 0 7px;
 }
+
+/**
+ * Deal Purchase Page
+ */
+#sign_in{
+float:right;
+}

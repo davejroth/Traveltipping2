@@ -172,26 +172,68 @@ class DealsController extends AppController {
 /*
  * Book
  * First page of deal purchase process.  Users book their dates on this page.
+ * The controller checks the reservation type of the deal then takes different actions
+ * based on the type.
  */ 
 	function book($id = null) {
 		$deal = $this->Deal->read(null, $id);
+		$reservationType = $this->Deal->GetReservationType($id);
+		if(!empty($this->data)) { //If form is submitted
+			if($reservationType = Configure::read('ReservationType.Fixed')){
+
+				$date2 = new DateTime($this->data['Deal']['start_date']);
+				$date1 = new DateTime($this->data['Deal']['end_date']);
+				$interval = $date1->diff($date2);
+				$days = $interval->d;
+				
+				//There is some kind of rounding issue that floors the discounted_price 
+				//when it's done this way.
+				//$cost = (floatval($days) * floatval($deal['Deal']['discounted_price'] ));
+				//$this->Session->write('Trip.cost', $cost);
+				
+				$this->Session->delete('Trip');
+				$this->Session->write('Trip.start_date', $this->data['Deal']['start_date']);
+				$this->Session->write('Trip.end_date', $this->data['Deal']['end_date']);
+				$this->Session->write('Trip.price', $deal['Deal']['discounted_price']);
+				
+				$this->Session->write('Trip.days', $days);
+					
+				$this->redirect(array('controller' => 'deals', 'action'=>'purchase',$id));
+			}
+			elseif($reservationType = Configure::read('ReservationType.Variable')) {  
+				
+			}
+			elseif($reservationType = Configure::read('ReservationType.Set')) {
+			
+			}
+		}
+		else {  //Load the form
+			//Load Availability and Purchase arrays
+			//This could probably be refactored to just load a DealsRemaining array?
+			$this->loadModel('DealAvailability');
+			$availableDates = $this->DealAvailability->getAvailableDates($id);
+			$this->loadModel('DealPurchase');
+			$reservedDates = $this->DealPurchase->getReservations($id);
 		
-		$this->loadModel('DealAvailability');
-		$availableDates = $this->DealAvailability->getAvailableDates($id);
-		
-		$this->loadModel('DealPurchase');
-		$reservedDates = $this->DealPurchase->getReservations($id);
-		
-		$dates = array();
-		for ($i = 1; $i<=31; $i++) {
-			$dates['2011-6-'. $i] = '2011-6-' . $i;
-		} 
-		
-		$this->set(compact('deal', 'dates'));
+			//Temp function for loading dates
+			$dates = array();
+			for ($i = 1; $i<=31; $i++) {
+				$dates['2011-6-'. $i] = '2011-6-' . $i;
+			} 
+			$this->set(compact('dates', 'deal'));
+			if($reservationType = Configure::read('ReservationType.Fixed')){
+			  	$this->render('book');
+			}
+		}
 	}
 	
 	function purchase($id = null) {
 	$deal = $this->Deal->read(null, $id);
+	$deal['Deal']['trip_start_date'] = $this->Session->read('Trip.start_date');
+	$deal['Deal']['trip_end_date'] = $this->Session->read('Trip.end_date');
+	$deal['Deal']['days'] = $this->Session->read('Trip.days');
+	$deal['Deal']['price'] = $this->Session->read('Trip.price');
+	$deal['Deal']['cost'] = $deal['Deal']['price'] * $deal['Deal']['days'];
 	
 	$this->set(compact('deal'));
 	
