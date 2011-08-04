@@ -129,4 +129,7 @@ Configure :: write('acl.gui.roles_permissions.ajax', false);
  Configure :: write('Deal.Status_Cancelled', 8); 
  Configure :: write('Role.Merchant_ID', 5);
  Configure :: write('Role.Traveler_ID', 6); 
+ Configure :: write('ReservationType.Fixed', 1);
+ Configure :: write('ReservationType.Variable', 2);
+ Configure :: write('ReservationType.Set', 3);
 ?>

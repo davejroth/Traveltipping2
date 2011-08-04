@@ -2,7 +2,7 @@
 	  echo $html->script('scriptaculous');	  ?>
 
 
-
+<div id="sign_in">
 	<h2>Sign In To Existing Account</h2>
 	<div id="content">
 	<?php
@@ -13,17 +13,12 @@ echo $this->Form->inputs(array(
 	'User.email',
 	'User.password'
 ));
-$options = array(
-    'div' => array(
-        'id' => 'content',
-    )
-);
 
 echo $ajax->submit('Submit', array('url'=> array('controller'=>'travelers', 'action'=>'ajax_sign_in'), 'update' => 'content'));
 	echo $form->end();
 	//echo $this->Form->end('Login', $options);
-	
 
 ?>
-
+</div>
+</div>
  
