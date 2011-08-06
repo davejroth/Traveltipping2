@@ -94,8 +94,7 @@ class Deal extends AppModel {
  * GetReservationType returns the reservationtype of the deal id passed to it
  */
 	function getReservationType($id) {
-	$thisDeal = $this->find('first', array('id' => $id));
-	
+	$thisDeal = $this->find('first', array('conditions' => array('Deal.id' => $id)));
 	return $thisDeal['Deal']['reservation_type_id'];
 	
 	}
