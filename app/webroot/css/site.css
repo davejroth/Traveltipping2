@@ -606,3 +606,10 @@ a.deal_listing{
 #sign_in{
 float:right;
 }
+
+/**
+ * Deal Confirmation Page
+ */
+#destination_details{
+float:right;
+}

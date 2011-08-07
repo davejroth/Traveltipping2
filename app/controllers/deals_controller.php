@@ -245,24 +245,57 @@ class DealsController extends AppController {
 			}
 		}
 	}
-	
+/**
+ * Purchase 
+ * The CC information is entered on this page and the user login is confirmed.
+ */
 	function purchase($id = null) {
-	$deal = $this->Deal->read(null, $id);
-	$deal['Deal']['trip_start_date'] = $this->Session->read('Trip.start_date');
-	$deal['Deal']['trip_end_date'] = $this->Session->read('Trip.end_date');
-	$deal['Deal']['days'] = $this->Session->read('Trip.days');
-	$deal['Deal']['cost'] = $this->Session->read('Trip.cost');
-	$this->set(compact('deal'));
-	
-	}
-}
+		if(!empty($this->data)) { //Credit card is submitted
+			$travelerID = $this->Session->read('Traveler.id');   //Check that they are logged in
+			if(is_null($travelerID)) {
+				//They are not logged in and they need to be.
+			}
+			else {
+				//They are logged in.  Validate the CC and make the purchase.
+				$this->loadModel('Passenger');
+				$purchase['DealPurchase']['deal_id'] = $id;
+				$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
+				$purchase['DealPurchase']['confirmation_code'] = $random_hash;
+				$purchase['DealPurchase']['traveler_id'] = $travelerID;
+				$purchase['DealPurchase']['start_date'] = $this->Session->read('Trip.start_date');
+				$purchase['DealPurchase']['end_date'] = $this->Session->read('Trip.end_date');
+				
+				$this->loadModel('Traveler');
+				$traveler = $this->Traveler->read(null, $travelerID);
+				$purchase['Passenger']['first_name'] = $traveler['Traveler']['first_name'];
+				$purchase['Passenger']['last_name'] = $traveler['Traveler']['last_name'];
+				
+				//use $this->Passenger so that the deal_purchase_id is inserted correctly
+				if ($this->Passenger->saveAll($purchase)) {
+					$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
 
-// Filter deals by regions$deals = $this->Deal->find('all');
-		/*$this->set('nadeals', $this->Deal->find('all', array(
-		'fields' => array('Deal.*'),
-		'conditions'=>$conditions,  'group' => array('Deal.id')))); */
-		/*$conditions = null;
-		if(!empty($regions)) {
-			$conditions = array('DealsRegion.region_id' => $regions);
-		} */
+				} else {
+					$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
+				}
+			}
+		}
+		elseif(empty($this->data)) {	//Load the page
+		$deal = $this->Deal->read(null, $id);
+		$deal['Deal']['trip_start_date'] = $this->Session->read('Trip.start_date');
+		$deal['Deal']['trip_end_date'] = $this->Session->read('Trip.end_date');
+		$deal['Deal']['days'] = $this->Session->read('Trip.days');
+		$deal['Deal']['cost'] = $this->Session->read('Trip.cost');
+		$this->set(compact('deal'));
+		} 
+	}
+
+function confirmation($id = null) {
+	$deal = $this->Deal->read(null, $id);
+	$deal['Deal']['cost'] = $this->Session->read('Trip.cost');
+	$reservation['trip_start_date'] = $this->Session->read('Trip.start_date');
+	$reservation['trip_end_date'] = $this->Session->read('Trip.end_date');
+	
+	$this->set(compact('deal', 'reservation'));
+}
+}//End Class
 ?>
