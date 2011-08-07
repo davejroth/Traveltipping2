@@ -1,8 +1,8 @@
 <?php
 class AppController extends Controller {
     var $components = array('Acl', 'Auth', 'Session', 'Cookie');
-    var $helpers = array('Html', 'Form', 'Session', 'AssetCompress.AssetCompress', 'Javascript');
- 
+    var $helpers = array('Html', 'Form', 'Session', 'AssetCompress.AssetCompress', 'Javascript','Js' => array('Jquery'));
+
     var $view = 'Theme';
     //var $theme = 'cake_default';
 	  //Define all global variables here

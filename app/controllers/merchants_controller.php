@@ -122,23 +122,7 @@ class MerchantsController extends AppController {
 
 	}
 	
-	function create_venue(){
-		$this->loadModel('Venue');
-		if (!empty($this->data)) {
-			$this->Venue->create();
-			$this->data['Venue']['merchant_id'] = $this->Session->read('Merchant.id');
-			if ($this->Venue->save($this->data)) {
-				$this->Session->setFlash(__('The venue has been saved', true));
-				$this->redirect(array('action' => 'initiate'));
-			} else {
-				$this->Session->setFlash(__('The venue could not be saved. Please, try again.', true));
-			}
-		}
-		$countries = $this->Venue->Country->find('list');
-		$businessTypes = $this->Venue->BusinessType->find('list');
-		$this->set(compact('countries','businessTypes'));
 
-	}
 	
 	function create_venue(){
 		$this->loadModel('Venue');
@@ -218,25 +202,32 @@ class MerchantsController extends AppController {
 		$this->set(compact('countries', 'users', 'businessTypes'));
 		$this->set('errors', $this->Merchant->validationErrors);
 	}
+	
 /**
 * Reservations
 * View reservations from all merchant deals
-*
 */	
 	function reservations($id = null) {
 		$this->loadModel('DealAvailability');
 		$availableDates = $this->DealAvailability->getAvailableDates($id);
-		
+		//debug($availableDates);
 		$this->loadModel('DealPurchase');
 		$reservedDates = $this->DealPurchase->getReservations($id);
-		
 		$dates = array();
 		for ($i = 1; $i<=31; $i++) {
 			$dates['2011-6-'. $i] = '2011-6-' . $i;
 		} 
 		
-		$this->set(compact('availableDates', 'dates', 'reservedDates'));
-	
+		if($this->RequestHandler->isAjax()){
+			
+			$this->set(compact('availableDates', 'dates', 'reservedDates'));
+			
+			$this->render('reservation_paginate','ajax');
+		}
+		else{
+			$this->set('dealID', $id);
+			$this->set(compact('availableDates', 'dates', 'reservedDates'));
+		}
 	}
 	
 	

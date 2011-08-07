@@ -12,13 +12,13 @@
 		echo $this->Html->meta('icon');
 		
 		echo $this->Html->css('styles');
+		echo $this->Html->css('/css/ui-lightness/jquery-ui');
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('site');
 		$this->AssetCompress->script('jquery-ui');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;
 	?>
-	<link href="/css/ui-lightness/jquery-ui.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 	<div id="layout_container">

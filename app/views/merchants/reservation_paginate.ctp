@@ -1,11 +1,10 @@
-<?php echo $this->Html->script('jquery'); 
+<?php 
 		//This code keeps makes the paginator sort calls load on the reservations page
 		$this->Paginator->options(array(
 			'update' => '#content',
 			'evalScripts' => true
 		));?>
 
-<div id="layout_left" class="grid_22">
 <div id="content">
 <?php //print_r($reservations); 
 if($deal['Deal']['reservation_type_id'] != 3) { //Print page for deal type 1 and 2
@@ -90,5 +89,4 @@ if($deal['Deal']['reservation_type_id'] != 3) { //Print page for deal type 1 and
 </div>
 <?php echo $this->Js->writeBuffer(); ?>
 </div>
-</div><!-- layout_left -->
 
