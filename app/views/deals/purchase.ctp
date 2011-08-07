@@ -57,6 +57,7 @@ function loadPiece(href,divName) {
 </div>
 <div id='billing_info'>
 <h2 class="page_title">Billing Info</h2>
+
 </div>
 </div><!-- layout_left -->
 
