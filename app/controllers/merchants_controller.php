@@ -213,21 +213,10 @@ class MerchantsController extends AppController {
 		//debug($availableDates);
 		$this->loadModel('DealPurchase');
 		$reservedDates = $this->DealPurchase->getReservations($id);
-		$dates = array();
-		for ($i = 1; $i<=31; $i++) {
-			$dates['2011-6-'. $i] = '2011-6-' . $i;
-		} 
-		
-		if($this->RequestHandler->isAjax()){
-			
-			$this->set(compact('availableDates', 'dates', 'reservedDates'));
-			
-			$this->render('reservation_paginate','ajax');
-		}
-		else{
+
+
 			$this->set('dealID', $id);
 			$this->set(compact('availableDates', 'dates', 'reservedDates'));
-		}
 	}
 	
 	
