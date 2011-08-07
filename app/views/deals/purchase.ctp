@@ -56,6 +56,11 @@ function loadPiece(href,divName) {
 </div>
 <div id='billing_info'>
 <h2 class="page_title">Billing Info</h2>
+<?php echo $this->Form->create('Deal',  array('url' => '/deals/purchase/' . $deal['Deal']['id']));
+
+	  echo $this->Form->input('Transaction.name', array('label'=>'Cardholder\'s Name'));
+	  echo $this->Form->end('Purchase')?>
+
 </div>
 </div><!-- layout_left -->
 

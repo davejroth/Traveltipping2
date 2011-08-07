@@ -1,5 +1,6 @@
 <?php echo $this->Html->script('jquery');
 	  echo $this->Html->script('date');
+	  //print_r($deal);
 	 ?>
 
 <div id="layout_left" class="grid_22">
