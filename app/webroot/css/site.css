@@ -610,6 +610,7 @@ a.deal_listing{
 #sign_in{
 float:right;
 }
+
 #things_to_do .slide{
 	display:none;
 }
@@ -631,4 +632,11 @@ float:right;
 #featured_deal .deal_content {
     padding: 10px 5px 10px 9px;
     position: relative;
+}
+
+/**
+ * Deal Confirmation Page
+ */
+#destination_details{
+float:right;
 }
