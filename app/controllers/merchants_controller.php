@@ -216,6 +216,7 @@ class MerchantsController extends AppController {
 
 			$this->set('dealID', $id);
 			$this->set(compact('availableDates', 'dates', 'reservedDates'));
+
 	}
 	
 }

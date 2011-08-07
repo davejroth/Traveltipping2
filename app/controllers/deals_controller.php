@@ -58,6 +58,7 @@ class DealsController extends AppController {
 		array('conditions' => array('DealPurchase.deal_id' => $id ))));
 	}
 
+
 	function admin_index() {
 		$this->Deal->recursive = 0;
 		$this->set('deals', $this->paginate());
@@ -225,7 +226,7 @@ class DealsController extends AppController {
 				$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
 				$purchase['DealPurchase']['confirmation_code'] = $random_hash;
 				$purchase['DealPurchase']['traveler_id'] = $travelerID;
-				$purchase['DealPurchase']['start_date'] = $this->Session->read('Trip.start_date');
+				$purchase['DealPurchAse']['start_date'] = $this->Session->read('Trip.start_date');
 				$purchase['DealPurchase']['end_date'] = $this->Session->read('Trip.end_date');
 				
 				$this->loadModel('Traveler');

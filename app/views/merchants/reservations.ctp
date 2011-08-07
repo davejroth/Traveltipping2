@@ -1,6 +1,5 @@
 <div id="layout_left" class="grid_22">
 
-
 <?php
 	echo $this->Form->input('Calendar.day',array(
 	'type' => 'text',
