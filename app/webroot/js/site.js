@@ -70,7 +70,15 @@ $(document).ready(function() {
 		}
 	);
 	
-	//$('#featured_deal').css('cursor','poitner');
+	//$('#featured_deal').css('cursor','poitner');	
+	$('.thumb_nails img').hover(
+		function(){
+		$(this).css('cursor','pointer')
+			//$('#deal_1 .highlight').css('-moz-border-raduis','5px');
+			//alert(x)
+		}
+	);
+
 	
 	$('.thumb_nails img').hover(
 		function(){

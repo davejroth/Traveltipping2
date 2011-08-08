@@ -78,6 +78,7 @@ class TravelersController extends AppController {
 	}
 	
 	function ajax_sign_in() {
+
 	if(!empty($this->data)) {
 		if($this->Auth->login()) {
 			$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
@@ -89,10 +90,6 @@ class TravelersController extends AppController {
 	$this->render('ajax_signup','ajax');
 	}
 	
-
-	
-	
-
 }
 
 ?>

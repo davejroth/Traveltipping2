@@ -635,6 +635,36 @@ float:right;
 }
 
 /**
+ * Deal Purchase Page
+ */
+#sign_in{
+float:right;
+}
+
+#things_to_do .slide{
+	display:none;
+}
+
+#things_to_do .first_slide{
+	display:block;
+}
+
+
+
+
+#featured_deal {
+    color: #444444;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+}
+
+#featured_deal .deal_content {
+    padding: 10px 5px 10px 9px;
+    position: relative;
+}
+
+/**
  * Deal Confirmation Page
  */
 #destination_details{

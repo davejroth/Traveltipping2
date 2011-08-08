@@ -205,9 +205,6 @@ class MerchantsController extends AppController {
 	
 /**
 * Reservations
-* View reservations from all merchant deals
-* Used by merchants to view reservations from their deals
-*
 */	
 	function reservations($id = null) {
 		$this->loadModel('DealAvailability');
@@ -219,6 +216,7 @@ class MerchantsController extends AppController {
 
 			$this->set('dealID', $id);
 			$this->set(compact('availableDates', 'dates', 'reservedDates'));
+
 	}
 	
 }

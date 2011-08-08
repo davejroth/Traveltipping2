@@ -14,7 +14,6 @@ class DealsController extends AppController {
  * Controller for main deal searching and listing page
  */
 	function index() {
-		//Load regions array for filtering purposes
 		$regions = array();
 		if(!empty($this->data)){ 
 			$x = 0;
@@ -201,6 +200,7 @@ class DealsController extends AppController {
 			  	$this->render('book_variable');
 			}
 			elseif($reservationType == Configure::read('ReservationType.Set')){
+
 			  	$this->render('book');
 			}
 		}
@@ -222,7 +222,8 @@ class DealsController extends AppController {
 				$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
 				$purchase['DealPurchase']['confirmation_code'] = $random_hash;
 				$purchase['DealPurchase']['traveler_id'] = $travelerID;
-				$purchase['DealPurchase']['start_date'] = $this->Session->read('Trip.start_date');
+				$purchase['DealPurchAse']['start_date'] = $this->Session->read('Trip.start_date');
+
 				$purchase['DealPurchase']['end_date'] = $this->Session->read('Trip.end_date');
 				
 				$this->loadModel('Traveler');
@@ -233,7 +234,6 @@ class DealsController extends AppController {
 				//use $this->Passenger so that the deal_purchase_id is inserted correctly
 				if ($this->Passenger->saveAll($purchase)) {
 					$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
-
 				} else {
 					$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
 				}
@@ -247,6 +247,7 @@ class DealsController extends AppController {
 		$deal['Deal']['cost'] = $this->Session->read('Trip.cost');
 		$this->set(compact('deal'));
 		} 
+
 	}
 
 function confirmation($id = null) {
