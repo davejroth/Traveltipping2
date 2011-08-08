@@ -1,4 +1,5 @@
 <div id="layout_left" class="grid_22">
+<<<<<<< HEAD
 
 <?php
 	echo $this->Form->input('Calendar.day',array(
@@ -40,10 +41,7 @@ $(document).ready(function() {
 		  }
 		});
 	});
-	
-	/*
-	
-	*/
+
 
 });
 </script>

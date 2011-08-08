@@ -34,10 +34,6 @@ function loadPiece(href,divName) {
     }); 
 } 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> s3_deal_purchase
 	$(document).ready(function() {
 		//json_encode converts the PHP variable to JS.
 		if(<?php echo json_encode($this->Session->read('Auth.User')); ?>) {
@@ -52,26 +48,22 @@ function loadPiece(href,divName) {
 
 <div id='ajax_account_info'>
 </div>
+
 <div id='billing_info'>
 <h2 class="page_title">Billing Info</h2>
 <?php echo $this->Form->create('Deal',  array('url' => '/deals/purchase/' . $deal['Deal']['id']));
 
 	  echo $this->Form->input('Transaction.name', array('label'=>'Cardholder\'s Name'));
 	  echo $this->Form->end('Purchase')?>
-<<<<<<< HEAD
-=======
-</div>
-<div id='billing_info'>
-<h2 class="page_title">Billing Info</h2>
->>>>>>> s3_deal_purchase
 
 </div>
+
+
+
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">
 	
 	<?php echo $this->element('book_reservation'); ?>
-<div>
-
 
 </div><!-- #layout_right -->

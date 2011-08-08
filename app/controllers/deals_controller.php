@@ -53,7 +53,6 @@ class DealsController extends AppController {
 		$this->set('count', $this->Deal->DealPurchase->find('count',
 		array('conditions' => array('DealPurchase.deal_id' => $id ))));
 	}
-
 	function admin_index() {
 		$this->Deal->recursive = 0;
 		$this->set('deals', $this->paginate());
@@ -200,7 +199,6 @@ class DealsController extends AppController {
 			  	$this->render('book_variable');
 			}
 			elseif($reservationType == Configure::read('ReservationType.Set')){
-
 			  	$this->render('book');
 			}
 		}
@@ -223,7 +221,6 @@ class DealsController extends AppController {
 				$purchase['DealPurchase']['confirmation_code'] = $random_hash;
 				$purchase['DealPurchase']['traveler_id'] = $travelerID;
 				$purchase['DealPurchAse']['start_date'] = $this->Session->read('Trip.start_date');
-
 				$purchase['DealPurchase']['end_date'] = $this->Session->read('Trip.end_date');
 				
 				$this->loadModel('Traveler');
@@ -234,6 +231,7 @@ class DealsController extends AppController {
 				//use $this->Passenger so that the deal_purchase_id is inserted correctly
 				if ($this->Passenger->saveAll($purchase)) {
 					$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
+<<<<<<< HEAD
 				} else {
 					$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
 				}
@@ -260,5 +258,4 @@ function confirmation($id = null) {
 }
 
 }//End Class
-
 ?>

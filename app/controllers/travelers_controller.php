@@ -61,7 +61,6 @@ class TravelersController extends AppController {
 			if (!empty($this->data)) {
 			$this->Traveler->User->create();
 			$this->Traveler->create();
-
 			$this->data['User']['role_id'] = Configure::read('Role.Traveler_ID');
 			$this->data['User']['status'] = 1;
 			if ($this->Traveler->saveAll($this->data)) {
