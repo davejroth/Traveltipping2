@@ -231,7 +231,6 @@ class DealsController extends AppController {
 				//use $this->Passenger so that the deal_purchase_id is inserted correctly
 				if ($this->Passenger->saveAll($purchase)) {
 					$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
-<<<<<<< HEAD
 				} else {
 					$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
 				}
