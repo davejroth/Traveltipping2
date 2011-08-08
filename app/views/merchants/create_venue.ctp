@@ -28,8 +28,8 @@
 				echo $this->Form->input('Venue.country_id');
     ?>
 	</div>
-	
 
 	<?php echo $this->Form->end(__('Submit', true));?>
 </div><!-- layout_left -->
+
 
