@@ -514,3 +514,113 @@ label{
 	color:#444444;
 	background:#cccccc;
 }
+
+
+/**
+* Calendar Styles
+*/
+
+.calendar_wrap{
+	height: 285px;
+	margin: 0 auto;
+	overflow: hidden;
+	width: 660px;
+}
+
+.month_wrap{
+  float: left;
+  width: 330px;
+}
+
+.calendar_slider{
+	position:relative;	
+}
+.calendar_heading{
+    background: none repeat scroll 0 0 #546464;
+    text-align: center;
+    width: 315px;
+}
+.calendar_controls{
+    display: block;
+    position: absolute;
+    width: 645px;
+    z-index: 1000;
+}
+
+.calendar_controls a.prev_cal{
+    background: url("../img/site/calendar_controls.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 12px;
+    margin: 10px 0 0 10px;
+    width: 13px;
+}
+
+.calendar_controls a.next_cal{
+    background: url("../img/site/calendar_controls.png") no-repeat scroll -20px 0 transparent;
+    display: block;
+    float: right;
+    height: 12px;
+    margin: 10px 10px 0 0;
+    width: 13px;
+}
+
+.calendar_heading h3{
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 17px;
+    margin: 0 auto;
+    padding: 5px 0;
+    width: 330px;
+}
+
+.calendar th{
+    background: none repeat scroll 0 0 #546464;
+    color: #FFFFFF;
+    padding: 5px 0;
+}
+
+.calendar td{
+    background: none repeat scroll 0 0 #E0F8F8;
+    border: 3px solid #FFFFFF;
+    padding: 1px;
+    text-align: right;
+    vertical-align: top;
+}
+
+.calendar td.blank{
+	    background: none repeat scroll 0 0 #DDDDDD;
+}
+
+.calendar td a{
+    color: #444444;
+    display: block;
+    float: right;
+    height: 35px;
+    padding: 5px 5px 0 0;
+    text-align: right;
+    text-decoration: none;
+    width: 35px;
+}
+
+.calendar td a span.bookings{
+	display:block;
+}
+
+.first_cal,
+.last_cal{
+	display:block;
+}
+/*
+.first_cal .calendar_heading .next_cal{
+	display:none;
+}
+
+.second_cal .calendar_heading .next_cal{
+	display:none;
+}
+
+.last_cal .calendar_heading .prev_cal{
+	display:none;
+}*/
