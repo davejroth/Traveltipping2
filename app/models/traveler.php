@@ -37,7 +37,7 @@ class Traveler extends AppModel {
 		)
 	);
 	
-	//These rules should be expanded to protect against SQL injection
+	//There is nothing to protect against SQL injection.  Cake does that automatically
 	public $validate = array(
 		'first_name' => array(
             'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter your first name.'),

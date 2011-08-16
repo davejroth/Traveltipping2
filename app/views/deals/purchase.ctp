@@ -2,7 +2,18 @@
 
 <div id="layout_left" class="grid_22">
 	<h2 class="page_title">Summary</h2>
-	<?php echo $deal['Deal']['title'];
+	<?php 
+			$years = array();
+			$currentYear = date('Y');
+			$endYear = date('Y') + 5;
+			do {
+				$years[$currentYear] = $currentYear;
+				$currentYear = $currentYear + 1;
+				}while($currentYear <= $endYear);
+			
+				
+	
+	echo $deal['Deal']['title'];
 		  echo "<br>";
 		  echo "Check-in:" . date_format(date_create($deal['Deal']['trip_start_date']), 'l, F jS, Y');
 		  echo "<br>";
@@ -54,6 +65,17 @@ function loadPiece(href,divName) {
 <?php echo $this->Form->create('Deal',  array('url' => '/deals/purchase/' . $deal['Deal']['id']));
 
 	  echo $this->Form->input('Transaction.name', array('label'=>'Cardholder\'s Name'));
+	  echo $this->Form->input('Transaction.address', array('label'=>'Billing Address'));
+	  echo $this->Form->input('Transaction.city', array('label'=>'City'));
+	  echo $this->Form->input('Transaction.state', array('label'=>'State'));
+	  echo $this->Form->input('Transaction.zip', array('label' => 'Zip'));
+	  echo $this->Form->input('Transaction.cc_number', array('label' => 'Credit Card Number'));
+	  echo $this->Form->input('Transaction.ccv', array('label' => 'CCV Number'));
+	  echo $this->Form->label('Expiration Date');
+	  echo "<br>";
+	  echo $this->Form->month('mob', null, array('monthNames' => false, 'div' => false));
+	  echo $this->Form->input('Transaction.expiration_year', array('type' => 'select', 'options' => $years, 'label' => '', 'div' => false));
+	  //echo $this->Form->year('Transaction.expiration_year',date('Y')+5, date('Y'), date('Y'), array() , false );
 	  echo $this->Form->end('Purchase')?>
 
 </div>

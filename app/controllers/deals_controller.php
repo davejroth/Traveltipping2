@@ -1,4 +1,10 @@
 <?php
+App::import('Vendor', 'braintree/lib/braintree');
+Braintree_Configuration::environment('sandbox');
+Braintree_Configuration::merchantId('y5hkzv2fqmddchw9');
+Braintree_Configuration::publicKey('jq7dbvmd4bdthf3m');
+Braintree_Configuration::privateKey('cp3yyr7ndgh9qzt9');
+
 class DealsController extends AppController {
 
 	var $name = 'Deals';	
@@ -59,6 +65,36 @@ class DealsController extends AppController {
 	}
 
 	function admin_view($id = null) {
+			$result = Braintree_Transaction::sale(array(
+			'amount' => '1000.00',
+			'creditCard' => array(
+				'number' => '5105105105105100',
+				'expirationDate' => '05/12',
+				'cvv' => '200',
+			    'billingAddress' => array(
+					'countryName' => 'USA'
+				)
+			)
+		));
+
+		if ($result->success) {
+			print_r("success!: " . $result->transaction->id);
+		} else if ($result->transaction) {
+			print_r("Error processing transaction:");
+			print_r("\n  message: " . $result->message);
+			print_r("\n  code: " . $result->transaction->processorResponseCode);
+			print_r("\n  text: " . $result->transaction->processorResponseText);
+			if(!$result->transaction->avsErrorResponseCode && $result->transaction->avsPostalCodeResponseCode) { //No error processing avs
+				print_r("\n AVS Error: " . $result->transaction->avsPostalCodeResponseCode);
+			}
+			if($result->transaction->cvvResponseCode) {
+				print_r("\n CVV Error: " . $result->transaction->cvvResponseCode);
+			}
+		} else {
+			print_r("Message: " . $result->message);
+			print_r("\nValidation errors: \n");
+			print_r($result->errors->deepAll());
+		}
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid deal', true));
 			$this->redirect(array('action' => 'index'));
@@ -213,39 +249,78 @@ class DealsController extends AppController {
 		if(!empty($this->data)) { //Credit card is submitted
 			$travelerID = $this->Session->read('Traveler.id');   //Check that they are logged in
 			if(is_null($travelerID)) {
-				//They are not logged in and they need to be.
+				$this->Session->setFlash(__('Please log in or create an account to make a purchase.', true));
 			}
-			else {
-				//They are logged in.  Validate the CC and make the purchase.
-				$this->loadModel('Passenger');
-				$purchase['DealPurchase']['deal_id'] = $id;
-				$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
-				$purchase['DealPurchase']['confirmation_code'] = $random_hash;
-				$purchase['DealPurchase']['traveler_id'] = $travelerID;
-				$purchase['DealPurchAse']['start_date'] = $this->Session->read('Trip.start_date');
-				$purchase['DealPurchase']['end_date'] = $this->Session->read('Trip.end_date');
-				
+			else {//They are logged in.  
+				//Validate the CC and make the purchase.
 				$this->loadModel('Traveler');
 				$traveler = $this->Traveler->read(null, $travelerID);
-				$purchase['Passenger']['first_name'] = $traveler['Traveler']['first_name'];
-				$purchase['Passenger']['last_name'] = $traveler['Traveler']['last_name'];
-				
-				//use $this->Passenger so that the deal_purchase_id is inserted correctly
-				if ($this->Passenger->saveAll($purchase)) {
-					$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
-				} else {
-					$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
+				$this->loadModel('Transaction');
+				$this->Transaction->set($this->data);
+				if($this->Transaction->validates()) {
+					//Billing info was entered.  Now process the credit card
+					//We probably want a way of linking the deal id to the purchase?
+					$result = Braintree_Transaction::sale(array(
+					'amount' => $this->Session->read('Trip.cost'),
+					'orderId' => 'deal_purchase_id', //This is generated after the sale.  Do we find the max and then lock the table?
+					'creditCard' => array(
+						'number' => $this->data['Transaction']['cc_number'],
+						'expirationDate' => $this->data['Transaction']['expiration'],
+						//Do we need to validate billing address as well?
+						),
+					'customer' => array(
+						'firstName' => $traveler['Traveler']['first_name'],
+						'lastName' => $traveler['Traveler']['last_name'],
+						'email' => $traveler['User']['email'],
+						'id' => $travelerID
+					  ),
+					  'options' => array(
+						'submitForSettlement' => true
+					)
+					));
+					if ($result->success) {
+						print_r("success!: " . $result->transaction->id);
+						//Save the Passenger data
+						$this->loadModel('Passenger');
+						$purchase['DealPurchase']['deal_id'] = $id;
+						$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
+						$purchase['DealPurchase']['confirmation_code'] = $random_hash;
+						$purchase['DealPurchase']['traveler_id'] = $travelerID;
+						$purchase['DealPurchAse']['start_date'] = $this->Session->read('Trip.start_date');
+						$purchase['DealPurchase']['end_date'] = $this->Session->read('Trip.end_date');
+						
+						$purchase['Passenger']['first_name'] = $traveler['Traveler']['first_name'];
+						$purchase['Passenger']['last_name'] = $traveler['Traveler']['last_name'];
+						
+						//use $this->Passenger so that the deal_purchase_id is inserted correctly
+						//This needs to be changed b/c only deal 3 passengers are being put into passengers table
+						if ($this->Passenger->saveAll($purchase)) {
+							$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
+						} else {
+							$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
+						}
+					} 
+					} else if ($result->transaction) {
+						
+						$this->Session->setFlash(__('Purchase failed: please check your billing information again or try another card'));
+						//print_r("\n  message: " . $result->message);
+						//print_r("\n  code: " . $result->transaction->processorResponseCode);
+						//print_r("\n  text: " . $result->transaction->processorResponseText);
+					} 
+
+				else {
+					$this->Session->setFlash(__('Some of your billing information is missing or formatted incorrectly.  Please see the error messages below.', true));
 				}
+				
 			}
 		}
-		elseif(empty($this->data)) {	//Load the page
-		$deal = $this->Deal->read(null, $id);
-		$deal['Deal']['trip_start_date'] = $this->Session->read('Trip.start_date');
-		$deal['Deal']['trip_end_date'] = $this->Session->read('Trip.end_date');
-		$deal['Deal']['days'] = $this->Session->read('Trip.days');
-		$deal['Deal']['cost'] = $this->Session->read('Trip.cost');
-		$this->set(compact('deal'));
-		} 
+	//If you haven't been redirected yet, load the page
+	$deal = $this->Deal->read(null, $id);
+	$deal['Deal']['trip_start_date'] = $this->Session->read('Trip.start_date');
+	$deal['Deal']['trip_end_date'] = $this->Session->read('Trip.end_date');
+	$deal['Deal']['days'] = $this->Session->read('Trip.days');
+	$deal['Deal']['cost'] = $this->Session->read('Trip.cost');
+	$this->set(compact('deal')); 
 
 	}
 
