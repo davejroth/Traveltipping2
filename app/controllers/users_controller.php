@@ -6,7 +6,7 @@ class UsersController extends AppController {
 	var $uses = array('Merchant', 'Traveler', 'User');
 
 	/*
-	 *This is called from loginAction in appController
+	 *This is called when logging in
 	 *Sets Session variables and redirects to appropriate login page.
 	 */
 	function loginredirect() {

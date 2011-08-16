@@ -11,6 +11,15 @@
 				$currentYear = $currentYear + 1;
 				}while($currentYear <= $endYear);
 			
+			$months = array(1 => '01', 2 => '02', 3 => '03', 4 => '04', 5 => '05', 6 => '06', 
+			7 => '07', 8 => '08', 9 => '09', 10 => '10', 11 => '11', 12 => '12');
+			/*$currentMonth = 1;
+			$endMonth = 12;
+			do {
+				$months[$currentMonth] = $currentMonth;
+				$currentMonth++;
+				} while($currentMonth <= $endMonth); */
+			
 				
 	
 	echo $deal['Deal']['title'];
@@ -73,7 +82,7 @@ function loadPiece(href,divName) {
 	  echo $this->Form->input('Transaction.ccv', array('label' => 'CCV Number'));
 	  echo $this->Form->label('Expiration Date');
 	  echo "<br>";
-	  echo $this->Form->month('mob', null, array('monthNames' => false, 'div' => false));
+	  echo $this->Form->input('Transaction.expiration_month', array('type' => 'select', 'options' => $months, 'label' => '', 'div' => false));
 	  echo $this->Form->input('Transaction.expiration_year', array('type' => 'select', 'options' => $years, 'label' => '', 'div' => false));
 	  //echo $this->Form->year('Transaction.expiration_year',date('Y')+5, date('Y'), date('Y'), array() , false );
 	  echo $this->Form->end('Purchase')?>

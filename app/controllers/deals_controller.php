@@ -120,7 +120,7 @@ class DealsController extends AppController {
 		$countries = $this->Deal->Venue->Country->find('list');
 		$venues = $this->Deal->Venue->find('list');
 		$this->set(compact('venues','merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
-		 $this->layout = 'admin';
+		$this->layout = 'admin';
 	
 	}
 
@@ -257,16 +257,20 @@ class DealsController extends AppController {
 				$traveler = $this->Traveler->read(null, $travelerID);
 				$this->loadModel('Transaction');
 				$this->Transaction->set($this->data);
+				$expirationDate = $this->data['Transaction']['expiration_month'] . '/' .
+							$this->data['Transaction']['expiration_year'];
 				if($this->Transaction->validates()) {
 					//Billing info was entered.  Now process the credit card
 					//We probably want a way of linking the deal id to the purchase?
 					$result = Braintree_Transaction::sale(array(
 					'amount' => $this->Session->read('Trip.cost'),
-					'orderId' => 'deal_purchase_id', //This is generated after the sale.  Do we find the max and then lock the table?
+					'orderId' => 'deal_purchase_id', //This is generated after the sale.  Do we find the max and then lock the table?  
+					//Or we could insert the record and lock the table, then roll back the transaction if the sale fails.
+					//'merchantAccountId' => 'a_merchant_account_id', This needs to be input
 					'creditCard' => array(
 						'number' => $this->data['Transaction']['cc_number'],
-						'expirationDate' => $this->data['Transaction']['expiration'],
-						//Do we need to validate billing address as well?
+						'expirationDate' => $expirationDate,
+						'cardholderName' => $this->data['Transaction']['name'],
 						),
 					'customer' => array(
 						'firstName' => $traveler['Traveler']['first_name'],
@@ -274,19 +278,28 @@ class DealsController extends AppController {
 						'email' => $traveler['User']['email'],
 						'id' => $travelerID
 					  ),
+					  'billing' => array(
+						'firstName' => $this->data['Transaction']['name'],
+						//'lastName' => 'Smith',
+						'streetAddress' => $this->data['Transaction']['address'],
+						'locality' => $this->data['Transaction']['city'],
+						'region' => $this->data['Transaction']['state'],
+						'postalCode' => $this->data['Transaction']['zip'],
+						'countryCodeAlpha2' => 'US'
+						),
 					  'options' => array(
 						'submitForSettlement' => true
 					)
 					));
 					if ($result->success) {
-						print_r("success!: " . $result->transaction->id);
+						//print_r("success!: " . $result->transaction->id);
 						//Save the Passenger data
 						$this->loadModel('Passenger');
 						$purchase['DealPurchase']['deal_id'] = $id;
 						$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
 						$purchase['DealPurchase']['confirmation_code'] = $random_hash;
 						$purchase['DealPurchase']['traveler_id'] = $travelerID;
-						$purchase['DealPurchAse']['start_date'] = $this->Session->read('Trip.start_date');
+						$purchase['DealPurchase']['start_date'] = $this->Session->read('Trip.start_date');
 						$purchase['DealPurchase']['end_date'] = $this->Session->read('Trip.end_date');
 						
 						$purchase['Passenger']['first_name'] = $traveler['Traveler']['first_name'];
@@ -300,18 +313,18 @@ class DealsController extends AppController {
 							$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
 						}
 					} 
-					} else if ($result->transaction) {
+					else {
 						
 						$this->Session->setFlash(__('Purchase failed: please check your billing information again or try another card'));
-						//print_r("\n  message: " . $result->message);
-						//print_r("\n  code: " . $result->transaction->processorResponseCode);
-						//print_r("\n  text: " . $result->transaction->processorResponseText);
+						print_r("\n  message: " . $result->message);
+						print_r("\nValidation errors: \n");
+						print_r($result->errors->deepAll());
+						print_r($expirationDate);
 					} 
-
-				else {
-					$this->Session->setFlash(__('Some of your billing information is missing or formatted incorrectly.  Please see the error messages below.', true));
-				}
 				
+				} else {
+					$this->Session->setFlash(__('Some of your billing information is missing or formatted incorrectly.  Please see the error messages below.', true));
+				}	
 			}
 		}
 	//If you haven't been redirected yet, load the page

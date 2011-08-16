@@ -25,7 +25,7 @@ class Transaction extends AppModel {
 		),
 		'cc_number' => array(
 			'ccCheck' => array('rule' => 'notEmpty','message' => 'Please enter your credit card number.'),
-			'ccLength' => array('rule' => array('between', 16, 16), 'message' => 'Your credit card should be 16 numbers, without spaces.'),
+			'ccLength' => array('rule' => array('between', 15, 16), 'message' => 'Your credit card should be 16 numbers, without spaces.'),
 			'ccNumeric' => array('rule' => 'numeric', 'message' => 'Please enter your credit card number without any spaces or dashes.')
 		),
 		'ccv' => array(
