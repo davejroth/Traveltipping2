@@ -1,12 +1,10 @@
 <div id="layout_left" class="grid_22">
-<<<<<<< HEAD
-
 <?php
 	echo $this->Form->input('Calendar.day',array(
 	'type' => 'text',
 	'label' => 'Date'
 	));
-
+	echo $this->Form->button('See All Reservations', array('type'=>'button', 'id' => 'seeAllReservationsBtn'));
 ?>
 
 <div id="reservation_list"> 
@@ -28,7 +26,14 @@
 $(document).ready(function() {
 	
 	$('#CalendarDay').datepicker({ dateFormat: 'yy-mm-dd' });
-
+	var dealID = <?php echo $dealID ?>;
+	$("#reservation_list").empty();
+	$.ajax({
+			url:'\/merchants\/reservation_paginate\/'+ dealID,
+			success: function(html){
+		    $("#reservation_list").append(html);
+		  }
+		});
 	
 	$('#CalendarDay').change(function(){
 		var calendarDate = $('#CalendarDay').val();
@@ -36,6 +41,17 @@ $(document).ready(function() {
 		$("#reservation_list").empty();
 		$.ajax({
 			url:'\/merchants\/reservation_paginate\/'+ dealID + '\/' + calendarDate,
+			success: function(html){
+		    $("#reservation_list").append(html);
+		  }
+		});
+	});
+	
+	$('#seeAllReservationsBtn').click(function() {
+		var dealID = <?php echo $dealID ?>;
+		$("#reservation_list").empty();
+		$.ajax({
+			url:'\/merchants\/reservation_paginate\/'+ dealID,
 			success: function(html){
 		    $("#reservation_list").append(html);
 		  }

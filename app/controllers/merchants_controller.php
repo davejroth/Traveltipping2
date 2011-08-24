@@ -7,7 +7,8 @@ class MerchantsController extends AppController {
 
 	
 	var $paginate = array(
-		'Passengers' => array('limit' => 2),
+		'DealPurchase' => array('limit' => 10),
+		'Passenger' => array('limit' => 10),
 		);
 	
 /*
@@ -151,17 +152,19 @@ class MerchantsController extends AppController {
 	function reservation_paginate($id = null, $chosenDate = null){
 		$this->loadModel('Deal');
 		$deal = $this->Deal->read(null, $id);
-		
-		$conditions = array('DealPurchase.start_date <=' => $chosenDate, 
-			'DealPurchase.end_date >=' => $chosenDate);
-		
-		if($deal['Deal']['reservation_type_id'] != 3) {
-			$this->loadModel('Passenger');
-			$this->loadModel('DealPurchase');
-			$this->Paginate = array('limit' => 2);
-			$this->Passenger->recursive = 2;
+		$conditions = array('DealPurchase.deal_id =' => $id);
+		if($chosenDate != null) {
+		array_push($conditions, array('DealPurchase.start_date <=' => $chosenDate, 
+			'DealPurchase.end_date >=' => $chosenDate));
+		//$conditions['DealPurchase.start_date <='] = $chosenDate;
+		/*$conditions = array('DealPurchase.start_date <=' => $chosenDate, 
+			'DealPurchase.end_date >=' => $chosenDate); */
 			
-			$reservations = $this->Paginate('Passenger', $conditions);	
+		}
+		if($deal['Deal']['reservation_type_id'] != 3) {
+			$this->loadModel('DealPurchase');
+			//$this->Paginate = array('limit' => 2);
+			$reservations = $this->Paginate('DealPurchase', $conditions);	
 		}
 		elseif($deal['Deal']['reservation_type_id'] == 3) {
 			$this->loadModel('Passenger');
