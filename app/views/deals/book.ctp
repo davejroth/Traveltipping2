@@ -1,15 +1,16 @@
-<?php echo $this->Html->script('jquery');
-	  echo $this->Html->script('date');
-	 ?>
 
 <div id="layout_left" class="grid_22">
 	<h2 class="page_title">Reservations</h2>
-	<?php echo $this->Form->create('Deal',  array('url' => '/deals/book/' . $deal['Deal']['id']));
-		  echo $this->Html->image('/img/deals/deal-detail-2.png', array('class'=>'grid_3','alt' => 'Featured Deal Image'));
-		  echo $deal['Deal']['title'];  
-		  echo "         " . "$" . $deal['Deal']['discounted_price'] . " per night" . "<br/>";
+	<?php 
+		echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
+		echo '<p>'.$deal['Deal']['title'].'</p>';  
+		echo "         " . "$" . $deal['Deal']['discounted_price'] . " per night";
 		
 		  echo "1. Select your check-in date";
+	
+	
+		echo $this->Form->create('Deal',  array('url' => '/deals/book/' . $deal['Deal']['id']));
+		  
 
 	
 	echo $form->input('start_date',array('type'=>'select','options'=>$dates, 'id' => 'start_date')); 
@@ -59,6 +60,7 @@
 	});
 	
     </script> 
+    
 <div id = "start_date_text">
 Check-In Date:
 <div id="display_start_date">

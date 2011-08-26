@@ -137,19 +137,22 @@ class DealsController extends AppController {
 	function book($id = null) {
 		$deal = $this->Deal->read(null, $id);
 		$reservationType = $this->Deal->GetReservationType($id);
-		if(!empty($this->data)) { //If form is submitted
+		
+		if(!empty($this->data)){
+			
 			if($reservationType == Configure::read('ReservationType.Fixed')){
 			
 			$nights = $deal['Deal']['max_nights'];
 			$date1 = new DateTime($this->data['Deal']['start_date']);
 			$date1->add(new DateInterval('P' . $nights . 'D'));
 			$this->Session->delete('Trip');
-			$this->Session->write('Trip.start_date', $this->data['Deal']['start_date']);
-			$this->Session->write('Trip.end_date', $date1->format('Y-m-d'));
+			$this->Session->write('Trip.start_date', $this->data['DealPurchase']['start_date']);
+			$this->Session->write('Trip.end_date', $this->data['DealPurchase']['end_date']);
 			$this->Session->write('Trip.days', $nights);
 			$this->Session->write('Trip.cost', $deal['Deal']['discounted_price']);
 			
 			$this->redirect(array('controller' => 'deals', 'action'=>'purchase',$id));
+			
 			}
 			elseif($reservationType == Configure::read('ReservationType.Variable')) {  
 			
@@ -178,7 +181,6 @@ class DealsController extends AppController {
 			
 			}
 		}
-		else {  //Load the form
 			//Load Availability and Purchase arrays
 			//This could probably be refactored to just load a DealsRemaining array?
 			$this->loadModel('DealAvailability');
@@ -201,7 +203,7 @@ class DealsController extends AppController {
 			elseif($reservationType == Configure::read('ReservationType.Set')){
 			  	$this->render('book');
 			}
-		}
+		
 	}
 /**
  * Purchase 

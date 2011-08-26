@@ -649,9 +649,6 @@ float:right;
 	display:block;
 }
 
-
-
-
 #featured_deal {
     color: #444444;
     cursor: pointer;
@@ -669,4 +666,28 @@ float:right;
  */
 #destination_details{
 float:right;
+}
+
+
+/**
+* Booking Pages
+*/
+
+.deal_summary{
+    border-bottom: 3px solid #CCCCCC;
+    padding-bottom: 10px;
+}
+
+.deal_summary .title{ 
+    font-weight: bold;
+    width: 490px;
+}
+
+.deal_summary .price{ 
+	font-weight:bold;
+}
+
+#DealBookForm .continue_btn{
+    float: right;
+    margin: 10px 0 20px;
 }

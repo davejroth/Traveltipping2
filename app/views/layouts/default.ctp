@@ -14,6 +14,7 @@
 		echo $this->Html->css('styles');
 		echo $this->Html->css('/css/ui-lightness/jquery-ui');
 		echo $this->Html->script('jquery');
+		echo $this->Html->script('helpers');
 		echo $this->Html->script('site');
 		$this->AssetCompress->script('jquery-ui');
 		echo $this->AssetCompress->includeAssets('false');

@@ -1,4 +1,8 @@
 
+.span_block{
+	display:block;
+}
+
 /* +++++++++++++++++ START Page Styles +++++++++++++++++ */
 
 .page_title{
@@ -420,6 +424,16 @@ label{
     width: 87px;
 }
 
+.continue_btn{
+    background: url("../img/site/continue_btn.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    font-size: 0;
+    height: 41px;
+    padding: 0;
+    width: 157px;
+}
+
 /* +++++++++++++++++ END Button Styles +++++++++++++++++ */
 
 .cta_text{
@@ -521,15 +535,17 @@ label{
 */
 
 .calendar_wrap{
-	height: 285px;
-	margin: 0 auto;
-	overflow: hidden;
-	width: 660px;
+    height: 330px;
+    margin: 15px auto 5px;
+    overflow: hidden;
+    position: relative;
+    width: 656px;
 }
 
 .month_wrap{
-  float: left;
-  width: 330px;
+    float: left;
+    margin: 0 7px;
+    width: 315px;
 }
 
 .calendar_slider{
@@ -542,8 +558,9 @@ label{
 }
 .calendar_controls{
     display: block;
+    left: 0;
     position: absolute;
-    width: 645px;
+    width: 660px;
     z-index: 1000;
 }
 
@@ -552,7 +569,7 @@ label{
     display: block;
     float: left;
     height: 12px;
-    margin: 10px 0 0 10px;
+    margin: 10px 0 0 15px;
     width: 13px;
 }
 
@@ -561,7 +578,7 @@ label{
     display: block;
     float: right;
     height: 12px;
-    margin: 10px 10px 0 0;
+    margin: 10px 15px 0 0;
     width: 13px;
 }
 
@@ -589,9 +606,7 @@ label{
     vertical-align: top;
 }
 
-.calendar td.blank{
-	    background: none repeat scroll 0 0 #DDDDDD;
-}
+
 
 .calendar td a{
     color: #444444;
@@ -612,6 +627,67 @@ label{
 .last_cal{
 	display:block;
 }
+
+.clear_dates{
+	float:right;
+	margin-right:40px;	
+}
+
+.reservation_info{
+    clear: both;
+    float: right;
+    margin: 10px 40px 0 0;
+    width: 250px;
+}
+
+.reservation_info .check_in,
+.reservation_info .check_out,
+.summary_total_value{
+	float:right;
+}
+
+.date_legend{
+	  background: none repeat scroll 0 0 #FFBE32;
+    border: 1px solid #EDA200;
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 0 5px;
+    width: 20px;
+}
+
+.summary_total{
+    background: none repeat scroll 0 0 #E0F8F8;
+    border: 1px solid #C7E2E2;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    clear: both;
+    color: #444444;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+}
+
+.calendar td.checkInDate,
+.calendar td.checkOutDate{
+	background:#ffbe32;
+}
+
+.calendar td.dateSelection{
+	background:#fde9be;
+}
+
+
+.calendar td.calendarHover{
+	background:#ffbe32;
+}
+
+.calendar td.blank{
+	    background: none repeat scroll 0 0 #DDDDDD;
+}
+
 /*
 .first_cal .calendar_heading .next_cal{
 	display:none;

@@ -10,6 +10,7 @@ class CalendarHelper extends Helper {
 		*/
 		$firstdate = mktime(0, 0, 0, $month, 1, $year);
 		$lastdate = mktime(0, 0, 0, $month+1, 0, $year);
+		//echo($lastdate);
 		$firstday = strftime("%a", $firstdate);
 		$day = 1;
 		$month_array = array(
@@ -28,7 +29,9 @@ class CalendarHelper extends Helper {
 		* Initialize Calendar
 		*/
 		
-		$calendar = '<div id="calendar_'.$year.'_'.$month.'" class="month_wrap">';
+		$month_padded = str_pad($month,2,"0",STR_PAD_LEFT);
+		
+		$calendar = '<div id="calendar_'.$year.'_'.$month_padded.'" class="month_wrap">';
 		$calendar .= '<div class="calendar_heading clearfix"> <h3>'.$month_array[$month].' '.$year.'</h3>';
 		$calendar .= '</div>'; 
 		$calendar .= '<table class="calendar" cellspacing="0">';
@@ -107,7 +110,7 @@ class CalendarHelper extends Helper {
 		/**
 		* Sixth Week
 		*/
-		if($day < strftime("%d", $lastdate)){
+		if(true){
 			$calendar .= '<tr>';
 			for($i=36; $i<=42; $i++){
 				if(strftime("%d", $lastdate) < $day){
