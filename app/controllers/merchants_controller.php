@@ -214,11 +214,13 @@ class MerchantsController extends AppController {
 		$availableDates = $this->DealAvailability->getAvailableDates($id);
 		//debug($availableDates);
 		$this->loadModel('DealPurchase');
+		$this->loadModel('Deal');
+		$deal = $this->Deal->find('first', array('conditions' => array('Deal.id' => $id)));
 		$reservedDates = $this->DealPurchase->getReservations($id);
 
 
 			$this->set('dealID', $id);
-			$this->set(compact('availableDates', 'dates', 'reservedDates'));
+			$this->set(compact('availableDates', 'dates', 'reservedDates','deal'));
 
 	}
 	

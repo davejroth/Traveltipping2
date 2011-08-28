@@ -7,11 +7,11 @@
 
 <div id="content">
 <?php if($deal['Deal']['reservation_type_id'] != 3) { //Print page for deal type 1 and 2?>
-<table>
+<table id="reservation_table_type1" class="reservation_table">
 	<tr> 
-		<th><?php echo "#"; ?></th> 
-		<th><?php echo $this->Paginator->sort('First Name', 'Traveler.first_name'); ?></th> 
-		<th><?php echo $this->Paginator->sort('Last Name', 'Traveler.last_name'); ?></th> 
+		<th width="20"><?php echo "#"; ?></th> 
+		<th width="120"><?php echo $this->Paginator->sort('First Name', 'Traveler.first_name'); ?></th> 
+		<th width="120"><?php echo $this->Paginator->sort('Last Name', 'Traveler.last_name'); ?></th> 
 		<th><?php echo $this->Paginator->sort('Amount Paid', 'Deal.discounted_price'); 
 		//Currently this shows discountedprice for deals 1 and 2.  It should be discount * nights for deal type 2?></th> 
 		<th><?php echo $this->Paginator->sort('Nights', 'nights'); //This field is a virtual field?></th> 		
@@ -32,7 +32,7 @@
 	<?php endforeach; //debug($reservation);?> 
 </table> 
 <?php } elseif($deal['Deal']['reservation_type_id'] == 3) { ?>
-<table>
+<table id="resevation_table">
 	<tr> 
 		<th><?php echo "#"; ?></th> 
 		<th><?php echo $this->Paginator->sort('First Name', 'Passenger.first_name'); ?></th> 
@@ -72,12 +72,7 @@
 	} //End DealType 3?> 
 </table>
 
-<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-	));
-	?>	</p>
+
 <div id="pagination">
 <?php echo $this->Paginator->prev('<< ', array(), null, array('class'=>'disabled'));?>
 <!-- Shows the page numbers --><?php echo $this->Paginator->numbers(); ?>

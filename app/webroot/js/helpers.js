@@ -29,7 +29,7 @@ function addDays(myDate,days) {
 */
 function convertDate(myDate){
 	myDateArr = myDate.split('-')
-	var dateOjb = new Date(myDateArr[0], myDateArr[1], myDateArr[2]);
+	var dateOjb = new Date(myDateArr[0], myDateArr[1] - 1, myDateArr[2]);
 	return dateOjb;
 }
 

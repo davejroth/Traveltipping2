@@ -434,6 +434,17 @@ label{
     width: 157px;
 }
 
+.reservation_list_all{
+    background: url("../img/site/see_all_reservations_btn.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    font-size: 0;
+    height: 21px;
+    padding: 0;
+    width: 151px;
+    float:right;
+}
+
 /* +++++++++++++++++ END Button Styles +++++++++++++++++ */
 
 .cta_text{
@@ -688,15 +699,49 @@ label{
 	    background: none repeat scroll 0 0 #DDDDDD;
 }
 
-/*
-.first_cal .calendar_heading .next_cal{
-	display:none;
+/**
+* Reservation List Styles
+*/
+
+
+#reservation_list_meta{
+	clear:both;	
+	width:940px;
+	margin: 10px auto;
 }
 
-.second_cal .calendar_heading .next_cal{
-	display:none;
+#reservation_list_meta p{
+    display: block;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    width: 400px;
 }
 
-.last_cal .calendar_heading .prev_cal{
-	display:none;
-}*/
+#reservation_list{
+	clear:both;
+}
+
+.reservation_table{
+  margin: 10px auto;
+  width: 940px;
+}
+
+.reservation_table th{
+		text-align:left;
+		border-bottom:3px solid #4EBDDE;
+}
+
+.reservation_table th a{
+	text-decoration:none;
+	color:#4EBDDE;
+}
+
+.reservation_table th{
+		text-align:left;
+}
+
+.reservation_table tr td{
+		padding:10px 0;
+		border-bottom:1px solid #CCCCCC;
+}
