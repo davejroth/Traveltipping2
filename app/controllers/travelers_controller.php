@@ -88,6 +88,35 @@ class TravelersController extends AppController {
 	}
 	$this->render('ajax_signup','ajax');
 	}
+
+
+/**
+* Traveler Deals 
+* Displays the traveler's deals by status
+* @param string $deal_status Status of the merchants deal: Upcoming, Past
+*
+*/
+	function deals($purchaseStatus) {
+		$this->loadModel('DealPurchase');
+		$this->DealPurchase->recursive = 3;
+		$purchases;
+		if(strcmp($purchaseStatus, "upcoming") == 0)
+		{
+			$purchases = $this->DealPurchase->find('all', array('conditions' => 
+				array('DealPurchase.traveler_id' => $this->Session->read('Traveler.id'), 
+				"NOT" => array('DealPurchase.end_date <=' => date('Y-m-d')))));
+		}
+		
+		if(strcmp($purchaseStatus, "past") == 0)
+		{
+			$purchases = $this->DealPurchase->find('all', array('conditions' => 
+				array('DealPurchase.traveler_id' => $this->Session->read('Traveler.id'), 
+				"NOT" => array('DealPurchase.end_date >' => date('Y-m-d')))));
+		}
+		 
+	$this->set(compact('purchases', 'purchaseStatus'));
+	}
+
 	
 }
 
