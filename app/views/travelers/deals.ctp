@@ -40,7 +40,7 @@ foreach ($purchases as $purchase):
 </div>
 			<?php
 		echo $this->Html->link('View Page', array('controller' => 'deals', 'action' => 'view', $purchase['Deal']['id']));
-		echo __('Purchase Price: ');
+		echo __('Purchase Price: ') .'$'. $purchase['DealPurchase']['purchase_amount'];
 		echo __('Purchase Date: ').date_format(date_create($purchase['DealPurchase']['created']), ' F j, Y');; ?>
 <?php endforeach; ?>
 </div><!-- layout_left -->
