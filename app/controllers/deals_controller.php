@@ -179,15 +179,16 @@ class DealsController extends AppController {
 			if($reservationType == Configure::read('ReservationType.Fixed')){
 			
 			$nights = $deal['Deal']['max_nights'];
-			$date1 = new DateTime($this->data['Deal']['start_date']);
+			$date1 = new DateTime($this->data['DealPurchase']['start_date']);
 			$date1->add(new DateInterval('P' . $nights . 'D'));
 			$this->Session->delete('Trip');
 			$this->Session->write('Trip.start_date', $this->data['DealPurchase']['start_date']);
 			$this->Session->write('Trip.end_date', $this->data['DealPurchase']['end_date']);
 			$this->Session->write('Trip.days', $nights);
 			$this->Session->write('Trip.cost', $deal['Deal']['discounted_price']);
+			$this->Session->write('Trip.id', $id);
 			
-			$this->redirect(array('controller' => 'deals', 'action'=>'purchase',$id));
+			$this->redirect(array('controller' => 'deals', 'action'=>'purchase',$this->Session->read('Trip.id')));
 			
 			}
 			elseif($reservationType == Configure::read('ReservationType.Variable')) {  

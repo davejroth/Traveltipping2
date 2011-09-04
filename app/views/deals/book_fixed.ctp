@@ -21,7 +21,9 @@
 		<p># of Nights: <span class="num_of_nights"></span></p>
 	</div>
 	<div class="summary_total">Total<span class="summary_total_value"></span></div>
-	
+ <input class="resDates" name="data[DealPurchase][start_date]" type="hidden" value="" />
+<input class="resDates" name="data[DealPurchase][end_date]" type="hidden" value="" />
+
 <?php echo $this->Form->end(array('class' => 'continue_btn'))?>
 </div><!-- layout_left -->
 
@@ -82,9 +84,9 @@ $(document).ready(function() {
   			
   			//$('.calendar td[class!="blank"] a').unbind(click);
   			
-  			$('#DealBookForm').append('<input class="resDates" name="data[DealPurchase][start_date]" type="hidden" value="'+checkOutDate+'" />');
+  			$('.input[name="data[DealPurchase][start_date]"]').val(checkOutDate);
+  			$('.input[name="data[DealPurchase][end_date]"]').val(checkInDate);
   			
-  			$('#DealBookForm').append('<input class="resDates" name="data[DealPurchase][end_date]" type="hidden" value="'+checkInDate+'" />');
 	  	}
 	  		
 	  		
