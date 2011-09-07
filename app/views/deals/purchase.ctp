@@ -1,37 +1,34 @@
-
-
-<div id="layout_left" class="grid_22">
-	<h2 class="page_title">Summary</h2>
-	<?php 
+<?php 
 			$years = array();
 			$currentYear = date('Y');
-			$endYear = date('Y') + 5;
+		$endYear = date('Y') + 5;
 			do {
-				$years[$currentYear] = $currentYear;
-				$currentYear = $currentYear + 1;
-				}while($currentYear <= $endYear);
-			
-			$months = array(1 => '01', 2 => '02', 3 => '03', 4 => '04', 5 => '05', 6 => '06', 
+			$years[$currentYear] = $currentYear;
+			$currentYear = $currentYear + 1;
+							}while($currentYear <= $endYear);
+		
+		$months = array(1 => '01', 2 => '02', 3 => '03', 4 => '04', 5 => '05', 6 => '06', 
 			7 => '07', 8 => '08', 9 => '09', 10 => '10', 11 => '11', 12 => '12');
 			/*$currentMonth = 1;
 			$endMonth = 12;
 			do {
 				$months[$currentMonth] = $currentMonth;
-				$currentMonth++;
+		$currentMonth++;
 				} while($currentMonth <= $endMonth); */
-			
-				
-	
-	echo $deal['Deal']['title'];
-		  echo "<br>";
-		  echo "Check-in:" . date_format(date_create($deal['Deal']['trip_start_date']), 'l, F jS, Y');
-		  echo "<br>";
-		  echo "Check-out:" . date_format(date_create($deal['Deal']['trip_end_date']), 'l, F jS, Y');
-		  echo "<br>";
-		  echo "Days:" . $deal['Deal']['days'];
-		  echo "<br>";
-		  echo "Cost:$" . $deal['Deal']['cost'];
 ?>
+
+<div id="layout_left" class="grid_22">
+	<h2 class="page_title">Summary</h2>
+	<div class="deal_summary clearfix">
+		<p class="grid_10 title"><?php echo $deal['Deal']['title'] ?></p>
+		<p class="grid_7 price">
+			Check In: <?php echo $this->Session->read('Trip.start_date') ?><br/>
+			Check Out: <?php echo $this->Session->read('Trip.end_date') ?><br/>
+		</p>
+		
+	</div>
+	<p>Total: <?php echo $this->Session->read('Trip.cost') ?></p>
+
 
 	<h2 class="page_title">Account Info</h2>
 	

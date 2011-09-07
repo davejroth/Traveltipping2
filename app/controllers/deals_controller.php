@@ -188,6 +188,8 @@ class DealsController extends AppController {
 			$this->Session->write('Trip.cost', $deal['Deal']['discounted_price']);
 			$this->Session->write('Trip.id', $id);
 			
+			//$this->Session->read('Trip.id');
+			
 			$this->redirect(array('controller' => 'deals', 'action'=>'purchase',$this->Session->read('Trip.id')));
 			
 			}

@@ -52,14 +52,19 @@ $(document).ready(function() {
 	  		* Reservation Details
 	  		*/
 	  		var calendarDates = $(this).parents('.month_wrap').attr('id').split('_');
+	  		//alert(calendarDates[1]);
 	  		var calendarYear = calendarDates[1];
+	  		
 	  		var calendarMonth = pad(calendarDates[2],2);
+	  		//alert('hello');
 	  		var calendarDay = pad($(this).text(),2);
+	  		
 	  		var checkInDate = calendarYear +'-'+ calendarMonth+'-'+calendarDay;
 	  		var checkInDateObj = convertDate(checkInDate);
 	  		var myDate = new Date(checkInDate);
 	  		var checkOutDateObj = addDays(myDate,<?php echo $deal['Deal']['max_nights'] ?>);
 	  		var checkOutDateArr = new Array();
+	  		
 	  		checkOutDateArr[0] =  checkOutDateObj.getFullYear();
 	  		checkOutDateArr[1] =  pad(checkOutDateObj.getMonth()+1,2);
 	  		checkOutDateArr[2] =  pad(checkOutDateObj.getDate(),2);
@@ -67,6 +72,8 @@ $(document).ready(function() {
 	  		var num_of_nights = days_between(convertDate(checkInDate),convertDate(checkOutDate));
 	  		var price = <?php echo $deal['Deal']['discounted_price'] ?>;
 	  		var total = num_of_nights * price;
+	  		
+	  		
 	  		
 	  		//checkInDateText = checkInDateObj.toString('MMMM ,yyyy')
 	  		$('.check_in').text(getDateText(checkInDateObj));
@@ -83,13 +90,12 @@ $(document).ready(function() {
   			$('.CheckoutDate a').parent().prevUntil('.checkInDate','td').addClass('dateSelection');
   			
   			//$('.calendar td[class!="blank"] a').unbind(click);
-  			
-  			$('.input[name="data[DealPurchase][start_date]"]').val(checkOutDate);
-  			$('.input[name="data[DealPurchase][end_date]"]').val(checkInDate);
+  			//alert(checkOutDate);
+  			$('input[name="data[DealPurchase][start_date]"]').val(checkOutDate);
+  			$('input[name="data[DealPurchase][end_date]"]').val(checkInDate);
   			
 	  	}
-	  		
-	  		
+
 	  		return false;
 	  	},
 	  	function(){
@@ -103,7 +109,8 @@ $(document).ready(function() {
 	  		$('.num_of_nights').text('');
 	  		$('.summary_total_value').text('');
 	  		
-	  		$('.resDates').detach();
+	  		$('.input[name="data[DealPurchase][start_date]"]').val('');
+  			$('.input[name="data[DealPurchase][end_date]"]').val('');
   			
 	  	}
   	);	

@@ -16,7 +16,8 @@
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('helpers');
 		echo $this->Html->script('site');
-		$this->AssetCompress->script('jquery-ui');
+		echo $this->Html->script('jquery-ui');
+		//$this->AssetCompress->script('');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;
 	?>
