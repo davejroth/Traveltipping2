@@ -9,7 +9,8 @@ class DealsController extends AppController {
 
 	var $name = 'Deals';	
 	var $components = array('Email', 'Notification', 'RequestHandler','Attachment');
-	var $helpers = array('JavaScript', 'Html', 'Form');
+	var $helpers = array('JavaScript', 'Html', 'Form', 'Ajax', 'Js');
+	
 
 	//var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript', 'Form');
 	 //var $helpers = array('Html','Ajax','Javascript');
@@ -132,6 +133,29 @@ class DealsController extends AppController {
 		if (!empty($this->data)) {
 			if ($this->Deal->save($this->data)) {
 				$this->Session->setFlash(__('The deal has been saved', true));
+				
+				 //If there are no availability records, generate average records for each day
+				$this->Deal->DealAvailability->recursive = -1;
+				$availabilityRecords = $this->Deal->DealAvailability->find('all', array (
+					'conditions' => array(
+						'DealAvailability.deal_id' => $id
+				)));
+				if(empty($availabilityRecords)) {
+				
+					$thisDeal = $this->Deal->read(null, $id);
+					$availabilityRecord['DealAvailability']['deal_id'] = $id;
+					$availabilityRecord['DealAvailability']['num_available'] = $this->data['DealAvailability']['average_reservations'];
+					$tripStart = $thisDeal['Deal']['deal_valid'];
+					$tripEnd = $thisDeal['Deal']['deal_expire'];
+					$tripStart = date('Y-m-d', strtotime($tripStart. ' - 1 days')); //Take one day off so that last day is added
+					do {
+					$tripStart = date('Y-m-d', strtotime($tripStart. ' + 1 days'));
+						$availabilityRecord['DealAvailability']['reservation_date'] = $tripStart;
+						$this->Deal->DealAvailability->create();
+						$this->Deal->DealAvailability->save($availabilityRecord);
+					}while(strcmp($tripStart,$tripEnd) != 0);
+					//debug($count);
+				}
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
@@ -140,14 +164,13 @@ class DealsController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Deal->read(null, $id);
 		}
-		$merchants = $this->Deal->Merchant->find('list');
+		$merchants = $this->Deal->Venue->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
-		$destinations = $this->Deal->Destination->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
-		$countries = $this->Deal->Country->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));
+		$venues = $this->Deal->Venue->find('list');
+		$this->set(compact('merchants', 'dealStatuses', 'venues', 'reservationTypes', 'categories', 'regions'));
 	}
 
 	function admin_delete($id = null) {
@@ -349,5 +372,36 @@ function confirmation($id = null) {
 	$this->set(compact('deal', 'reservation'));
 }
 
+function editAvailabilities($id = null) {
+	$deal = $this->Deal->read(null, $id);
+	$dealID = $id;
+	
+	$this->set(compact('deal', 'dealID'));
+}
+/**
+ * editAvailabilitiesCall takes the $id of a deal and a $date and returns the DealAvailability record
+ * for that day.  It is called by the editAvailabilities page.
+ */
+function editAvailabilitiesCall($id = null, $date = null) {
+	if (!empty($this->data)) {
+		$this->data['DealAvailability']['reservation_date'] = $date;
+		if ($this->Deal->DealAvailability->save($this->data)) {
+			$this->Session->setFlash(__('The deal availability has been saved', true));
+			//$this->redirect(array('action' => 'index'));
+		} else {
+			$this->Session->setFlash(__('The deal availability could not be saved. Please, try again.', true));
+		}
+	}
+	if(empty($this->data)) {
+	//$this->Deal->DealAvailability->recursive = -1;
+	$this->data = $this->Deal->DealAvailability->find('first', array(
+		'conditions' => array(
+			'DealAvailability.reservation_date' => $date,
+			'DealAvailability.deal_id' => $id
+		)));
+	}
+	$this->set(compact('id', 'date'));
+	
+}
 }//End Class
 ?>
