@@ -12,43 +12,60 @@
 	?>
 	</ul>
 	</div>
-
 	
 <?php
 $i = 0;
 foreach ($deals as $deal):
-$remaining_quantity = $deal['Deal']['max_purchases'] - $deal['Deal']['current_purchases'];
-$sales = $deal['Deal']['current_purchases'] * $deal['Deal']['discounted_price'];
-$commissions = $sales * ($deal['Deal']['comission_percentage']/100);
-$revenue = $sales - $commissions;
-$progress_value = ($deal['Deal']['current_purchases']/$deal['Deal']['max_purchases'])*100;
-
-//$time_remaining = $deal['Deal']['deal_end_date'];
+$status = '';
+if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Initiated')) {
+$status = 'Initiated';
+$statusClass = 'initiated';
+}
+elseif($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
+$status = 'Waiting for your approval';
+$statusClass = 'waiting';
+}
+elseif($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Approved')) {
+$status = 'Will be released on';
+$statusClass = 'initiated';
+}
+$dealLive = date_format(date_create($deal['Deal']['deal_live']), 'l, F jS, Y');
+if(is_null($dealLive)) {
+	$dealLive = "Not Set";
+}
 
 ?>
 
 <div id="deal_<?php echo $deal['Deal']['id']?>"  class="white_mod_694_wrap deal_listing">
 	<div class="white_mod_694_top"></div>
 	<div class="white_mod_694_content clearfix">
-		<?php echo $this->Html->image("/img/listing/".$deal['Deal']['image1'], array('class'=>'grid_6 alpha omega','alt' => 'Featured Deal Image'))?>
+		<?php echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_6 alpha omega','alt' => 'Featured Deal Image'))?>
 		<div class="grid_14 push_1">
 			<h3 class="listing_desination_title">Tuscany, Italy</h3>
 			<table>
-				<?php echo $this->Html->tableHeaders(array('Status','Sales','Commission','Total Revenue'));?>
-				<?php echo $this->Html->tableCells(array(
-				array(array($deal['DealStatus']['name'],array('class'=>'status')),"$".$sales,"$".$commissions,array("$".$revenue,array('class'=>'revenue')))));?>
+				<tr>
+					<th> Deal Status </th>
+					<th class="date"> Scheduled Release Date </th>
+				</tr>
+				<tr>
+					<?php echo "<td class=" . $statusClass . "> " . $status . "</td>";
+						  echo "<td>" . $dealLive . "</td>";
+				/*
+				echo $this->Html->tableHeaders(array('Deal Status','Scheduled Release Date'));
+				 echo $this->Html->tableCells(
+						array(
+							array( array($status, array('class'=> $statusClass)),$dealLive 
+							)
+						)
+					); */?>
+				</tr>
 			</table>
 			<ul class="horizontal_list">
 				<li><a href="#">View Details</a></li>
 				<li><a href="#">View Sample</a></li>
-				<li<?php echo $this->Html->link('Reservations',array('action'=>'reservations',$deal['Deal']['id']),array('class'=>'reservations'))?></li>
 			</ul>
 			
-			<div class="progressbar">
-				<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
-			</div>
-			<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$deal['Deal']['current_purchases']; ?></p>
-			<p id="remaining_quantity" class="grid_5 push_1"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
+
 		</div>
 		
 		

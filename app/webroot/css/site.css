@@ -478,6 +478,13 @@ margin:0;
     width: 110px;
 }
 
+.merchant_deals table th.date {
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    width: 210px;
+}
+
 .merchant_deals table{
 	margin:10px 0;
 }
@@ -498,7 +505,7 @@ margin:0;
     text-decoration: none;
 	}
 	
-td.status,
+td.initiated,
 td.revenue{
     color: green;
     font-weight: bold;

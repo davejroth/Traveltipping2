@@ -119,14 +119,12 @@ Configure :: write('acl.gui.roles_permissions.ajax', false);
 /*
  * Global Variables created for TravelTipping
  */
-
- Configure :: write('Deal.Status_Listed', 1); 
- Configure :: write('Deal.Status_Closed', 3);
- Configure :: write('Deal.Status_Initiated', 4);  
- Configure :: write('Deal.Status_Submitted', 5); 
- Configure :: write('Deal.Status_Pending_Approval', 6);
- Configure :: write('Deal.Status_Approved', 7);
- Configure :: write('Deal.Status_Cancelled', 8); 
+ Configure :: write('Deal.Status_Initiated', 1);
+ Configure :: write('Deal.Status_Submitted', 2); 
+ Configure :: write('Deal.Status_Approved', 3);
+ Configure :: write('Deal.Status_Listed', 4); 
+ Configure :: write('Deal.Status_Closed', 5);
+ Configure :: write('Deal.Status_Cancelled', 6); 
  Configure :: write('Role.Merchant_ID', 5);
  Configure :: write('Role.Traveler_ID', 6); 
  Configure :: write('ReservationType.Fixed', 1);

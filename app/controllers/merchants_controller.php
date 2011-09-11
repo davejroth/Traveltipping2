@@ -71,6 +71,8 @@ class MerchantsController extends AppController {
 				"NOT" => array('Deal.deal_status_id' => 
 				array(Configure::Read('Deal.Status_Listed'), Configure::Read('Deal.Status_Closed'),
 				Configure::Read('Deal.Status_Cancelled'))))));
+				$this->set(compact('deals'));
+				$this->render('deals_upcoming');
 		}
 		
 		if(strcmp($deal_status, "live") == 0)
@@ -107,9 +109,11 @@ class MerchantsController extends AppController {
 	function initiate(){
 		$this->loadModel('Venue');
 		$this->loadModel('Deal');
+		
 		if (!empty($this->data)) {
+			//debug($this->data);
 			$this->Deal->create();
-			if ($this->Venue->save($this->data)) {
+			if ($this->Deal->save($this->data)) {
 				$this->Session->setFlash(__('The venue has been saved', true));
 				$this->redirect(array('action' => 'deals','upcoming'));
 			} else {
