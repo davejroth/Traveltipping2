@@ -195,8 +195,8 @@ class DealsController extends AppController {
 			}
 			elseif($reservationType == Configure::read('ReservationType.Variable')) {  
 			
-				$date1 = new DateTime($this->data['Deal']['start_date']);
-				$date2 = new DateTime($this->data['Deal']['end_date']);
+				$date1 = new DateTime($this->data['DealPurchase']['start_date']);
+				$date2 = new DateTime($this->data['DealPurchase']['end_date']);
 				$interval = $date1->diff($date2);
 				$days = $interval->d;
 				
@@ -208,8 +208,8 @@ class DealsController extends AppController {
 				//debug($cost);
 				//debug($this->Session->read('Trip.cost'));
 				$this->Session->delete('Trip');
-				$this->Session->write('Trip.start_date', $this->data['Deal']['start_date']);
-				$this->Session->write('Trip.end_date', $this->data['Deal']['end_date']);
+				$this->Session->write('Trip.start_date', $this->data['DealPurchase']['start_date']);
+				$this->Session->write('Trip.end_date', $this->data['DealPurchase']['end_date']);
 				$this->Session->write('Trip.days', $days);
 				$this->Session->write('Trip.cost', $cost);
 					
