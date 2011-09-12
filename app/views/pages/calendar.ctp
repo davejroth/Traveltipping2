@@ -8,7 +8,7 @@
 			
 			//echo $this->Calendar->renderMonth(9,2011);
 			
-			echo $this->Calendar->dealCalendars('2011-05-12', '2011-07-14');
+			echo $this->Calendar->dealCalendars('2011-10-25', '2011-12-24');
 		
 		 ?>
  

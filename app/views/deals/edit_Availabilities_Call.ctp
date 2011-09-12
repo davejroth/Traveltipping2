@@ -1,4 +1,4 @@
-<?php //echo $html->script('prototype'); Uncommenting this creates a js error.
+<?php //echo $html->script('prototype'); //Uncommenting this creates a js error.
 	  //echo $html->script('scriptaculous');	  ?>
 
 

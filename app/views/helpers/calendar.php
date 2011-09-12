@@ -134,18 +134,17 @@ class CalendarHelper extends Helper {
 		
 		/**
 		* Calculate how many calendar months to display.
-		*/
-		$first = new DateTime($deal_valid); 
-    $last = new DateTime($deal_expire); 
-    $interval = $first->diff($last); 
-    $calendar['months'] = $interval->format('%m'); 
-    $calendar['days'] = $interval->format('%d');
-    if($calendar['months'] == 0){
-    	$calendar['months'] = 2;
-    }
-    else if($calendar['days'] > 0 || $calendar['months'] == 1){
-    	$calendar['months'] += 1;
-    }
+		*/ 
+	$firstDate = date_parse($deal_valid);
+	$firstMonth = $firstDate['month'];
+	$secondDate = date_parse($deal_expire);
+	$secondMonth = $secondDate['month'];
+	
+	if($secondMonth < $firstMonth) {
+		$secondMonth = $secondMonth + 12;  //This is assuming deals will only cross one year.
+	}
+	$interval = $secondMonth - $firstMonth;
+    $calendar['months'] = $interval;
     
     $first_date = date_parse($deal_valid);
     $last_date = date_parse($deal_expire);
@@ -154,7 +153,7 @@ class CalendarHelper extends Helper {
     * Create Calendar Objects
     */
     $calendarObj = '<div class="calendar_wrap clearfix"><div class="calendar_controls"><a class="prev_cal" href="#"></a><a class="next_cal" href="#"></a></div><div class="calendar_slider clearfix">';
-    for($i = 1; $i <= $calendar['months']; $i++){
+    for($i = 0; $i <= $calendar['months']; $i++){
   		$calendarObj .= $this->renderMonth($first_date['month'],$first_date['year']);
   		if($first_date['month'] == 12){
   			$first_date['month'] = 1;
