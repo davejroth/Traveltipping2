@@ -380,25 +380,28 @@ function editAvailabilities($id = null) {
 }
 /**
  * editAvailabilitiesCall takes the $id of a deal and a $date and returns the DealAvailability record
- * for that day.  It is called by the editAvailabilities page.
+ * for that day.  It is called by the editAvailabilities page.  newCount is passed by ajax when 
+ * the record is updated.
  */
-function editAvailabilitiesCall($id = null, $date = null) {
-	if (!empty($this->data)) {
-		$this->data['DealAvailability']['reservation_date'] = $date;
+function editAvailabilitiesCall($id = null, $date = null, $newCount = null) {
+		
+	$this->data = $this->Deal->DealAvailability->find('first', array(
+	'conditions' => array(
+		'DealAvailability.reservation_date' => $date,
+		'DealAvailability.deal_id' => $id
+	)));
+		
+	if (!empty($newCount)) {
+		$this->data['DealAvailability']['num_available'] = $newCount;
 		if ($this->Deal->DealAvailability->save($this->data)) {
-			$this->Session->setFlash(__('The deal availability has been saved', true));
+			//$this->Session->setFlash(__('The deal availability has been saved', true));
 			//$this->redirect(array('action' => 'index'));
 		} else {
 			$this->Session->setFlash(__('The deal availability could not be saved. Please, try again.', true));
 		}
 	}
-	if(empty($this->data)) {
-	//$this->Deal->DealAvailability->recursive = -1;
-	$this->data = $this->Deal->DealAvailability->find('first', array(
-		'conditions' => array(
-			'DealAvailability.reservation_date' => $date,
-			'DealAvailability.deal_id' => $id
-		)));
+	if(empty($newCount)) {
+
 	}
 	$this->set(compact('id', 'date'));
 	
