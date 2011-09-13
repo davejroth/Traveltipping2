@@ -485,6 +485,7 @@ margin:0;
     width: 210px;
 }
 
+
 .merchant_deals table{
 	margin:10px 0;
 }
@@ -506,6 +507,7 @@ margin:0;
 	}
 	
 td.initiated,
+td.date,
 td.revenue{
     color: green;
     font-weight: bold;

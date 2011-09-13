@@ -61,7 +61,7 @@ class DealsController extends AppController {
 		array('conditions' => array('DealPurchase.deal_id' => $id ))));
 	}
 	function admin_index() {
-		$this->Deal->recursive = 0;
+		$this->Deal->recursive = 2;
 		$this->set('deals', $this->paginate());
 	}
 
@@ -171,6 +171,7 @@ class DealsController extends AppController {
 		$regions = $this->Deal->Region->find('list');
 		$venues = $this->Deal->Venue->find('list');
 		$this->set(compact('merchants', 'dealStatuses', 'venues', 'reservationTypes', 'categories', 'regions'));
+
 	}
 
 	function admin_delete($id = null) {

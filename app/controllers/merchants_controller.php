@@ -111,10 +111,9 @@ class MerchantsController extends AppController {
 		$this->loadModel('Deal');
 		
 		if (!empty($this->data)) {
-			//debug($this->data);
+			$this->data['Deal']['deal_status_id'] = 1;
 			$this->Deal->create();
 			if ($this->Deal->save($this->data)) {
-				$this->Session->setFlash(__('The venue has been saved', true));
 				$this->redirect(array('action' => 'deals','upcoming'));
 			} else {
 				$this->Session->setFlash(__('The venue could not be saved. Please, try again.', true));

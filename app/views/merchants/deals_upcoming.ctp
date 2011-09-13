@@ -29,9 +29,11 @@ elseif($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Approve
 $status = 'Will be released on';
 $statusClass = 'initiated';
 }
-$dealLive = date_format(date_create($deal['Deal']['deal_live']), 'l, F jS, Y');
-if(is_null($dealLive)) {
+if(is_null($deal['Deal']['deal_live'])) {
 	$dealLive = "Not Set";
+}
+else {
+	$dealLive = date_format(date_create($deal['Deal']['deal_live']), 'l, F jS, Y');	
 }
 
 ?>
@@ -41,7 +43,7 @@ if(is_null($dealLive)) {
 	<div class="white_mod_694_content clearfix">
 		<?php echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_6 alpha omega','alt' => 'Featured Deal Image'))?>
 		<div class="grid_14 push_1">
-			<h3 class="listing_desination_title">Tuscany, Italy</h3>
+			<h3 class="listing_desination_title"><?php echo $deal['Deal']['name']; ?></h3>
 			<table>
 				<tr>
 					<th> Deal Status </th>
@@ -49,7 +51,7 @@ if(is_null($dealLive)) {
 				</tr>
 				<tr>
 					<?php echo "<td class=" . $statusClass . "> " . $status . "</td>";
-						  echo "<td>" . $dealLive . "</td>";
+						  echo "<td class=date>" . $dealLive . "</td>";
 				/*
 				echo $this->Html->tableHeaders(array('Deal Status','Scheduled Release Date'));
 				 echo $this->Html->tableCells(
@@ -63,6 +65,10 @@ if(is_null($dealLive)) {
 			<ul class="horizontal_list">
 				<li><a href="#">View Details</a></li>
 				<li><a href="#">View Sample</a></li>
+				<?php if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
+					echo "<li>Approve</li>";
+				}
+				?>
 			</ul>
 			
 

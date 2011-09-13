@@ -1,11 +1,14 @@
 <div id="layout_left" class="grid_22">
 	
 	<h2 class="page_title">Edit Existing Deal</h2>
+
 <?php echo $this->Form->create('Deal',array('class'=>'add_deal'));?>
 
 	<fieldset>
 		<legend><?php __('Merchant Information'); ?></legend>
-		<?php echo $this->Form->input('merchant_id');?>
+
+		<?php //debug($deal);
+			echo $deal['Venue']['Merchant']['business_name'];?>
 	</fieldset>
 	
 	<fieldset>
@@ -14,7 +17,8 @@
 	</fieldset>
 	
 	<fieldset>
-		<legend><?php __('Deal Buesiness Details'); ?></legend>
+
+		<legend><?php __('Deal Business Details'); ?></legend>
 		<?php
 			
 			
