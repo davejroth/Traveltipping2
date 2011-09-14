@@ -699,6 +699,15 @@ label{
 	    background: none repeat scroll 0 0 #DDDDDD;
 }
 
+.reservations_bookings{
+	color: green;
+	display: block;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 0 0 0 5px;
+	text-align: left;
+}
+
 /**
 * Reservation List Styles
 */

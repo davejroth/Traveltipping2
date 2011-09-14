@@ -221,10 +221,17 @@ class MerchantsController extends AppController {
 		$this->loadModel('Deal');
 		$deal = $this->Deal->find('first', array('conditions' => array('Deal.id' => $id)));
 		$reservedDates = $this->DealPurchase->getReservations($id);
+		$reservations_arr = array();
+		$i = 0;
+		foreach($reservedDates as $key => $value){
+			$reservations_arr[$key] = "$value";
+			$i++;
+		}
+		$reservations_arr = json_encode($reservations_arr);
 
 
 			$this->set('dealID', $id);
-			$this->set(compact('availableDates', 'dates', 'reservedDates','deal'));
+			$this->set(compact('availableDates', 'dates', 'reservedDates','deal','reservations_arr'));
 
 	}
 	

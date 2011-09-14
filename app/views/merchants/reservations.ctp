@@ -2,6 +2,7 @@
 <?php
 //debug($deal['Deal']['deal_valid']);
 	//echo $deal['Deal']['deal_valid'];
+	//debug($reservations_arr);
 	echo $this->Calendar->dealCalendars($deal['Deal']['deal_valid'], $deal['Deal']['deal_expire']);
 
 ?>
@@ -32,6 +33,24 @@
 
 <script>
 $(document).ready(function() {
+	
+	/**
+	* Bookings
+	*/
+	var res = <?php echo $reservations_arr ?>;
+	//alert(res['2011-06-03']);
+	$('.calendar td[class!="blank"] a').each(function(){
+		var calendarDates = $(this).parents('.month_wrap').attr('id').split('_');
+		var calendarYear = calendarDates[1];
+		var calendarMonth = pad(calendarDates[2],2);
+		var calendarDay = pad($(this).text(),2);
+		var resevationDate = calendarYear +'-'+ calendarMonth+'-'+calendarDay;
+		if(res[resevationDate] != 0){
+			$(this).append('<span class="reservations_bookings">'+res[resevationDate]+'</span>');
+		}
+		
+	});
+	
 
 /**
 * Pad numbers with a leading 0
@@ -152,6 +171,8 @@ function addCheckoutDate(checkOutDate){
 		});
 		return false;
 	});
+	
+	
 
 
 });
