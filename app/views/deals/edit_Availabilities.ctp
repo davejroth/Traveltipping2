@@ -106,8 +106,12 @@ function addCheckoutDate(checkOutDate){
 	calendar = 'calendar_'+checkOutDateArr[0]+'_'+checkOutDateArr[1];
 	day = parseInt(checkOutDateArr[2],10);	
 	$('#'+calendar+' a:contains(\''+day+'\'):first').parent().addClass('checkOutDate');
+<<<<<<< HEAD
 }
 		
+=======
+}		
+>>>>>>> Added helper functions to availabilitiesCall
 	var dealID = <?php echo $dealID ?>;
 	
 	$("#reservation_list").empty();
@@ -133,10 +137,11 @@ function addCheckoutDate(checkOutDate){
 		$('#reservation_list_meta p').text('Update Maximum Reservations for '+getDateText(DateObj));
 		
 		var dealID = <?php echo $dealID ?>;
-		$("#reservation_list").empty();
+		
 		$.ajax({
 			url:'\/deals\/editAvailabilitiesCall\/'+ dealID + '\/' + resevationDate,
 			success: function(html){
+			$("#reservation_list").empty();
 		    $("#reservation_list").append(html);
 		  }
 		});
