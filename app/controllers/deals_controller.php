@@ -1,5 +1,5 @@
 <?php
-App::import('Vendor', 'braintree/lib/braintree');
+require_once(Configure::read('Braintree.location'));
 Braintree_Configuration::environment('sandbox');
 Braintree_Configuration::merchantId('y5hkzv2fqmddchw9');
 Braintree_Configuration::publicKey('jq7dbvmd4bdthf3m');
