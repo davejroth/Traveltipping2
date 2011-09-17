@@ -34,7 +34,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div class="white_mod_694_content clearfix">
 		<div class="deal_content clearfix">
 			<div>
-				<?php echo $this->Html->image("/img/listing/$image", array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
+				<?php echo $this->Html->image("$image", array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
 				<div class="grid_12 push_1">
 					<h3 class="listing_desination_title"><?php echo $deal['Deal']['destination']; ?></h3>
 					<p class="listing_deal_description"><?php echo $deal['Deal']['title']; ?></p>

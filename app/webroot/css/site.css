@@ -478,11 +478,18 @@ margin:0;
     width: 110px;
 }
 
-.merchant_deals table th.date {
+.merchant_deals table th.deal_date {
     font-weight: bold;
     text-align: left;
     text-transform: uppercase;
     width: 210px;
+}
+
+.merchant_deals table th.deal_status {
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    width: 150px;
 }
 
 
@@ -511,6 +518,11 @@ td.date,
 td.revenue{
     color: green;
     font-weight: bold;
+}
+
+td.waiting {
+	color:orange;
+	font-weight:bold;
 }
 
 /**
@@ -699,4 +711,57 @@ float:right;
 #DealBookForm .continue_btn{
     float: right;
     margin: 10px 0 20px;
+}
+
+/**
+* Deal Details
+*/
+
+.deal_labels {
+list-style-type:none;
+}
+
+.deal_info{
+list-style-type:none;
+}
+
+div.details_info{
+/*position:absolute;
+left:10px; */
+}
+
+span.details_title {
+float:left;
+width:180px;
+text-align:right;
+margin-right:50px;
+}
+
+h4.deal_details_header{
+font-size: 16px;
+border-bottom: solid #4EBDDE 3px;
+text-transform: uppercase;
+margin-top:15px;
+margin-bottom:15px;
+}
+div.details_info {
+width:500px;
+margin-left:230px;
+min-height:16px;
+}
+
+span.deal_bold {
+font-weight:bold;
+}
+
+span.deal_date{
+color:green;
+font-weight:bold;
+}
+
+div.details_title {
+float:left;
+width:180px;
+text-align:right;
+margin-right:50px;
 }

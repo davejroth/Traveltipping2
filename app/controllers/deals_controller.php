@@ -363,6 +363,10 @@ class DealsController extends AppController {
 	$this->set(compact('deal')); 
 
 	}
+	
+/**
+ * The confirmation page is displayed after the purchase has been completed.
+ */
 
 function confirmation($id = null) {
 	$deal = $this->Deal->read(null, $id);
@@ -372,6 +376,28 @@ function confirmation($id = null) {
 	
 	$this->set(compact('deal', 'reservation'));
 }
+/**
+ * This function is called when merchants approve the deal for listing.
+ */
+function approve_deal($id = null) {
+	$deal = $this->Deal->read(null, $id);
+	$deal['Deal']['deal_status_id'] = Configure::read('Deal.Status_Approved');
+	if ($this->Deal->save($deal)) {
+		$this->Session->setFlash(__('The deal has been saved', true));
+		$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
+	} else {
+		$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
+	}
+}
+	
+function deal_details($id = null) {
+	$this->Deal->recursive = 2;
+	$deal = $this->Deal->read(null, $id);
+	
+	
+	$this->set(compact('deal'));
+}
+	
 
 function editAvailabilities($id = null) {
 	$deal = $this->Deal->read(null, $id);

@@ -46,8 +46,8 @@ else {
 			<h3 class="listing_desination_title"><?php echo $deal['Deal']['name']; ?></h3>
 			<table>
 				<tr>
-					<th> Deal Status </th>
-					<th class="date"> Scheduled Release Date </th>
+					<th class="deal_status"> Deal Status </th>
+					<th class="deal_date"> Scheduled Release Date </th>
 				</tr>
 				<tr>
 					<?php echo "<td class=" . $statusClass . "> " . $status . "</td>";
@@ -63,10 +63,16 @@ else {
 				</tr>
 			</table>
 			<ul class="horizontal_list">
-				<li><a href="#">View Details</a></li>
-				<li><a href="#">View Sample</a></li>
-				<?php if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
-					echo "<li>Approve</li>";
+			<?php	echo "<li>" .  $this->Html->link(
+					'View Details',array('controller' => 'deals', 'action' => 'deal_details', $deal['Deal']['id']
+					)) . "<li>";
+				echo "<li>" .  $this->Html->link(
+					'View Sample',array('controller' => 'deals', 'action' => 'sample', $deal['Deal']['id']
+					)) . "<li>";
+				 if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
+					echo "<li>" .  $this->Html->link(
+					'Approve',array('controller' => 'deals', 'action' => 'approve_deal', $deal['Deal']['id']), array() ,
+					"Are you sure you wish to approve the deal?") . "<li>";
 				}
 				?>
 			</ul>
