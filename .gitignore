@@ -3,3 +3,4 @@
 #/plugins
 /vendors
 /app/webroot/img
+/app/config/database.php
