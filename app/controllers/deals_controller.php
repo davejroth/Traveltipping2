@@ -14,7 +14,7 @@ class DealsController extends AppController {
 
 	//var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript', 'Form');
 	 //var $helpers = array('Html','Ajax','Javascript');
-	
+	//test
 	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
 /*
  * Index
