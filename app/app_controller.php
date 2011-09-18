@@ -1,6 +1,6 @@
 <?php
 class AppController extends Controller {
-    var $components = array('Acl', 'Auth', 'Session', 'Cookie');
+    var $components = array('Acl', 'Auth', 'Session', 'Cookie', 'Ssl');
     var $helpers = array('Html','Calendar', 'Form', 'Session', 'AssetCompress.AssetCompress', 'Javascript','Js' => array('Jquery'));
 
     var $view = 'Theme';
@@ -21,5 +21,19 @@ class AppController extends Controller {
 		$this->Cookie->name = 'TravelTipping';
 
     }
+	/**
+	 * This beforeRender call forces https redirection for controller actions that are added to the action array.  If an action
+	 * is not defined in the $action array, it will redirect to http:// in order to save server load.
+	 */
+	public function beforeRender(){
+
+		$action = array('purchase', 'login');
+		//debug($this->params['action']);
+		if( in_array( $this->params['action'] , $action ) ){
+			 $this->Ssl->force();
+		}else{
+			 //$this->Ssl->unforce();  Uncommenting this causes the front page to display strangely.  John & David should debug.
+		}
+	}
 }
 ?>
