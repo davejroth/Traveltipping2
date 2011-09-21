@@ -111,11 +111,28 @@ function addCheckoutDate(checkOutDate){
 		return false;	
 	});
 	
+	$('.clear_dates').click(function(){
+		$('.checkInDate').nextUntil('.checkOutDate','td').removeClass('dateSelection');
+		$('.checkoutDate').prevUntil('.checkInDate','td').removeClass('dateSelection');
+		$('.checkOutDate').removeClass('checkOutDate');
+		$('.checkInDate').removeClass('checkInDate');
+		
+		$('.check_in').text('');
+		$('.check_out').text('');
+		$('.num_of_nights').text('');
+		$('.summary_total_value').text('');
+		
+		$('.input[name="data[DealPurchase][start_date]"]').val('');
+		$('.input[name="data[DealPurchase][end_date]"]').val('');
+		
+		return false;	
+	});
+	
 	
   $('.calendar td[class!="blank"] a').toggle(
 	  	function(){
 	  		
-	  		if($('.CheckInDate').length == 0){
+	  		if($('.checkInDate').length == 0){
 	  		
 	  		/**
 	  		* Reservation Details
@@ -151,7 +168,7 @@ function addCheckoutDate(checkOutDate){
 	  		$(this).parent().addClass('checkInDate');
 	  		addCheckoutDate(checkOutDate);	
   			$(this).parent().nextUntil('.checkOutDate','td').addClass('dateSelection');
-  			$('.CheckoutDate a').parent().prevUntil('.checkInDate','td').addClass('dateSelection');
+  			$('.checkoutDate a').parent().prevUntil('.checkInDate','td').addClass('dateSelection');
   			
   			//$('.calendar td[class!="blank"] a').unbind(click);
   			//alert(checkOutDate);
@@ -165,7 +182,7 @@ function addCheckoutDate(checkOutDate){
 	  	function(){
 	  		$(this).parent().removeClass('checkInDate');
 	  		$(this).parent().nextUntil('.checkOutDate','td').removeClass('dateSelection');
-	  		$('.CheckoutDate').prevUntil('.checkInDate','td').removeClass('dateSelection');
+	  		$('.checkoutDate').prevUntil('.checkInDate','td').removeClass('dateSelection');
 	  		$('.checkOutDate').removeClass('checkOutDate');
 	  		
 	  		$('.check_in').text('');

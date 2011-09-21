@@ -654,7 +654,8 @@ label{
 .reservation_info .check_in,
 .reservation_info .check_out,
 .summary_total_value{
-	float:right;
+  display:block;
+  float:right;
 }
 
 .date_legend{
