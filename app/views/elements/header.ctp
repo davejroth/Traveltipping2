@@ -8,7 +8,7 @@
 					<ul class="main_nav">
 
 			<?php 	if(!$this->Session->read('Auth.User')) { //Not logged in
-							echo '<li>' . $this->Html->link('How it Works',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
+							echo '<li>' . $this->Html->link('How it Works',array('controller'=>'pages', 'action'=>'display', 'static'=> 'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
 							echo '<li>' . $this->Html->link('Create an Account', array('controller' => 'travelers', 'action' => 'signup'),array( 'alt'=>'Create an Account')) . '</li>';
 							echo '<li>' . $this->Html->link('Login', array('controller' => 'users', 'action' => 'login'),array( 'alt'=>'Login')) . '</li>';
 						}

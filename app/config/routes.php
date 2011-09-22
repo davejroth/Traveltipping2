@@ -30,7 +30,32 @@
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+ 
+$staticPages = array(
+        'about',
+        'advertise',
+        'careers',
+        'contact',
+        'faq',
+        'how-it-works',
+        'merchant-terms',
+        'partnerships',
+        'press',
+        'user-policies',
+        'user-terms'
+);
+ 
+$staticList = implode('|', $staticPages);
+ 
+Router::connect('/:static', array(
+        'plugin' => false,
+        'controller' => 'pages',
+        'action' => 'display'), array(
+                'static' => $staticList,
+                'pass' => array('static')
+                )
+        );
+	//Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	
 	Router::connect('/cache_css/*', array('plugin' => 'asset_compress', 'controller' => 'css_files', 'action' => 'get'));
 Router::connect('/cache_js/*', array('plugin' => 'asset_compress', 'controller' => 'js_files', 'action' => 'get'));
