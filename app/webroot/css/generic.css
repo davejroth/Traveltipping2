@@ -50,6 +50,13 @@
     margin-top: 19px;
 }
 
+.cta_title_text{
+    color: #3CAACC;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+}
+
 /* +++++++++++++++++ END Page Styles +++++++++++++++++ */
 
 
@@ -308,6 +315,64 @@ label{
     margin: 20px 5px 0;
 }
 
+.advertising_module{
+
+}
+.advertise_page .yellow_arrow{
+    display: block;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 60px;
+    width: 15px;
+}
+
+.advertising_module .module_title{
+	font-size:20px;
+}
+
+.advertising_module .module_content{
+	min-height:0;	
+	background:#ffffff;
+}
+
+.advertising_module .module_content p{
+    color: #777777;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.advertising_module_wrap{
+    margin: 15px auto;
+    width: 860px;
+}
+
+.start_advertising_wrap{
+    margin: 20px auto 50px;
+    width: 900px;
+}
+
+.advertise_page .highlight_list{
+    display: block;
+    float: left;
+    margin: 10px 30px;
+    width: 400px;
+}
+
+.advertise_page .highlight_list span{
+	color:#3CAACC;
+	font-weight:bold;
+}
+
+.center_text{
+    color: #777777;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 auto 25px;
+    text-align: center;
+    width: 700px;
+}
+
 /* +++++++++++++++++ END Module Styles +++++++++++++++++ */
 
 #progressbar_wrap{
@@ -432,6 +497,18 @@ label{
     height: 41px;
     padding: 0;
     width: 157px;
+}
+
+.start_advertising_btn{
+    background: url("../img/site/start_advertising_btn.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    font-size: 0;
+    height: 47px;
+    margin-left: 30px;
+    margin-top: 10px;
+    padding: 0;
+    width: 231px;
 }
 
 .reservation_list_all{
