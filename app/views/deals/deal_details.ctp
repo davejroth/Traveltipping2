@@ -1,7 +1,7 @@
 <div class="deals view">
-		
+	<div id="layout_left" class="grid_22">	
 		<h2 class="page_title">Deal Details</h2>
-<div class="deal_label_div">
+		<div class="deal_label_div">
 <?php //print_r($deal);
  echo "<ul class='deal_labels'>";
 		echo "<li> <div class='details_title'><span class='deal_bold'>Name of Deal</span></div> <div class='details_info'><span class='deal_bold'>" . $deal['Deal']['name'] . "</li>";
@@ -12,8 +12,8 @@
 	  
 	  echo "<ul class='deal_labels'>";
 		echo "<li> <div class='details_title'>Business Being Advertised</div> <div class='details_info'>" . $deal['Venue']['name'] . "</li>";
-		echo "<li> <div class='details_title'>Regions</div> <div class='details_info'>" . $deal['Deal']['deal_live'] . "</li>";
-		echo "<li> <div class='details_title'>Deal Type</div> <div class='details_info'>" . $deal['Deal']['name'] . "</li>";
+		echo "<li> <div class='details_title'>Regions</div> <div class='details_info'>" . $regionString . "</li>";
+		echo "<li> <div class='details_title'>Deal Type</div> <div class='details_info'>" . $deal['ReservationType']['name'] . "</li>";
 		echo "<li> <div class='details_title'>Contact Email</div> <div class='details_info'>" . $deal['Venue']['email'] . "</li>";
 		echo "<li> <div class='details_title'>Website</div> <div class='details_info'>" . $deal['Venue']['website'] . "</li>";
 		echo "<li> <div class='details_title'>Address 1</div> <div class='details_info'>" . $deal['Venue']['address1'] . "</li>";
@@ -44,10 +44,20 @@
 		echo "<li> <div class='details_title'>Destination Title</div> <div class='details_info'>" . $deal['Deal']['destination'] . "</li>";
 		echo "<li> <div class='details_title'>Venue Description</div> <div class='details_info'>" . $deal['Deal']['venue_info'] . "</li>";
 		echo "<li> <div class='details_title'>Highlights</div> <div class='details_info'>" . $deal['Deal']['highlights'] . "</li>";
-		echo "<li> <div class='details_title'>Things To Do</div> <div class='details_info'>" . $deal['Deal']['things_to_do'] . "</li>";
+		echo "<li> <div class='details_title'>Things To Do 1</div> <div class='details_info'>" . $deal['Deal']['things_to_do'] . "</li>";
+		echo "<li> <div class='details_title'>Things To Do 2</div> <div class='details_info'>" . $deal['Deal']['things_to_do2'] . "</li>";
+		echo "<li> <div class='details_title'>Things To Do 3</div> <div class='details_info'>" . $deal['Deal']['things_to_do3'] . "</li>";
+		echo "<li> <div class='details_title'>Things To Do 4</div> <div class='details_info'>" . $deal['Deal']['things_to_do4'] . "</li>";
+		echo "<li> <div class='details_title'>Things To Do 5</div> <div class='details_info'>" . $deal['Deal']['things_to_do5'] . "</li>";
 		echo "<li> <div class='details_title'>Getting There</div> <div class='details_info'>" . $deal['Deal']['getting_there'] . "</li>";
 		echo "<li> <div class='details_title'>Fine Print</div> <div class='details_info'>" . $deal['Deal']['fine_print'] . "</li>";
 		echo "<li> <div class='details_title'>Description Field</div> <div class='details_info'>" . $deal['Deal']['description'] . "</li>";
 	  echo "</ul>";
 ?>
 </div>
+</div>
+
+<div id="layout_right" class="grid_8">
+<?php echo $this->element('deal_details'); ?>
+
+</div><!-- #layout_right -->

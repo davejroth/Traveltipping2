@@ -393,9 +393,26 @@ function approve_deal($id = null) {
 function deal_details($id = null) {
 	$this->Deal->recursive = 2;
 	$deal = $this->Deal->read(null, $id);
+	$regionString = '';
+	//debug($deal);
+	//Build list of regions linked to the deal.
+	foreach($deal['Region'] as $thisDeal) {
+		if($regionString == '')
+			$regionString = $thisDeal['name'];
+		else
+			$regionString = $regionString . ', ' . $thisDeal['name'];
+	}
+	/*
+	$this->loadModel('DealsRegion');
+	$this->DealsRegion->recursive = 3;
+	//$test = $this->DealsRegion->find('all', array('conditions' => array('deal_id' => $id)));
+	$test = $this->Deal->find('first');
+	//debug($test);
+	//$test2 = $this->DealsRegion->getAssociatedRegions($id);
+	*/
 	
 	
-	$this->set(compact('deal'));
+	$this->set(compact('deal', 'regionString'));
 }
 	
 

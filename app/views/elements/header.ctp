@@ -20,7 +20,7 @@
 						}
 						
 						elseif($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID')) { //Traveler is logged in
-							echo '<li>' . $this->Html->link('My Trips',array('controller'=>'pages', 'action'=>'how-it-works'),array( 'alt'=>'How it Works')) . '</li>';
+							echo '<li>' . $this->Html->link('My Trips',array('controller'=>'travelers', 'action'=>'deals', 'upcoming'),array( 'alt'=>'How it Works')) . '</li>';
 							echo '<li>' . $this->Html->link('Account Details', array('controller' => 'travelers', 'action' => 'profile'),array( 'alt'=>'Create an Account')) . '</li>';
 							echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'alt'=>'Logout')) . '</li>';
 						}

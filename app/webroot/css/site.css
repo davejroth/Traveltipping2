@@ -765,3 +765,17 @@ width:180px;
 text-align:right;
 margin-right:50px;
 }
+
+span.sidebar_emphasis {
+font-weight:bold;
+}
+
+div.legal_approval {
+overflow-y:scroll;
+height:500px;
+width:400px;
+}
+
+div.approve_btn {
+float:right;
+}

@@ -85,6 +85,8 @@ class MerchantsController extends AppController {
 				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
 				array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
 			}
+			$this->set(compact('deals'));
+			$this->render('deals_live');
 		}
 		
 		if(strcmp($deal_status, "past") == 0)
@@ -97,6 +99,8 @@ class MerchantsController extends AppController {
 				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
 				array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
 			}
+			$this->set(compact('deals'));
+			$this->render('deals_past');
 		}
 	$this->set(compact('deals'));
 	}
@@ -232,6 +236,18 @@ class MerchantsController extends AppController {
 			$this->set('dealID', $id);
 			$this->set(compact('availableDates', 'dates', 'reservedDates','deal','reservations_arr'));
 
+	}
+
+/**
+ * The approve page is loaded by merchants to approve their deal.
+ */
+	function approve($id = null){
+		$this->loadModel('Deal');
+		$deal = $this->Deal->read(null, $id);
+		
+		$this->set(compact('deal'));
+	
+	
 	}
 	
 }

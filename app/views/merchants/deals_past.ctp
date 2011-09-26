@@ -12,29 +12,18 @@
 	?>
 	</ul>
 	</div>
+
 	
 <?php
 $i = 0;
 foreach ($deals as $deal):
-$status = '';
-if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Initiated')) {
-$status = 'Initiated';
-$statusClass = 'initiated';
-}
-elseif($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
-$status = 'Waiting for your approval';
-$statusClass = 'waiting';
-}
-elseif($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Approved')) {
-$status = 'Will be released on';
-$statusClass = 'initiated';
-}
-if(is_null($deal['Deal']['deal_live'])) {
-	$dealLive = "Not Set";
-}
-else {
-	$dealLive = date_format(date_create($deal['Deal']['deal_live']), 'l, F jS, Y');	
-}
+$remaining_quantity = $deal['Deal']['max_purchases'] - $deal['Deal']['current_purchases'];
+$sales = $deal['Deal']['current_purchases'] * $deal['Deal']['discounted_price'];
+$commissions = $sales * ($deal['Deal']['comission_percentage']/100);
+$revenue = $sales - $commissions;
+$progress_value = ($deal['Deal']['current_purchases']/$deal['Deal']['max_purchases'])*100;
+
+//$time_remaining = $deal['Deal']['deal_end_date'];
 
 ?>
 
@@ -45,38 +34,27 @@ else {
 		<div class="grid_14 push_1">
 			<h3 class="listing_desination_title"><?php echo $deal['Deal']['name']; ?></h3>
 			<table>
-				<tr>
-					<th class="deal_status"> Deal Status </th>
-					<th class="deal_date"> Scheduled Release Date </th>
-				</tr>
-				<tr>
-					<?php echo "<td class=" . $statusClass . "> " . $status . "</td>";
-						  echo "<td class=date>" . $dealLive . "</td>";
-				/*
-				echo $this->Html->tableHeaders(array('Deal Status','Scheduled Release Date'));
-				 echo $this->Html->tableCells(
-						array(
-							array( array($status, array('class'=> $statusClass)),$dealLive 
-							)
-						)
-					); */?>
-				</tr>
+				<?php echo $this->Html->tableHeaders(array('Status','Sales','Commission','Total Revenue'));?>
+				<?php echo $this->Html->tableCells(array(
+				array(array($deal['DealStatus']['name'],array('class'=>'status')),"$".$sales,"$".$commissions,array("$".$revenue,array('class'=>'revenue')))));?>
 			</table>
 			<ul class="horizontal_list">
-			<?php	echo "<li>" .  $this->Html->link(
+			<?php
+				echo "<li>" .  $this->Html->link(
 					'View Details',array('controller' => 'deals', 'action' => 'deal_details', $deal['Deal']['id']
 					)) . "</li>";
 				echo "<li>" .  $this->Html->link(
-					'View Sample',array('controller' => 'deals', 'action' => 'sample', $deal['Deal']['id']
+					'View Page',array('controller' => 'deals', 'action' => 'view', $deal['Deal']['id']
 					)) . "</li>";
-				 if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
-					echo "<li>" .  $this->Html->link(
-					'Approve',array('controller' => 'merchants', 'action' => 'approve', $deal['Deal']['id']), array()) . "</li>";
-				}
-				?>
+				echo "<li>" .  $this->Html->link('Reservations',array('action'=>'reservations',$deal['Deal']['id']),
+				array('class'=>'reservations')) . "</li>"?>
 			</ul>
 			
-
+			<div class="progressbar">
+				<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
+			</div>
+			<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$deal['Deal']['current_purchases']; ?></p>
+			<p id="remaining_quantity" class="grid_5 push_1"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
 		</div>
 		
 		
@@ -88,6 +66,6 @@ else {
 
 <div id="layout_right" class="grid_8">
 	
-	<?php echo $this->element('open_deals'); ?>
+	<?php echo $this->element('past_deals'); ?>
 
 </div><!-- #layout_right -->
