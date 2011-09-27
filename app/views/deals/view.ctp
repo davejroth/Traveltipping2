@@ -42,7 +42,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 				<h3 class="grid_12"><?php echo $deal['Deal']['title']; ?></h3>
 				<div id="deal_detail_cta" class="grid_8 clearfix">
 					<p class="grid_3"><?php echo __('$').$discounted_price; ?></p>
-					<a href="#" class="book_now_btn"></a>
+					<?php  echo $this->Html->link('',array('action' => 'book',$deal['Deal']['id']),array('class' => 'book_now_btn')) ?>
 				</div>
 			</div>
 			<div id="progressbar_wrap" class="grid_12">
