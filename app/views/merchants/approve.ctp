@@ -1,6 +1,6 @@
 
 <div id="layout_left" class="grid_22">
-	
+	<?php echo $this->Form->create('Merchant', array('url' => '/merchants/approve/' . $deal['Deal']['id']));?>
 	<h2 class="page_title">Approve Deal</h2>
 	<div class="grid_10 prefix_1 suffix_1">
 		<p class="sub_heading">Please approve your deal </p>
@@ -17,16 +17,17 @@
 						
 			</div>
 			<?php 
-			echo $this->Form->input('tos', array('type'=>'checkbox','label' =>'I have read and agree to the Terms of Service'));
-			echo $this->Form->input('approval', array('type'=>'checkbox','label' =>'I approve TravelTipping to start advertising this deal'));
+			echo $this->Form->input('Merchant.tos', array('type'=>'checkbox','label' =>'I have read and agree to the Terms of Service'));
+			echo $this->Form->input('Merchant.approval', array('type'=>'checkbox','label' =>'I approve TravelTipping to start advertising this deal'));
 			//echo $this->Form->checkbox('tos'); echo "I have read and agree to the Terms of Service";
 			//echo $this->Form->checkbox('approval'); echo "I approve TravelTipping to start advertising this deal";
 			?>
 			<div class='approve_btn'>
+			
 				<?php
-				echo  $this->Html->link(
-					'Approve',array('controller' => 'deals', 'action' => 'approve_deal', $deal['Deal']['id']), array() ,
-					"Are you sure you wish to approve the deal?");
+				/*echo  $this->Html->link(
+					'Approve',array('controller' => 'merchants', 'action' => 'approve', $deal['Deal']['id']), array()); */
+					echo $this->Form->end('Approve');
 				  ?>
 			</div>
 	</div>

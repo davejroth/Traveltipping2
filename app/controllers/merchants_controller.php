@@ -43,6 +43,7 @@ class MerchantsController extends AppController {
 				$this->Session->setFlash(__('Your profile has been saved.', true));
 				$this->redirect('/merchants/profile');
 			} else {
+				//debug($this->data);
 				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true));
 			}
 		}
@@ -246,7 +247,23 @@ class MerchantsController extends AppController {
 		$deal = $this->Deal->read(null, $id);
 		
 		$this->set(compact('deal'));
-	
+		if(!empty($this->data)) {
+			$this->Merchant->set($this->data);
+			if ($this->Merchant->validates()) {
+				$deal['Deal']['deal_status_id'] = Configure::read('Deal.Status_Approved');
+				if ($this->Deal->save($deal)) {
+					$this->Session->setFlash(__('The deal has been saved', true));
+					$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
+				} else {
+					$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
+				}
+				$this->Session->setFlash(__('Your deal has been approved.', true));
+				//$this->redirect('/merchants/profile');
+			} else {
+				//debug("blah!");
+				$this->Session->setFlash(__('Your deal could not be approved. Please, try again.', true));
+			}
+		}
 	
 	}
 	

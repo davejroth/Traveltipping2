@@ -172,8 +172,8 @@ function addCheckoutDate(checkOutDate){
   			
   			//$('.calendar td[class!="blank"] a').unbind(click);
   			//alert(checkOutDate);
-  			$('input[name="data[DealPurchase][start_date]"]').val(checkOutDate);
-  			$('input[name="data[DealPurchase][end_date]"]').val(checkInDate);
+  			$('input[name="data[DealPurchase][start_date]"]').val(checkInDate);
+  			$('input[name="data[DealPurchase][end_date]"]').val(checkOutDate);
   			
 	  	}
 

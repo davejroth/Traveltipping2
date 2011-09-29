@@ -32,6 +32,7 @@ class Transaction extends AppModel {
 			'ccvCheck' => array('rule' => 'notEmpty','message' => ' Please enter the 2 - 3 digit CCV number located on the back of your credit card.'),
 			'ccvLength' => array('rule' => array('between', 2, 3), 'message' => 'Your CCV number should be either 2 or 3 digits.'),
 			'ccvNumeric' => array('rule' => 'numeric', 'message' => 'Please enter your CCV number without any spaces or dashes.')
-		)
+		),
+		
 	); 
 }

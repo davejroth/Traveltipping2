@@ -87,7 +87,17 @@ var $validate = array(
 		'user_id' => array(
 			//'numeric' => array('rule' => array('numeric')), - This prevents user creation
 		),
+		/*TOS and Approval aren't part of a Merchant.  They perform validation for approving a deal.*/
+		'tos' => array(
+			'tosCheck' => array('rule' => array('comparison', '!=', 0),  'message' => 'Please agree to TravelTipping\'s TOS in order to proceed.',),
+		),
+		'approval' => array(
+			'approvalCheck' => array('rule' => array('comparison', '!=', 0), 'message' => 'Please agree to list your deal in order to proceed.')
+		)
 	);
 
+function isFalse() {
+	return false;
+}
 
 }
