@@ -250,7 +250,6 @@ class DealsController extends AppController {
 			$availableDates = $this->DealAvailability->getAvailableDates($id);
 			$this->loadModel('DealPurchase');
 			$reservedDates = $this->DealPurchase->getReservations($id);
-		
 			//Temp function for loading dates
 			$dates = array();
 			for ($i = 1; $i<=31; $i++) {
