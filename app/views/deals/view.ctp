@@ -23,7 +23,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 ?>
 
 <div id="layout_left" class="grid_22">
-	<div id="deal_view_details"  class="white_mod_694_wrap deal_listing">
+	<div id="deal_view_details"  class="white_mod_694_wrap">
 		<div class="white_mod_694_top"></div>
 		<div class="white_mod_694_content clearfix">
 			<div class="thumb_nails grid_3">
@@ -49,8 +49,8 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 				<div class="progressbar">
 					<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
 				</div>
-				<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
-				<p id="remaining_quantity" class="grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
+				<p class="grid_5 current_quantity"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
+				<p class="grid_4 remaining_quantity"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
 			</div>
 			<div id="detail_prices" class="grid_8 push_1">
 				<p>
@@ -66,7 +66,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	</div>
 	
 
-	<div id="deal_view_description"  class="white_mod_694_wrap deal_listing">
+	<div id="deal_view_description"  class="white_mod_694_wrap">
 	
 		<div class="white_mod_694_top"></div>
 		
@@ -121,11 +121,11 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 			<div class="pagination_controls clearfix">
 				<a href="#" class="prev"></a>
 				<div class="clearfix pages_controler">
-					<a href="#" alt="1" class="page_num first current">1</a>
-					<a href="#" alt="2" class="page_num">2</a>
-					<a href="#" alt="3" class="page_num">3</a>
-					<a href="#" alt="4" class="page_num">4</a>
-					<a href="#" alt="5" class="page_num last">5</a>
+					<a href="#" title="1" class="page_num first current">1</a>
+					<a href="#" title="2" class="page_num">2</a>
+					<a href="#" title="3" class="page_num">3</a>
+					<a href="#" title="4" class="page_num">4</a>
+					<a href="#" title="5" class="page_num last">5</a>
 				</div>
 				<a href="#" class="next"></a>
 			</div>
@@ -147,7 +147,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 
 
 
-<script>
+<script type="text/javascript"> 
 $(document).ready(function() {
 	
 	/**
@@ -168,8 +168,8 @@ $(document).ready(function() {
 	$('.slide').eq(0).addClass('first_slide');
 	$('.page_num').each(function(){
 		$(this).click(function(){
-			pageNum = $(this).attr('alt');
-			currentPage = $('.current').attr('alt');
+			pageNum = $(this).attr('title');
+			currentPage = $('.current').attr('title');
 			$('.current').removeClass('current');
 			$(this).addClass('current');
 
@@ -180,7 +180,7 @@ $(document).ready(function() {
 	});
 	
 	$('.prev').click(function(){
-		currentPage = $('.current').attr('alt');
+		currentPage = $('.current').attr('title');
 		if(currentPage != 1){
 			$('.current').removeClass('current');
 			$('.page_num').eq(currentPage - 2).addClass('current');
@@ -191,7 +191,7 @@ $(document).ready(function() {
 	});
 	
 	$('.next').click(function(){
-		currentPage = $('.current').attr('alt');
+		currentPage = $('.current').attr('title');
 		if(currentPage != 5){
 			$('.current').removeClass('current');
 			$('.page_num').eq(currentPage).addClass('current');

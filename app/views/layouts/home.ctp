@@ -3,21 +3,19 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php __('CakePHP: the rapid development php framework:'); ?>
+		<?php __('TravelTipping'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-		$this->AssetCompress->css(array(
-			'reset',
-			'layout',
-			'default',
-			'generic',
-			'site',
-			'helper'
-		));
-		$this->AssetCompress->script('jquery');
-		$this->AssetCompress->script('site');
+		
+		echo $this->Html->css('styles');
+		echo $this->Html->css('/css/ui-lightness/jquery-ui');
+		echo $this->Html->script('jquery');
+		echo $this->Html->script('helpers');
+		echo $this->Html->script('site');
+		echo $this->Html->script('jquery-ui');
+		//$this->AssetCompress->script('');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;
 	?>

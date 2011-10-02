@@ -59,6 +59,13 @@
     line-height: 27px;
 }
 
+.subscribe_cta .cta_text span{
+    color: #2DAB14;
+    font-weight: bold;
+    padding-left: 2px;
+}
+
+
 .subscribe_form{
     float: right;
     width: 305px;
@@ -212,18 +219,26 @@
 	position:relative;
 }
 
-#home_find_deals{
-    left: 619px;
-    position: absolute;
-    top: 244px;
-}
 
+#home_find_deals {
+    clear: none;
+    float: left;
+    margin: 0 0 0 30px;
+}
 
 /* Deal Search Module*/
 
 #search_mod .checkbox_field{
     clear: both;
     margin: 10px 0 8px 12px;
+}
+
+.double_line{
+	float:left;	
+}
+
+.double_line span{
+	display:block;
 }
 
 /* Deal Listings */
@@ -462,7 +477,20 @@ margin:0;
 /* +++++++++++++++++ START Login Page +++++++++++++++++ */
 
 #UserLoginForm{
-	
+	width:420px;
+	margin:0 auto;
+}
+
+.login_fields{
+	float: left;
+	width: 300px;	
+}
+
+#UserLoginForm .submit{
+    clear: none;
+    float: left;
+    margin-top: 60px;
+    width: 100px;
 }
 
 /* +++++++++++++++++ END Login Page +++++++++++++++++ */
@@ -538,7 +566,7 @@ td.waiting {
 }
 
 .deal_content{
-	padding:10px 5px;
+	padding:10px 5px 0px 5px;
 	position:relative;
 }
 
@@ -557,6 +585,18 @@ a.deal_listing{
 	color:#4d4d4d;
 	text-decoration:none;
 	display:block;
+}
+
+.deal_listing img{
+	padding:25px 0;	
+}
+
+.deal_listing_info{
+	float:right;	
+}
+
+.deal_listing span{
+	display:block;	
 }
 
 /**
@@ -680,6 +720,7 @@ float:right;
 #featured_deal .deal_content {
     padding: 10px 5px 10px 9px;
     position: relative;
+    display:block;
 }
 
 /**

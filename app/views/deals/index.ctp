@@ -30,26 +30,26 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 ?>
 
 <a href="/deals/view/<?php echo $deal_id?>" id="deal_<?php echo $deal_id?>"  class="white_mod_694_wrap deal_listing">
-	<div class="white_mod_694_top"></div>
-	<div class="white_mod_694_content clearfix">
-		<div class="deal_content clearfix">
-			<div>
+	<span class="white_mod_694_top"></span>
+	<span class="white_mod_694_content clearfix">
+		<span class="deal_content clearfix">
+			<span>
 				<?php echo $this->Html->image("$image", array('class'=>'grid_8 alpha omega','alt' => 'Featured Deal Image'))?>
-				<div class="grid_12 push_1">
-					<h3 class="listing_desination_title"><?php echo $deal['Deal']['destination']; ?></h3>
-					<p class="listing_deal_description"><?php echo $deal['Deal']['title']; ?></p>
-					<p class="listing_prices grid_5"><?php echo __('Your Price: $').(int)$deal['Deal']['discounted_price']; ?></p>
-					<p class="listing_prices grid_6"><?php echo __('Original Value: $').(int)$deal['Deal']['original_price']; ?></p>
-					<div class="progressbar">
-						<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
-					</div>
-					<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
-					<p id="remaining_quantity" class="grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
-				</div>
-			</div>
-		</div>
+				<span class="grid_12 deal_listing_info">
+					<span class="listing_desination_title"><?php echo $deal['Deal']['destination']; ?></span>
+					<span class="listing_deal_description"><?php echo $deal['Deal']['title']; ?></span>
+					<span class="listing_prices grid_5"><?php echo __('Your Price: $').(int)$deal['Deal']['discounted_price']; ?></span>
+					<span class="listing_prices grid_6"><?php echo __('Original Value: $').(int)$deal['Deal']['original_price']; ?></span>
+					<span class="progressbar">
+						<span style="width:<?php echo $progress_value?>%" class="progress_val"></span>
+					</span>
+					<span class="current_quantity grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></span>
+					<span class="remaining_quantity grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></span>
+				</span>
+			</span>
+		</span>
 		
-	</div>
+	</span>
 </a>
 
 <?php endforeach; ?>
@@ -62,8 +62,8 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 		<div class="module_content clearfix">
 			<?php echo $this->Form->create('Deal',array('action'=>'index','class'=>'clearfix')); ?>
 				<div class="checkbox_field">
-					<div type="checkbox" class="checkbox" ></div>
-					<label>North America &amp; Carribean</label>
+					<div class="checkbox" ></div>
+					<label class="double_line">North America <span>&amp; Caribbean</span></label>
 					<?php 
 					if(!empty($this->data['Deal']['region'][1])){
 						echo $this->Form->input('Deal.region.1',array('type'=>'hidden','value'=>1,'class'=>'search_input'));
@@ -75,7 +75,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 
 				</div>
 				<div class="checkbox_field">
-					<div type="checkbox" class="checkbox" ></div>
+					<div class="checkbox" ></div>
 					<label>Latin America</label>
 					<?php 
 					if(!empty($this->data['Deal']['region'][2])){
@@ -87,7 +87,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 					?>
 				</div>
 				<div class="checkbox_field">
-					<div type="checkbox" class="checkbox" ></div>
+					<div class="checkbox" ></div>
 					<label>Europe</label>
 					<?php 
 					if(!empty($this->data['Deal']['region'][3])){
@@ -99,7 +99,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 					?>
 				</div>
 				<div class="checkbox_field">
-					<div type="checkbox" class="checkbox" ></div>
+					<div class="checkbox" ></div>
 					<label>Africa &amp; Arabia</label>
 					<?php 
 					if(!empty($this->data['Deal']['region'][4])){
@@ -111,7 +111,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 					?>
 				</div>
 				<div class="checkbox_field">
-					<div type="checkbox" class="checkbox" ></div>
+					<div class="checkbox" ></div>
 					<label>Asia</label>
 					<?php 
 					if(!empty($this->data['Deal']['region'][5])){
@@ -123,7 +123,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 					?>
 				</div>
 				<div class="checkbox_field">
-					<div type="checkbox" class="checkbox" ></div>
+					<div class="checkbox" ></div>
 					<label>Oceania</label>
 					<?php 
 					if(!empty($this->data['Deal']['region'][6])){
@@ -135,8 +135,6 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 					?>
 				</div>
 <?php echo $this->Form->end(array('value'=>'','class'=>'find_more_deals','id'=>'index_find_deals')); ?>
-				
-			</form>
 		</div>
 	</div>
 </div>
@@ -152,7 +150,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 
 
 </div><!-- #layout_right -->
-<script>
+<script type="text/javascript">
 $(document).ready(function() {
 	
 /* Deals Index Filter */

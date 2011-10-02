@@ -13,13 +13,15 @@ echo ($user['role_id'] == Configure::Read('Role.Traveler_ID'));
 	<div class="page_content">
 	<?php
 echo $this->Session->flash('auth');
-echo $this->Form->create('User', array('action' => 'login'));
-echo $this->Form->inputs(array(
-	'legend' => __('', true),
-	'email',
-	'password'
-));
-echo $this->Form->end('Login');
+echo $this->Form->create('User', array('action' => 'login','class' => 'clearfix'));
+echo '<div class="login_fields">';
+echo $this->Form->input('email');
+echo $this->Form->input('password');
+echo $this->Html->link('Forgot Password?',array('controller' => 'user', 'action' => 'forgot_password'));
+echo '</div>';
+
+ echo $this->Form->end(array('class'=>'login')); 
+ 
 ?>
  
 	</div>

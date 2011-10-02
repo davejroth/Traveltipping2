@@ -17,7 +17,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div id="rgn_north_america" class="region">
 		<div id="chk_north_america" class="checkbox_field clearfix">
 			<div class="checkbox"></div>
-			<p>North America &amp; Carribean</p>
+			<p>North America &amp; Caribbean</p>
 			<?php echo $this->Form->input('Deal.region.1',array('type'=>'hidden','value'=>0)); ?>
 		</div>
 	</div>
@@ -76,28 +76,28 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 		<div id="deal_search_bar" class="blue_rounded_mod clearfix">
 			<div class="clearfix">
 				<h3 class="grid_14 prefix_4">Where do you want to go?</h3>
-
+				<div id="home_find_deals" class="submit"><input type="submit"  class="find_deals_btn suffix_4" value="Submit"></div>
 			</div>
-			<p class="clear grid_17 center">Select the destinations of your dreams and we'll find you amazing travel deals</p>
+			<p class="clear grid_18 center">Select the destinations of your dreams and we'll find you amazing travel deals</p>
 		</div>
 	</div>
 </div>
-<?php echo $this->Form->end(array('value'=>'','class'=>'find_deals_btn suffix_4','id'=>'home_find_deals')); ?>
+
 <h3 class="white_mod_title">Featured Destination Deal</h3>
 <a href="/deals/view/<?php echo $deals['Deal']['id'] ?>" id="featured_deal" class="white_mod_960_wrap">
-	<div class="white_mod_960_top"></div>
-	<div class="white_mod_960_content clearfix">
-		<div class="deal_content clearfix">
+	<span class="white_mod_960_top"></span>
+	<span class="white_mod_960_content clearfix">
+		<span class="deal_content clearfix">
 		<?php echo $this->Html->image($deals['Deal']['image1'], array('class'=>'grid_14 alpha omega','alt' => 'Featured Deal Image'))?>
-			<div class="grid_14 push_1">
-				<h3 class="desination_title"><?php echo $deals['Deal']['destination'] ?></h3>
-				<p class="featured_deal_description"><?php echo $deals['Deal']['title'] ?></p>
-				<div class="progressbar">
-					<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
-				</div>
-				<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$current_quantity; ?></p>
-				<p id="remaining_quantity" class="grid_4"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
-			</div>
-		</div>
-	</div>
+			<span class="grid_14 push_1">
+				<span class="desination_title"><?php echo $deals['Deal']['destination'] ?></span>
+				<span class="featured_deal_description"><?php echo $deals['Deal']['title'] ?></span>
+				<span class="progressbar">
+					<span style="width:<?php echo $progress_value?>%" class="progress_val"></span>
+				</span>
+				<span class="grid_5 current_quantity"><?php echo __('Quantity Sold: ').$current_quantity; ?></span>
+				<span class="grid_4 remaining_quantity"><?php echo __('Total Remaining: ').$remaining_quantity; ?></span>
+			</span>
+		</span>
+	</span>
 </a>
