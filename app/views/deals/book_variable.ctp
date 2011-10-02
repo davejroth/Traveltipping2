@@ -145,16 +145,23 @@ function addCheckoutDate(checkOutDate){
 	  		
 	  		$('.check_in').text(getDateText(checkInDateObj));
 	  		$('input[name="data[DealPurchase][start_date]"]').val(checkInDate);
+	  		
+	  		
+	  		if($('.checkOutDate').length == 1){
+				var num_of_nights = days_between(convertDate(checkInDate),convertDate(checkOutDate));
+				var price = <?php echo $deal['Deal']['discounted_price'] ?>;
+				var total = num_of_nights * price;
+				$('.num_of_nights').text(num_of_nights);
+				$('.summary_total_value').text('$'+total);
+	  		}
   			
   			
 	  	}
-	  	else if($('.checkInDate').length == 1){
+	  	else if($('.checkInDate').length == 1 && $('.checkOutDate').length == 0){
 	  		
 	  		checkOutDate = calendarYear +'-'+ calendarMonth+'-'+calendarDay;
 	  		var checkOutDateObj = convertDate(checkOutDate);
-	  		
-	  		
-	  		
+
 	  		/**
 	  		* Calendar Selection
 	  		*/
@@ -178,21 +185,48 @@ function addCheckoutDate(checkOutDate){
 	  		return false;
 	  	},
 	  	function(){
-	  		$(this).parent().removeClass('checkInDate');
-	  		$(this).parent().nextUntil('.checkOutDate','td').removeClass('dateSelection');
-	  		$('.CheckoutDate').prevUntil('.checkInDate','td').removeClass('dateSelection');
-	  		$('.checkOutDate').removeClass('checkOutDate');
 	  		
-	  		$('.check_in').text('');
-	  		$('.check_out').text('');
-	  		$('.num_of_nights').text('');
-	  		$('.summary_total_value').text('');
+	  		if($(this).parent().hasClass('checkInDate')){
+	  			$('.check_in').text('');
+	  			$('input[name="data[DealPurchase][start_date]"]').val('');
+	  			$('.num_of_nights').text('');
+	  			$('.summary_total_value').text('');
+	  			$('.checkInDate').removeClass('checkInDate');
+	  		}
+	  		else if($(this).parent().hasClass('checkOutDate')){
+	  			$('.check_out').text('');
+	  			$('input[name="data[DealPurchase][end_date]"]').val('');
+	  			$('.num_of_nights').text('');
+	  			$('.summary_total_value').text('');
+	  			$('.checkOutDate').removeClass('checkOutDate');
+	  		}
+	  		else{
+	  			return false;	
+	  		}
 	  		
-	  		$('.input[name="data[DealPurchase][start_date]"]').val('');
-  			$('.input[name="data[DealPurchase][end_date]"]').val('');
+	  		//$(this).parent().removeClass('checkInDate');
+	  		//$(this).parent().nextUntil('.checkOutDate','td').removeClass('dateSelection');
+	  		//$('.CheckoutDate').prevUntil('.checkInDate','td').removeClass('dateSelection');
   			
 	  	}
   	);	
+  	
+  	$('.clear_dates').click(function(){
+		$('.checkInDate').nextUntil('.checkOutDate','td').removeClass('dateSelection');
+		$('.checkoutDate').prevUntil('.checkInDate','td').removeClass('dateSelection');
+		$('.checkOutDate').removeClass('checkOutDate');
+		$('.checkInDate').removeClass('checkInDate');
+		
+		$('.check_in').text('');
+		$('.check_out').text('');
+		$('.num_of_nights').text('');
+		$('.summary_total_value').text('');
+		
+		$('input[name="data[DealPurchase][start_date]"]').val('');
+		$('input[name="data[DealPurchase][end_date]"]').val('');
+		
+		return false;	
+	});
   	
 });
 </script>

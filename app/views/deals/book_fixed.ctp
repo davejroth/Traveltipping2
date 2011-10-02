@@ -122,8 +122,8 @@ function addCheckoutDate(checkOutDate){
 		$('.num_of_nights').text('');
 		$('.summary_total_value').text('');
 		
-		$('.input[name="data[DealPurchase][start_date]"]').val('');
-		$('.input[name="data[DealPurchase][end_date]"]').val('');
+		$('input[name="data[DealPurchase][start_date]"]').val('');
+		$('input[name="data[DealPurchase][end_date]"]').val('');
 		
 		return false;	
 	});
