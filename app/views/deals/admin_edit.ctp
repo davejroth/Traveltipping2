@@ -8,7 +8,7 @@
 		<legend><?php __('Merchant Information'); ?></legend>
 
 		<?php //debug($deal);
-			echo $deal['Venue']['Merchant']['business_name'];?>
+			echo $this->data['Venue']['Merchant']['business_name'];?>
 	</fieldset>
 	
 	<fieldset>
@@ -58,6 +58,7 @@
 				echo $this->Form->input('DealAvailability.average_reservations', array(
 					'label' => 'Average Nightly Reservation Limit'
 					));
+				echo $this->Form->input('purchase_pad');	
 			echo '</div>';
 		?>
 	</fieldset>

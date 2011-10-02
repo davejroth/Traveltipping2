@@ -21,6 +21,7 @@ class DealsController extends AppController {
  * Controller for main deal searching and listing page
  */
 	function index() {
+		//Add regions to filter based on use choice
 		$regions = array();
 		if(!empty($this->data)){ 
 			$x = 0;
@@ -42,6 +43,7 @@ class DealsController extends AppController {
 		for ($i = 0; $i < $count; $i++) {
 			$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
 				array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
+			$deals[$i]['Deal']['current_purchases'] += $deals[$i]['Deal']['purchase_pad'];
 		}
 		$this->set('deals', $deals);
 		$this->set('count', $count);
@@ -56,9 +58,11 @@ class DealsController extends AppController {
 			$this->Session->setFlash(__('Invalid deal', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('deal', $this->Deal->read(null, $id));
-		$this->set('count', $this->Deal->DealPurchase->find('count',
-		array('conditions' => array('DealPurchase.deal_id' => $id ))));
+		$deal = $this->Deal->read(null,$id);
+		
+		$count = $this->Deal->DealPurchase->find('count', array('conditions' => array('DealPurchase.deal_id' => $id )));
+		$count += $deal['Deal']['purchase_pad'];
+		$this->set(compact('count', 'deal'));
 	}
 	function admin_index() {
 		$this->Deal->recursive = 2;
@@ -141,7 +145,6 @@ class DealsController extends AppController {
 						'DealAvailability.deal_id' => $id
 				)));
 				if(empty($availabilityRecords)) {
-				
 					$thisDeal = $this->Deal->read(null, $id);
 					$availabilityRecord['DealAvailability']['deal_id'] = $id;
 					$availabilityRecord['DealAvailability']['num_available'] = $this->data['DealAvailability']['average_reservations'];
@@ -162,6 +165,7 @@ class DealsController extends AppController {
 			}
 		}
 		if (empty($this->data)) {
+			$this->Deal->recursive = 2;
 			$this->data = $this->Deal->read(null, $id);
 		}
 		$merchants = $this->Deal->Venue->Merchant->find('list');
@@ -283,15 +287,12 @@ class DealsController extends AppController {
 				$traveler = $this->Traveler->read(null, $travelerID);
 				$this->loadModel('Transaction');
 				$this->Transaction->set($this->data);
-				$expirationDate = $this->data['Transaction']['expiration_month'] . '/' .
-							$this->data['Transaction']['expiration_year'];
-				if($this->Transaction->validates()) {
-					//Billing info was entered.  Now process the credit card
-					//We probably want a way of linking the deal id to the purchase?
+				$expirationDate = $this->data['Transaction']['expiration_month'] . '/' . $this->data['Transaction']['expiration_year']; 
+				//Billing info was entered.  Now process the credit card
+				if($this->Transaction->validates()) { //If CC info entered correctly
+					//Store the Braintree ID for insertion into DealPurchase table.
 					$result = Braintree_Transaction::sale(array(
-					'amount' => $this->Session->read('Trip.cost'),
-					'orderId' => 'deal_purchase_id', //This is generated after the sale.  Do we find the max and then lock the table?  
-					//Or we could insert the record and lock the table, then roll back the transaction if the sale fails.
+					'amount' => $this->Session->read('Trip.cost'), 
 					//'merchantAccountId' => 'a_merchant_account_id', This needs to be input
 					'creditCard' => array(
 						'number' => $this->data['Transaction']['cc_number'],
@@ -317,29 +318,43 @@ class DealsController extends AppController {
 						'submitForSettlement' => true
 					)
 					));
-					if ($result->success) {
-						//print_r("success!: " . $result->transaction->id);
-						//Save the Passenger data
-						$this->loadModel('Passenger');
+					if ($result->success) { //Braintree validation Success
+						
 						$purchase['DealPurchase']['deal_id'] = $id;
 						$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
 						$purchase['DealPurchase']['confirmation_code'] = $random_hash;
 						$purchase['DealPurchase']['traveler_id'] = $travelerID;
 						$purchase['DealPurchase']['start_date'] = $this->Session->read('Trip.start_date');
 						$purchase['DealPurchase']['end_date'] = $this->Session->read('Trip.end_date');
-						
-						$purchase['Passenger']['first_name'] = $traveler['Traveler']['first_name'];
-						$purchase['Passenger']['last_name'] = $traveler['Traveler']['last_name'];
-						
-						//use $this->Passenger so that the deal_purchase_id is inserted correctly
-						//This needs to be changed b/c only deal 3 passengers are being put into passengers table
-						if ($this->Passenger->saveAll($purchase)) {
+						$purchase['DealPurchase']['purchase_amount'] = $this->Session->read('Trip.cost');
+						$transaction = $result->transaction;
+						$purchase['DealPurchase']['braintree_id'] = $transaction->id;
+						$reservationType = $this->Deal->GetReservationType($id);
+						//Save record for DealType 1 & 2
+						if($reservationType == Configure::read('ReservationType.Fixed') || $reservationType == Configure::read('ReservationType.Variable')) {
+							$this->loadModel('DealPurchase');
+							if ($this->DealPurchase->save($purchase)) {
 							$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
-						} else {
+							} else {
 							$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
+							}
+						}
+						//Insert Passenger records for DealType 3
+						elseif($reservationType == Configure::read('ReservationType.Set')) {
+							$this->loadModel('Passenger');
+							$purchase['Passenger']['first_name'] = $traveler['Traveler']['first_name'];
+							$purchase['Passenger']['last_name'] = $traveler['Traveler']['last_name'];
+							
+							//use $this->Passenger so that the deal_purchase_id is inserted correctly
+							//This needs to be changed b/c only deal 3 passengers are being put into passengers table
+							if ($this->Passenger->saveAll($purchase)) {
+								$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
+							} else {
+								$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
+							}
 						}
 					} 
-					else {
+					else { //Braintree validation failed
 						
 						$this->Session->setFlash(__('Purchase failed: please check your billing information again or try another card'));
 						print_r("\n  message: " . $result->message);
@@ -348,11 +363,11 @@ class DealsController extends AppController {
 						print_r($expirationDate);
 					} 
 				
-				} else {
+				} else {//CC info not entered correctly
 					$this->Session->setFlash(__('Some of your billing information is missing or formatted incorrectly.  Please see the error messages below.', true));
 				}	
 			}
-		}
+		}//No data submitted.  Load the page.
 	//If you haven't been redirected yet, load the page
 	$deal = $this->Deal->read(null, $id);
 	$deal['Deal']['trip_start_date'] = $this->Session->read('Trip.start_date');

@@ -84,6 +84,7 @@ class PagesController extends AppController {
 
 		$deals['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
 			array('conditions' => array('DealPurchase.deal_id' => $deals['Deal']['id'])));
+		$deals['Deal']['current_purchases'] += $deals['Deal']['purchase_pad'];
 		
 		$this->set('deals', $deals);
 		$this->render(implode('/', $path));
