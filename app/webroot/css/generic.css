@@ -401,6 +401,7 @@ label{
     height: 12px;
     width: 0;
     z-index:1000;
+    display:block;
 }
 
 .current_quantity,
