@@ -3,6 +3,12 @@
 	display:block;
 }
 
+.module_content .divider{
+    border-top: 1px solid #CCCCCC;
+    font-size: 1px;
+    margin: 10px 1px;	
+}
+
 /* +++++++++++++++++ START Page Styles +++++++++++++++++ */
 
 .page_title{
@@ -41,6 +47,8 @@
 
 .header_img{
 	-moz-border-radius: 7px 7px 7px 7px;
+	-webkit-border-radius: 7px 7px 7px 7px;
+	-ms-border-radius: 7px 7px 7px 7px;
 }
 
 .yellow_arrow{
@@ -228,6 +236,8 @@ label{
 
 .blue_rounded_mod{
     -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -ms-border-radius: 7px 7px 7px 7px;
     background: none repeat scroll 0 0 #3CAACC;
     color: #FFFFFF;
     margin-bottom: 15px;
@@ -236,6 +246,8 @@ label{
 
 .desination_title{
     -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -ms-border-radius: 7px 7px 7px 7px;
     background: none repeat scroll 0 0 #3CAACC;
     color: #FFFFFF;
     font-size: 24px;
@@ -246,6 +258,8 @@ label{
 
 .listing_desination_title{
     -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -ms-border-radius: 7px 7px 7px 7px;
     background: none repeat scroll 0 0 #3CAACC;
     color: #FFFFFF;
     font-size: 20px;
@@ -256,6 +270,8 @@ label{
 
 .module_title{
     -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
     background: none repeat scroll 0 0 #3CAACC;
     color: #FFFFFF;
     font-size: 16px;
@@ -285,6 +301,8 @@ label{
 
 .gray_module_title{
     -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
     background: none repeat scroll 0 0 #CCCCCC;
     color: #4D4D4D;
     font-size: 16px;
@@ -300,6 +318,8 @@ label{
 
 .highlights_mod{
     -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -ms-border-radius: 5px 5px 5px 5px;
     background: none repeat scroll 0 0 #EAFBFB;
     border: 1px solid #CCCCCC;
     min-height: 100px;
@@ -308,10 +328,10 @@ label{
 
 
 .featured_deal_description{
-	font-size: 24px;
+    display: block;
+    font-size: 24px;
     font-weight: bold;
-    margin: 40px 5px 0;
-    display:block;
+    margin: 40px 5px 40px 0;
 }
 
 .listing_deal_description{
@@ -387,6 +407,8 @@ label{
 
 .progressbar{
     -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -ms-border-radius: 7px 7px 7px 7px;
     background: none repeat scroll 0 0 #E2E2E2;
     border: 1px solid #CCCCCC;
     clear: both;
@@ -397,6 +419,8 @@ label{
 
 .progress_val{
     -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    -ms-border-radius: 7px 7px 7px 7px;
     background: url("../img/site/progress_value_bg.png") repeat-x scroll 0 0 transparent;
     height: 12px;
     width: 0;
@@ -542,6 +566,17 @@ label{
     height: 27px;
     padding: 0;
     width: 85px;
+}
+
+.create_account_btn{
+    background: url("../img/site/btn_create_account.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: none;
+    font-size: 0;
+    height: 27px;
+    padding: 0;
+    width: 146px;
 }
 
 /* +++++++++++++++++ END Button Styles +++++++++++++++++ */
@@ -772,6 +807,7 @@ label{
     border: 1px solid #C7E2E2;
     -moz-border-radius: 7px 7px 7px 7px;
     -webkit-border-radius: 7px 7px 7px 7px;
+    -ms-border-radius: 7px 7px 7px 7px;
     clear: both;
     color: #444444;
     font-size: 20px;

@@ -8,10 +8,9 @@
 <div class="filter_bar">
 	<ul id="sort_options">
 		<li class="list_title"><strong>Sort By:</strong></li>
-		<li><?php echo $this->Paginator->sort('Availability','current_purchases');?></li>
+		<li><?php echo $this->Paginator->sort('Remaining Quantity','current_purchases');?></li>
 		<li><?php echo $this->Paginator->sort('Discounted %','discounted_price');?></li>
 		<li><?php echo $this->Paginator->sort('Price','discounted_price');?></li>
-		<li><?php echo $this->Paginator->sort('Expiration','deal_end_date');?></li>
 	</ul>
 </div>
 <?php
@@ -144,6 +143,14 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 	<div class="white_mod_246_content clearfix">
 		<h3 class="module_title">FAQ</h3>
 		<div class="module_content">
+			<p class="sub_heading">How does this work?</p>
+			<p>Click on a deal to the right and read more about the amazing location, great discount, and fun things to do.  Then book your reservation before the deal sells out!</p>
+			<p class="divider">&nbsp;</p>
+			<p class="sub_heading">How long do I have to book a destination deal?</p>
+			<p>Each deal has a limited quantity, so make sure to book your destination before it sells out.  Some deals occasionally have an unlimited quantity, but these deals usually end within 7 days.</p>
+			<p class="divider">&nbsp;</p>
+			<p class="sub_heading">When will you have more deals?</p>
+			<p>We are constantly adding new deals, while other deals are expiring. Check back frequently to see new deals and subscribe to our destination deal email alert.  </p>
 		</div>
 	</div>
 </div>

@@ -15,7 +15,7 @@
 }
 
 #layout_main{
-	margin-bottom:30px;
+    margin-bottom: 45px;
 }
 
 /* +++++++++++++++++ END Layout Styles +++++++++++++++++ */
@@ -212,7 +212,7 @@
 }
 
 #find_deals{
-	
+	 margin: 40px 0;
 }
 
 #DealIndexForm{
@@ -239,6 +239,10 @@
 
 .double_line span{
 	display:block;
+}
+
+#search_mod .submit {
+    padding-top: 5px;
 }
 
 /* Deal Listings */
@@ -493,6 +497,29 @@ margin:0;
     width: 100px;
 }
 
+#TravelerSignupForm{
+    margin: 0 auto;
+    padding: 15px 0;
+    width: 475px;
+}
+
+#TravelerSignupForm h3{
+    font-size: 18px;
+    text-align: center;   
+}
+
+.sign_up_fields{
+    float: left;
+    width: 320px;
+}
+
+#TravelerSignupForm .submit{
+    clear: none;
+    float: left;
+    margin-top: 150px;
+    width: 146px;
+}
+
 /* +++++++++++++++++ END Login Page +++++++++++++++++ */
 
 /**
@@ -578,6 +605,8 @@ td.waiting {
 }
 .highlight{
 	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-ms-border-radius:5px;
 	background:#fffad5;
 }
 

@@ -42,6 +42,7 @@
 			<div class="footer " id="footer2">
 				<div class="container_30 clearfix ">
 					<ul class="footer_nav grid_13">
+						<li><?php echo $this->Html->link('Home',array('controller'=>'pages', 'action'=>'display','home'),array( 'title'=>'TravelTipping')); ?></li>
 						<li><?php echo $this->Html->link('Partnerships',array('controller'=>'pages', 'action'=>'display', 'static'=>'partnerships'),array( 'title'=>'Partnerships')); ?></li>
 						<li><?php echo $this->Html->link('Terms',array('controller'=>'pages', 'action'=>'display', 'static'=>'user-terms'),array( 'title'=>'Terms')); ?></li>
 						<li><?php echo $this->Html->link('Policies',array('controller'=>'pages', 'action'=>'display', 'static'=>'user-policies'),array( 'title'=>'Policies')); ?></li>

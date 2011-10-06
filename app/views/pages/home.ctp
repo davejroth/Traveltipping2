@@ -61,13 +61,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 		</div>
 	</div>
 </div>
-<div id="region_selection_text" class="clearfix">
-	
-	
-	
-	
-	
-	
+
 </div>
 
 <div id="find_deals" class="white_mod_960_wrap">
