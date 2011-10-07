@@ -20,7 +20,6 @@ class UsersController extends AppController {
 				array('conditions' => array('Merchant.user_id' => $user['id'])));
 			$this->Session->write('Merchant.id', $merchant['Merchant']['id']);
 			$this->Auth->loginRedirect = array('controller' => 'merchants', 'action' => 'profile');
-			
 		} 
 		
 		if($user['role_id'] == Configure::Read('Role.Traveler_ID'))
@@ -56,7 +55,11 @@ class UsersController extends AppController {
 			{
 				$this->redirect(array('controller' => 'travelers', 'action' => 'profile'));
 			}
-		} 
+		}
+		elseif($this->Session->read('User.role_id') == Configure::Read('Role.Admin_ID'))
+		{
+			$this->redirect(array('controller' => 'deals', 'action' =>'admin_index', 'admin' => 1));
+		}
 	 	
 	}
 	/*

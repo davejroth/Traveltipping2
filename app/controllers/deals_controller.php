@@ -130,51 +130,42 @@ class DealsController extends AppController {
 	}
 
 	function admin_edit($id = null) {
+		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid deal', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			if ($this->Deal->save($this->data)) {
-				$this->Session->setFlash(__('The deal has been saved', true));
-				
-				 //If there are no availability records, generate average records for each day
-				$this->Deal->DealAvailability->recursive = -1;
-				$availabilityRecords = $this->Deal->DealAvailability->find('all', array (
-					'conditions' => array(
-						'DealAvailability.deal_id' => $id
-				)));
-				if(empty($availabilityRecords)) {
-					$thisDeal = $this->Deal->read(null, $id);
-					$availabilityRecord['DealAvailability']['deal_id'] = $id;
-					$availabilityRecord['DealAvailability']['num_available'] = $this->data['DealAvailability']['average_reservations'];
-					$tripStart = $thisDeal['Deal']['deal_valid'];
-					$tripEnd = $thisDeal['Deal']['deal_expire'];
-					$tripStart = date('Y-m-d', strtotime($tripStart. ' - 1 days')); //Take one day off so that last day is added
-					do {
-					$tripStart = date('Y-m-d', strtotime($tripStart. ' + 1 days'));
-						$availabilityRecord['DealAvailability']['reservation_date'] = $tripStart;
-						$this->Deal->DealAvailability->create();
-						$this->Deal->DealAvailability->save($availabilityRecord);
-					}while(strcmp($tripStart,$tripEnd) != 0);
-					//debug($count);
+			//Make sure Availability records are up to date
+			$this->Deal->DealAvailability->set($this->data);
+			$this->Deal->set($this->data);
+			if($this->Deal->DealAvailability->validates() && $this->Deal->validates()) {
+				$this->Deal->updateAvailabilityRecords($id, $this->data);
+				if ($this->Deal->save($this->data)) {
+					$this->Session->setFlash(__('The deal has been saved', true));
+					$this->redirect(array('action' => 'index'));
+				} 
+				else {
+					$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 				}
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
+			}
+			else {
+				$this->Session->setFlash(__('The deal could not be saved. Please see errors below.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->Deal->recursive = 2;
-			$this->data = $this->Deal->read(null, $id);
+		
+		if(empty($this->data)) {
+		$this->data = $this->Deal->read(null, $id);
 		}
+		$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Deal']['venue_id'])));
 		$merchants = $this->Deal->Venue->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
 		$venues = $this->Deal->Venue->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'venues', 'reservationTypes', 'categories', 'regions'));
+		$this->set(compact('merchants', 'dealStatuses', 'venues', 'reservationTypes', 'categories', 'regions', 'thisVenue'));
+		
 
 	}
 

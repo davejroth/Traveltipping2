@@ -17,6 +17,39 @@ class DealAvailability extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	public $validate = array(
+		'average_reservations' => array(
+			'passwordCheck' => array('rule' => 'dateCheck', 'message' => 'If you changed the Deal Live or Deal Expire dates, please add an average num availablities for the new nights')
+		)
+    );
+	/**
+	 * dateCheck checks to see if new DealAvailability records will be created (deal_live decreases or deal_expire increases and neither == null)
+     * If new records are being created, numAvailable must be supplied.
+     */	 
+	function dateCheck()
+	{
+		App::import('model','Deal');
+		$deal = new Deal();
+		$savedDeal = $deal->find('first', array('conditions' => array('Deal.id' => $this->data['Deal']['id'])));
+		$oldValidDate = strtotime($savedDeal['Deal']['deal_valid']);
+		$oldExpiredDate = strtotime($savedDeal['Deal']['deal_expire']);
+		$newValidDateString = $this->data['Deal']['deal_valid']['year'] . '-' . $this->data['Deal']['deal_valid']['month'] . '-' . $this->data['Deal']['deal_valid']['day']; 
+		$newValidDate = strtotime($newValidDateString);
+		$newExpiredDateString = $this->data['Deal']['deal_expire']['year'] . '-' . $this->data['Deal']['deal_expire']['month'] . '-' . $this->data['Deal']['deal_expire']['day']; 
+		$newExpiredDate = strtotime($newExpiredDateString);
+			
+		if($this->data['DealAvailability']['average_reservations'] != "") {
+			return true;
+		}
+		elseif($oldValidDate > $newValidDate 
+			|| $oldExpiredDate < $newExpiredDate){
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
 /* 
  *  getAvailableDates
  *  Returns an array of the max openings(taken from Deal_Availabilities table)

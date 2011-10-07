@@ -24,6 +24,10 @@
 							echo '<li>' . $this->Html->link('Account Details', array('controller' => 'travelers', 'action' => 'profile'),array( 'title'=>'Create an Account')) . '</li>';
 							echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'title'=>'Logout')) . '</li>';
 						}
+						elseif($this->Session->read('User.role_id') == Configure::Read('Role.Admin_ID')) { //Admin is logged in
+							echo '<li>' . $this->Html->link('Manage Deals', array('controller' => 'deals', 'action' => 'admin_index', 'admin' => 1),array( 'title'=>'Manage Deals')) . '</li>';
+							echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout', 'admin' => 0),array( 'title'=>'Logout')) . '</li>';
+						}
 						?></ul>
 					<div class="subscribe_cta">
 

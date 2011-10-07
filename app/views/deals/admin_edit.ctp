@@ -8,7 +8,8 @@
 		<legend><?php __('Merchant Information'); ?></legend>
 
 		<?php //debug($deal);
-			echo $this->data['Venue']['Merchant']['business_name'];?>
+			echo $thisVenue['Merchant']['business_name'];
+			echo $this->Form->input('id');?>
 	</fieldset>
 	
 	<fieldset>
@@ -39,6 +40,14 @@
 			echo '<div class="field_row clearfix">';
 				echo $this->Form->input('deal_valid');
 				echo $this->Form->input('deal_expire');
+			echo '</div>';
+			echo '<div class="field_row clearfix">';
+			if(is_null($this->data['Deal']['deal_valid'])) {
+					echo "Please save the deal to edit the reservations";
+				}
+				else {
+					echo $this->Html->link('Edit Max Reservations for this deal', '//deals/editAvailabilities/' . $this->data['Deal']['id']);
+				}
 			echo '</div>';
 			
 			echo '<div class="field_row clearfix">';
