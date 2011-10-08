@@ -1,7 +1,7 @@
 <?php
 class AppController extends Controller {
     var $components = array('Acl', 'Auth', 'Session', 'Cookie', 'Ssl');
-    var $helpers = array('Html','Calendar', 'Form', 'Session', 'AssetCompress.AssetCompress', 'Javascript','Js' => array('Jquery'));
+    var $helpers = array('Html','Calendar', 'Form', 'Time', 'Session', 'AssetCompress.AssetCompress', 'Javascript','Js' => array('Jquery'));
 
     var $view = 'Theme';
     //var $theme = 'cake_default';

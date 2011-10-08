@@ -447,6 +447,14 @@ margin:0;
     padding-bottom: 10px;
 }
 
+.gray_module_content p.last{
+    border-bottom: none;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+}
+
 
 /* +++++++++++++++++ END Account Page Modules +++++++++++++++++ */
 
