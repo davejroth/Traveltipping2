@@ -16,6 +16,18 @@ class DealsController extends AppController {
 	 //var $helpers = array('Html','Ajax','Javascript');
 	//test
 	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
+	
+	/**
+ * Email function used to send Deal information.  
+ */
+	function sendDealMail($dealID, $merchantID, $template) {
+		$this->loadModel('Merchant');
+		$Deal = $this->Deal->read(null, $dealID);
+		$Merchant = $this->Merchant->read(null, $merchantID); //Used for email address
+		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
+	
+		$this->Notification->sendHTMLDealMail($Merchant, $template);
+	}
 /*
  * Index
  * Controller for main deal searching and listing page
@@ -139,9 +151,32 @@ class DealsController extends AppController {
 			//Make sure Availability records are up to date
 			$this->Deal->DealAvailability->set($this->data);
 			$this->Deal->set($this->data);
+			$savedDeal = $this->Deal->read(null, $id);
+			if($savedDeal['Deal']['deal_status_id'] != $this->data['Deal']['deal_status_id']) {
+				$statusChange = true;
+			}
+			else {
+				$statusChange = false;
+			}
 			if($this->Deal->DealAvailability->validates() && $this->Deal->validates()) {
 				$this->Deal->updateAvailabilityRecords($id, $this->data);
 				if ($this->Deal->save($this->data)) {
+					if($statusChange) {
+						$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Deal']['venue_id'])));
+								
+						if($this->data['Deal']['deal_status_id'] == 2) {
+							$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealWaiting");
+						}
+						elseif($this->data['Deal']['deal_status_id'] == 4) {
+							$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealLive");
+						}
+						elseif($this->data['Deal']['deal_status_id'] == 5) {
+							$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealClose");
+						}
+						elseif($this->data['Deal']['deal_status_id'] == 6) {
+							$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealCancelled");
+						}
+					}
 					$this->Session->setFlash(__('The deal has been saved', true));
 					$this->redirect(array('action' => 'index'));
 				} 
@@ -155,7 +190,7 @@ class DealsController extends AppController {
 		}
 		
 		if(empty($this->data)) {
-		$this->data = $this->Deal->read(null, $id);
+			$this->data = $this->Deal->read(null, $id);
 		}
 		$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Deal']['venue_id'])));
 		$merchants = $this->Deal->Venue->Merchant->find('list');
@@ -388,6 +423,7 @@ function approve_deal($id = null) {
 	$deal = $this->Deal->read(null, $id);
 	$deal['Deal']['deal_status_id'] = Configure::read('Deal.Status_Approved');
 	if ($this->Deal->save($deal)) {
+		$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealRelease");
 		$this->Session->setFlash(__('The deal has been saved', true));
 		$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
 	} else {

@@ -15,11 +15,21 @@ class MerchantsController extends AppController {
  * Takes the id of a user_detail and calls Notification to send an email to them
  */
  
-	function sendNewMerchantMail($id) {
-	  $Merchant = $this->Merchant->read(null,$id);
-		$this->set('Merchant', $Merchant); // can this be set in notification?
+	function sendMerchantMail($id, $template) {
+		$Merchant = $this->Merchant->read(null,$id);
+		$this->set('Merchant', $Merchant); 
 	
-		$this->Notification->sendNewMerchantMail($Merchant);
+		$this->Notification->sendHTMLMerchantMail($Merchant, $template);
+	}
+/**
+ * Email function used to send Deal information.  
+ */
+	function sendDealMail($dealID, $merchantID, $template) {
+		$Deal = $this->Deal->read(null, $dealID);
+		$Merchant = $this->Merchant->read(null, $merchantID); //Used for email address
+		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
+	
+		$this->Notification->sendHTMLDealMail($Merchant, $template);
 	}
 	
 /**
@@ -29,8 +39,8 @@ class MerchantsController extends AppController {
 *
 */
 	function profile() {
-	//$this->sendNewMerchantMail($id);
 		$id = $this->Session->read('Merchant.id');
+		//$this->sendMerchantMail($id, "newMerchant");
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid merchant profile', true));
 			$this->redirect(array('action' => 'edit'));
@@ -119,6 +129,7 @@ class MerchantsController extends AppController {
 			$this->data['Deal']['deal_status_id'] = 1;
 			$this->Deal->create();
 			if ($this->Deal->save($this->data)) {
+				$this->sendDealMail($this->Deal->id, $this->Session->read('Merchant.id'), "newDeal");
 				$this->redirect(array('action' => 'deals','upcoming'));
 			} else {
 				$this->Session->setFlash(__('The venue could not be saved. Please, try again.', true));
@@ -198,7 +209,7 @@ class MerchantsController extends AppController {
 			$this->data['User']['status'] = 1;
 
 			if ($this->Merchant->saveAll($this->data)) {
-				$this->sendNewMerchantMail($this->Merchant->id);
+				$this->sendMerchantMail($this->Merchant->id, "newMerchant");
 				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
 				$this->Session->write('User.new', 1); //Used for redirecting on first login

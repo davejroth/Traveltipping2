@@ -56,9 +56,24 @@ class User extends AppModel {
 		),
 		'current_password' => array(
 			'passwordCheck' => array('rule' => 'passwordCheck', 'message' => 'Password entered does not match your saved password.')
+		),
+		'resetEmail' => array(
+			'emailExists' => array(
+					'rule' => 'emailExists',
+					'message' => 'Sorry, we couldnt find that address in our database'
+			),
+			'isEmail' => array(
+					'rule' => 'email',
+					'message' => 'Please provide a valid email address.',
+			),
 		)
+				
     );
 
+function emailExists() {
+	$currentUser = $this->find('first', array('conditions' => array('User.email' => $this->data['User']['resetEmail'])));
+	return (!empty($currentUser));
+}
 
 
 function checkpasswords()

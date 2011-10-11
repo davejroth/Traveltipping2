@@ -17,7 +17,7 @@ echo $this->Form->create('User', array('action' => 'login','class' => 'clearfix'
 echo '<div class="login_fields">';
 echo $this->Form->input('email');
 echo $this->Form->input('password');
-echo $this->Html->link('Forgot Password?',array('controller' => 'user', 'action' => 'forgot_password'));
+echo $this->Html->link('Forgot Password?',array('controller' => 'users', 'action' => 'resetPassword'));
 echo '</div>';
 
  echo $this->Form->end(array('class'=>'login')); 

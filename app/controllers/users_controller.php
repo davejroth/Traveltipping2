@@ -130,6 +130,29 @@ class UsersController extends AppController {
 			$this->data = $this->User->read(null, $id);
 		}
 	}
+
+	/**
+	 * resetPassword just displays a form to submit your email address for resetting your password
+	 */
+	function resetPassword() {
+		if(!empty($this->data)) {
+			$this->User->set($this->data);
+			if($this->User->validates()) {
+				//Create new passwordChange record and email address
+				$this->redirect(array('action' => 'confirmReset', $this->data['User']['resetEmail']));
+			}
+		}
+		
+		
+	}
+	/**
+	 * confirmReset receives the email address that was submitted from resetPassword and sends the email
+	 */
+	function confirmReset($email) {
+		//Send password reset email
+		$this->set(compact('email'));
+	
+	}
 	
 /*
 function beforeFilter() {
