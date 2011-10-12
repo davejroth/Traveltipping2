@@ -14,7 +14,7 @@
 	</fieldset>
 	
 	<fieldset>
-		<legend><?php __('Deal Buesiness Details'); ?></legend>
+		<legend><?php __('Deal Business Details'); ?></legend>
 		<?php
 			
 			

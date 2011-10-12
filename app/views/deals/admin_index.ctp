@@ -1,4 +1,6 @@
 <div class="deals index">
+    <h2><?php 	echo $this->Html->link('Create New Deal', array('controller' => 'deals', 'action' => 'admin_add', 'admin' => 1),
+		array( 'title'=>'Create New Deal')); ?>
 	<h2><?php __('Deals');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

@@ -138,6 +138,12 @@ class UsersController extends AppController {
 		if(!empty($this->data)) {
 			$this->User->set($this->data);
 			if($this->User->validates()) {
+				//$this->loadModel('PasswordReset');
+				$thisUser = $this->User->findByEmail($this->data['User']['resetEmail']);
+				$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
+				$newPasswordReset['PasswordReset']['user_id'] = $thisUser['User']['id'];
+				$newPasswordReset['PasswordReset']['confirmation'] = $random_hash;
+				$this->User->PasswordReset->save($newPasswordReset);
 				//Create new passwordChange record and email address
 				$this->redirect(array('action' => 'confirmReset', $this->data['User']['resetEmail']));
 			}

@@ -39,6 +39,22 @@ class User extends AppModel {
  */
  
 	var $uses = array('Auth');
+	
+	var $hasMany = array(
+	'PasswordReset' => array(
+		'className' => 'PasswordReset',
+		'foreignKey' => 'user_id',
+		'dependent' => false,
+		'conditions' => '',
+		'fields' => '',
+		'order' => '',
+		'limit' => '',
+		'offset' => '',
+		'exclusive' => '',
+		'finderQuery' => '',
+		'counterQuery' => ''
+		),
+	);
     public $validate = array(
         'email' => array(
             'email' => array(

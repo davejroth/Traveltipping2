@@ -137,7 +137,7 @@ class DealsController extends AppController {
 		$countries = $this->Deal->Venue->Country->find('list');
 		$venues = $this->Deal->Venue->find('list');
 		$this->set(compact('venues','merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
-		$this->layout = 'admin';
+		//$this->layout = 'admin';
 	
 	}
 
