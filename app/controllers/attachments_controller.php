@@ -70,7 +70,7 @@ class AttachmentsController extends AppController {
         $this->Image->type = $this->type;
         $this->Image->Behaviors->attach('Tree', array('scope' => array('Image.type' => $this->type)));
         $this->set('type', $this->type);
-        $this->layout ='admin';
+        //$this->layout ='admin';
     }
 
 /**

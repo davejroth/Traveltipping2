@@ -7,7 +7,7 @@
 			<th><?php echo $this->Paginator->sort('merchant_id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('deal_status');?></th>
+			<th><?php echo $this->Paginator->sort('deal_status_id');?></th>
 			<th><?php echo $this->Paginator->sort('discounted_price');?></th>
 			<th><?php echo $this->Paginator->sort('deal_live');?></th>
 			<th><?php echo $this->Paginator->sort('deal_close');?></th>
@@ -52,7 +52,7 @@
 
 
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $deal['Deal']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $deal['Deal']['id'], 'admin' => 0)); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $deal['Deal']['id'])); ?>
 			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $deal['Deal']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $deal['Deal']['id'])); ?>
 		</td>

@@ -50,6 +50,12 @@
 				));
 				echo $this->Form->input('flat_fee');	
 			echo '</div>';
+			echo '<div class="field_row clearfix">';
+				echo $this->Form->input('DealAvailability.average_reservations', array(
+					'label' => 'Average Nightly Reservation Limit'
+					));
+				echo $this->Form->input('purchase_pad', array('default' => 0));	
+			echo '</div>';
 		?>
 	</fieldset>
 	
@@ -67,8 +73,8 @@
 			echo '</div>';
 			
 			echo '<div class="field_row clearfix">';
-				echo $this->Form->input('Region');
-				echo $this->Form->input('Category');
+				echo $this->Form->input('Region', array('multiple' => 'checkbox', 'class' => 'deal_checkboxes'));
+				echo $this->Form->input('Category', array('multiple' => 'checkbox', 'class' => 'deal_checkboxes'));
 			echo '</div>';
 			
 			echo $this->Form->input('description');
@@ -77,6 +83,8 @@
 			echo $this->Form->input('getting_there');
 			echo $this->Form->input('things_to_do');
 			
+			echo $this->Html->link('View Uploaded Pictures', array('controller' => 'attachments', 'action' => 'admin_index', 'admin' => 1),
+		array( 'title'=>'View Uploaded Pictures'));
 			echo '<div class="field_row clearfix">';
 				echo $this->Form->input('image1');
 				echo $this->Form->input('image2');

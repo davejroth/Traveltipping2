@@ -857,3 +857,7 @@ width:400px;
 div.approve_btn {
 float:right;
 }
+
+div.deal_checkboxes  label{
+display:inline;
+}

@@ -67,7 +67,7 @@ else {
 					'View Details',array('controller' => 'deals', 'action' => 'deal_details', $deal['Deal']['id']
 					)) . "</li>";
 				echo "<li>" .  $this->Html->link(
-					'View Sample',array('controller' => 'deals', 'action' => 'sample', $deal['Deal']['id']
+					'View Sample',array('controller' => 'deals', 'action' => 'view', $deal['Deal']['id']
 					)) . "</li>";
 				 if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
 					echo "<li>" .  $this->Html->link(
