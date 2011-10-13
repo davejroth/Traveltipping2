@@ -3,7 +3,4 @@ RewriteEngine on
 RewriteRule    ^$ app/webroot/    [L]
 RewriteRule    (.*) app/webroot/$1 [L]
 </IfModule>
-AuthUserFile "/home/trave125/.htpasswds/stage/passwd"
-AuthType Basic
-AuthName "stage"
-require valid-user
+
