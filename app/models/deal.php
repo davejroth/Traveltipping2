@@ -90,14 +90,14 @@ class Deal extends AppModel {
 			'insertQuery' => ''
 		)
 	);
-	public $validate = array(
+	/*public $validate = array(
 		'deal_expire' => array(
 			'expireCheck' => array('rule' => 'expireCheck', 'message' => 'Please make sure that the Deal Expire date is greater than the Deal Valid date.')
 		),
 		'deal_close' => array(
 			'closeCheck' => array('rule' => 'closeCheck', 'message' => 'Please make sure that the Deal Close date is greater than the Deal Live date.')
 		)	
-    );
+    );*/
 	function expireCheck()
 	{
 		//$newValidDateString = $this->data['Deal']['deal_valid']['year'] . '-' . $this->data['Deal']['deal_valid']['month'] . '-' . $this->data['Deal']['deal_valid']['day']; 
