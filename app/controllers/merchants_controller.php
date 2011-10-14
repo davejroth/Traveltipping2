@@ -127,6 +127,7 @@ class MerchantsController extends AppController {
 		
 		if (!empty($this->data)) {
 			$this->data['Deal']['deal_status_id'] = 1;
+			$this->data['Deal']['image1'] = '/uploads/default.jpg';
 			$this->Deal->create();
 			if ($this->Deal->save($this->data)) {
 				$this->sendDealMail($this->Deal->id, $this->Session->read('Merchant.id'), "newDeal");

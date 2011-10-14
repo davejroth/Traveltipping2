@@ -6,7 +6,7 @@
 		<div class="page_content">
 		<h3 class ="subtitle">Password email has been sent to <?php echo $email; ?> </h3>
 	<?php
-		echo $this->Html->link('Resend email', array('controller' => 'travelers', 'action' => 'signup'),array( 'title'=>'Create an Account'));
+		echo $this->Html->link('Resend email', array('controller' => 'users', 'action' => 'resendPassword', $email),array( 'title'=>'Resend Email'));
 	?>
 	<p>Check your inbox for an email to reset your password </p>
 	</div>

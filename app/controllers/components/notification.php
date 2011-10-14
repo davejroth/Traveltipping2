@@ -103,7 +103,33 @@ class NotificationComponent extends Object {
 	$this->Email->layout = 'default';
     $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
- }
+ }  	
+ 
+ function sendHtmlUserMail($user, $template) {
+	//This array should be declared as a class variable but I'm not sure how to do it.	
+		$userEmailSubjects = array('resetPassword' => 'TravelTipping Password Reset',
+		);
+		
+		/* SMTP Options */
+    $this->Email->smtpOptions = array(
+        'port'=>'25', 
+        'timeout'=>'30',
+        'host' => '67.210.113.84',
+        'username'=>'registration@traveltipping.com',
+        'password'=>'43Temp68',
+    );
+	$this->Email->delivery = 'smtp';
+    $this->Email->to = $user['User']['email'];
+    $this->Email->subject = $userEmailSubjects[$template];;
+    $this->Email->replyTo = 'donotreply@traveltipping.com';
+    $this->Email->from = 'TravelTipping <donotreply@traveltipping.com>';
+	$this->Email->template = 'users\\' . $template; // note no '.ctp'
+	$this->Email->layout = 'default';
+    $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
+    $this->Email->send();
+	}
+ 
+ 
  /*
    	function testNewMerchantMail($id) {
 	App::import('model','Merchant');

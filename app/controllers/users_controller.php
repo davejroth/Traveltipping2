@@ -4,7 +4,15 @@ class UsersController extends AppController {
 	var $name = 'Users';
 	
 	var $uses = array('Merchant', 'Traveler', 'User');
+	var $components = array('Notification');
 
+	function sendForgotPasswordMail($user, $template) {
+		$this->loadModel('PasswordReset');
+		$passwordReset = $this->PasswordReset->findByUserId($user['User']['id']);
+		$this->set(compact('passwordReset')); 
+	
+		$this->Notification->sendHTMLUserMail($user, $template);
+	}
 	/*
 	 *This is called when logging in
 	 *Sets Session variables and redirects to appropriate login page.
@@ -36,13 +44,13 @@ class UsersController extends AppController {
 		{
 			if($this->Session->read('User.new') == 1)
 			{
-				$this->redirect(array('controller' => 'merchants', 'action' => 'profile'));
+				$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
 			}
-			elseif($this->Session->read('User.purchasing') == 1) {
+			/*elseif($this->Session->read('User.purchasing') == 1) {
 				$this->redirect(array('controller' => 'deals', 'action' => 'purchase'));
-			}
+			} */
 			else {
-			$this->redirect(array('controller' => 'merchants', 'action' => 'profile'));
+			$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
 			}
 		}
 		
@@ -53,7 +61,7 @@ class UsersController extends AppController {
 			}
 			else 
 			{
-				$this->redirect(array('controller' => 'travelers', 'action' => 'profile'));
+				$this->redirect(array('controller' => 'travelers', 'action' => 'deals', 'upcoming'));
 			}
 		}
 		elseif($this->Session->read('User.role_id') == Configure::Read('Role.Admin_ID'))
@@ -144,6 +152,7 @@ class UsersController extends AppController {
 				$newPasswordReset['PasswordReset']['user_id'] = $thisUser['User']['id'];
 				$newPasswordReset['PasswordReset']['confirmation'] = $random_hash;
 				$this->User->PasswordReset->save($newPasswordReset);
+				$this->sendForgotPasswordMail($thisUser, 'resetPassword');
 				//Create new passwordChange record and email address
 				$this->redirect(array('action' => 'confirmReset', $this->data['User']['resetEmail']));
 			}
@@ -157,7 +166,47 @@ class UsersController extends AppController {
 	function confirmReset($email) {
 		//Send password reset email
 		$this->set(compact('email'));
+	}
 	
+	function resendPassword($email) {
+		$thisUser = $this->User->findByEmail($email);
+		$this->sendForgotPasswordMail($thisUser, 'resetPassword');
+		$this->redirect(array('action' => 'confirmReset', $email));
+	}
+	
+	/**
+	 * newPassword is the link users receive to reset their password.  Their confirmation is checked against
+     * their user account and they enter the new password
+	 * @param confirmation - The code generated when the user resets the password
+	 */
+	
+	function newPassword($confirmation) {
+		if(!empty($this->data)) {
+			$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
+			if($this->User->save($this->data)) {
+				$this->Session->setFlash(__('Your password has been reset.', true));
+				$this->redirect(array('controller' => 'users', 'action' => 'login'));
+			}
+			else
+			{
+				$this->Session->setFlash(__('Sorry, we couldn\'t save your new password.', true));
+			}
+			
+		}
+		if(empty($this->data)) {
+			$this->loadModel('PasswordReset');
+			$passwordReset = $this->PasswordReset->findByConfirmation($confirmation);
+			//Or condition - The difference between 'created' and now is greater than 24 hours
+			if(is_null($passwordReset) || (strtotime($passwordReset['PasswordReset']['created']) < strtotime('24 hours ago'))) { //Not the right confirmation
+				$this->Session->setFlash(__('Sorry, your request has expired.  Please generate a new request.', true));
+				$this->redirect(array('controller' => 'users', 'action' => 'resetPassword'));
+			}
+			else {
+				$id = $passwordReset['PasswordReset']['user_id'];
+				$this->data = $this->User->findById($id);
+			}
+		
+		}
 	}
 	
 /*
