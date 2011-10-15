@@ -1,4 +1,4 @@
-<div  class="white_mod_246_wrap deal_listing">
+<div  class="white_mod_246_wrap">
 	<div class="white_mod_246_top"></div>
 	<div class="white_mod_246_content clearfix">
 		<h3 class="gray_module_title">Contact</h3>
@@ -12,7 +12,7 @@
 			<p><strong>Phone:</strong><br/>
 			001-415-742-1704
 			</p>
-			<p><strong>Address:</strong><br/>
+			<p class="last"><strong>Address:</strong><br/>
 			567 Sutter St. 3rd Fl.<br/>
 			San Francisco, CA 94102<br/>
 			USA

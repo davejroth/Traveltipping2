@@ -17,17 +17,17 @@
 
 <div class="white_mod_960_wrap">
 	<div class="white_mod_960_top"></div>
-	<div class="white_mod_960_content">
+	<div class="white_mod_960_content clearfix">
 	<?php echo $this->Html->image('/img/site/how_it_works_header.png',array('class'=>'header_img')); ?>
 	
-	<div class="page_content">
+	<div class="page_content clearfix">
 			<p class="sub_heading">It's That Easy!</p>
 
 	<p>Start your vacation by searching the destination of your dreams on our homepage.  We'll find you deeply discounted travel deals, turning your dreams into reality.   </p>
 
 	<p>Most deals have a limited number of quantity at these great prices, so act quickly before the deal sells out.  But don't worry, we are working hard to find you more destination deals and are continually adding new deals every week, so come back regularly or sign up for our deal alerts.  </p>
 
-	<p>Want to see even more destinations and vacation spots offered?  Help us by spreading the word so we can find you even more deals!  </p>
+	<p style="margin:0;">Want to see even more destinations and vacation spots offered?  Help us by spreading the word so we can find you even more deals!  </p>
 
 
  

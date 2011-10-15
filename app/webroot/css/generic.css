@@ -39,7 +39,7 @@
 
 .page_content{
     margin: 15px;
-    min-height: 200px;
+    min-height: 180px;
 }
 
 
@@ -356,7 +356,7 @@ label{
 }
 
 .advertising_module .module_title{
-	font-size:20px;
+	font-size:18px;
 }
 
 .advertising_module .module_content{
@@ -456,10 +456,10 @@ label{
     background: url("../img/site/strike.png") repeat scroll 0 0 transparent;
     display: block;
     height: 2px;
-    left: 33px;
+    left: 30px;
     margin: 0 auto;
     position: absolute;
-    top: 2px;
+    top: 5px;
     width: 30px;
 }
 
@@ -492,6 +492,17 @@ label{
     height: 46px;
     margin: 5px 15px 0 0;
     width: 191px;
+}
+
+.create_merchant_account_btn{
+    background: url("../img/site/btn_create_account.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: right;
+    font-size: 0;
+    height: 27px;
+    margin: 5px 15px 0 0;
+    width: 146px;
 }
 
 .create_deal_btn{
@@ -818,6 +829,12 @@ label{
     margin-bottom: 10px;
     padding: 10px 15px;
     text-transform: uppercase;
+}
+
+.summary_total span{
+  float:right;
+  text-align:right;
+  width:100px;	
 }
 
 .calendar td.checkInDate,

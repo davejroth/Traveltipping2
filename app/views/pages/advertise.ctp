@@ -49,9 +49,10 @@
 	<div class="white_mod_960_content clearfix">
 		<div class="highlight_list">
 			<ul>
-			<li><span>No upfront costs</span> - only pay when someone makes a reservation.</li>
+			
 			<li><span>No technical expertise required</span> - our account managers take care of all the details and content for your deal.</li>
 			<li><span>Extensive advertising</span> - we leverage our marketing experience to advertise your deals through a variety of search, display and social ad networks.</li>
+			<li><span>No upfront costs</span> - only pay when someone makes a reservation.</li>
 			</ul>
 		</div>
 		

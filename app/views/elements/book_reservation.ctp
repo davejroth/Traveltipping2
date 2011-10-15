@@ -1,4 +1,4 @@
-<div  class="white_mod_246_wrap deal_listing">
+<div  class="white_mod_246_wrap">
 	<div class="white_mod_246_top"></div>
 	<div class="white_mod_246_content clearfix">
 		<h3 class="gray_module_title">FAQ</h3>
@@ -7,7 +7,7 @@
 		<p>First select your check-in date on the calendar.  Then you'll be able to click on
 	your check-out date.  The nights in between will be calculated for you.</p>
 		<p>When do I pay?</p>
-		<p>After you've selected your check-in date and check-out dates, click on the CONTINUE button
+		<p class="last">After you've selected your check-in date and check-out dates, click on the CONTINUE button
 		at the bottom.  On the next page, you can see your summary, enter billing details and purchase
 	the deal.</p>
 		</div>
