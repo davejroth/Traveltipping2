@@ -17,44 +17,59 @@ foreach ($purchases as $purchase):
 
 ?>
 
-<div id="purchase_<?php echo $purchase['DealPurchase']['id']?>"  class="white_mod_694_wrap">
+<div id="purchase_<?php echo $purchase['DealPurchase']['id']?>"  class="traveler_purchase white_mod_694_wrap">
 	<div class="white_mod_694_top"></div>
 	<div class="white_mod_694_content clearfix">
-		<div class="deal_img_section grid_8 alpha omega">
+		<div class="deal_img_section">
 		<?php 
-			echo $this->Html->image($purchase['Deal']['image1'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
-			echo $this->Html->link($purchase['Deal']['Venue']['website'],'http://'.$purchase['Deal']['Venue']['website'],array('class' => 'grid_6'));
+			echo $this->Html->image($purchase['Deal']['image1'], array('class'=>'grid_5','alt' => 'Featured Deal Image'));
+			echo $this->Html->link($purchase['Deal']['Venue']['website'],'http://'.$purchase['Deal']['Venue']['website'],array('class' => 'grid_5'));
 		?>
 		</div>
-		<div class="grid_13 traveler_destination_details">
+		<div class="traveler_destination_details">
 			<h3 class="listing_desination_title"><?php echo $purchase['Deal']['destination'] ?></h3>
-			<p><?php echo __('Reservation Details: ');?></p>
-			<p><?php echo __("<span>Departure Date: </span>");
-				echo date_format(date_create($purchase['DealPurchase']['start_date']), ' F j, Y');
-				echo "<br/>";
-				?>
+			<div>
+				<p><?php echo __('Reservation Details: ');?></p>
+				<dl class="clearfix grid_8">
+				<?php echo __('<dt>Departure Date:</dt>');
+					echo '<dd>'.date_format(date_create($purchase['DealPurchase']['start_date']), ' F j, Y').'</dd>';
+					?>
 				<?php 
-				echo __('<span>Return Date:</span>');
-				echo date_format(date_create($purchase['DealPurchase']['end_date']), ' F j, Y');; 
+					echo __('<dt>Return Date:</dt>');
+					echo '<dd>'.date_format(date_create($purchase['DealPurchase']['end_date']), ' F j, Y').'</dd>'; 
+					?>
+				</dl>
+			</div>
+			<div>
+				<p><?php echo __('Destination Details')?></p>
+				<dl class="clearfix grid_8">
+				<?php echo __('<dt>Company:</dt><dd>').$purchase['Deal']['Venue']['name']; 
+					echo '</dd>';
+					echo __('<dt>Address:</dt><dd>').$purchase['Deal']['Venue']['address1']; 
+					
+					echo $purchase['Deal']['Venue']['city'] . ", " . $purchase['Deal']['Venue']['state'] . " " . $purchase['Deal']['Venue']['postal_code']; echo "<br>";
+					echo $purchase['Deal']['Venue']['Country']['name']; 
+					echo '</dd>';
+					?>
+				</dl>
+			</div>
+			<ul>
+				<?php
+				echo '<li>'.$this->Html->link('View Page', array('controller' => 'deals', 'action' => 'view', $purchase['Deal']['id'])).'</li>';
+				echo __('<li><span>Price Paid:</span> ') .'$'. $purchase['DealPurchase']['purchase_amount'].'</li>';
+				echo __('<li><span>Purchase Date:</span> ').date_format(date_create($purchase['DealPurchase']['created']), ' F j, Y').'</li>'; 
 				?>
-			</p>
+			</ul>
 			
-			<p><?php echo __('Destination Details ');
-				echo __('Company: ').$purchase['Deal']['Venue']['name']; echo "<br>";
-				echo __('Address: ').$purchase['Deal']['Venue']['address1']; echo "<br>";
-				echo $purchase['Deal']['Venue']['city'] . ", " . $purchase['Deal']['Venue']['state'] . " " . $purchase['Deal']['Venue']['postal_code']; echo "<br>";
-				echo $purchase['Deal']['Venue']['Country']['name']; ?>
-			</p>
 		</div>
+
+		
 
 		
 	</div>
 
 </div>
-			<?php
-		echo $this->Html->link('View Page', array('controller' => 'deals', 'action' => 'view', $purchase['Deal']['id']));
-		echo __('Purchase Price: ') .'$'. $purchase['DealPurchase']['purchase_amount'];
-		echo __('Purchase Date: ').date_format(date_create($purchase['DealPurchase']['created']), ' F j, Y');; ?>
+
 <?php endforeach; ?>
 </div><!-- layout_left -->
 

@@ -861,3 +861,72 @@ float:right;
 div.deal_checkboxes  label{
 display:inline;
 }
+
+/**
+* Traveler Pages
+*/
+
+
+.traveler_purchase img{
+	padding:3px 0 5px 0;	
+}
+
+.traveler_purchase p{
+	font-size:14px;
+	clear:both;	
+	font-weight:bold;
+	margin:5px 0 0 0;
+	color:#3CAACC;
+}
+
+
+.traveler_purchase dl{
+	margin:0 0 10px 0;	
+}
+
+.traveler_purchase dl dt{ 
+    clear: both;
+    float: left;
+    font-weight: bold;
+    padding-right: 15px;
+    width: 100px;
+}
+
+.traveler_purchase dl dd{ 
+	float:left;
+}
+
+.traveler_purchase ul{
+	clear:both;	
+	margin:5px 0;
+}
+
+.traveler_purchase ul li{
+    display: inline;
+    margin-right: 20px;
+}
+
+.traveler_purchase ul li span{
+	font-weight:bold;
+}
+
+.traveler_purchase .deal_img_section{
+	width:165px;
+	margin:0;
+	display:inline;
+	float:left;	
+}
+
+.traveler_destination_details{
+	width:490px;
+	display: inline;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	position: relative;	
+}
+.traveler_destination_details div{
+	float:left;
+	width:245px;	
+	display:inline;
+}
