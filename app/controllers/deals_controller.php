@@ -27,6 +27,7 @@ class DealsController extends AppController {
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
 	
 		$this->Notification->sendHTMLDealMail($Merchant, $template);
+		$this->Notification->sendHtmlAmMail($template);
 	}
 /*
  * Index
@@ -122,13 +123,16 @@ class DealsController extends AppController {
 	function admin_add() {
 		if (!empty($this->data)) {
 			$this->Deal->create();
-			if ($this->Deal->save($this->data)) {
+			//$this->data['Venue']['merchant_id'] = $this->data['Merchant']['id'];
+			if ($this->Deal->saveAll($this->data)) {
 				$this->Session->setFlash(__('The deal has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 			}
 		}
+		$countries = $this->Deal->Venue->Country->find('list');
+		$businessTypes = $this->Deal->Venue->BusinessType->find('list');
 		$merchants = $this->Deal->Venue->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
@@ -136,7 +140,7 @@ class DealsController extends AppController {
 		$regions = $this->Deal->Region->find('list');
 		$countries = $this->Deal->Venue->Country->find('list');
 		$venues = $this->Deal->Venue->find('list');
-		$this->set(compact('venues','merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries'));	
+		$this->set(compact('venues','merchants', 'dealStatuses', 'destinations', 'reservationTypes', 'categories', 'regions', 'countries', 'businessTypes'));	
 		//$this->layout = 'admin';
 	
 	}
@@ -160,7 +164,7 @@ class DealsController extends AppController {
 			}
 			if($this->Deal->DealAvailability->validates() && $this->Deal->validates()) {
 				$this->Deal->updateAvailabilityRecords($id, $this->data);
-				if ($this->Deal->save($this->data)) {
+				if ($this->Deal->saveAll($this->data)) {
 					if($statusChange) {
 						$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Deal']['venue_id'])));
 								
@@ -193,13 +197,15 @@ class DealsController extends AppController {
 			$this->data = $this->Deal->read(null, $id);
 		}
 		$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Deal']['venue_id'])));
+		$countries = $this->Deal->Venue->Country->find('list');
+		$businessTypes = $this->Deal->Venue->BusinessType->find('list');
 		$merchants = $this->Deal->Venue->Merchant->find('list');
 		$dealStatuses = $this->Deal->DealStatus->find('list');
 		$reservationTypes = $this->Deal->ReservationType->find('list');
 		$categories = $this->Deal->Category->find('list');
 		$regions = $this->Deal->Region->find('list');
 		$venues = $this->Deal->Venue->find('list');
-		$this->set(compact('merchants', 'dealStatuses', 'venues', 'reservationTypes', 'categories', 'regions', 'thisVenue'));
+		$this->set(compact('merchants', 'dealStatuses', 'venues', 'reservationTypes', 'categories', 'regions', 'thisVenue', 'countries', 'businessTypes'));
 		
 
 	}

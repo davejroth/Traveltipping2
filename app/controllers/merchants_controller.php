@@ -29,7 +29,8 @@ class MerchantsController extends AppController {
 		$Merchant = $this->Merchant->read(null, $merchantID); //Used for email address
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
 	
-		$this->Notification->sendHTMLDealMail($Merchant, $template);
+		$this->Notification->sendHtmlDealMail($Merchant, $template);
+		$this->Notification->sendHtmlAmMail($template);
 	}
 	
 /**
@@ -40,7 +41,6 @@ class MerchantsController extends AppController {
 */
 	function profile() {
 		$id = $this->Session->read('Merchant.id');
-		//$this->sendMerchantMail($id, "newMerchant");
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid merchant profile', true));
 			$this->redirect(array('action' => 'edit'));
@@ -128,9 +128,10 @@ class MerchantsController extends AppController {
 		if (!empty($this->data)) {
 			$this->data['Deal']['deal_status_id'] = 1;
 			$this->data['Deal']['image1'] = '/uploads/default.jpg';
+			$this->data['Venue']['merchant_id'] = $this->Session->read('Merchant.id');
 			$this->Deal->create();
-			if ($this->Deal->save($this->data)) {
-				$this->sendDealMail($this->Deal->id, $this->Session->read('Merchant.id'), "newDeal");
+			if ($this->Deal->saveAll($this->data)) {
+				$this->sendDealMail($this->Deal->id, $this->Session->read('Merchant.id'), "dealInitiated");
 				$this->redirect(array('action' => 'deals','upcoming'));
 			} else {
 				$this->Session->setFlash(__('The venue could not be saved. Please, try again.', true));
@@ -138,7 +139,9 @@ class MerchantsController extends AppController {
 		}
 		if (empty($this->data)) {
 			$venues = $this->Venue->find('list',array('conditions' => array('Venue.merchant_id' => $this->Session->read('Merchant.id'))));
-			$this->set(compact('venues'));
+			$countries = $this->Venue->Country->find('list');
+			$businessTypes = $this->Venue->BusinessType->find('list');
+			$this->set(compact('venues', 'countries', 'businessTypes'));
 		}
 
 	}

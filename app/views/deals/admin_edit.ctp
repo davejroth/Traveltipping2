@@ -9,12 +9,40 @@
 
 		<?php //debug($deal);
 			echo $thisVenue['Merchant']['business_name'];
-			echo $this->Form->input('id');?>
+			echo $this->Form->input('Deal.id');
+			echo $this->Form->input('Venue.id');?>
 	</fieldset>
 	
 	<fieldset>
 		<legend><?php __('Venue Information'); ?></legend>
-		<?php echo $this->Form->input('venue_id');?>
+		<?php 
+		
+			echo '<div class="field_row clearfix">';
+				echo $this->Form->input('Venue.name', array('label' => 'Name of the business being advertised'));
+				echo $this->Form->input('Venue.address1', array('label' => 'Address 1'));
+			echo '</div>';
+			
+			echo '<div class="field_row clearfix">';
+				echo $this->Form->input('Venue.email', array('label' => 'Contact email for this deal'));
+				echo $this->Form->input('Venue.address2', array('label' => 'Address 2'));
+			echo '</div>';
+			
+			echo '<div class="field_row clearfix">';
+				echo $this->Form->input('Venue.business_type_id', array('label' => 'Business Type for this deal'));
+				echo $this->Form->input('Venue.city');
+			echo '</div>';
+			
+			echo '<div class="field_row clearfix">';
+				echo $this->Form->input('Venue.website', array('label' => 'Website for this deal'));
+				echo $this->Form->input('Venue.state');
+			echo '</div>';
+			
+			echo '<div class="field_row clearfix">';
+				echo $this->Form->input('Venue.country_id');
+				echo $this->Form->input('Venue.postal_code');
+			echo '</div>';
+			
+		?>
 	</fieldset>
 	
 	<fieldset>
@@ -76,12 +104,12 @@
 		<legend><?php __('Deal Details'); ?></legend>
 		<?php
 			echo '<div class="field_row clearfix">';
-				echo $this->Form->input('name');
+				echo $this->Form->input('name', array('label' => 'Deal Name (for merchant reference only)'));
 				echo $this->Form->input('reservation_type_id');
 			echo '</div>';
 			
 			echo '<div class="field_row clearfix">';
-				echo $this->Form->input('title');
+				echo $this->Form->input('title', array('label' => 'Deal Title (displayed publicly)'));
 				echo $this->Form->input('slug');
 			echo '</div>';
 			
@@ -95,6 +123,10 @@
 			echo $this->Form->input('highlights');
 			echo $this->Form->input('getting_there');
 			echo $this->Form->input('things_to_do');
+			echo $this->Form->input('things_to_do2');
+			echo $this->Form->input('things_to_do3');
+			echo $this->Form->input('things_to_do4');
+			echo $this->Form->input('things_to_do5');
 			echo $this->Html->link('View Uploaded Pictures', array('controller' => 'attachments', 'action' => 'admin_index', 'admin' => 1),
 				array( 'title'=>'View Uploaded Pictures'));
 			echo '<div class="field_row clearfix">';

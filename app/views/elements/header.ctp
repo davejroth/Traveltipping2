@@ -10,7 +10,7 @@
 			<?php 	if(!$this->Session->read('Auth.User')) { //Not logged in
 							echo '<li>' . $this->Html->link('How it Works',array('controller'=>'pages', 'action'=>'display', 'static'=> 'how-it-works'),array( 'title'=>'How it Works')) . '</li>';
 							echo '<li>' . $this->Html->link('Create an Account', array('controller' => 'travelers', 'action' => 'signup'),array( 'title'=>'Create an Account')) . '</li>';
-							echo '<li>' . $this->Html->link('Login', array('controller' => 'users', 'action' => 'login'),array( 'title'=>'Login')) . '</li>';
+							echo '<li>' . $this->Html->link('Login', array('controller' => 'users', 'action' => 'login', 'admin' => 0),array( 'title'=>'Login')) . '</li>';
 						}
 					 
 						elseif($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID')) { //Merchant is logged in
