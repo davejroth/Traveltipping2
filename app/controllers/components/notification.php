@@ -105,7 +105,7 @@ class NotificationComponent extends Object {
 	//This array should be declared as a class variable but I'm not sure how to do it.	
 		$amEmailSubjects = array('dealApproved' => 'Deal Approved',
 			'dealLive' => 'Deal is Live',
-			'dealClose' => 'Deal has Closed'
+			'dealClose' => 'Deal has Closed',
 			'dealCancelled' => 'Deal has Cancelled',
 			'dealInitiated' => 'Deal has been initiated',
 			'dealWaiting' => 'Deal Waiting for Merchant Approval',
@@ -134,7 +134,7 @@ class NotificationComponent extends Object {
 	//This array should be declared as a class variable but I'm not sure how to do it.
 	$travelerEmailSubjects = array('dealConfirmation' => 'Booking Confirmation and Details',
 		'newTraveler' => 'Your TravelTipping Account Details');
-	);
+	
 	/* SMTP Options */
     $this->Email->smtpOptions = array(
         'port'=>'25', 
@@ -179,7 +179,7 @@ class NotificationComponent extends Object {
     $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
  
- /*
+ 
  * Takes the id of a user_detail and sends a new registration email to them
 
 	function sendNewUserMail($Traveler) {
@@ -220,7 +220,7 @@ class NotificationComponent extends Object {
     $this->Email->sendAs = 'text'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
 
- }
+ }*/
 }
 //NotificationComponent::$emailSubjects = array('newMerchant');
 
