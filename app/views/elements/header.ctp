@@ -31,7 +31,7 @@
 						?></ul>
 					<div class="subscribe_cta">
 
-						<?php echo $this->Html->tag('h3', 'Get up to <span>75%</span> Off Hostels and Budget Hotels around the world', array('class' => 'cta_text'));?>
+						<?php echo $this->Html->tag('h3', 'Get up to <span>75%</span> Off Hotels, Villas, and Resorts around the world', array('class' => 'cta_text'));?>
 					</div>
 				</div>
 			</div>

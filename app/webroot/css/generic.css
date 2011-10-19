@@ -39,7 +39,7 @@
 
 .page_content{
     margin: 15px;
-    min-height: 180px;
+
 }
 
 
@@ -65,6 +65,10 @@
     font-size: 30px;
     font-weight: bold;
     text-align: right;
+}
+
+.no_margin{
+	margin:0;	
 }
 
 /* +++++++++++++++++ END Page Styles +++++++++++++++++ */
@@ -581,6 +585,18 @@ label{
     padding: 0;
     width: 85px;
 }
+
+.reset_password_btn{
+    background: url("../img/site/btn_reset_password.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: none;
+    font-size: 0;
+    height: 27px;
+    padding: 0;
+    width: 85px;
+}
+
 
 .create_account_btn{
     background: url("../img/site/btn_create_account.png") no-repeat scroll 0 0 transparent;

@@ -38,7 +38,7 @@ else {
 
 ?>
 
-<div id="deal_<?php echo $deal['Deal']['id']?>"  class="white_mod_694_wrap deal_listing">
+<div id="deal_<?php echo $deal['Deal']['id']?>"  class="white_mod_694_wrap">
 	<div class="white_mod_694_top"></div>
 	<div class="white_mod_694_content clearfix">
 		<?php echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_6 alpha omega','alt' => 'Featured Deal Image'))?>
@@ -68,7 +68,7 @@ else {
 					)) . "</li>";
 				echo "<li>" .  $this->Html->link(
 					'View Sample',array('controller' => 'deals', 'action' => 'view', $deal['Deal']['id']
-					)) . "</li>";
+					),array('target' => '_blank')) . "</li>";
 				 if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
 					echo "<li>" .  $this->Html->link(
 					'Approve',array('controller' => 'merchants', 'action' => 'approve', $deal['Deal']['id']), array()) . "</li>";

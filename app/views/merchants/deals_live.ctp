@@ -27,7 +27,7 @@ $progress_value = ($deal['Deal']['current_purchases']/$deal['Deal']['max_purchas
 
 ?>
 
-<div id="deal_<?php echo $deal['Deal']['id']?>"  class="white_mod_694_wrap deal_listing">
+<div id="deal_<?php echo $deal['Deal']['id']?>"  class="white_mod_694_wrap">
 	<div class="white_mod_694_top"></div>
 	<div class="white_mod_694_content clearfix">
 		<?php echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_6 alpha omega','alt' => 'Featured Deal Image'))?>
@@ -45,7 +45,7 @@ $progress_value = ($deal['Deal']['current_purchases']/$deal['Deal']['max_purchas
 					)) . "</li>";
 				echo "<li>" .  $this->Html->link(
 					'View Page',array('controller' => 'deals', 'action' => 'view', $deal['Deal']['id']
-					)) . "</li>";
+					),array('target' => '_blank')) . "</li>";
 				echo "<li>" .  $this->Html->link('Reservations',array('action'=>'reservations',$deal['Deal']['id']),
 				array('class'=>'reservations')) . "</li>"?>
 			</ul>

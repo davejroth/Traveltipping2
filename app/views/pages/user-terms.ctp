@@ -36,7 +36,7 @@ k)	"frame", "mirror" or otherwise incorporate any part of this Website into any 
 
 
 5.  Privacy Policy<br/><br/>
-Your privacy is important to us.  To review our Privacy Policy and understand our practices further, please visit: www.traveltipping.com/user-policies.<br/><br/>
+Your privacy is important to us.  To review our Privacy Policy and understand our practices further, please visit: <a href="/user-policies" target="_blank">www.traveltipping.com/user-policies</a>.<br/><br/>
 
 6.  Links to Third Party Sites<br/><br/>
 This Site may contain links to websites operated by parties other than TravelTipping Inc. Such links are provided for your reference only. We do not control such websites and are not responsible for how other companies or organizations with links on the Site collect, use, disclose or secure the information that you provide them. If you choose to access a third party website linked to the Site, you do so at your own risk and subject to any terms of service or privacy policy (if any) associated with such third party websites.<br/><br/>

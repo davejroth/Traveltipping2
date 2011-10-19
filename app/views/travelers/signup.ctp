@@ -15,7 +15,7 @@
 		        echo $this->Form->input('User.email', array('label'=>'Email Address:'));
 				echo $this->Form->input('User.password', array('label'=>'Password:','value'=>""));
 				echo $this->Form->input('User.confirm_password', array('label'=>'Confirm Password:','value'=>"", 'type' =>'password'));
-		    	echo $this->Html->link('Login with an existing account',array('controller' => 'user', 'action' => 'login'));
+		    	echo $this->Html->link('Login with an existing account',array('controller' => 'users', 'action' => 'login'));
 		    	echo '</div>';
 		    ?>
 

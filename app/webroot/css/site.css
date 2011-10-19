@@ -12,6 +12,7 @@
 #layout_footer{
     background: none repeat scroll 0 0 #DADADA;
     clear: both;
+    margin-top: 40px;
 }
 
 #layout_main{
@@ -496,7 +497,8 @@ margin:0;
 
 /* +++++++++++++++++ START Login Page +++++++++++++++++ */
 
-#UserLoginForm{
+#UserLoginForm,
+#UserResetPasswordForm{
 	width:420px;
 	margin:0 auto;
 }
@@ -537,6 +539,32 @@ margin:0;
 }
 
 /* +++++++++++++++++ END Login Page +++++++++++++++++ */
+
+
+/* +++++++++++++++++ START Password Reset +++++++++++++++++ */
+#UserResetPasswordForm{
+	margin-top:30px;
+	padding-bottom:20px;
+}
+
+#UserResetPasswordForm .submit{
+    clear: none;
+    float: left;
+    margin-top: 32px;
+    width: 85px;
+}
+
+.reset_password_fields {
+    float: left;
+    width: 300px;
+}
+
+.reset_confirmation{
+    padding: 10px 0 15px;
+    width: 350px;
+}
+
+/* +++++++++++++++++ END Password Reset +++++++++++++++++ */
 
 /**
 * Merchant Accounts
