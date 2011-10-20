@@ -62,24 +62,20 @@ class AclReflectorComponent
 	
 	public function get_all_plugins_paths()
 	{
-		$plugin_names = array();
-		
-		$folder =& new Folder();
-		
-		$folder->cd(APP . 'plugins');
-		$app_plugins = $folder->read();
-		foreach($app_plugins[0] as $plugin_name)
-		{
-			$plugin_names[] = APP . 'plugins' . DS . $plugin_name;
-		}
-		
-		$folder->cd(ROOT . DS . 'plugins');
-		$root_plugins = $folder->read();
-		foreach($root_plugins[0] as $plugin_name)
-		{
-			$plugin_names[] = ROOT . DS . 'plugins' . DS . $plugin_name;
-		}
-		
+	    $plugin_names = array();
+	    $plugin_paths = App::path('plugins');
+	    $folder       =& new Folder();
+	    
+	    foreach($plugin_paths as $plugin_path)
+	    {
+    	    $folder->cd($plugin_path);
+    		$app_plugins = $folder->read();
+    		foreach($app_plugins[0] as $plugin_name)
+    		{
+    			$plugin_names[] = $plugin_path . $plugin_name;
+    		}
+	    }
+	    
 		return $plugin_names;
 	}
 	public function get_all_plugins_names()
@@ -129,9 +125,9 @@ class AclReflectorComponent
 					// Get the controller name
 					$controller_class_name = Inflector::camelize(substr($file, 0, strlen($file) - strlen('_controller.php')));
 					
-					if(!$filter_default_controller || Inflector::humanize($plugin_name) != $controller_class_name)
+					if(!$filter_default_controller || Inflector::camelize($plugin_name) != $controller_class_name)
 					{
-    					if (!preg_match('/^'. Inflector::humanize($plugin_name) . 'App/', $controller_class_name))
+    					if (!preg_match('/^'. Inflector::camelize($plugin_name) . 'App/', $controller_class_name))
     					{
     						if (!App::import('Controller', $plugin_name . '.' . $controller_class_name))
     						{
@@ -139,7 +135,7 @@ class AclReflectorComponent
     						}
     						else
     						{
-    						    $plugins_controllers[] = array('file' => $fileName, 'name' => Inflector::humanize($plugin_name) . "/" . $controller_class_name);
+    						    $plugins_controllers[] = array('file' => $fileName, 'name' => Inflector::camelize($plugin_name) . "/" . $controller_class_name);
     						}
     					}
 					}

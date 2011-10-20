@@ -4,7 +4,7 @@ class AclManagerComponent
     var $components = array('Acl', 'Acl.AclReflector', 'Session');
     
     /**
-     * @var Controller
+     * @var AclAppController
      */
 	private $controller = null;
 	private $controllers_hash_file;
@@ -34,7 +34,7 @@ class AclManagerComponent
 	    }
 	    else
 	    {
-	        $this->Session->setFlash(__('the ' . dirname($this->controllers_hash_file) . ' directory is not writable', true), 'flash_error');
+	        $this->Session->setFlash(sprintf(__d('acl', 'the %s directory is not writable', true), dirname($this->controllers_hash_file)), 'flash_error', null, 'plugin_acl');
 	        return false;
 	    }
 	}
@@ -261,7 +261,7 @@ class AclManagerComponent
 			$root              = $aco->save();
 			$root['Aco']['id'] = $aco->id;
 			
-			$log[] = 'Created Aco node for controllers';
+			$log[] = __d('acl', 'Created Aco node for controllers', true);
 		}
 		else
 		{
@@ -297,7 +297,7 @@ class AclManagerComponent
 					$pluginNode              = $aco->save();
 					$pluginNode['Aco']['id'] = $aco->id;
 					
-					$log[] = 'Created Aco node for ' . $plugin_name . ' Plugin';
+					$log[] = sprintf(__d('acl', 'Created Aco node for %s plugin', true), $plugin_name);
 	            }
 	        }
 	        
@@ -324,7 +324,7 @@ class AclManagerComponent
 					$controllerNode              = $aco->save();
 					$controllerNode['Aco']['id'] = $aco->id;
 					
-					$log[] = 'Created Aco node for ' . $plugin_name . '/' . $controller_name;
+					$log[] = sprintf(__d('acl', 'Created Aco node for %s/%s', true), $plugin_name, $controller_name);
                 }
                 else
                 {
@@ -336,7 +336,7 @@ class AclManagerComponent
 					$controllerNode              = $aco->save();
 					$controllerNode['Aco']['id'] = $aco->id;
 					
-					$log[] = 'Created Aco node for ' . $controller_name;
+					$log[] = sprintf(__d('acl', 'Created Aco node for %s', true), $controller_name);
                 }
             }
             else
@@ -363,7 +363,7 @@ class AclManagerComponent
     	            $aco->create(array('parent_id' => $controllerNode['Aco']['id'], 'model' => null, 'alias' => $action));
 					$methodNode = $aco->save();
 					
-					$log[] = 'Created Aco node for '. (!empty($plugin_name) ? $plugin_name . '/' : '') . $controller_name . '/' . $action;
+					$log[] = sprintf(__d('acl', 'Created Aco node for %s', true), (!empty($plugin_name) ? $plugin_name . '/' : '') . $controller_name . '/' . $action);
     	        }
     	    }
 	    }
@@ -381,10 +381,21 @@ class AclManagerComponent
 	{
 	    if(isset($aro_nodes[0]))
 	    {
-	        $aco_path       = 'controllers/' . $aco_path;
-	        $aro_model_data = array($aro_nodes[0]['Aro']['model'] => array('id' => $aro_nodes[0]['Aro']['foreign_key']));
+	        $aco_path = 'controllers/' . $aco_path;
+	        
+	        $pk_name = 'id';
+	        if($aro_nodes[0]['Aro']['model'] == Configure :: read('acl.aro.role.model'))
+	        {
+	            $pk_name = $this->controller->_get_role_primary_key_name();
+	        }
+	        elseif($aro_nodes[0]['Aro']['model'] == Configure :: read('acl.aro.user.model'))
+	        {
+	            $pk_name = $this->controller->_get_user_primary_key_name();
+	        }
+	        
+	        $aro_model_data = array($aro_nodes[0]['Aro']['model'] => array($pk_name => $aro_nodes[0]['Aro']['foreign_key']));
 	        $aro_id         = $aro_nodes[0]['Aro']['id'];
-    	        
+    	    
 	    	$specific_permission_right  = $this->get_specific_permission_right($aro_nodes[0], $aco_path);
 	    	$inherited_permission_right = $this->get_first_parent_permission_right($aro_nodes[0], $aco_path);
 	    	
@@ -510,7 +521,17 @@ class AclManagerComponent
 	
 	private function get_specific_permission_right($aro_node, $aco_path)
 	{
-	    $aro_model_data = array($aro_node['Aro']['model'] => array('id' => $aro_node['Aro']['foreign_key']));
+	    $pk_name = 'id';
+        if($aro_node['Aro']['model'] == Configure :: read('acl.aro.role.model'))
+        {
+            $pk_name = $this->controller->_get_role_primary_key_name();
+        }
+        elseif($aro_node['Aro']['model'] == Configure :: read('acl.aro.user.model'))
+        {
+            $pk_name = $this->controller->_get_user_primary_key_name();
+        }
+	    
+	    $aro_model_data = array($aro_node['Aro']['model'] => array($pk_name => $aro_node['Aro']['foreign_key']));
     	$aro_id         = $aro_node['Aro']['id'];
     	
     	/*
@@ -553,7 +574,17 @@ class AclManagerComponent
 	
 	private function get_first_parent_permission_right($aro_node, $aco_path)
 	{
-	    $aro_model_data = array($aro_node['Aro']['model'] => array('id' => $aro_node['Aro']['foreign_key']));
+	    $pk_name = 'id';
+        if($aro_node['Aro']['model'] == Configure :: read('acl.aro.role.model'))
+        {
+            $pk_name = $this->controller->_get_role_primary_key_name();
+        }
+        elseif($aro_node['Aro']['model'] == Configure :: read('acl.aro.user.model'))
+        {
+            $pk_name = $this->controller->_get_user_primary_key_name();
+        }
+        
+	    $aro_model_data = array($aro_node['Aro']['model'] => array($pk_name => $aro_node['Aro']['foreign_key']));
     	$aro_id         = $aro_node['Aro']['id'];
     	
     	while(strpos($aco_path, '/') !== false && !isset($parent_permission_right))

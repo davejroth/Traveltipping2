@@ -37,8 +37,8 @@ foreach($roles as $role)
     $color = ($i % 2 == 0) ? 'color1' : 'color2';
     echo '<tr class="' . $color . '">';
     echo '  <td>' . $role[$role_model_name][$role_display_field] . '</td>';
-    echo '  <td style="text-align:center">' . $this->Html->link($this->Html->image('/acl/img/design/tick.png'), '/admin/acl/aros/grant_all_controllers/' . $role[$role_model_name]['id'], array('escape' => false, 'confirm' => sprintf(__d('acl', "Are you sure you want to grant access to all actions of each controller to the role '%s' ?", true), $role[$role_model_name][$role_display_field]))) . '</td>';
-    echo '  <td style="text-align:center">' . $this->Html->link($this->Html->image('/acl/img/design/cross.png'), '/admin/acl/aros/deny_all_controllers/' . $role[$role_model_name]['id'], array('escape' => false, 'confirm' => sprintf(__d('acl', "Are you sure you want to deny access to all actions of each controller to the role '%s' ?", true), $role[$role_model_name][$role_display_field]))) . '</td>';
+    echo '  <td style="text-align:center">' . $this->Html->link($this->Html->image('/acl/img/design/tick.png'), '/admin/acl/aros/grant_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'confirm' => sprintf(__d('acl', "Are you sure you want to grant access to all actions of each controller to the role '%s' ?", true), $role[$role_model_name][$role_display_field]))) . '</td>';
+    echo '  <td style="text-align:center">' . $this->Html->link($this->Html->image('/acl/img/design/cross.png'), '/admin/acl/aros/deny_all_controllers/' . $role[$role_model_name][$role_pk_name], array('escape' => false, 'confirm' => sprintf(__d('acl', "Are you sure you want to deny access to all actions of each controller to the role '%s' ?", true), $role[$role_model_name][$role_display_field]))) . '</td>';
     echo '<tr>';
     
     $i++;
@@ -94,23 +94,23 @@ foreach($roles as $role)
 		    	foreach($roles as $role)
 		    	{
 		    	    echo '<td>';
-		    	    echo '<span id="right__' . $role[$role_model_name]['id'] . '_' . $controller_name . '_' . $ctrl_info['name'] . '">';
+		    	    echo '<span id="right__' . $role[$role_model_name][$role_pk_name] . '_' . $controller_name . '_' . $ctrl_info['name'] . '">';
 	    			
 		    	   /*
 					* The right of the action for the role must still be loaded
     		    	*/
     		        echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('title' => __d('acl', 'loading', true)));
     		    	
-    		        if(!in_array($controller_name . '_' . $role[$role_model_name]['id'], $js_init_done))
+    		        if(!in_array($controller_name . '_' . $role[$role_model_name][$role_pk_name], $js_init_done))
     		        {
-    		        	$js_init_done[] = $controller_name . '_' . $role[$role_model_name]['id'];
-    		        	$this->Js->buffer('init_register_role_controller_toggle_right("' . $this->Html->url('/', true) . '", "' . $role[$role_model_name]['id'] . '", "", "' . $controller_name . '", "' . __d('acl', 'The ACO node is probably missing. Please try to rebuild the ACOs first.', true) . '");');
+    		        	$js_init_done[] = $controller_name . '_' . $role[$role_model_name][$role_pk_name];
+    		        	$this->Js->buffer('init_register_role_controller_toggle_right("' . $this->Html->url('/', true) . '", "' . $role[$role_model_name][$role_pk_name] . '", "", "' . $controller_name . '", "' . __d('acl', 'The ACO node is probably missing. Please try to rebuild the ACOs first.', true) . '");');
     		        }
     		        
 		    		echo '</span>';
 	    	
         	    	echo ' ';
-        	    	echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('id' => 'right__' . $role[$role_model_name]['id'] . '_' . $controller_name . '_' . $ctrl_info['name'] . '_spinner', 'style' => 'display:none;'));
+        	    	echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('id' => 'right__' . $role[$role_model_name][$role_pk_name] . '_' . $controller_name . '_' . $ctrl_info['name'] . '_spinner', 'style' => 'display:none;'));
             		
         	    	echo '</td>';
 		    	}
@@ -160,23 +160,23 @@ foreach($roles as $role)
         	        foreach($roles as $role)
     		    	{
     		    	    echo '<td>';
-    		    	    echo '<span id="right_' . $plugin_name . '_' . $role[$role_model_name]['id'] . '_' . $plugin_ctrler_name . '_' . $method['name'] . '">';
+    		    	    echo '<span id="right_' . $plugin_name . '_' . $role[$role_model_name][$role_pk_name] . '_' . $plugin_ctrler_name . '_' . $method['name'] . '">';
     		    	    
     		    	    /*
     		    	    * The right of the action for the role must still be loaded
     		    	    */
     		    	    echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('title' => __d('acl', 'loading', true)));
     		    	    
-	    		    	if(!in_array($plugin_name . "_" . $plugin_ctrler_name . '_' . $role[$role_model_name]['id'], $js_init_done))
+	    		    	if(!in_array($plugin_name . "_" . $plugin_ctrler_name . '_' . $role[$role_model_name][$role_pk_name], $js_init_done))
 	    		        {
-	    		        	$js_init_done[] = $plugin_name . "_" . $plugin_ctrler_name . '_' . $role[$role_model_name]['id'];
-	    		        	$this->Js->buffer('init_register_role_controller_toggle_right("' . $this->Html->url('/', true) . '", "' . $role[$role_model_name]['id'] . '", "' . $plugin_name . '", "' . $plugin_ctrler_name . '", "' . __d('acl', 'The ACO node is probably missing. Please try to rebuild the ACOs first.', true) . '");');
+	    		        	$js_init_done[] = $plugin_name . "_" . $plugin_ctrler_name . '_' . $role[$role_model_name][$role_pk_name];
+	    		        	$this->Js->buffer('init_register_role_controller_toggle_right("' . $this->Html->url('/', true) . '", "' . $role[$role_model_name][$role_pk_name] . '", "' . $plugin_name . '", "' . $plugin_ctrler_name . '", "' . __d('acl', 'The ACO node is probably missing. Please try to rebuild the ACOs first.', true) . '");');
 	    		        }
     		        
     		    		echo '</span>';
 	    	
             	    	echo ' ';
-            	    	echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('id' => 'right_' . $plugin_name . '_' . $role[$role_model_name]['id'] . '_' . $plugin_ctrler_name . '_' . $method['name'] . '_spinner', 'style' => 'display:none;'));
+            	    	echo $this->Html->image('/acl/img/ajax/waiting16.gif', array('id' => 'right_' . $plugin_name . '_' . $role[$role_model_name][$role_pk_name] . '_' . $plugin_ctrler_name . '_' . $method['name'] . '_spinner', 'style' => 'display:none;'));
                 		
             	    	echo '</td>';
     		    	}

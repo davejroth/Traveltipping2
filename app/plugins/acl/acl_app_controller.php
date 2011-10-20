@@ -22,9 +22,13 @@ class AclAppController extends AppController
 	    
 		if(!empty($role_model_name))
 		{
-	    	$this->set('role_model_name',    Configure :: read('acl.aro.role.model'));
-	    	$this->set('role_fk_name',       $this->_get_role_foreign_key_name());
+	    	$this->set('role_model_name',    $role_model_name);
 	    	$this->set('user_model_name',    Configure :: read('acl.aro.user.model'));
+	    	$this->set('role_pk_name',       $this->_get_role_primary_key_name());
+	    	$this->set('user_pk_name',       $this->_get_user_primary_key_name());
+	    	$this->set('role_fk_name',       $this->_get_role_foreign_key_name());
+	    	
+	    	
 	    	
 	    	$this->_authorize_admins();
 	    	
@@ -66,7 +70,7 @@ class AclAppController extends AppController
 		}
 		else
 		{
-			$this->Session->setFlash(__('The role model name is unknown. The ACL plugin bootstrap.php file has to be loaded in order to work. (see the README file)', true), 'flash_error');
+			$this->Session->setFlash(__d('acl', 'The role model name is unknown. The ACL plugin bootstrap.php file has to be loaded in order to work. (see the README file)', true), 'flash_error', null, 'plugin_acl');
 		}
 	}
 	
@@ -78,7 +82,7 @@ class AclAppController extends AppController
 		$model_role_fk = $this->_get_role_foreign_key_name();
 		
 	    if(in_array($this->Auth->user($model_role_fk), $authorized_role_ids)
-	       || in_array($this->Auth->user('id'), $authorized_user_ids))
+	       || in_array($this->Auth->user($this->_get_user_primary_key_name()), $authorized_user_ids))
 	    {
 	        $this->Auth->allow('*');
 	    }
@@ -99,6 +103,36 @@ class AclAppController extends AppController
         $this->set('action', $this->params['named']['action']);
 	}
 	
+	function _get_role_primary_key_name()
+	{
+	    $forced_pk_name = Configure :: read('acl.aro.role.primary_key');
+	    if(!empty($forced_pk_name))
+	    {
+	        return $forced_pk_name;
+	    }
+	    else
+	    {
+	        /*
+	         * Return the primary key's name that follows the CakePHP conventions
+	         */
+	        return 'id';
+	    }
+	}
+	function _get_user_primary_key_name()
+	{
+	    $forced_pk_name = Configure :: read('acl.aro.user.primary_key');
+	    if(!empty($forced_pk_name))
+	    {
+	        return $forced_pk_name;
+	    }
+	    else
+	    {
+	        /*
+	         * Return the primary key's name that follows the CakePHP conventions
+	         */
+	        return 'id';
+	    }
+	}
 	function _get_role_foreign_key_name()
 	{
 	    $forced_fk_name = Configure :: read('acl.aro.role.foreign_key');

@@ -43,14 +43,14 @@ foreach($users as $user)
     
     foreach($roles as $role)
 	{
-	   if(isset($user['Aro']) && $role[$role_model_name]['id'] == $user[$user_model_name][$role_fk_name])
+	   if(isset($user['Aro']) && $role[$role_model_name][$role_pk_name] == $user[$user_model_name][$role_fk_name])
 	   {
 	       echo '  <td>' . $this->Html->image('/acl/img/design/tick.png') . '</td>';
 	   }
 	   else
 	   {
 	   	   $title = __d('acl', 'Update the user role', true);
-	       echo '  <td>' . $this->Html->link($this->Html->image('/acl/img/design/tick_disabled.png'), '/admin/acl/aros/update_user_role/user:' . $user[$user_model_name]['id'] . '/role:' . $role[$role_model_name]['id'], array('title' => $title, 'alt' => $title, 'escape' => false)) . '</td>';
+	       echo '  <td>' . $this->Html->link($this->Html->image('/acl/img/design/tick_disabled.png'), '/admin/acl/aros/update_user_role/user:' . $user[$user_model_name][$user_pk_name] . '/role:' . $role[$role_model_name][$role_pk_name], array('title' => $title, 'alt' => $title, 'escape' => false)) . '</td>';
 	   }
 	}
 	
@@ -75,12 +75,7 @@ if($missing_aro)
     
     <p class="warning"><?php echo __d('acl', 'Some users AROS are missing. Click on a role to assign one to a user.', true) ?></p>
     
-    <?php
-    //echo $this->Html->link(___('generate missing AROs', true), array('plugin' => 'acl', 'controller' => 'aros', 'action' => 'generate_missing'));
-    ?>
-    
     </div>
-
 <?php
 }
 ?>
