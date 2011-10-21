@@ -17,7 +17,7 @@ class DealsController extends AppController {
 	//test
 	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
 	
-	/**
+/**
  * Email function used to send Deal information.  
  */
 	function sendDealMail($dealID, $merchantID, $template) {
@@ -28,6 +28,18 @@ class DealsController extends AppController {
 	
 		$this->Notification->sendHTMLDealMail($Merchant, $template);
 		$this->Notification->sendHtmlAmMail($template);
+	}
+/**
+ * Email function used to send purchase information to a traveler
+ */
+	function sendPurchaseMail($dealID, $travelerID, $purchaseID, $template) {
+		$this->loadModel('Traveler');
+		$deal = $this->Deal->read(null, $dealID);
+		$dealPurchase = $this->Deal->DealPurchase->read(null, $purchaseID);
+		$traveler = $this->Traveler->read(null, $travelerID); //Used for email address
+		$this->set(compact('deal', 'traveler', 'dealPurchase')); //Used for Deal info
+	
+		$this->Notification->sendHTMLTravelerMail($traveler, $template);
 	}
 /*
  * Index
@@ -366,7 +378,8 @@ class DealsController extends AppController {
 						if($reservationType == Configure::read('ReservationType.Fixed') || $reservationType == Configure::read('ReservationType.Variable')) {
 							$this->loadModel('DealPurchase');
 							if ($this->DealPurchase->save($purchase)) {
-							$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
+								$this->sendPurchaseMail($id, $travelerID, $this->DealPurchase->id, 'dealConfirmation');
+								$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
 							} else {
 							$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
 							}

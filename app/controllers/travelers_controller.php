@@ -8,11 +8,11 @@ class TravelersController extends AppController {
 /*
  * Takes the id of a user_detail and calls Notification to send an email to them
  */
-	function sendNewUserMail($id) {
-    $Traveler = $this->Traveler->read(null,$id);
-	$this->set('Traveler', $Traveler); // can this be set in notification?
+	function sendTravelerMail($id, $template) {
+    $traveler = $this->Traveler->read(null,$id);
+	$this->set('traveler', $traveler); // can this be set in notification?
 	
-	$this->Notification->sendNewUserMail($Traveler);
+	$this->Notification->sendHtmlTravelerMail($traveler, $template);
 	}
 	
 	/* Traveler Account Detail Page */
@@ -46,7 +46,7 @@ class TravelersController extends AppController {
 			$this->data['User']['role_id'] = Configure::read('Role.Traveler_ID');
 			$this->data['User']['status'] = 1;
 			if ($this->Traveler->saveAll($this->data)) {
-				$this->sendNewUserMail($this->Traveler->id);
+				$this->sendTravelerMail($this->Traveler->id, 'newTraveler');
 				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
 				$this->Session->write('User.new', 1);
@@ -64,7 +64,7 @@ class TravelersController extends AppController {
 			$this->data['User']['role_id'] = Configure::read('Role.Traveler_ID');
 			$this->data['User']['status'] = 1;
 			if ($this->Traveler->saveAll($this->data)) {
-				$this->sendNewUserMail($this->Traveler->id);
+				$this->sendTravelerMail($this->Traveler->id, 'newTraveler');
 				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
 				$this->Session->write('User.new', 1);

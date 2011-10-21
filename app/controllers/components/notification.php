@@ -1,13 +1,6 @@
 <?php
 class NotificationComponent extends Object {
     var $components = array('Email');
-	
-	//array $emailSubjects['newMerchant'] = 'Welcome to TravelTipping – Account Details';
-	//var $test = array();
-	var $test = 5;
-	
-
- 
 
   	function sendHtmlMerchantMail($Merchant, $template) {
 	//This array should be declared as a class variable but I'm not sure how to do it.
@@ -130,7 +123,7 @@ class NotificationComponent extends Object {
     $this->Email->send();
 	}
 	
-	  function sendHtmlTravelerMail($traveler, $template) {
+	function sendHtmlTravelerMail($traveler, $template) {
 	//This array should be declared as a class variable but I'm not sure how to do it.
 	$travelerEmailSubjects = array('dealConfirmation' => 'Booking Confirmation and Details',
 		'newTraveler' => 'Your TravelTipping Account Details');
