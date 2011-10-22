@@ -25,7 +25,7 @@
 			
 			echo '<div class="field_row clearfix">';
 				echo $this->Form->input('Venue.business_type_id', array('label' => 'Business Type for this deal'));
-				echo $this->Form->input('Venue.state');
+				echo $this->Form->input('Venue.state',array('label'=> 'State / Province'));
 			echo '</div>';
 			
 			echo '<div class="field_row clearfix">';

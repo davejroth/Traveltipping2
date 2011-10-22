@@ -14,7 +14,7 @@ $discounted_price = (int)$deal['Deal']['discounted_price'];
 
 
 $savings = $original_price - $discounted_price;
-$discounted_price_pct = ($savings/$original_price)*100;
+$discounted_price_pct = ceil(($savings/$original_price)*100);
 
 //Progress Bar Calculation
 $progress_value = ($current_quantity/$max_quantity)*100;

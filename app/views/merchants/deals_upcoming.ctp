@@ -63,15 +63,18 @@ else {
 				</tr>
 			</table>
 			<ul class="horizontal_list">
-			<?php	echo "<li>" .  $this->Html->link(
-					'View Details',array('controller' => 'deals', 'action' => 'deal_details', $deal['Deal']['id']
-					)) . "</li>";
-				echo "<li>" .  $this->Html->link(
-					'View Sample',array('controller' => 'deals', 'action' => 'view', $deal['Deal']['id']
-					),array('target' => '_blank')) . "</li>";
-				 if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
+			<?php	
+				if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted') || $deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Approved')) {
 					echo "<li>" .  $this->Html->link(
-					'Approve',array('controller' => 'merchants', 'action' => 'approve', $deal['Deal']['id']), array()) . "</li>";
+						'View Details',array('controller' => 'deals', 'action' => 'deal_details', $deal['Deal']['id']
+						)) . "</li>";
+					echo "<li>" .  $this->Html->link(
+						'View Sample',array('controller' => 'deals', 'action' => 'view', $deal['Deal']['id']
+						),array('target' => '_blank')) . "</li>";
+					 if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
+						echo "<li>" .  $this->Html->link(
+						'Approve',array('controller' => 'merchants', 'action' => 'approve', $deal['Deal']['id']), array()) . "</li>";
+					}
 				}
 				?>
 			</ul>

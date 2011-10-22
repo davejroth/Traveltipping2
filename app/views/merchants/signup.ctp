@@ -14,7 +14,7 @@
 		echo $this->Form->input('Merchant.address');
 		echo $this->Form->input('Merchant.second_address');
 		echo $this->Form->input('Merchant.city');
-		echo $this->Form->input('Merchant.state');
+		echo $this->Form->input('Merchant.state', array('label' => 'State / Province'));
 		echo $this->Form->input('Merchant.postal_code');
 		echo $this->Form->input('Merchant.country_id');
 		echo $this->Form->input('Merchant.website');

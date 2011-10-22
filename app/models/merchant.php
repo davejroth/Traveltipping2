@@ -62,10 +62,10 @@ var $validate = array(
 			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter a city',),
 		),
 		'state' => array(
-			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter a state or province',),
+			//'notempty' => array('rule' => array('notempty'),'message' => 'Please enter a state or province',),
 		),
 		'postal_code' => array(
-			'postal' => array('rule' => array('postal'), 'message' => 'Please enter a valid zip',),
+			//'postal' => array('rule' => array('postal'), 'message' => 'Please enter a valid zip',),
 		),
 		'country_id' => array(
 			'numeric' => array('rule' => array('numeric')),
@@ -83,6 +83,7 @@ var $validate = array(
 		'phone' => array(
 			//Allow empty phone numbers or various formatting
 			//'phone' => array('rule' => array('phone'),'message' => 'Please enter your phone number',),
+			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter your phone number',),
 		),
 		'user_id' => array(
 			//'numeric' => array('rule' => array('numeric')), - This prevents user creation
