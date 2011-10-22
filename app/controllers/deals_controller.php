@@ -15,7 +15,7 @@ class DealsController extends AppController {
 	//var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript', 'Form');
 	 //var $helpers = array('Html','Ajax','Javascript');
 	//test
-	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
+	var $paginate = array('');
 	
 /**
  * Email function used to send Deal information.  
@@ -63,7 +63,10 @@ class DealsController extends AppController {
 			$conditions['DealsRegion.region_id'] = $regions;
 		}
 		$this->Deal->bindModel(array('hasOne' => array('DealsRegion')), false);
+		//
+	    $this->paginate = array('limit' => 3, 'fields'=>array('DISTINCT Deal.id','Deal.*'));
 		$deals = $this->paginate('Deal', array($conditions));
+		//debug($deals);
 		$count = count($deals);
 		for ($i = 0; $i < $count; $i++) {
 			$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',

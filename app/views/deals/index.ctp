@@ -52,6 +52,11 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 </a>
 
 <?php endforeach; ?>
+<!-- Shows the page numbers -->
+<?php echo $this->Paginator->numbers(); ?>
+<!-- Shows the next and previous links --><br />
+<?php echo $this->Paginator->prev('Previous', null, null, array('class' => 'disabled')); ?>
+<?php echo $this->Paginator->next('Next', null, null, array('class' => 'disabled')); ?> 
 </div><!-- layout_left -->
 <div id="layout_right" class="grid_8">
 	<div id="search_mod"  class="white_mod_246_wrap">
