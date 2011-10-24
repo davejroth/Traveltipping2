@@ -598,6 +598,17 @@ label{
     width: 85px;
 }
 
+.submit_btn{
+    background: url("../img/site/btn_submit.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: none;
+    font-size: 0;
+    height: 27px;
+    padding: 0;
+    width: 85px;
+}
+
 
 .create_account_btn{
     background: url("../img/site/btn_create_account.png") no-repeat scroll 0 0 transparent;

@@ -498,7 +498,8 @@ margin:0;
 /* +++++++++++++++++ START Login Page +++++++++++++++++ */
 
 #UserLoginForm,
-#UserResetPasswordForm{
+#UserResetPasswordForm,
+#UserEditPasswordForm{
 	width:420px;
 	margin:0 auto;
 }
@@ -559,12 +560,29 @@ margin:0;
     width: 300px;
 }
 
+#password_reset P{
+    padding-bottom: 5px;
+    text-align: center;	
+}
+
 .reset_confirmation{
     padding: 10px 0 15px;
     width: 350px;
 }
 
 /* +++++++++++++++++ END Password Reset +++++++++++++++++ */
+
+.change_password_fields{
+	width:300px;
+	float:left;	
+}
+
+#UserEditPasswordForm .submit{
+    clear: none;
+    float: left;
+    margin-top: 90px;
+    width: 85px;
+}
 
 /**
 * Merchant Accounts

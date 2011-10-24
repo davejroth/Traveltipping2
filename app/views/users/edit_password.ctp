@@ -11,7 +11,7 @@
    		echo '</div>';
 	?>
 
-<?php echo $this->Form->end(__('Submit', true));?>
+<?php echo $this->Form->end(array('class' => 'submit_btn'));?>
 
 
 </div><!-- layout_left -->
