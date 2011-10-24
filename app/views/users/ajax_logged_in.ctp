@@ -2,10 +2,12 @@
 	  echo $html->script('scriptaculous'); 
 	 ?>
 
-<div id='logged_in'>
+<div id="logged_in">
+	<p>
 <?php
-	echo "You are logged in under <br/>" . $traveler['User']['email'];
+	echo 'You are currently logged in as <strong>' . $traveler['User']['email'].'</strong>';
 ?>
+</p>
 </div>
 
 </div> <!-- Close extra div from purchase page. -->

@@ -772,7 +772,13 @@ float:right;
  * Deal Purchase Page
  */
 #sign_in{
-float:right;
+	float:left;
+	display:block;
+}
+
+#new_account{
+	float:right;
+	display:block;	
 }
 
 #things_to_do .slide{
@@ -796,6 +802,49 @@ float:right;
     display:block;
 }
 
+#ajax_account_info{
+	padding:0 50px;	
+	margin-bottom:20px;
+	margin-top:10px;
+}
+
+#TravelerAjaxSigninForm .submit input{
+	background: url("../img/site/btn_purchase_login.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: right;
+    font-size: 0;
+    height: 27px;
+    padding: 0;
+    width: 85px;
+}
+
+#TravelerAjaxSignupForm .submit input{
+    background: url("../img/site/btn_create_account.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: right;
+    font-size: 0;
+    height: 27px;
+    padding: 0;
+    width: 146px;
+}
+
+#PurchaseForm{
+	padding:0 15px;
+}
+
+#PurchaseForm .submit input{
+    background: url("../img/site/btn_purchase.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    font-size: 0;
+    height: 41px;
+    padding: 0;
+    width: 157px;
+    float:right;
+}
+
 /**
  * Deal Confirmation Page
  */
@@ -815,12 +864,49 @@ float:right;
 
 .deal_summary .title{ 
     font-weight: bold;
-    width: 490px;
+    width: 450px;
 }
 
 .deal_summary .price{ 
 	font-weight:bold;
 }
+
+
+.deal_summary .dates dt{ 
+    clear: both;
+    float: left;
+    font-weight: bold;
+    padding-right: 15px;
+    width: 70px;
+}
+
+.deal_summary .dates dd{ 
+	float:left;
+}
+
+.deal_summary_total dt{
+	float: left;
+    font-size: 20px;
+    font-weight: bold;
+    width: 70px;
+}
+
+.deal_summary_total dd{
+ color: #3CAACC;
+     font-size: 20px;
+    font-weight: bold;
+
+}
+.deal_summary_total{
+    float: right;
+    margin: 15px 0;
+    width: 212px;
+}
+
+#logged_in p{
+	margin-left:15px;
+}
+
 
 #DealBookForm .continue_btn{
     float: right;

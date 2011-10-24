@@ -21,6 +21,7 @@
     margin-bottom: 15px;
     padding: 10px 15px;
     text-transform: uppercase;
+    clear: both;
 }
 
 .sub_heading{
@@ -543,7 +544,7 @@ label{
 }
 
 .continue_btn{
-    background: url("../img/site/continue_btn.png") no-repeat scroll 0 0 transparent;
+    background: url("../img/site/continue.png") no-repeat scroll 0 0 transparent;
     border: medium none;
     display: block;
     font-size: 0;

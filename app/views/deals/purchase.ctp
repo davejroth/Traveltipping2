@@ -20,19 +20,19 @@
 <div id="layout_left" class="grid_22">
 	<h2 class="page_title">Summary</h2>
 	<div class="deal_summary clearfix">
-		<p class="grid_10 title"><?php echo $deal['Deal']['title'] ?></p>
-		<p class="grid_7 price">
-			Check In: <?php echo $this->Session->read('Trip.start_date') ?><br/>
-			Check Out: <?php echo $this->Session->read('Trip.end_date') ?><br/>
-		</p>
+		<p class="grid_7 title"><?php echo $deal['Deal']['title'] ?></p>
+		<dl class="grid_7 dates">
+			<dt>Check In: </dt><dd><?php echo $this->Time->format( $format = 'F d, Y',$this->Session->read('Trip.start_date')) ?></dd>
+			<dt>Check Out: </dt><dd><?php echo $this->Time->format( $format = 'F d, Y',$this->Session->read('Trip.end_date')) ?></dd>
+		</dl>
 		
 	</div>
-	<p>Total: <?php echo $this->Session->read('Trip.cost') ?></p>
+	<dl class="deal_summary_total clearfix"><dt>Total:</dt> <dd>$<?php echo $this->Session->read('Trip.cost') ?></dd></dl>
 
 
 	<h2 class="page_title">Account Info</h2>
 	
-    <script type="text/javascript"> 
+<script type="text/javascript"> 
 /** 
  * Loads in a URL into a specified divName, and applies the function to 
  * all the links inside the pagination div of that page (to preserve the ajax-request) 
@@ -51,24 +51,45 @@ function loadPiece(href,divName) {
     }); 
 } 
 
-	$(document).ready(function() {
-		//json_encode converts the PHP variable to JS.
-		if(<?php echo json_encode($this->Session->read('Auth.User')); ?>) {
-			loadPiece("/users/ajax_logged_in", "#ajax_account_info");
-		}
-		else {
-			loadPiece("/travelers/ajax_signup", "#ajax_account_info");
-		}
-	//This loads the pagination links before a date is selected
-	});
-		</script>
+$(document).ready(function() {
+	//json_encode converts the PHP variable to JS.  What is this?
+	if(<?php echo json_encode($this->Session->read('Auth.User')); ?>) {
+		//loadPiece("/users/ajax_logged_in", "#ajax_account_info");
+		$.ajax({
+			url: "/users/ajax_logged_in",
+			success: function(data){
+				$('#ajax_account_info').append(data);
+			}
+		});
+	}
+	else {
+		//loadPiece("/travelers/ajax_signup", "#ajax_account_info");
+		$.ajax({
+			url: "/travelers/ajax_signup",
+			success: function(data){
+				$('#ajax_account_info').append(data);
+			}
+		});
+	}
+	
+	/**
+	* Add Event Handlers for ajax login and ajax signup
+	*/
+	
+	
+	
+	
+	
+	
+});
+</script>
 
-<div id='ajax_account_info'>
+<div id='ajax_account_info' class="clearfix">
 </div>
 
 <div id='billing_info'>
 <h2 class="page_title">Billing Info</h2>
-<?php echo $this->Form->create('Deal',  array('url' => '/deals/purchase/' . $deal['Deal']['id']));
+<?php echo $this->Form->create('Deal',  array('url' => '/deals/purchase/' . $deal['Deal']['id'],'class' => 'clearfix','id' => 'PurchaseForm'));
 
 	  echo $this->Form->input('Transaction.name', array('label'=>'Cardholder\'s Name'));
 	  echo $this->Form->input('Transaction.address', array('label'=>'Billing Address'));
