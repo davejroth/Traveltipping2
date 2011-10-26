@@ -1,12 +1,12 @@
-<?php //debug($purchases); 
+<?php //debug($this->params); 
 ?>
 
 <div id="layout_left" class="merchant_deals grid_22">
-	<div class="blue_rounded_mod clearfix">
+	<div id="traveler_menu" class="blue_rounded_mod clearfix">
 	<ul class="deal_nav">
 	<?php 
-	echo '<li>' . $this->Html->link('Upcoming Deals',array('controller'=>'travelers', 'action'=>'deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '</li>';
-	echo '<li>' . $this->Html->link('Past Deals',array('controller'=>'travelers', 'action'=>'deals', 'past'),array( 'alt'=>'Past Deals')) . '</li>';
+	echo '<li class="active">' . $this->Html->link('Upcoming Trips',array('controller'=>'travelers', 'action'=>'deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '<span></span></li>';
+	echo '<li>' . $this->Html->link('Past Trips',array('controller'=>'travelers', 'action'=>'deals', 'past'),array( 'alt'=>'Past Deals')) . '<span></span></li>';
 		?>		
 	</ul>	
 	</div>
@@ -76,10 +76,17 @@ foreach ($purchases as $purchase):
 <div id="layout_right" class="grid_8">
 	
 <?php   if($purchaseStatus == "upcoming") {
-			echo $this->element('upcoming_deals');
+			echo $this->element('travelers_upcoming_deals');
 		  }
 		else {
 			echo $this->element('traveler_past_deals');
 		}?>
 
 </div><!-- #layout_right -->
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+	
+	
+});
+</script>

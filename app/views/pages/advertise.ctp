@@ -18,9 +18,9 @@
 	<div  class="white_mod_246_wrap advertising_module grid_8">
 		<div class="white_mod_246_top"></div>
 		<div class="white_mod_246_content clearfix">
-			<h3 class="module_title">Fill Excess Capacity</h3>
+			<h3 class="module_title">Fill Excess Inventory</h3>
 			<div class="module_content">
-			<p>Offset your fixed overhead expenses by filling the remaining excess capacity with paying customers.</p>
+			<p>Offset your fixed overhead expenses by filling the remaining excess inventory with paying customers.</p>
 			</div>
 		</div>
 	</div>

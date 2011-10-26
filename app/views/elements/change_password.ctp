@@ -5,7 +5,7 @@
 		<div class="gray_module_content">
 		
 		<p>Make changes in the fields to update information about your account.</p>
-		<p class="last">After you've made your changes, click on the <strong>Update Account</strong> button.</p>
+		<p class="last">After you've made your changes, click on the <strong>Submit</strong> button.</p>
 		</div>
 	</div>
 </div>

@@ -26,13 +26,13 @@ After you read and get inspired by the deal details page, click on the BOOK NOW 
 You will be billed in full following the completion of your booking for the destination deal. </p>
 
 	<p><span class="sub_heading">Will I be able to make changes or cancel my reservations after it's already booked?</span>
-Any changes to your reservations must be made with the travel company directly. Provided in each deal are the contact details of all our promoted companies in case you need to speak with them directly. Any changes to your reservations are solely dependant on the current availability of the company. This means you can ask the company to make a change to your reservation but we can't guarantee they will be able to accommodate your reservation changes. There are also no cancellation options available for reservation bookings after 7 days from your purchase date. We suggest purchasing travel insurance to cover your prepaid trip costs just in case something were to happen, causing you to cancel your vacation.</p>
+Any changes to your reservations must be made with the travel company directly. Provided in each deal are the contact details of all our promoted companies in case you need to speak with them directly. Any changes to your reservations are solely dependant on the current availability of the company. This means you can ask the company to make a change to your reservation but we can't guarantee they will be able to accommodate your reservation changes. There are also no cancellation options available for reservation bookings after 7 days from your purchase date. We suggest purchasing travel insurance to cover your prepaid trip costs just in case something were to happen, causing you to cancel your vacation. We recommend <strong>World Nomads</strong>. They have comprehensive coverage, good rates, and great service.  You can get a quote directly from their website at <a target="_blank" href="http://www.worldnomads.com/af.aspx?affiliate=tvtippg&subid=&path=http://www.worldnomads.com/insurance.aspx&utm_source=tvtippg&utm_medium=textlink&utm_campaign=easy_url_generic">www.worldnomads.com</a>.</p>
 
 	<p><span class="sub_heading">Do you offer any refunds?</span>
 If you cancel your reservation within 7 days of purchase we can refund you in full. Because the discounted prices on our deals are so low, we aren't able to offer refunds beyond 7 days. We suggest purchasing travel insurance that will cover your prepaid trip costs for a nominal amount. This way you will be covered in case you are not able to go on your vacation.</p>
 
 	<p><span class="sub_heading">I have further questions, who can I contact?</span>
-Send us an email or give us a call if you still have any questions. For all our contact details, click here.</p>
+Send us an email or give us a call if you still have any questions. For all our contact details, <a href="/contact">click here</a>.</p>
 </div>
 
  

@@ -1,11 +1,10 @@
 <div  class="white_mod_246_wrap">
 	<div class="white_mod_246_top"></div>
 	<div class="white_mod_246_content clearfix">
-		<h3 class="gray_module_title">Help</h3>
+		<h3 class="gray_module_title">Upcoming Deals</h3>
 		<div class="gray_module_content">
-		<p>If you have any questions or concerns regarding your upcoming trips, please feel free
-		to send us an email at <a href=mailto:support@traveltipping.com> support@traveltipping.com </a>
-		<p class="last"> You can view the deals, contact email, and travel tips for your upcoming trips by clicking on the <b> View Page </b> button.
+		<p>View the details of your deal by clicking on the <span class="sidebar_emphasis">View Details</span> button next to the deal.</p>
+		<p class="last">When your deal is fully created, you will need to approve it. Once it's approved, it will go live according to the deal's scheduled release date.</p>
 		</div>
 	</div>
 </div>

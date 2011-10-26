@@ -1006,6 +1006,19 @@ display:inline;
 * Traveler Pages
 */
 
+#traveler_menu li.active span{
+    background: url("../img/site/triangle.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 10px;
+    left: 60px;
+    position: absolute;
+    top: 18px;
+    width: 10px;
+}
+
+#traveler_menu li{
+	position:relative;	
+}
 
 .traveler_purchase img{
 	padding:3px 0 5px 0;	

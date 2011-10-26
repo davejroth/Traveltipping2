@@ -38,6 +38,11 @@ $progress_value = ($deal['Deal']['current_purchases']/$deal['Deal']['max_purchas
 				<?php echo $this->Html->tableCells(array(
 				array(array($deal['DealStatus']['name'],array('class'=>'status')),"$".$sales,"$".$commissions,array("$".$revenue,array('class'=>'revenue')))));?>
 			</table>
+			<div class="progressbar">
+				<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
+			</div>
+			<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$deal['Deal']['current_purchases']; ?></p>
+			<p id="remaining_quantity" class="grid_5 push_1"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
 			<ul class="horizontal_list">
 			<?php
 				echo "<li>" .  $this->Html->link(
@@ -50,11 +55,7 @@ $progress_value = ($deal['Deal']['current_purchases']/$deal['Deal']['max_purchas
 				array('class'=>'reservations')) . "</li>"?>
 			</ul>
 			
-			<div class="progressbar">
-				<div style="width:<?php echo $progress_value?>%" class="progress_val"></div>
-			</div>
-			<p id="current_quantity" class="grid_5"><?php echo __('Quantity Sold: ').$deal['Deal']['current_purchases']; ?></p>
-			<p id="remaining_quantity" class="grid_5 push_1"><?php echo __('Total Remaining: ').$remaining_quantity; ?></p>
+			
 		</div>
 		
 		

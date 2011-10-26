@@ -9,6 +9,10 @@
     margin: 10px 1px;	
 }
 
+#layout_left{
+	padding-top:5px;	
+}
+
 /* +++++++++++++++++ START Page Styles +++++++++++++++++ */
 
 .page_title{
@@ -469,6 +473,17 @@ label{
 }
 
 /* +++++++++++++++++ START Button Styles +++++++++++++++++ */
+
+.approve_btn{
+    background: url("../img/site/btn_approve.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: none;
+    font-size: 0;
+    height: 21px;
+    padding: 0;
+    width: 81px;
+}
 
 .book_now_btn{
 	background: url("../img/site/book_now_btn.png") no-repeat scroll 0 0 transparent;

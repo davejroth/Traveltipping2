@@ -17,6 +17,6 @@
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">
-<?php echo $this->element('manage_account'); ?>
+<?php echo $this->element('change_password'); ?>
 
 </div><!-- #layout_right -->

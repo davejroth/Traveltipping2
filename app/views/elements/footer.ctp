@@ -2,17 +2,17 @@
 			<div class="footer container_30 clearfix" id="footer1">
 				<div class="footer_section grid_9">
 					<h4 class="footer_section_title">About TravelTipping</h4>
-				<p>We provide you the greatest destination deals from around the world, helping satisfy your wanderlust at half the cost. Subscribe today and never miss an opportunity to travel.</p>
+				<p>We offer the greatest destination deals from around the world, helping satisfy your wanderlust at a fraction of the cost.</p>
 				
 				</div>
 				<div class="footer_section grid_9">
 					<h4 class="footer_section_title">Advertise With Us</h4>
-				<p>Advertise your travel related business online and reach tourists all over the world that want to visit your destination.</p>
+				<p>Advertise your travel related business online and reach interested tourists from around the world.</p>
 
 				</div>
 				<div class="footer_section grid_9">
 					<h4 class="footer_section_title">TravelTipping Tips</h4>
-				<p>Research proves that buying experiences make us happier than buying inanimate objects. So be real and buy a destination deal.</p>
+				<p>Research proves that buying experiences make us happier than buying inanimate objects. Learn more interesting traveling tips on our blog.</p>
 				
 				</div>
 			</div>

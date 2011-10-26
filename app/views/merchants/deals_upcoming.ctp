@@ -73,7 +73,7 @@ else {
 						),array('target' => '_blank')) . "</li>";
 					 if($deal['Deal']['deal_status_id'] == Configure :: read('Deal.Status_Submitted')) {
 						echo "<li>" .  $this->Html->link(
-						'Approve',array('controller' => 'merchants', 'action' => 'approve', $deal['Deal']['id']), array()) . "</li>";
+						'Approve',array('controller' => 'merchants', 'action' => 'approve', $deal['Deal']['id']), array('class' => 'approve_btn')) . "</li>";
 					}
 				}
 				?>
@@ -91,6 +91,6 @@ else {
 
 <div id="layout_right" class="grid_8">
 	
-	<?php echo $this->element('open_deals'); ?>
+	<?php echo $this->element('upcoming_deals'); ?>
 
 </div><!-- #layout_right -->
