@@ -61,6 +61,8 @@ $(document).ready(function() {
 				$('#ajax_account_info').append(data);
 			}
 		});
+		
+		
 	}
 	else {
 		//loadPiece("/travelers/ajax_signup", "#ajax_account_info");
@@ -70,6 +72,8 @@ $(document).ready(function() {
 				$('#ajax_account_info').append(data);
 			}
 		});
+		
+		$('#billing_info').hide();
 	}
 	
 	/**
