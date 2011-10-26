@@ -1,8 +1,6 @@
                       
                            Please click on the following link to reset your password:<br /><br />
-						   <a href="https://traveltipping.com/users/newPassword/<?php echo $passwordReset['PasswordReset']['confirmation'];?>">https://traveltipping.com/users/newPassword/<?php echo $passwordReset['PasswordReset']['confirmation'];?></a>
-                            
-                           <?php $this->Html->link('Reset Password', array('controller'=>'users', 'action'=>'newPassword', $passwordReset['PasswordReset']['confirmation'])); ?><br /><br />
+						   <a href="https://traveltipping.com/users/newPassword/<?php echo $passwordReset['PasswordReset']['confirmation'];?>">https://traveltipping.com/users/newPassword/<?php echo $passwordReset['PasswordReset']['confirmation'];?></a><br /><br />
                             
 							If clicking on the link above doesn’t work, then copy and paste the link into your browser.  <br /> <br />
 							
