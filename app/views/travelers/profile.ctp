@@ -14,7 +14,7 @@
 		
         echo $this->Form->input('first_name');
         echo $this->Form->input('last_name');
-        echo $this->Form->input('User.email');
+        echo $this->Form->input('User.email', array('label' => 'Email - Username'));
 		echo $this->Html->link(__('Change password', true), '/users/editPassword');
     ?>
 	

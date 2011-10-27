@@ -42,6 +42,6 @@
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">
-<?php echo $this->element('manage_account'); ?>
+<?php echo $this->element('create_merchant_account'); ?>
 
 </div><!-- #layout_right -->

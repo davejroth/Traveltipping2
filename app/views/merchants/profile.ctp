@@ -28,7 +28,7 @@
         echo $this->Form->input('Merchant.first_name'); 
         echo $this->Form->input('last_name');
         echo $this->Form->input('phone'); 
-        echo $this->Form->input('User.email');
+        echo $this->Form->input('User.email', array('label' => 'Email - Username'));
 		echo $this->Html->link(__('Change password', true), '/users/editPassword');
        // echo $this->Form->input('User.password', array('label'=>'New Password:',"value"=>""));
         //echo $this->Form->input('User.password2', array('label'=>'Confirm New Password:',"value"=>"", 'type' => 'password')); 
