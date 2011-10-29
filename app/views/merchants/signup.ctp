@@ -27,7 +27,7 @@
 	<?php
 		echo $this->Form->input('Merchant.first_name');
 		echo $this->Form->input('Merchant.last_name');
-		echo $this->Form->input('User.email');
+		echo $this->Form->input('User.email', array('label' => 'Email - Username'));
 		echo $this->Form->input('Merchant.phone');
 		echo $this->Form->input('User.password', array('value' => ''));
 		echo $this->Form->input('User.confirm_password',array('type' => 'password'));

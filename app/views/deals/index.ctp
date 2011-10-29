@@ -1,10 +1,11 @@
+<div id="layout_left" class="grid_22">
 <?php 
-//debug($this->Session); 
-//debug($deals); 
+if(empty($deals)) {
+	echo "Uh oh, it doesn't look like we have any deals in this region right now.  Come back again soon; we're constantly adding new deals as others expire.";
+}
+else {
 
 ?>
-
-<div id="layout_left" class="grid_22">
 <div class="filter_bar">
 	<ul id="sort_options">
 		<li class="list_title"><strong>Sort By:</strong></li>
@@ -56,7 +57,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 <?php echo $this->Paginator->numbers(); ?>
 <!-- Shows the next and previous links --><br />
 <?php echo $this->Paginator->prev('Previous', null, null, array('class' => 'disabled')); ?>
-<?php echo $this->Paginator->next('Next', null, null, array('class' => 'disabled')); ?> 
+<?php echo $this->Paginator->next('Next', null, null, array('class' => 'disabled')); }?> 
 </div><!-- layout_left -->
 <div id="layout_right" class="grid_8">
 	<div id="search_mod"  class="white_mod_246_wrap">

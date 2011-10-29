@@ -991,7 +991,21 @@ font-weight:bold;
 div.legal_approval {
 overflow-y:scroll;
 height:500px;
-width:400px;
+width:660px;
+}
+
+div.legal_approval p {
+font: 13px/1.231 sans-serif;
+}
+
+div.legal_approval h3 {
+text-align:center;
+font-size:17px;
+margin-bottom:10px;
+}
+
+div.legal_approval h2 {
+font-size:15px;
 }
 
 div.approve_btn {
@@ -1082,4 +1096,8 @@ display:inline;
 	float:left;
 	width:245px;	
 	display:inline;
+}
+
+span.pernight {
+font-size:12px;
 }

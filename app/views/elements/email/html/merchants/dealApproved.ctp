@@ -1,6 +1,6 @@
    Dear <?php echo $Merchant['Merchant']['first_name'] . ' ' . $Merchant['Merchant']['last_name'] . ','?> <br /><br />
                             
-                            The deal, <?php echo $Deal['Deal']['business_name'] ?>, is scheduled to be released and will go live shortly.<br /><br />
+                            The deal, <?php echo $Deal['Deal']['name'] ?>, is scheduled to be released and will go live shortly.<br /><br />
                             
                            RELEASE DATE<br /><br />
 								<?php date_format(date_create($Deal['Deal']['deal_live']), 'l, F jS, Y'); ?><br />

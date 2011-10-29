@@ -1,6 +1,8 @@
                             Hi <?php echo $traveler['Traveler']['first_name']?>, <br /><br />
 							
 							Thanks for creating your new account with TravelTipping!<br /><br />
+							
+							Your username is <?php echo $traveler['User']['email'];?><br /><br />
                             
                             If you have any further questions, please email us directly at <a href="mailto:support@traveltipping.com">support@traveltipping.com </a> instead of replying to this email message.<br /><br />
                             

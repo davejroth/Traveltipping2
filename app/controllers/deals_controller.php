@@ -20,13 +20,13 @@ class DealsController extends AppController {
 /**
  * Email function used to send Deal information.  
  */
-	function sendDealMail($dealID, $merchantID, $template) {
+	function sendDealMail($dealID, $venueID, $template) {
 		$this->loadModel('Merchant');
 		$Deal = $this->Deal->read(null, $dealID);
-		$Merchant = $this->Merchant->read(null, $merchantID); //Used for email address
+		$Venue = $this->Deal->Venue->read(null, $venueID); //Used for email address
+		$Merchant = $this->Merchant->read(null, $Venue['Merchant']['id']); //Used for email address
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
-	
-		$this->Notification->sendHTMLDealMail($Merchant, $template);
+		$this->Notification->sendHTMLDealMail($Venue, $template);
 		$this->Notification->sendHtmlAmMail($template);
 	}
 /**
@@ -181,19 +181,19 @@ class DealsController extends AppController {
 				$this->Deal->updateAvailabilityRecords($id, $this->data);
 				if ($this->Deal->saveAll($this->data)) {
 					if($statusChange) {
-						$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Deal']['venue_id'])));
+						$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Venue']['id'])));
 								
 						if($this->data['Deal']['deal_status_id'] == 2) {
-							$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealWaiting");
+							$this->sendDealMail($this->Deal->id, $thisVenue['Venue']['id'], "dealWaiting");
 						}
 						elseif($this->data['Deal']['deal_status_id'] == 4) {
-							$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealLive");
+							$this->sendDealMail($this->Deal->id, $thisVenue['Venue']['id'], "dealLive");
 						}
 						elseif($this->data['Deal']['deal_status_id'] == 5) {
-							$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealClose");
+							$this->sendDealMail($this->Deal->id, $thisVenue['Venue']['id'], "dealClose");
 						}
 						elseif($this->data['Deal']['deal_status_id'] == 6) {
-							$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealCancelled");
+							$this->sendDealMail($this->Deal->id, $thisVenue['Venue']['id'], "dealCancelled");
 						}
 					}
 					$this->Session->setFlash(__('The deal has been saved', true));
@@ -440,10 +440,11 @@ function confirmation($id = null) {
 }
 /**
  * This function is called when merchants approve the deal for listing.
- */
+ This was moved to the approve function in the merchant controller
+
 function approve_deal($id = null) {
 	$deal = $this->Deal->read(null, $id);
-	$deal['Deal']['deal_status_id'] = Configure::read('Deal.Status_Approved');
+	//$deal['Deal']['deal_status_id'] = Configure::read('Deal.Status_Approved');
 	if ($this->Deal->save($deal)) {
 		$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealRelease");
 		$this->Session->setFlash(__('The deal has been saved', true));
@@ -452,7 +453,7 @@ function approve_deal($id = null) {
 		$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 	}
 }
-	
+*/	
 function deal_details($id = null) {
 	$this->Deal->recursive = 2;
 	$deal = $this->Deal->read(null, $id);

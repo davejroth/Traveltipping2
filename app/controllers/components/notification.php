@@ -4,14 +4,7 @@ class NotificationComponent extends Object {
 
   	function sendHtmlMerchantMail($Merchant, $template) {
 	//This array should be declared as a class variable but I'm not sure how to do it.
-	$merchantEmailSubjects = array('newMerchant' => 'Welcome to TravelTipping –- Account Details',
-		'dealInitiated' => 'New Deal Created',
-		'dealWaiting' => 'Your Next Deal is Waiting for Your Approval',
-		'dealRelease' => 'Your Deal is Scheduled for Release',
-		'dealLive' => 'Your Deal is Now Live',
-		'dealCancelled' => 'Your Deal has been Canceled',
-		'dealClose' => 'Your Deal has Ended!',
-		'paymentMade' => 'A Payment has Been Made to Your Account');
+	$merchantEmailSubjects = array('newMerchant' => 'Welcome to TravelTipping –- Account Details');
 	/* SMTP Options */
     $this->Email->smtpOptions = array(
         'port'=>'25', 
@@ -32,9 +25,10 @@ class NotificationComponent extends Object {
 	}
 	//DealMail sends mails that have Deal data set in the deal.  I think we can combine it with 
 	//Merchant Mail
-	function sendHtmlDealMail($Merchant, $template) {
+	function sendHtmlDealMail($Venue, $template) {
 	//This array should be declared as a class variable but I'm not sure how to do it.
-	$merchantEmailSubjects = array('dealInitiated' => 'New Deal Created',
+	$merchantEmailSubjects = array('dealApproved' => 'Deal Approved',
+		'dealInitiated' => 'New Deal Created',
 		'dealWaiting' => 'Your Next Deal is Waiting for Your Approval',
 		'dealRelease' => 'Your Deal is Scheduled for Release',
 		'dealLive' => 'Your Deal is Now Live',
@@ -50,7 +44,7 @@ class NotificationComponent extends Object {
         'password'=>'43Temp68',
     );
 	$this->Email->delivery = 'smtp';
-    $this->Email->to = $Merchant['User']['email'];
+    $this->Email->to = $Venue['Venue']['email'];
     $this->Email->subject = $merchantEmailSubjects[$template];;
     $this->Email->replyTo = 'advertise@traveltipping.com';
     $this->Email->from = 'TravelTipping Advertising <advertise@traveltipping.com>';
