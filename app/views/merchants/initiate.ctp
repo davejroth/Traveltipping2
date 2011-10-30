@@ -42,3 +42,8 @@
 	<?php echo $this->Form->end(__('Create Deal', true));?>
 
 </div><!-- layout_left -->
+
+<div id="layout_right" class="grid_8">
+<?php echo $this->element('initiate_deal'); ?>
+
+</div><!-- #layout_right -->

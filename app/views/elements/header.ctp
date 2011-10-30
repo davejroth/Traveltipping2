@@ -14,13 +14,13 @@
 						}
 					 
 						elseif($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID')) { //Merchant is logged in
-							echo '<li>' . $this->Html->link('My Deals',array('controller'=>'merchants', 'action'=>'deals', '/upcoming'),array( 'title'=>'My Deals')) . '</li>';
+							echo '<li>' . $this->Html->link('My Deals',array('controller'=>'merchants', 'action'=>'my_deals', '/upcoming'),array( 'title'=>'My Deals')) . '</li>';
 							echo '<li>' . $this->Html->link('Account Details', array('controller' => 'merchants', 'action' => 'profile'),array( 'title'=>'Create an Account')) . '</li>';
 							echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'title'=>'Logout')) . '</li>';
 						}
 						
 						elseif($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID')) { //Traveler is logged in
-							echo '<li>' . $this->Html->link('My Trips',array('controller'=>'travelers', 'action'=>'deals', 'upcoming'),array( 'title'=>'How it Works')) . '</li>';
+							echo '<li>' . $this->Html->link('My Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'upcoming'),array( 'title'=>'How it Works')) . '</li>';
 							echo '<li>' . $this->Html->link('Account Details', array('controller' => 'travelers', 'action' => 'profile'),array( 'title'=>'Create an Account')) . '</li>';
 							echo '<li>' . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'),array( 'title'=>'Logout')) . '</li>';
 						}

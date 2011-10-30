@@ -5,8 +5,8 @@
 	<div id="traveler_menu" class="blue_rounded_mod clearfix">
 	<ul class="deal_nav">
 	<?php 
-	echo '<li class="active">' . $this->Html->link('Upcoming Trips',array('controller'=>'travelers', 'action'=>'deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '<span></span></li>';
-	echo '<li>' . $this->Html->link('Past Trips',array('controller'=>'travelers', 'action'=>'deals', 'past'),array( 'alt'=>'Past Deals')) . '<span></span></li>';
+	echo '<li class="active">' . $this->Html->link('Upcoming Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '<span></span></li>';
+	echo '<li>' . $this->Html->link('Past Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'past'),array( 'alt'=>'Past Deals')) . '<span></span></li>';
 		?>		
 	</ul>	
 	</div>

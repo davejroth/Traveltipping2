@@ -448,7 +448,7 @@ function approve_deal($id = null) {
 	if ($this->Deal->save($deal)) {
 		$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealRelease");
 		$this->Session->setFlash(__('The deal has been saved', true));
-		$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
+		$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 	} else {
 		$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 	}

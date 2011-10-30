@@ -44,13 +44,13 @@ class UsersController extends AppController {
 		{
 			if($this->Session->read('User.new') == 1)
 			{
-				$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
+				$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 			}
 			/*elseif($this->Session->read('User.purchasing') == 1) {
 				$this->redirect(array('controller' => 'deals', 'action' => 'purchase'));
 			} */
 			else {
-			$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
+			$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 			}
 		}
 		
@@ -61,7 +61,7 @@ class UsersController extends AppController {
 			}
 			else 
 			{
-				$this->redirect(array('controller' => 'travelers', 'action' => 'deals', 'upcoming'));
+				$this->redirect(array('controller' => 'travelers', 'action' => 'my_deals', 'upcoming'));
 			}
 		}
 		elseif($this->Session->read('User.role_id') == Configure::Read('Role.Admin_ID'))

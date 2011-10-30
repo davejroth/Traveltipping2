@@ -106,7 +106,17 @@ $(document).ready(function() {
 	  echo "<br>";
 	  echo $this->Form->input('Transaction.expiration_month', array('type' => 'select', 'options' => $months, 'label' => '', 'div' => false));
 	  echo $this->Form->input('Transaction.expiration_year', array('type' => 'select', 'options' => $years, 'label' => '', 'div' => false));
-	  //echo $this->Form->year('Transaction.expiration_year',date('Y')+5, date('Y'), date('Y'), array() , false );
+	  ?>
+	  <div class="billing_terms">
+		<p class="billing_terms_text">You have 7 days from purchase to cancel your reservation and receive a full refund.  If you need to change your 
+			reservation in the future, you can do sy contacting the travel supplier directly, subject to availability.</p>
+	  <?php 
+			echo $this->Form->input('Transaction.tos', array('type'=>'checkbox','label' =>'I agree to TravelTippings'));
+			echo "<br />";
+			echo $this->Html->link('Terms of Service',array('controller' => 'pages', 'action' => 'user-terms'), array());
+		?>
+	  </div>
+	  <?php
 	  echo $this->Form->end('Purchase')?>
 
 </div>

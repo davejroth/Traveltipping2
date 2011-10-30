@@ -27,11 +27,10 @@ class MerchantsController extends AppController {
 	function sendDealMail($dealID, $venueID, $template) {
 		$Deal = $this->Deal->read(null, $dealID);
 		
-		$Venue = $this->Deal->Venue->read(null, $venueID); //Used for email address
 		$Merchant = $this->Merchant->read(null, $Venue['Merchant']['id']); //Used for name
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
 	
-		$this->Notification->sendHtmlDealMail($Venue, $template);
+		$this->Notification->sendHtmlDealMail($Merchant, $template);
 		$this->Notification->sendHtmlAmMail($template);
 	}
 	
@@ -74,7 +73,7 @@ class MerchantsController extends AppController {
 * @param string $deal_status Status of the merchants deal: Open, Live, Past
 *
 */
-	function deals($deal_status) {
+	function my_deals($deal_status) {
 		$this->loadModel('Deal');
 		$deals;
 		if(strcmp($deal_status, "upcoming") == 0)
@@ -134,7 +133,7 @@ class MerchantsController extends AppController {
 			$this->Deal->create();
 			if ($this->Deal->saveAll($this->data)) {
 				$this->sendDealMail($this->Deal->id, $this->Session->read('Merchant.id'), "dealInitiated");
-				$this->redirect(array('action' => 'deals','upcoming'));
+				$this->redirect(array('action' => 'my_deals','upcoming'));
 			} else {
 				$this->Session->setFlash(__('The venue could not be saved. Please, try again.', true));
 			}
@@ -272,7 +271,7 @@ class MerchantsController extends AppController {
 					$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $deal['Deal']['venue_id'])));
 					$this->sendDealMail($this->Deal->id, $thisVenue['Venue']['id'], "dealApproved");
 					$this->Session->setFlash(__('The deal has been saved', true));
-					$this->redirect(array('controller' => 'merchants', 'action' => 'deals', 'upcoming'));
+					$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 				} else {
 					$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
 				}

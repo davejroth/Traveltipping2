@@ -79,7 +79,7 @@ class TravelersController extends AppController {
 	function ajax_sign_in() {
 
 	if(!empty($this->data)) {
-		if($this->Auth->login()) {
+		if($this->Auth->login()) { //This is where the actual login happens.
 			$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
 		}
 		else {
@@ -96,7 +96,7 @@ class TravelersController extends AppController {
 * @param string $deal_status Status of the merchants deal: Upcoming, Past
 *
 */
-	function deals($purchaseStatus) {
+	function my_deals($purchaseStatus) {
 		$this->loadModel('DealPurchase');
 		$this->DealPurchase->recursive = 3;
 		$purchases;

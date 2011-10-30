@@ -33,6 +33,8 @@ class Transaction extends AppModel {
 			'ccvLength' => array('rule' => array('between', 2, 3), 'message' => 'Your CCV number should be either 2 or 3 digits.'),
 			'ccvNumeric' => array('rule' => 'numeric', 'message' => 'Please enter your CCV number without any spaces or dashes.')
 		),
-		
+		'tos' => array(
+			'tosCheck' => array('rule' => array('comparison', '!=', 0),  'message' => 'Please agree to TravelTipping\'s TOS in order to proceed.',),
+		),
 	); 
 }

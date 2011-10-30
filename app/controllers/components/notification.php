@@ -19,13 +19,13 @@ class NotificationComponent extends Object {
     $this->Email->replyTo = 'advertise@traveltipping.com';
     $this->Email->from = 'TravelTipping Registration <registration@traveltipping.com>';
 	$this->Email->template = 'merchants//' . $template; // note no '.ctp'
-	$this->Email->layout = 'default';
+	$this->Email->layout = 'no_footer';
     $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
 	}
 	//DealMail sends mails that have Deal data set in the deal.  I think we can combine it with 
 	//Merchant Mail
-	function sendHtmlDealMail($Venue, $template) {
+	function sendHtmlDealMail($Merchant, $template) {
 	//This array should be declared as a class variable but I'm not sure how to do it.
 	$merchantEmailSubjects = array('dealApproved' => 'Deal Approved',
 		'dealInitiated' => 'New Deal Created',
@@ -44,12 +44,12 @@ class NotificationComponent extends Object {
         'password'=>'43Temp68',
     );
 	$this->Email->delivery = 'smtp';
-    $this->Email->to = $Venue['Venue']['email'];
+    $this->Email->to = $Merchant['User']['email'];
     $this->Email->subject = $merchantEmailSubjects[$template];;
     $this->Email->replyTo = 'advertise@traveltipping.com';
     $this->Email->from = 'TravelTipping Advertising <advertise@traveltipping.com>';
 	$this->Email->template = 'merchants//' . $template; // note no '.ctp'
-	$this->Email->layout = 'default';
+	$this->Email->layout = 'no_footer';
     $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
  }  	
@@ -78,7 +78,7 @@ class NotificationComponent extends Object {
     $this->Email->replyTo = 'donotreply@traveltipping.com';
     $this->Email->from = 'TravelTipping <donotreply@traveltipping.com>';
 	$this->Email->template = 'users//' . $template; // note no '.ctp'
-	$this->Email->layout = 'default';
+	$this->Email->layout = 'no_footer';
     $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
 	}
@@ -112,7 +112,7 @@ class NotificationComponent extends Object {
     $this->Email->replyTo = 'donotreply@traveltipping.com';
     $this->Email->from = 'TravelTipping <donotreply@traveltipping.com>';
 	$this->Email->template = 'accountmanagers//' . $template; // note no '.ctp'
-	$this->Email->layout = 'default';
+	$this->Email->layout = 'no_footer';
     $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
 	}

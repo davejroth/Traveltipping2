@@ -5,9 +5,9 @@
 	<div class="blue_rounded_mod clearfix">
 	<ul class="deal_nav">
 	<?php 
-	echo '<li>' . $this->Html->link('Upcoming Deals',array('controller'=>'merchants', 'action'=>'deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '</li>';
-	echo '<li>' . $this->Html->link('Live Deals',array('controller'=>'merchants', 'action'=>'deals', 'live'),array( 'alt'=>'Live Deals')) . '</li>';
-	echo '<li>' . $this->Html->link('Past Deals',array('controller'=>'merchants', 'action'=>'deals', 'past'),array( 'alt'=>'Past Deals')) . '</li>';
+	echo '<li>' . $this->Html->link('Upcoming Deals',array('controller'=>'merchants', 'action'=>'my_deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '</li>';
+	echo '<li>' . $this->Html->link('Live Deals',array('controller'=>'merchants', 'action'=>'my_deals', 'live'),array( 'alt'=>'Live Deals')) . '</li>';
+	echo '<li>' . $this->Html->link('Past Deals',array('controller'=>'merchants', 'action'=>'my_deals', 'past'),array( 'alt'=>'Past Deals')) . '</li>';
 	echo '<li class="last_action">' . $this->Html->link('Create New Deal >',array('controller'=>'merchants', 'action'=>'initiate'),array( 'alt'=>'Create Deal')) . '</li>';
 	?>
 	</ul>
