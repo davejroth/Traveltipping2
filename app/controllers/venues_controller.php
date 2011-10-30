@@ -1,6 +1,6 @@
 <?php
 class VenuesController extends AppController {
-
+/*
 	var $name = 'Venues';
 
 	function index() {
@@ -62,4 +62,5 @@ class VenuesController extends AppController {
 		$this->Session->setFlash(__('Venue was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+*/
 }

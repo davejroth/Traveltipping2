@@ -1,6 +1,6 @@
 <?php
 class DealAvailabilitiesController extends AppController {
-
+/*
 	var $name = 'DealAvailabilities';
 
 
@@ -91,5 +91,6 @@ class DealAvailabilitiesController extends AppController {
 		$this->Session->setFlash(__('Deal availability was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	*/
 }
 ?>
