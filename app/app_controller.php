@@ -10,7 +10,7 @@ class AppController extends Controller {
     function beforeFilter() {
         //Configure AuthComponent
         $this->Auth->authorize = 'actions';
-        $this->Auth->allow(array('*'));
+        $this->Auth->allow(array('display','login','logout','signup','index','view','book','purchase','ajax_signup','ajax_sign_in'));
 		$this->Auth->fields = array(
 			'username' => 'email',
 			'password' => 'password'
