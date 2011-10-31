@@ -129,12 +129,13 @@ function passwordCheck()
     }
 
     public function afterSave($created) {
-        if (!$created) {
+        if ($created) {
             $parent = $this->parentNode();
             $parent = $this->node($parent);
             $node = $this->node();
             $aro = $node[0];
             $aro['Aro']['parent_id'] = $parent[0]['Aro']['id'];
+			$aro['Aro']['alias'] = $this->data['User']['email'];
             $this->Aro->save($aro);
         }
     }

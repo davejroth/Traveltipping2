@@ -94,7 +94,25 @@ class DealsController extends AppController {
 	}
 	function admin_index() {
 		$this->Deal->recursive = 2;
-		$this->set('deals', $this->paginate());
+		$this->Deal->Venue->bindModel(array('belongsTo' => array(
+			'Merchant' => array(
+				'className' => 'Merchant'
+					)            
+				)     
+			) 
+		,false);
+		/* This is super hacky way of getting a deal's merchant email but pagination doesn't seem to like bindModel or custom SQL queries */
+		$deals = $this->paginate();
+		$dealInfo = array();
+		foreach($deals as $deal) {
+			$this->Deal->Venue->Merchant->recursive = 0;
+			$user = $this->Deal->Venue->Merchant->find('first', array('conditions' => array('Merchant.user_id' => $deal['Venue']['Merchant']['user_id'])));
+			$deal['User'] = $user;
+			array_push($dealInfo, $deal);
+			
+		}
+		$deals = $dealInfo;
+		$this->set(compact('deals'));
 	}
 
 	function admin_view($id = null) {

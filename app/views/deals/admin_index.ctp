@@ -17,7 +17,7 @@
 			<th><?php echo $this->Paginator->sort('reservation_type_id');?></th>
 			<th><?php echo $this->Paginator->sort('max_nights');?></th>
 			<th><?php echo $this->Paginator->sort('venue_name');?></th>
-			<th><?php echo $this->Paginator->sort('venue_email');?></th>
+			<th><?php echo $this->Paginator->sort('email');?></th>
 
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
@@ -47,7 +47,7 @@
 		</td>
 		<td><?php echo $deal['Deal']['max_nights']; ?>&nbsp;</td>
 		<td><?php echo $deal['Venue']['name']; ?>&nbsp;</td>
-		<td><?php echo $deal['Venue']['email']; ?>&nbsp;</td>
+		<td><?php echo $deal['User']['User']['email']; ?>&nbsp;</td>
 
 
 
