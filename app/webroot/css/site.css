@@ -447,6 +447,12 @@ margin:0;
 /* +++++++++++++++++ START Account Page Modules +++++++++++++++++ */
 
 
+.module_content p{
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 10px;
+    padding-bottom: 10px;
+}
 
 .gray_module_content p{
     border-bottom: 1px solid #CCCCCC;

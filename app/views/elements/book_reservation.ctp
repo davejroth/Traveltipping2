@@ -2,7 +2,7 @@
 	<div class="white_mod_246_top"></div>
 	<div class="white_mod_246_content clearfix">
 		<h3 class="module_title">FAQ</h3>
-		<div class="gray_module_content">
+		<div class="module_content">
 		<p><span class="sub_heading">How do I book my reservation?</span>
 		First select your check-in date on the calendar.  Then you'll be able to click on your check-out date.  The nights in between will be calculated for you.</p>
 		<p class="last"><span class="sub_heading">When do I pay?</span>

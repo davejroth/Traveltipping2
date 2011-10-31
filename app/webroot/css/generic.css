@@ -293,6 +293,9 @@ label{
 }
 
 .module_content{
+	-moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
     background: none repeat scroll 0 0 #EAFBFB;
     min-height: 100px;
     padding: 10px;
