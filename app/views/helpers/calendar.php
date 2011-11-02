@@ -3,8 +3,10 @@
 class CalendarHelper extends Helper {
 	var $helpers = array('Html');
 	
-	function renderMonth($month,$year){
+	function renderMonth($month,$year, $deal_valid, $deal_expire){
 		
+		$validTime = strtotime($deal_valid);
+		$expireTime = strtotime($deal_expire);
 		/**
 		* Initialze Calendar Variables
 		*/
@@ -17,12 +19,7 @@ class CalendarHelper extends Helper {
 			1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
 		);
 		$days_array = array(
-			1 => 'Sun', 2 => 'Mon', 3 => 'Tue', 4 => 'Wed', 5 => 'Thu', 6 => 'Fri', 7 => 'Sat',
-			8 => 'Sun', 9 => 'Mon', 10 => 'Tue', 11 => 'Wed', 12 => 'Thu', 13 => 'Fri', 14 => 'Sat',
-			15 => 'Sun', 16 => 'Mon', 17 => 'Tue', 18 => 'Wed', 19 => 'Thu', 20 => 'Fri', 21 => 'Sat',
-			22 => 'Sun', 23 => 'Mon', 24 => 'Tue', 25 => 'Wed', 26 => 'Thu', 27 => 'Fri', 28 => 'Sat',
-			29 => 'Sun', 30 => 'Mon', 31 => 'Tue', 32 => 'Wed', 33 => 'Thu', 34 => 'Fri', 35 => 'Sat',
-			36 => 'Sun', 37 => 'Mon', 38 => 'Tue', 39 => 'Wed', 40 => 'Thu', 41 => 'Fri', 42 => 'Sat'
+			0 => 'Sun', 1 => 'Mon', 2 => 'Tue', 3 => 'Wed', 4 => 'Thu', 5 => 'Fri', 6 => 'Sat',
 		);
 		
 		/**
@@ -37,26 +34,46 @@ class CalendarHelper extends Helper {
 		$calendar .= '<table class="calendar" cellspacing="0">';
 		$calendar .= $this->Html->tableHeaders(array('Sun','Mon','Tue','Wed','Thu','Fri','Sat'));
 		
-		
+		/**
+		 * Iterate through each day
+		 * If the day is not in the month
+		 * Print a blank space
+		 * If the day is in the month
+		 * Print the date
+		 */
 		/**
 		* First Week
 		*/
+		$currentTime = $firstdate; //Exclude days outside the range
+		
 		$calendar .= '<tr>';
-		for($i=1; $i<=7; $i++){
-			if($day <= 1 && $firstday != $days_array[$i]){
-				$calendar .= '<td class="blank"> <a href="">&nbsp;</a> </td>';
+		for($i=0; $i<=41; $i++){
+			if($i % 7 ==0)
+			{
+				$calendar .= '</tr><tr>';
+			}
+			if(($day <= 1 && $firstday != $days_array[$i]) || strftime("%d", $lastdate) < $day){
+				$calendar .= '<td class="blank">&nbsp;</td>';
 			}
 			else{
-				$calendar .= '<td><a href="#">'.$day.'</a></td>';
+				if($currentTime >= $validTime && $currentTime <= $expireTime) {
+					$calendar .= '<td class="available"><a href="#">'.$day.'</a></td>';
+				}
+				else
+				{
+					$calendar .= '<td class="outside_range">'.$day.'</a></td>';
+				}
 				$day++;
+				$currentTime += 86400;  //Add num of seconds in a day
 			}
+			
 			
 		}
 		$calendar .= '</tr>';
 		
 		/**
 		* Second Week
-		*/
+		
 		$calendar .= '<tr>';
 		for($i=8; $i<=14; $i++){
 			$calendar .= '<td><a href="#">'.$day.'</a></td>';
@@ -66,7 +83,7 @@ class CalendarHelper extends Helper {
 		
 		/**
 		* Third Week
-		*/
+		
 		$calendar .= '<tr>';
 		for($i=15; $i<=21; $i++){
 			$calendar .= '<td><a href="#">'.$day.'</a></td>';
@@ -76,7 +93,7 @@ class CalendarHelper extends Helper {
 		
 		/**
 		* Fourth Week
-		*/
+		
 		$calendar .= '<tr>';
 		for($i=22; $i<=28; $i++){
 			if(strftime("%d", $lastdate) < $day){
@@ -92,7 +109,7 @@ class CalendarHelper extends Helper {
 		
 		/**
 		* Fifth Week
-		*/
+		
 		if($day < strftime("%d", $lastdate)){
 			$calendar .= '<tr>';
 			for($i=29; $i<=35; $i++){
@@ -109,7 +126,7 @@ class CalendarHelper extends Helper {
 		
 		/**
 		* Sixth Week
-		*/
+		
 		if(true){
 			$calendar .= '<tr>';
 			for($i=36; $i<=42; $i++){
@@ -123,7 +140,7 @@ class CalendarHelper extends Helper {
 			}
 			$calendar .= '</tr>';
 		}
-		
+		*/
 		$calendar .= '</table></div>';
 		
 		return $this->output($calendar);
@@ -154,7 +171,7 @@ class CalendarHelper extends Helper {
     */
     $calendarObj = '<div class="calendar_wrap clearfix"><div class="calendar_controls"><a class="prev_cal" href="#"></a><a class="next_cal" href="#"></a></div><div class="calendar_slider clearfix">';
     for($i = 0; $i <= $calendar['months']; $i++){
-  		$calendarObj .= $this->renderMonth($first_date['month'],$first_date['year']);
+  		$calendarObj .= $this->renderMonth($first_date['month'],$first_date['year'], $deal_valid, $deal_expire);
   		if($first_date['month'] == 12){
   			$first_date['month'] = 1;
   			$first_date['year']++;

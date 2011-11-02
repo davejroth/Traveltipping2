@@ -160,12 +160,18 @@ $(document).ready(function() {
 	* Calendar Hover
 	*/
   
-  $('.calendar td').hover(
+  $('.calendar td.available').hover(
 	  	function(){
 	  		$(this).addClass('calendarHover')
 	  	},
 	  	function(){
 	  		$(this).removeClass('calendarHover')
+	  	}
+  	);
+	/*
+  $('.calendar td.outside_range').hover(
+	  	function(){
+	  		$(this).css('background','#E0F8F8')
 	  	}
   	);
   	
@@ -174,7 +180,7 @@ $(document).ready(function() {
 	  		$(this).css('background','#dddddd')
 	  	}
   	);
-  	
+  	*/
   	
 	navLiWidth = $('.deal_nav li.active').innerWidth();
 	pos = navLiWidth/2 - 5;

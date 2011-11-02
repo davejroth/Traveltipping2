@@ -42,7 +42,8 @@ $staticPages = array(
         'partnerships',
         'press',
         'user-policies',
-        'user-terms'
+        'user-terms',
+		'calendar'
 );
  
 $staticList = implode('|', $staticPages);
