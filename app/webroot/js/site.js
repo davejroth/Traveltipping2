@@ -176,6 +176,9 @@ $(document).ready(function() {
   	);
   	
   	
+	navLiWidth = $('.deal_nav li.active').innerWidth();
+	pos = navLiWidth/2 - 5;
+	$('.deal_nav li.active span').css('left', pos+'px')
 
 	
 	

@@ -1,13 +1,16 @@
-<?php //debug($this->params); 
-?>
-
 <div id="layout_left" class="merchant_deals grid_22">
 	<div id="traveler_menu" class="blue_rounded_mod clearfix">
 	<ul class="deal_nav">
 	<?php 
-	echo '<li class="active">' . $this->Html->link('Upcoming Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '<span></span></li>';
-	echo '<li>' . $this->Html->link('Past Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'past'),array( 'alt'=>'Past Deals')) . '<span></span></li>';
-		?>		
+		if($this->params['pass'][0] == 'upcoming' ){
+			echo '<li class="active">' . $this->Html->link('Upcoming Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '<span></span></li>';
+			echo '<li>' . $this->Html->link('Past Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'past'),array( 'alt'=>'Past Deals')) . '<span></span></li>';
+		}
+		else if($this->params['pass'][0] == 'past'){
+			echo '<li>' . $this->Html->link('Upcoming Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'upcoming'),array( 'alt'=>'Upcoming Deals')) . '<span></span></li>';
+			echo '<li class="active">' . $this->Html->link('Past Trips',array('controller'=>'travelers', 'action'=>'my_deals', 'past'),array( 'alt'=>'Past Deals')) . '<span></span></li>';
+		}
+	?>		
 	</ul>	
 	</div>
 
@@ -87,6 +90,6 @@ foreach ($purchases as $purchase):
 <script type="text/javascript"> 
 $(document).ready(function() {
 	
-	
+
 });
 </script>
