@@ -3,7 +3,7 @@
 class CalendarHelper extends Helper {
 	var $helpers = array('Html');
 	
-	function renderMonth($month,$year, $deal_valid, $deal_expire){
+	function renderMonth($month,$year, $deal_valid, $deal_expire, $datesFull){
 		
 		$validTime = strtotime($deal_valid);
 		$expireTime = strtotime($deal_expire);
@@ -45,10 +45,9 @@ class CalendarHelper extends Helper {
 		* First Week
 		*/
 		$currentTime = $firstdate; //Exclude days outside the range
-		
 		$calendar .= '<tr>';
 		for($i=0; $i<=41; $i++){
-			if($i % 7 ==0)
+			if($i % 7 ==0 && $i != 0)
 			{
 				$calendar .= '</tr><tr>';
 			}
@@ -56,13 +55,17 @@ class CalendarHelper extends Helper {
 				$calendar .= '<td class="blank">&nbsp;</td>';
 			}
 			else{
-				if($currentTime >= $validTime && $currentTime <= $expireTime) {
-					$calendar .= '<td class="available"><a href="#">'.$day.'</a></td>';
+				if($currentTime < $validTime || $currentTime >= $expireTime) {
+					$calendar .= '<td class="outside_range">'.$day.'</a></td>';
+				}
+				elseif($datesFull[date('Y-m-d',$currentTime)] == true){
+					$calendar .= '<td class="unavailable">'.$day.'</a></td>';
 				}
 				else
 				{
-					$calendar .= '<td class="outside_range">'.$day.'</a></td>';
+					$calendar .= '<td class="available"><a href="#">'.$day.'</a></td>';
 				}
+
 				$day++;
 				$currentTime += 86400;  //Add num of seconds in a day
 			}
@@ -146,42 +149,56 @@ class CalendarHelper extends Helper {
 		return $this->output($calendar);
 	}
 	
-	
-	function dealCalendars($deal_valid,$deal_expire){
+	/**
+	 *
+	 * dealCalendars takes the $id of a deal and creates a calendar including the available, out of range, and booked dates.
+	 * @params: $id of deal
+	 * @returns: calendar object.
+	 */
+	function dealCalendars($id){
+		App::import('model', 'Deal');
+		$deal = new Deal();
+		$thisDeal = $deal->findById($id);
+		$deal_valid = $thisDeal['Deal']['deal_valid'];
+		$deal_expire = $thisDeal['Deal']['deal_expire'];
+		
+		App::import('model','DealPurchase');
+		$dealPurchase = new DealPurchase();
+		$datesFull = $dealPurchase->getDatesFull($id);
 		
 		/**
 		* Calculate how many calendar months to display.
 		*/ 
-	$firstDate = date_parse($deal_valid);
-	$firstMonth = $firstDate['month'];
-	$secondDate = date_parse($deal_expire);
-	$secondMonth = $secondDate['month'];
-	
-	if($secondMonth < $firstMonth) {
-		$secondMonth = $secondMonth + 12;  //This is assuming deals will only cross one year.
-	}
-	$interval = $secondMonth - $firstMonth;
-    $calendar['months'] = $interval;
-    
-    $first_date = date_parse($deal_valid);
-    $last_date = date_parse($deal_expire);
-    
-    /**
-    * Create Calendar Objects
-    */
-    $calendarObj = '<div class="calendar_wrap clearfix"><div class="calendar_controls"><a class="prev_cal" href="#"></a><a class="next_cal" href="#"></a></div><div class="calendar_slider clearfix">';
-    for($i = 0; $i <= $calendar['months']; $i++){
-  		$calendarObj .= $this->renderMonth($first_date['month'],$first_date['year'], $deal_valid, $deal_expire);
-  		if($first_date['month'] == 12){
-  			$first_date['month'] = 1;
-  			$first_date['year']++;
-  		}
-  		else{
-  			$first_date['month']++;
-  		}	
-    }
-    $calendarObj .= '</div></div>';
-    return $this->output($calendarObj);
+		$firstDate = date_parse($deal_valid);
+		$firstMonth = $firstDate['month'];
+		$secondDate = date_parse($deal_expire);
+		$secondMonth = $secondDate['month'];
+		
+		if($secondMonth < $firstMonth) {
+			$secondMonth = $secondMonth + 12;  //This is assuming deals will only cross one year.
+		}
+		$interval = $secondMonth - $firstMonth;
+		$calendar['months'] = $interval;
+		
+		$first_date = date_parse($deal_valid);
+		$last_date = date_parse($deal_expire);
+		
+		/**
+		* Create Calendar Objects
+		*/
+		$calendarObj = '<div class="calendar_wrap clearfix"><div class="calendar_controls"><a class="prev_cal" href="#"></a><a class="next_cal" href="#"></a></div><div class="calendar_slider clearfix">';
+		for($i = 0; $i <= $calendar['months']; $i++){
+			$calendarObj .= $this->renderMonth($first_date['month'],$first_date['year'], $deal_valid, $deal_expire, $datesFull);
+			if($first_date['month'] == 12){
+				$first_date['month'] = 1;
+				$first_date['year']++;
+			}
+			else{
+				$first_date['month']++;
+			}	
+		}
+		$calendarObj .= '</div></div>';
+		return $this->output($calendarObj);
 
 	}
 	

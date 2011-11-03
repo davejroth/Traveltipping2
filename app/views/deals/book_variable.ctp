@@ -12,7 +12,7 @@
 		'url' => array('controller' => 'deals', 'action' => 'book',$deal['Deal']['id']),
 		'class' => 'clearfix'
 		));
-		echo $this->Calendar->dealCalendars($deal['Deal']['deal_valid'], $deal['Deal']['deal_expire']);
+		echo $this->Calendar->dealCalendars($deal['Deal']['id']);
 		echo '<a class="clear_dates" href="#">'.$this->Html->image('/img/site/clear_dates.png').'</a>';
 	?>
 	<div class="reservation_info">

@@ -3,7 +3,7 @@
 //debug($deal['Deal']['deal_valid']);
 	//echo $deal['Deal']['deal_valid'];
 	//debug($reservations_arr);
-	echo $this->Calendar->dealCalendars($deal['Deal']['deal_valid'], $deal['Deal']['deal_expire']);
+	echo $this->Calendar->dealCalendars($deal['Deal']['id']);
 
 ?>
 

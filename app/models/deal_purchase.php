@@ -83,5 +83,32 @@ class DealPurchase extends AppModel {
 	
 		return $reservedDates;
 	}
+	/**
+	 * Similar to getReservations  
+	 * @params id of deal
+	 * @returns an array of the valid dates with true/false depending on whether there is an available reservation
+	 */
+	function getDatesFull($id) {
+		$datesFull = array();
+		$currentReservations = $this->getReservations($id);
+		//debug($currentReservations);
+		App::import('model','DealAvailability');
+		$dealAvailability = new DealAvailability();
+		$currentAvailabilities = $dealAvailability->getAvailableDates($id);
+		
+		$dates = array_keys($currentReservations);
+		$length = count($dates);
+		
+		for($i = 0; $i < $length; $i++){
+			if($currentReservations[$dates[$i]] < $currentAvailabilities[$dates[$i]]) {
+				$datesFull[$dates[$i]] = false; //Not full
+			}
+			else {
+				$datesFull[$dates[$i]] = true; //Reservation is full
+			}
+		}
+		return $datesFull;
+	}
+		
 }
 ?>

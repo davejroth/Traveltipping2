@@ -62,7 +62,7 @@ class DealAvailability extends AppModel {
 		//Populate array with all possible dates
 		App::import('model','Deal');
 		$deal = new Deal();
-		$thisDeal = $deal->find('first', array('id' => $id));
+		$thisDeal = $deal->find('first', array('conditions' => array('Deal.id' => $id)));
 		$tripStart = $thisDeal['Deal']['deal_valid'];
 		$tripEnd = $thisDeal['Deal']['deal_expire'];
 		$tripStart = date('Y-m-d', strtotime($tripStart. ' - 1 days')); //Take one day off so that last day is added
@@ -71,9 +71,8 @@ class DealAvailability extends AppModel {
 			$availableDates[$tripStart] = "";
 			
 		}while(strcmp($tripStart,$tripEnd) != 0);
-		
 		$this->recursive = -1;
-		$storedAvailability = $this->find('all');
+		$storedAvailability = $this->find('all', array('conditions' => array('DealAvailability.deal_id' => $id)));
 		
 		foreach($storedAvailability as $availableDate) {
 			$availableDates[$availableDate['DealAvailability']['reservation_date']] = $availableDate['DealAvailability']['num_available'];

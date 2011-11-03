@@ -810,6 +810,7 @@ label{
     padding: 1px;
     text-align: right;
     vertical-align: top;
+	min-width:37px;
 }
 
 

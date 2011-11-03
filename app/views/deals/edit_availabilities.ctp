@@ -5,7 +5,7 @@
 	echo $deal['Deal']['title'] . "<br>";
 	echo "Start Date:" . $deal['Deal']['deal_valid'] . "<br>";
 	echo "End Date:" . $deal['Deal']['deal_expire'] . "<br>";
-	echo $this->Calendar->dealCalendars($deal['Deal']['deal_valid'], $deal['Deal']['deal_expire']);
+	echo $this->Calendar->dealCalendars($deal['Deal']['id']);
 
 ?>
 
