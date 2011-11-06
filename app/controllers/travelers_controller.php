@@ -88,7 +88,7 @@ class TravelersController extends AppController {
 			$this->Session->setFlash(__('Invalid credentials. Please try again.', true));
 		}
 	}
-	$this->render('ajax_signup','ajax');
+	$this->render('ajax_sign_in','ajax');
 	}
 
 

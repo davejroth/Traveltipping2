@@ -52,35 +52,97 @@ function loadPiece(href,divName) {
 } 
 
 $(document).ready(function() {
-	//json_encode converts the PHP variable to JS.  What is this?
-	if(<?php echo json_encode($this->Session->read('Auth.User')); ?>) {
-		//loadPiece("/users/ajax_logged_in", "#ajax_account_info");
-		$.ajax({
+$('#billing_info').hide();
+
+$.getJSON('/users/check_session', function(json) {
+		if(json.logged_in == true){
+			$.ajax({
 			url: "/users/ajax_logged_in",
 			success: function(data){
-				$('#ajax_account_info').append(data);
+			$('#ajax_account_info').append(data);
+			$('#billing_info').show();
 			}
-		});
-		
-		
-	}
-	else {
-		//loadPiece("/travelers/ajax_signup", "#ajax_account_info");
-		$.ajax({
+			});
+		}
+		else{
+			$.ajax({
+			url: "/travelers/ajax_sign_in",
+			success: function(data){
+				$('#sign_in').append(data);
+			}
+			});
+			
+			$.ajax({
 			url: "/travelers/ajax_signup",
 			success: function(data){
-				$('#ajax_account_info').append(data);
+				$('#new_account').append(data);
 			}
-		});
-		
-		$('#billing_info').hide();
-	}
+			});
+			$('#billing_info').hide();
+		}		
+});
 	
 	/**
 	* Add Event Handlers for ajax login and ajax signup
 	*/
 	
+	$('.ajax_sign_in').live('click', function(data) {
+		$.post(
+				'/travelers/ajax_sign_in',
+				$("#TravelerAjaxSigninForm").serializeArray(),
+				function(data){
+					htmlData = data;
+					$.getJSON('/users/check_session', function(json) {
+						if(json.logged_in == true){
+							$('#ajax_account_info').empty();
+							$('#ajax_account_info').append(htmlData);
+							$('#billing_info').show();
+						}
+						else{
+							$('#sign_in').empty();
+							$('#sign_in').append(htmlData);
+							$('#billing_info').hide();
+						}
+					});
+					
+					$.ajax({
+					url: "/pages/get_header",
+					success: function(data){
+						$('#header').replaceWith(data);
+					}
+					});
+		});
+		return false;
+	});
 	
+	$('.ajax_signup').live('click', function() {
+		$.post(
+				'/travelers/ajax_signup',
+				$("#TravelerAjaxSignupForm").serializeArray(),
+				function(data){
+					htmlData = data;
+					$.getJSON('/users/check_session', function(json) {
+						if(json.logged_in == true){
+							$('#ajax_account_info').empty();
+							$('#ajax_account_info').append(htmlData);
+							$('#billing_info').show();
+						}
+						else{
+							$('#new_account').empty();
+							$('#new_account').append(data);
+							$('#billing_info').hide();
+						}
+					});
+					
+					$.ajax({
+					url: "/pages/get_header",
+					success: function(data){
+						$('#header').replaceWith(data);
+					}
+					});
+		});
+		return false;
+	});
 	
 	
 	
@@ -89,6 +151,8 @@ $(document).ready(function() {
 </script>
 
 <div id='ajax_account_info' class="clearfix">
+	<div id="sign_in"></div>
+	<div id="new_account"></div>
 </div>
 
 <div id='billing_info'>

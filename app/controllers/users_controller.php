@@ -268,4 +268,22 @@ class UsersController extends AppController {
 		$this->Session->setFlash(__('User was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function check_session() {
+		$logged_in = null;
+		if($this->Session->read('Auth.User')){
+			
+			$logged_in = array('logged_in' => true);
+			
+			$this->set('logged_in',json_encode($logged_in));
+			
+		}
+		else{
+			$logged_in = array('logged_in' => false);
+			
+			$this->set('logged_in',json_encode($logged_in));
+		}
+		
+		$this->render('check_session','ajax');
+	}
 }

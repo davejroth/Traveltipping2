@@ -1,6 +1,3 @@
-<?php echo $html->script('prototype');
-	  echo $html->script('scriptaculous'); 
-	 ?>
 
 <div id="logged_in">
 	<p>

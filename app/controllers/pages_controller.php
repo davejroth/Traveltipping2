@@ -89,4 +89,9 @@ class PagesController extends AppController {
 		$this->set('deals', $deals);
 		$this->render(implode('/', $path));
 	}
+	
+	
+	function get_header() {
+		$this->render('get_header','ajax');
+	}
 }
