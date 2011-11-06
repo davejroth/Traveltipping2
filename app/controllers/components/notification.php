@@ -96,6 +96,7 @@ class NotificationComponent extends Object {
 			'dealCancelled' => 'Deal has Cancelled',
 			'dealInitiated' => 'Deal has been initiated',
 			'dealWaiting' => 'Deal Waiting for Merchant Approval',
+			'newMerchant' => 'A new merchant has signed up',
 		);
 		
 		/* SMTP Options */

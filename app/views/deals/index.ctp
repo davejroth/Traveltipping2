@@ -1,11 +1,4 @@
 <div id="layout_left" class="grid_22">
-<?php 
-if(empty($deals)) {
-	echo "Uh oh, it doesn't look like we have any deals in this region right now.  Come back again soon; we're constantly adding new deals as others expire.";
-}
-else {
-
-?>
 <div class="filter_bar">
 	<ul id="sort_options">
 		<li class="list_title"><strong>Sort By:</strong></li>
@@ -15,6 +8,10 @@ else {
 	</ul>
 </div>
 <?php
+if(empty($deals)) {
+	echo "Uh oh, it doesn't look like we have any deals in this region right now.  Come back again soon; we're constantly adding new deals as others expire.";
+}
+else {
 $i = 0;
 foreach ($deals as $deal):
 

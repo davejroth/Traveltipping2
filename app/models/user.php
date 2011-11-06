@@ -113,7 +113,9 @@ function passwordCheck()
 	
 	return strcmp(Security::hash($this->data['User']['current_password'], null, true), $currentPassword) == 0; 
 }
+
     public function parentNode() {
+
         if (!$this->id && empty($this->data)) {
             return null;
         }
@@ -139,7 +141,14 @@ function passwordCheck()
             $this->Aro->save($aro);
         }
     }
-
+	/*
+	public function beforeSave($created) {
+		if(!$created) {
+			$oldDeal = $this->findById($this->data['Deal']['id']);
+			debug($oldDeal);
+		}
+	}
+    */
 
 }
 ?>

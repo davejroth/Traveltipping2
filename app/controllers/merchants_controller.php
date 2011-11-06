@@ -20,6 +20,7 @@ class MerchantsController extends AppController {
 		$this->set('Merchant', $Merchant); 
 	
 		$this->Notification->sendHTMLMerchantMail($Merchant, $template);
+		$this->Notification->sendHtmlAmMail($template);
 	}
 /**
  * Email function used to send Deal information.  
@@ -50,6 +51,7 @@ class MerchantsController extends AppController {
 			//Set ids so that they are not loaded on the page
 			$this->data['Merchant']['id'] = $this->Session->read('Merchant.id');
 			$this->data['User']['id'] = $this->Session->read('User.id');
+			$this->data['User']['role_id'] = $this->Session->read('User.role_id');
 			if ($this->Merchant->saveAll($this->data)) {
 				$this->Session->setFlash(__('Your profile has been saved.', true));
 				$this->redirect('/merchants/profile');
@@ -212,6 +214,7 @@ class MerchantsController extends AppController {
 		
 			$this->data['User']['role_id'] = Configure::read('Role.Merchant_ID');
 			$this->data['User']['status'] = 1;
+			
 
 			if ($this->Merchant->saveAll($this->data)) {
 				$this->sendMerchantMail($this->Merchant->id, "newMerchant");

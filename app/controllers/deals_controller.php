@@ -26,7 +26,7 @@ class DealsController extends AppController {
 		$Venue = $this->Deal->Venue->read(null, $venueID); //Used for email address
 		$Merchant = $this->Merchant->read(null, $Venue['Merchant']['id']); //Used for email address
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
-		$this->Notification->sendHTMLDealMail($Venue, $template);
+		$this->Notification->sendHTMLDealMail($Merchant, $template);
 		$this->Notification->sendHtmlAmMail($template);
 	}
 /**

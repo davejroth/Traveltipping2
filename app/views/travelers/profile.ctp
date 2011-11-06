@@ -10,7 +10,6 @@
 		// Data Variables
 		//print_r($errors);
 		//print_r($this->Traveler->validationErrors);
-
 		
         echo $this->Form->input('first_name');
         echo $this->Form->input('last_name');

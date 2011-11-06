@@ -23,6 +23,7 @@ class AppController extends Controller {
         'ajax_sign_in',
         'resetPassword',
         'resendPassword',
+		'confirmReset',
         'sendForgotPasswordMail',
         'newPassword',
         'loginredirect'

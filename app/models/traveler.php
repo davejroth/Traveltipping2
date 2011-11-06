@@ -46,5 +46,7 @@ class Traveler extends AppModel {
             'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter your last name.')
         )
 	); 
+	
+
 }
 ?>

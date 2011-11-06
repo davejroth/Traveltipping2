@@ -26,12 +26,14 @@ class TravelersController extends AppController {
 		if (!empty($this->data)) {
 			$this->data['Traveler']['id'] = $this->Session->read('Traveler.id');
 			$this->data['User']['id'] = $this->Session->read('User.id');
+			$this->data['User']['role_id'] = $this->Session->read('User.role_id');
+			//debug($this->data);
 			if ($this->Traveler->saveAll($this->data, array('validate' => 'first'))) {
 				$this->Session->setFlash(__('Your profile has been saved', true));
 				$this->redirect('/travelers/profile');
 			} else {
 				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true));
-			}
+			} 
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Traveler->read(null, $id);
