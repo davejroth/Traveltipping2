@@ -762,6 +762,8 @@ a.deal_listing{
     padding: 0 7px;
 }
 
+ 
+
 /**
  * Deal Purchase Page
  */
@@ -777,6 +779,28 @@ float:right;
 	display:block;
 }
 
+.address_fields{
+	float:left;	
+}
+
+.credit_fields{
+	float:right;	
+}
+
+.billing_terms{
+    float: right;
+    margin-top: 20px;
+    width: 245px;
+}
+
+.billing_terms p,
+.billing_terms label{
+	font-size:10px;
+}
+
+.billing_terms label{
+	margin-left:6px;	
+}
 
 
 
@@ -855,7 +879,7 @@ float:right;
 }
 
 #PurchaseForm{
-	padding:0 15px;
+    padding: 0 50px;
 }
 
 #PurchaseForm .submit input{
@@ -867,6 +891,7 @@ float:right;
     padding: 0;
     width: 157px;
     float:right;
+    margin-top: 20px;
 }
 
 /**

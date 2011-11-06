@@ -94,26 +94,32 @@ $(document).ready(function() {
 <div id='billing_info'>
 <h2 class="page_title">Billing Info</h2>
 <?php echo $this->Form->create('Deal',  array('url' => '/deals/purchase/' . $deal['Deal']['id'],'class' => 'clearfix','id' => 'PurchaseForm'));
-
+		
+	echo '<div class="address_fields">';
 	  echo $this->Form->input('Transaction.name', array('label'=>'Cardholder\'s Name'));
 	  echo $this->Form->input('Transaction.address', array('label'=>'Billing Address'));
 	  echo $this->Form->input('Transaction.city', array('label'=>'City'));
 	  echo $this->Form->input('Transaction.state', array('label'=>'State'));
 	  echo $this->Form->input('Transaction.zip', array('label' => 'Zip'));
+	echo '</div>';
+	echo '<div class="credit_fields">';
 	  echo $this->Form->input('Transaction.cc_number', array('label' => 'Credit Card Number'));
 	  echo $this->Form->input('Transaction.ccv', array('label' => 'CCV Number'));
 	  echo $this->Form->label('Expiration Date');
-	  echo "<br>";
 	  echo $this->Form->input('Transaction.expiration_month', array('type' => 'select', 'options' => $months, 'label' => '', 'div' => false));
 	  echo $this->Form->input('Transaction.expiration_year', array('type' => 'select', 'options' => $years, 'label' => '', 'div' => false));
+	  
+	 echo '</div>';
+
+	  
 	  ?>
 	  <div class="billing_terms">
-		<p class="billing_terms_text">You have 7 days from purchase to cancel your reservation and receive a full refund.  If you need to change your 
+		<p>You have 7 days from purchase to cancel your reservation and receive a full refund.  If you need to change your 
 			reservation in the future, you can do sy contacting the travel supplier directly, subject to availability.</p>
 	  <?php 
-			echo $this->Form->input('Transaction.tos', array('type'=>'checkbox','label' =>'I agree to TravelTippings'));
-			echo "<br />";
-			echo $this->Html->link('Terms of Service',array('controller' => 'pages', 'action' => 'user-terms'), array());
+	  		$term_link = $this->Html->link('Terms of Service',array('controller' => 'pages', 'action' => 'user-terms'), array());
+			echo $this->Form->input('Transaction.tos', array('type'=>'checkbox','label' =>'I agree to TravelTippings '.$term_link));
+			
 		?>
 	  </div>
 	  <?php
