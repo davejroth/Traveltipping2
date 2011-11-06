@@ -448,10 +448,7 @@ margin:0;
 
 
 .module_content p{
-    font-size: 13px;
-    line-height: 1.5;
-    margin: 10px;
-    padding-bottom: 10px;
+
 }
 
 .gray_module_content p{
@@ -646,6 +643,51 @@ td.revenue{
 td.waiting {
 	color:orange;
 	font-weight:bold;
+}
+
+.approval_terms{
+		
+}
+
+.approval_terms li{
+	font-weight:bold;
+}
+
+.approval_terms span{
+	display:block;
+	margin-bottom:5px;
+	font-weight:bold;
+	font-size:16px;
+}
+
+.approval_fields{
+    float: left;
+    margin-left: 15px;
+    width: 400px;
+}
+.approval_fields .input{
+    clear: both;
+    margin: 5px 0;
+    overflow: hidden;
+}
+
+.approval_fields label{
+	margin-left:5px;
+	font-size:13px;
+}
+
+#ApprovalForm .submit{
+    clear: none;
+    float: right;
+    margin-right: 15px;
+    margin-top: 20px;
+}
+#ApprovalForm{
+    margin: 0 auto;
+    width: 660px;
+}
+.address_info{
+	margin:15px;	
 }
 
 /**
@@ -1021,9 +1063,11 @@ font-weight:bold;
 }
 
 div.legal_approval {
-overflow-y:scroll;
-height:500px;
-width:660px;
+    border: 1px solid #CCCCCC;
+    height: 500px;
+    margin-bottom: 15px;
+    overflow-y: scroll;
+    width: 660px;
 }
 
 div.legal_approval p {
@@ -1040,9 +1084,7 @@ div.legal_approval h2 {
 font-size:15px;
 }
 
-div.approve_btn {
-float:right;
-}
+
 
 div.deal_checkboxes  label{
 display:inline;
@@ -1136,3 +1178,4 @@ display:inline;
 span.pernight {
 font-size:12px;
 }
+
