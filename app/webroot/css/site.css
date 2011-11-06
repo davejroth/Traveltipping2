@@ -784,7 +784,8 @@ float:right;
 }
 
 .credit_fields{
-	float:right;	
+    float: right;
+    width: 250px;	
 }
 
 .billing_terms{
