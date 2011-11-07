@@ -8,7 +8,6 @@
 					<ul class="main_nav">
 
 			<?php 	
-			echo print_r($this->Session->read('Auth'));
 			if(!$this->Session->read('Auth.User')) { //Not logged in
 							echo '<li>' . $this->Html->link('How it Works',array('controller'=>'pages', 'action'=>'display', 'static'=> 'how-it-works'),array( 'title'=>'How it Works')) . '</li>';
 							echo '<li>' . $this->Html->link('Create an Account', array('controller' => 'travelers', 'action' => 'signup'),array( 'title'=>'Create an Account')) . '</li>';
