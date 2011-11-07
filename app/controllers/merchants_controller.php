@@ -221,7 +221,7 @@ class MerchantsController extends AppController {
 				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
 				$this->Session->write('User.new', 1); //Used for redirecting on first login
-				$this->redirect(array('controller' => 'users', 'action' => 'loginredirect'));
+				$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 			} else {
 				$this->Session->setFlash(__('The merchant detail could not be saved. Please, try again.', true));
 			}
