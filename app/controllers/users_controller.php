@@ -8,67 +8,11 @@ class UsersController extends AppController {
 
 	function sendForgotPasswordMail($user, $template) {
 		$this->loadModel('PasswordReset');
-		$passwordReset = $this->PasswordReset->findByUserId($user['User']['id']);
+		$passwordReset = $this->PasswordReset->find('first', array('conditions' => array('PasswordReset.user_id' => $user['User']['id']), 
+			'order' => 'PasswordReset.created DESC'));
 		$this->set(compact('passwordReset')); 
 	
 		$this->Notification->sendHTMLUserMail($user, $template);
-	}
-	/*
-	 *This is called when logging in
-	 *Sets Session variables and redirects to appropriate login page.
-	 */
-	function loginredirect() {
-	
-	if ($this->Session->read('Auth.User') && !$this->Session->read('User.role_id')) { 
-		$user = $this->Session->read('Auth.User');
-		
-		if($user['role_id'] == Configure::Read('Role.Merchant_ID'))
-		{ 
-			$merchant = $this->Merchant->find('first',
-				array('conditions' => array('Merchant.user_id' => $user['id'])));
-			$this->Session->write('Merchant.id', $merchant['Merchant']['id']);
-			$this->Auth->loginRedirect = array('controller' => 'merchants', 'action' => 'profile');
-		} 
-		
-		if($user['role_id'] == Configure::Read('Role.Traveler_ID'))
-		{
-			$traveler = $this->Traveler->find('first',
-				array('conditions' => array('Traveler.user_id' => $user['id'])));
-			$this->Session->write('Traveler.id', $traveler['Traveler']['id']);
-		}
-		$this->Session->write('User.role_id', $user['role_id']);
-		$this->Session->write('User.id', $user['id']);	
-		}
-		
-		if($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID'))
-		{
-			if($this->Session->read('User.new') == 1)
-			{
-				$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
-			}
-			/*elseif($this->Session->read('User.purchasing') == 1) {
-				$this->redirect(array('controller' => 'deals', 'action' => 'purchase'));
-			} */
-			else {
-			$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
-			}
-		}
-		
-		elseif($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID'))
-		{	if($this->Session->read('User.new') == 1)
-			{
-				$this->redirect(array('controller' => 'deals', 'action' => 'index'));
-			}
-			else 
-			{
-				$this->redirect(array('controller' => 'travelers', 'action' => 'my_deals', 'upcoming'));
-			}
-		}
-		elseif($this->Session->read('User.role_id') == Configure::Read('Role.Admin_ID'))
-		{
-			$this->redirect(array('controller' => 'deals', 'action' =>'admin_index', 'admin' => 1));
-		}
-	 	
 	}
 	/*
 	 * This is for travelers who sign up during the purchase process
@@ -81,7 +25,7 @@ class UsersController extends AppController {
 			array('conditions' => array('Traveler.user_id' => $user['id'])));
 			$this->set(compact('traveler'));
 	//If new traveler is logging in
-		if ($this->Session->read('Auth.User') && !$this->Session->read('User.role_id')) {
+		if ($this->Session->read('Auth.User') && !$this->Session->read('Auth.User.role_id')) {
 			$this->Session->write('Traveler.id', $traveler['Traveler']['id']);
 			$this->Session->write('User.role_id', $user['role_id']);
 			$this->Session->write('User.id', $user['id']);
@@ -93,6 +37,31 @@ class UsersController extends AppController {
 	
 	
 	function login() {
+		if($this->Auth->user()) {
+			$user = $this->Session->read('Auth.User');
+			$redirect = $this->Auth->redirect();
+			if($this->Session->Read('Auth.User.role_id') == Configure::Read('Role.Merchant_ID')){ 
+				App::import('model','Merchant');
+				$merchant = new Merchant();
+				$thisMerchant = $merchant->find('first',
+					array('conditions' => array('Merchant.user_id' => $user['id'])));
+				$this->Session->write('Merchant.id', $thisMerchant['Merchant']['id']);
+				if($redirect == '/') {
+					$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
+				}
+			} 
+			elseif($this->Session->Read('Auth.User.role_id') == Configure::Read('Role.Traveler_ID')){
+				App::import('model','Traveler');
+				$traveler = new Traveler();
+				$thisTraveler = $traveler->find('first',
+					array('conditions' => array('Traveler.user_id' => $user['id'])));
+				$this->Session->write('Traveler.id', $thisTraveler['Traveler']['id']);
+				if($redirect == '/') {
+					$this->redirect(array('controller' => 'travelers', 'action' => 'my_deals', 'upcoming'));
+				}
+			}
+			$this->redirect($redirect);
+		} 
 		if ($this->Session->read('Auth.User')) {
 			$this->Session->setFlash('You are logged in!');
 			$this->redirect('/', null, false);
@@ -119,11 +88,11 @@ class UsersController extends AppController {
 			if ($this->User->save($this->data)) {
 				$this->Session->setFlash(__('Your password has been saved.', true));
 				//If merchant, redirect to merchant profile.  If traveler, redirect to traveler)
-				if($this->Session->read('User.role_id') == Configure::Read('Role.Merchant_ID')) 
+				if($this->Session->read('Auth.User.role_id') == Configure::Read('Role.Merchant_ID')) 
 				{
 					$this->redirect('/merchants/profile');
 				}
-				if($this->Session->read('User.role_id') == Configure::Read('Role.Traveler_ID'))
+				if($this->Session->read('Auth.User.role_id') == Configure::Read('Role.Traveler_ID'))
 				{
 					$this->redirect('/travelers/profile');
 				}
@@ -151,6 +120,7 @@ class UsersController extends AppController {
 				$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
 				$newPasswordReset['PasswordReset']['user_id'] = $thisUser['User']['id'];
 				$newPasswordReset['PasswordReset']['confirmation'] = $random_hash;
+				$this->User->PasswordReset->create();
 				$this->User->PasswordReset->save($newPasswordReset);
 				$this->sendForgotPasswordMail($thisUser, 'resetPassword');
 				//Create new passwordChange record and email address

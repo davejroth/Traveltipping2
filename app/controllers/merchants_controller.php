@@ -51,7 +51,7 @@ class MerchantsController extends AppController {
 			//Set ids so that they are not loaded on the page
 			$this->data['Merchant']['id'] = $this->Session->read('Merchant.id');
 			$this->data['User']['id'] = $this->Session->read('User.id');
-			$this->data['User']['role_id'] = $this->Session->read('User.role_id');
+			$this->data['User']['role_id'] = $this->Session->read('Auth.User.role_id');
 			if ($this->Merchant->saveAll($this->data)) {
 				$this->Session->setFlash(__('Your profile has been saved.', true));
 				$this->redirect('/merchants/profile');

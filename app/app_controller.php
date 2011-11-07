@@ -36,8 +36,8 @@ class AppController extends Controller {
 			);
         $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
         $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'logout');
-        $this->Auth->loginRedirect = array('controller' => 'users', 'action' => 'loginredirect');
 		$this->Cookie->name = 'TravelTipping';
+		$this->Auth->autoRedirect = false; 
 
     }
 	/**
