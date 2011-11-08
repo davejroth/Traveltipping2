@@ -36,5 +36,37 @@ class Transaction extends AppModel {
 		'tos' => array(
 			'tosCheck' => array('rule' => array('comparison', '!=', 0),  'message' => 'Please agree to TravelTipping\'s TOS in order to proceed.',),
 		),
-	); 
+	);
+
+	function buildBrainTreeTransaction($data) {
+		return array(
+					'amount' => $this->Session->read('Trip.cost'), 
+					//'merchantAccountId' => 'a_merchant_account_id', This needs to be input
+					'creditCard' => array(
+						'number' => $data['Transaction']['cc_number'],
+						'expirationDate' => $expirationDate,
+						'cardholderName' => $data['Transaction']['name'],
+						),
+					'customer' => array(
+						'firstName' => $traveler['Traveler']['first_name'],
+						'lastName' => $traveler['Traveler']['last_name'],
+						'email' => $traveler['User']['email'],
+						'id' => $travelerID
+					  ),
+					  'billing' => array(
+						'firstName' => $this->data['Transaction']['name'],
+						//'lastName' => 'Smith',
+						'streetAddress' => $data['Transaction']['address'],
+						'locality' => $data['Transaction']['city'],
+						'region' => $data['Transaction']['state'],
+						'postalCode' => $data['Transaction']['zip'],
+						'countryCodeAlpha2' => 'US'
+						),
+					  'options' => array(
+						'submitForSettlement' => true
+					)
+					);
+	
+	
+	}
 }

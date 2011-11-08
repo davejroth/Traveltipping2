@@ -114,7 +114,7 @@ class DealsController extends AppController {
 		$deals = $dealInfo;
 		$this->set(compact('deals'));
 	}
-
+    //I played with this function to test Braintree Transactions.
 	function admin_view($id = null) {
 			$result = Braintree_Transaction::sale(array(
 			'amount' => '1000.00',
@@ -356,36 +356,8 @@ class DealsController extends AppController {
 				$expirationDate = $this->data['Transaction']['expiration_month'] . '/' . $this->data['Transaction']['expiration_year']; 
 				//Billing info was entered.  Now process the credit card
 				if($this->Transaction->validates()) { //If CC info entered correctly
-					//Store the Braintree ID for insertion into DealPurchase table.
-					$result = Braintree_Transaction::sale(array(
-					'amount' => $this->Session->read('Trip.cost'), 
-					//'merchantAccountId' => 'a_merchant_account_id', This needs to be input
-					'creditCard' => array(
-						'number' => $this->data['Transaction']['cc_number'],
-						'expirationDate' => $expirationDate,
-						'cardholderName' => $this->data['Transaction']['name'],
-						),
-					'customer' => array(
-						'firstName' => $traveler['Traveler']['first_name'],
-						'lastName' => $traveler['Traveler']['last_name'],
-						'email' => $traveler['User']['email'],
-						'id' => $travelerID
-					  ),
-					  'billing' => array(
-						'firstName' => $this->data['Transaction']['name'],
-						//'lastName' => 'Smith',
-						'streetAddress' => $this->data['Transaction']['address'],
-						'locality' => $this->data['Transaction']['city'],
-						'region' => $this->data['Transaction']['state'],
-						'postalCode' => $this->data['Transaction']['zip'],
-						'countryCodeAlpha2' => 'US'
-						),
-					  'options' => array(
-						'submitForSettlement' => true
-					)
-					));
+					$result = Braintree_Transaction::sale($this->Transaction->buildBrainTreeTransaction($this->data));
 					if ($result->success) { //Braintree validation Success
-						
 						$purchase['DealPurchase']['deal_id'] = $id;
 						$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
 						$purchase['DealPurchase']['confirmation_code'] = $random_hash;
@@ -413,7 +385,6 @@ class DealsController extends AppController {
 							$purchase['Passenger']['last_name'] = $traveler['Traveler']['last_name'];
 							
 							//use $this->Passenger so that the deal_purchase_id is inserted correctly
-							//This needs to be changed b/c only deal 3 passengers are being put into passengers table
 							if ($this->Passenger->saveAll($purchase)) {
 								$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
 							} else {
