@@ -111,6 +111,6 @@
 
 <div id="layout_right" class="grid_8">
 	
-	<?php echo $this->element('book_reservation'); ?>
+	<?php echo $this->element('approve_deal'); ?>
 
 </div><!-- #layout_right -->

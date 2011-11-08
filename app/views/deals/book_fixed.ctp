@@ -1,6 +1,11 @@
 <div id="layout_left" class="grid_22">
 	<h2 class="page_title">Reservations Fixed Page</h2>
 	<?php 
+		if(!empty($errors)) {
+			foreach($errors as $error) {
+				echo $error . '<br />';
+			}
+		}
 		echo '<div class="deal_summary clearfix">';
 		echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
 		echo '<p class="grid_14 title">'.$deal['Deal']['title'].'</p>';  

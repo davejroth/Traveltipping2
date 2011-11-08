@@ -2,6 +2,11 @@
 <?php echo $this->element('merchant_menu'); ?>
 	
 <?php
+if(empty($deals)) {
+	echo "<p class='sub_heading'>You have no deals yet!</p>";
+	echo "<p>Your dedicated Account Manager will contact you shortly to help develop your new deal.</p>";
+}
+else {
 $i = 0;
 foreach ($deals as $deal):
 $status = '';
@@ -74,7 +79,7 @@ else {
 	</div>
 </div>
 
-<?php endforeach; ?>
+<?php endforeach; }//end If(empty) - Else statement ?>
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">

@@ -197,6 +197,6 @@ $.getJSON('/users/check_session', function(json) {
 
 <div id="layout_right" class="grid_8">
 	
-	<?php echo $this->element('book_reservation'); ?>
+	<?php echo $this->element('purchase_deal'); ?>
 
 </div><!-- #layout_right -->

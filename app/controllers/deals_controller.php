@@ -266,8 +266,8 @@ class DealsController extends AppController {
 	function book($id = null) {
 		$deal = $this->Deal->read(null, $id);
 		$reservationType = $this->Deal->GetReservationType($id);
-		
-		if(!empty($this->data)){
+		$this->Deal->DealPurchase->set($this->data);
+		if(!empty($this->data) && $this->Deal->DealPurchase->validates()){
 			
 			if($reservationType == Configure::read('ReservationType.Fixed')){
 			
@@ -313,6 +313,7 @@ class DealsController extends AppController {
 			
 			}
 		}
+			$this->set('errors', $this->Deal->DealPurchase->validationErrors);
 			//Load Availability and Purchase arrays
 			//This could probably be refactored to just load a DealsRemaining array?
 			$this->loadModel('DealAvailability');

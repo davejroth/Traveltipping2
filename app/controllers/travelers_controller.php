@@ -52,7 +52,7 @@ class TravelersController extends AppController {
 				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
 				$this->Session->write('User.new', 1);
-				$this->redirect(array('controller' => 'travelers', 'action' => 'my_deals', 'upcoming'));
+				$this->redirect(array('controller' => 'deals', 'action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user detail could not be saved. Please, try again.', true));
 			}
