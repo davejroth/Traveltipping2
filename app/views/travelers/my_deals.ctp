@@ -30,16 +30,19 @@ foreach ($purchases as $purchase):
 		?>
 		</div>
 		<div class="traveler_destination_details">
-			<h3 class="listing_desination_title"><?php echo $purchase['Deal']['destination'] ?></h3>
+			<h3 class="listing_desination_title"><?php echo $purchase['Deal']['destination'] ?><?php echo $this->Html->link('View Page &raquo;', array('controller' => 'deals', 'action' => 'view', $purchase['Deal']['id']),array('escape' => false)); ?></h3>
 			<div>
 				<p><?php echo __('Reservation Details: ');?></p>
 				<dl class="clearfix grid_8">
 				<?php echo __('<dt>Departure Date:</dt>');
 					echo '<dd>'.date_format(date_create($purchase['DealPurchase']['start_date']), ' F j, Y').'</dd>';
-					?>
-				<?php 
+
 					echo __('<dt>Return Date:</dt>');
 					echo '<dd>'.date_format(date_create($purchase['DealPurchase']['end_date']), ' F j, Y').'</dd>'; 
+					echo __('<dt>Price Paid:</dt>');
+					echo '<dd>$'.$purchase['DealPurchase']['purchase_amount'].'</dd>'; 
+					//echo __('<dt>Purchase Date:</dt>');
+					//echo '<dd>'.date_format(date_create($purchase['DealPurchase']['created']), ' F j, Y').'</dd>'; 
 					?>
 				</dl>
 			</div>
@@ -56,13 +59,7 @@ foreach ($purchases as $purchase):
 					?>
 				</dl>
 			</div>
-			<ul>
-				<?php
-				echo '<li>'.$this->Html->link('View Page', array('controller' => 'deals', 'action' => 'view', $purchase['Deal']['id'])).'</li>';
-				echo __('<li><span>Price Paid:</span> ') .'$'. $purchase['DealPurchase']['purchase_amount'].'</li>';
-				echo __('<li><span>Purchase Date:</span> ').date_format(date_create($purchase['DealPurchase']['created']), ' F j, Y').'</li>'; 
-				?>
-			</ul>
+
 			
 		</div>
 

@@ -1112,7 +1112,8 @@ display:inline;
 }
 
 .traveler_purchase img{
-	padding:3px 0 5px 0;	
+	padding:3px 0 5px 0;
+	margin-top: 7px;	
 }
 
 .traveler_purchase p{
@@ -1161,6 +1162,10 @@ display:inline;
 	float:left;	
 }
 
+.traveler_purchase .deal_img_section a{
+	text-decoration:none;	
+}
+
 .traveler_destination_details{
 	width:490px;
 	display: inline;
@@ -1170,9 +1175,22 @@ display:inline;
 	position: relative;	
 }
 .traveler_destination_details div{
-	float:left;
-	width:245px;	
-	display:inline;
+    display: inline;
+    float: left;
+    width: 240px;
+}
+
+.traveler_destination_details div:first-of-type{
+	margin-left:5px;	
+}
+
+.traveler_destination_details .listing_desination_title a{
+    color: #FFFFFF;
+    float: right;
+    font-size: 11px;
+    line-height: 25px;
+    margin-right: 10px;
+    text-decoration: none;
 }
 
 span.pernight {
