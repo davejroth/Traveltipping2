@@ -3,9 +3,7 @@
 	<h2 class="page_title">Reservations Variable Page</h2>
 	<?php 
 		if(!empty($errors)) {
-			foreach($errors as $error) {
-				echo $error . '<br />';
-			}
+				echo $errors[array_rand($errors)] . '<br />'; //Both error messages are the same so this picks one.
 		}
 		echo '<div class="deal_summary clearfix">';
 		echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
