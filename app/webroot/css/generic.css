@@ -813,8 +813,6 @@ label{
 	min-width:37px;
 }
 
-
-
 .calendar td a{
     color: #444444;
     display: block;
@@ -826,32 +824,40 @@ label{
     width: 35px;
 }
 
-.calendar  td.outside_range {
-    color: #444444;
-    height: 45px;
-    padding: 5px 5px 0 0;
-    text-align: right;
-    background: none repeat scroll 0 0 #EEEEEE;
-    width: 35px;
-    border: 3px solid #FFFFFF;
-    text-align: right;
-    vertical-align: top;
+.calendar  .outside_range {
+    background: none repeat scroll 0 0 #DEDEDE;
 }
 
-.calendar  td.unavailable {
-    color: #444444;
-    height: 45px;
-    padding: 5px 5px 0 0;
-    text-align: right;
-    text-decoration:line-through;
-    width: 35px;
-    border: 3px solid #FFFFFF;
-    text-align: right;
-    vertical-align: top;
+.calendar  .unavailable {
+
 }
-.calendar td.blank {
-height:45px;
+
+
+.calendar td.checkInDate,
+.calendar td.checkOutDate{
+	background:#ffbe32;
 }
+
+.calendar td.dateSelection{
+	background:#fde9be;
+}
+
+
+.calendar td.calendarHover{
+	background:#ffbe32;
+}
+
+.calendar td.blank a:hover,
+.calendar td.outside_range a:hover,
+.calendar .blank:hover,
+.calendar .outside_range:hover {
+	cursor:default;	
+}
+
+.calendar td.blank{
+	background: none repeat scroll 0 0 #E7E7E7;
+}
+
 .calendar td a span.bookings{
 	display:block;
 }
@@ -911,23 +917,7 @@ height:45px;
   width:100px;	
 }
 
-.calendar td.checkInDate,
-.calendar td.checkOutDate{
-	background:#ffbe32;
-}
 
-.calendar td.dateSelection{
-	background:#fde9be;
-}
-
-
-.calendar td.calendarHover{
-	background:#ffbe32;
-}
-
-.calendar td.blank{
-	    background: none repeat scroll 0 0 #DDDDDD;
-}
 
 .reservations_bookings{
 	color: green;

@@ -15,7 +15,9 @@
 		echo $this->Html->css('/css/ui-lightness/jquery-ui');
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('helpers');
+		echo $this->Html->script('date');
 		echo $this->Html->script('site');
+		echo $this->Html->script('reservation-calendar');
 		echo $this->Html->script('jquery-ui');
 		//$this->AssetCompress->script('');
 		echo $this->AssetCompress->includeAssets('false');

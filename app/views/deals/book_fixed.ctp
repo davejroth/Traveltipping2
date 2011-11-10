@@ -131,8 +131,9 @@ function addCheckoutDate(checkOutDate){
 		return false;	
 	});
 	
-	
-  $('.calendar td[class!="blank"] a').toggle(
+
+ 
+  $('.calendar td[class="available"] a').toggle(
 	  	function(){
 	  		
 	  		if($('.checkInDate').length == 0){

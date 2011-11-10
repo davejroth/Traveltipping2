@@ -28,6 +28,7 @@ class CalendarHelper extends Helper {
 		
 		$month_padded = str_pad($month,2,"0",STR_PAD_LEFT);
 		
+		
 		$calendar = '<div id="calendar_'.$year.'_'.$month_padded.'" class="month_wrap">';
 		$calendar .= '<div class="calendar_heading clearfix"> <h3>'.$month_array[$month].' '.$year.'</h3>';
 		$calendar .= '</div>'; 
@@ -52,18 +53,19 @@ class CalendarHelper extends Helper {
 				$calendar .= '</tr><tr>';
 			}
 			if(($day <= 1 && $firstday != $days_array[$i]) || strftime("%d", $lastdate) < $day){
-				$calendar .= '<td class="blank">&nbsp;</td>';
+				$calendar .= '<td class="blank"><a href="#">&nbsp;</a></td>';
 			}
 			else{
 				if($currentTime < $validTime || $currentTime >= $expireTime) {
-					$calendar .= '<td class="outside_range">'.$day.'</a></td>';
+					$calendar .= '<td class="outside_range"><a href="#">'.$day.'</a></td>';
 				}
 				elseif($datesFull[date('Y-m-d',$currentTime)] == true){
-					$calendar .= '<td class="unavailable">'.$day.'</a></td>';
+					$calendar .= '<td class="unavailable"><a href="#">'.$day.'</a></td>';
 				}
 				else
 				{
-					$calendar .= '<td class="available"><a href="#">'.$day.'</a></td>';
+					$day_padded = str_pad($day,2,"0",STR_PAD_LEFT);
+					$calendar .= '<td id="'.$year.'-'.$month_padded.'-'.$day_padded.'" class="available"><a href="#">'.$day.'</a></td>';
 				}
 
 				$day++;
