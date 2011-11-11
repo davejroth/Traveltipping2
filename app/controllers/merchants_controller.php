@@ -50,7 +50,7 @@ class MerchantsController extends AppController {
 		if (!empty($this->data)) {
 			//Set ids so that they are not loaded on the page
 			$this->data['Merchant']['id'] = $this->Session->read('Merchant.id');
-			$this->data['User']['id'] = $this->Session->read('User.id');
+			$this->data['User']['id'] = $this->Session->read('Auth.User.id');
 			$this->data['User']['role_id'] = $this->Session->read('Auth.User.role_id');
 			if ($this->Merchant->saveAll($this->data)) {
 				$this->Session->setFlash(__('Your profile has been saved.', true));
@@ -220,8 +220,7 @@ class MerchantsController extends AppController {
 				$this->sendMerchantMail($this->Merchant->id, "newMerchant");
 				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
-				$this->Session->write('User.new', 1); //Used for redirecting on first login
-				$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
+				$this->requestAction('/users/login');
 			} else {
 				$this->Session->setFlash(__('The merchant detail could not be saved. Please, try again.', true));
 			}

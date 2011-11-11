@@ -77,14 +77,16 @@ class UsersController extends AppController {
 	}
 	
 	function editPassword() {
-		$id = $this->Session->read('User.id');
+		
+		$id = $this->Session->read('Auth.User.id');
 		if (!$id && empty($this->data)) {  //This if statement seems like it should be removed.
 			$this->Session->setFlash(__('Invalid user profile', true));
 			$this->redirect(array('action' => 'edit'));
 		}
 		if (!empty($this->data)) {
-			$this->data['User']['id'] = $this->Session->read('User.id');
+			$this->data['User']['id'] = $this->Session->read('Auth.User.id');
 			$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
+			$this->data['User']['role_id'] = $this->Session->read('Auth.User.role_id');
 			if ($this->User->save($this->data)) {
 				$this->Session->setFlash(__('Your password has been saved.', true));
 				//If merchant, redirect to merchant profile.  If traveler, redirect to traveler)
@@ -152,7 +154,9 @@ class UsersController extends AppController {
 	
 	function newPassword($confirmation) {
 		if(!empty($this->data)) {
+			$thisUser = $this->User->findById($this->data['User']['id']);
 			$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
+			$this->data['User']['role_id'] = $thisUser['User']['role_id'];
 			if($this->User->save($this->data)) {
 				$this->Session->setFlash(__('Your password has been reset.', true));
 				$this->redirect(array('controller' => 'users', 'action' => 'login'));

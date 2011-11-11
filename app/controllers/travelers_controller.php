@@ -25,7 +25,7 @@ class TravelersController extends AppController {
 		}
 		if (!empty($this->data)) {
 			$this->data['Traveler']['id'] = $this->Session->read('Traveler.id');
-			$this->data['User']['id'] = $this->Session->read('User.id');
+			$this->data['User']['id'] = $this->Session->read('Auth.User.id');
 			$this->data['User']['role_id'] = $this->Session->read('Auth.User.role_id');
 			//debug($this->data);
 			if ($this->Traveler->saveAll($this->data, array('validate' => 'first'))) {
@@ -51,8 +51,7 @@ class TravelersController extends AppController {
 				$this->sendTravelerMail($this->Traveler->id, 'newTraveler');
 				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
-				$this->Session->write('User.new', 1);
-				$this->redirect(array('controller' => 'deals', 'action' => 'index'));
+				$this->requestAction('/users/login');
 			} else {
 				$this->Session->setFlash(__('The user detail could not be saved. Please, try again.', true));
 			}
