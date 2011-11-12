@@ -118,6 +118,25 @@ class DealPurchase extends AppModel {
 		}
 		return $datesFull;
 	}
+	
+	function numPurchases($dealId) {
+		return $this->find('count', array('conditions' => array('DealPurchase.deal_id' => $dealId)));
+	
+	}
+	//After each deal purchase, check if the deal purchase limit has been reached and close the deal if necessary.
+	function afterSave($created) {
+		App::import('model','Deal');
+		$deal = new Deal();
+		$thisDeal = $deal->findById($this->data['DealPurchase']['deal_id']);
+		if($thisDeal['Deal']['is_timed'] == 0) {
+			$purchaseCount = $this->numPurchases($thisDeal['Deal']['id']);
+			if($purchaseCount >= $thisDeal['Deal']['max_purchases']) {
+				$thisDeal['Deal']['deal_status_id'] = Configure :: Read('Deal.Status_Closed');
+				$deal->save($thisDeal);
+			}
+		}
+	
+	}
 		
 }
 ?>

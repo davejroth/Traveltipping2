@@ -38,23 +38,23 @@ class Transaction extends AppModel {
 		),
 	);
 
-	function buildBrainTreeTransaction($data) {
+	function buildBrainTreeTransaction($data, $traveler) {
 		return array(
-					'amount' => $this->Session->read('Trip.cost'), 
+					'amount' => $data['Transaction']['cost'], 
 					//'merchantAccountId' => 'a_merchant_account_id', This needs to be input
 					'creditCard' => array(
 						'number' => $data['Transaction']['cc_number'],
-						'expirationDate' => $expirationDate,
+						'expirationDate' => $data['Transaction']['expiration_month'] . '/' . $data['Transaction']['expiration_year'],
 						'cardholderName' => $data['Transaction']['name'],
 						),
 					'customer' => array(
 						'firstName' => $traveler['Traveler']['first_name'],
 						'lastName' => $traveler['Traveler']['last_name'],
 						'email' => $traveler['User']['email'],
-						'id' => $travelerID
+						'id' => $traveler['Traveler']['id'],
 					  ),
 					  'billing' => array(
-						'firstName' => $this->data['Transaction']['name'],
+						'firstName' => $data['Transaction']['name'],
 						//'lastName' => 'Smith',
 						'streetAddress' => $data['Transaction']['address'],
 						'locality' => $data['Transaction']['city'],

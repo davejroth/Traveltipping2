@@ -56,7 +56,11 @@ class UsersController extends AppController {
 				$thisTraveler = $traveler->find('first',
 					array('conditions' => array('Traveler.user_id' => $user['id'])));
 				$this->Session->write('Traveler.id', $thisTraveler['Traveler']['id']);
-				if($redirect == '/') {
+				if($this->Session->read('Traveler.ajax_login') == 1) {
+					$this->Session->write('Traveler.ajax_login', 0);
+					$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
+				}
+				elseif($redirect == '/') {
 					$this->redirect(array('controller' => 'travelers', 'action' => 'my_deals', 'upcoming'));
 				}
 			}

@@ -81,7 +81,11 @@ class TravelersController extends AppController {
 
 	if(!empty($this->data)) {
 		if($this->Auth->login()) { //This is where the actual login happens.
-			$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
+			$this->Session->write('Traveler.ajax_login', 1);
+			$this->requestAction('/users/login');
+			/*$thisTraveler = $this->Traveler->findById($this->Session->read('Auth.User.id'));
+			$this->Session->write('Traveler.id', $thisTraveler['Traveler']['id']);
+			$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in')); */
 		}
 		else {
 			$this->Session->setFlash(__('Invalid credentials. Please try again.', true));

@@ -349,14 +349,15 @@ class DealsController extends AppController {
 			}
 			else {//They are logged in.  
 				//Validate the CC and make the purchase.
+				//debug($this->Deal->DealPurchase->find('count', array('conditions' => array('DealPurchase.deal_id' => $id))));
 				$this->loadModel('Traveler');
 				$traveler = $this->Traveler->read(null, $travelerID);
 				$this->loadModel('Transaction');
+				$this->data['Transaction']['cost'] = $this->Session->read('Trip.cost');
 				$this->Transaction->set($this->data);
-				$expirationDate = $this->data['Transaction']['expiration_month'] . '/' . $this->data['Transaction']['expiration_year']; 
 				//Billing info was entered.  Now process the credit card
 				if($this->Transaction->validates()) { //If CC info entered correctly
-					$result = Braintree_Transaction::sale($this->Transaction->buildBrainTreeTransaction($this->data));
+					$result = Braintree_Transaction::sale($this->Transaction->buildBrainTreeTransaction($this->data, $traveler));
 					if ($result->success) { //Braintree validation Success
 						$purchase['DealPurchase']['deal_id'] = $id;
 						$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
