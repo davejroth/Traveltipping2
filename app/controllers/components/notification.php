@@ -97,6 +97,7 @@ class NotificationComponent extends Object {
 			'dealInitiated' => 'Deal has been initiated',
 			'dealWaiting' => 'Deal Waiting for Merchant Approval',
 			'newMerchant' => 'A new merchant has signed up',
+			'dealsChanged' => 'Nightly summary of deal changes'
 		);
 		
 		/* SMTP Options */
@@ -109,7 +110,7 @@ class NotificationComponent extends Object {
     );
 	$this->Email->delivery = 'smtp';
     $this->Email->to = 'account.manager@traveltipping.com';
-    $this->Email->subject = $amEmailSubjects[$template];;
+    $this->Email->subject = $amEmailSubjects[$template];
     $this->Email->replyTo = 'donotreply@traveltipping.com';
     $this->Email->from = 'TravelTipping <donotreply@traveltipping.com>';
 	$this->Email->template = 'accountmanagers//' . $template; // note no '.ctp'
@@ -141,7 +142,7 @@ class NotificationComponent extends Object {
     $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
 	}
- 
+	
  
  /*
    	function testNewMerchantMail($id) {

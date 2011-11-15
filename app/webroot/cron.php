@@ -49,24 +49,61 @@
 	  /**
 	      Cron custom code start here
 	  */
-	  	App::import('model','Deal');
+	  	App::import('Model','Deal');
 		$deal = new Deal();
+		//$deal->sendCronMail("davejroth@gmail.com", "Test");
+		App::import('Component', 'Notification');
+		$notification = new NotificationComponent();
+		App::import('Component', 'Email');
+		App::import('Core', 'Controller');
+		$controller = new Controller();
+		//$email =& new EmailComponent(null);
+		//$email->initialize($controller);
+		
+		$notification->Email = new EmailComponent(); 
+		$notification->Email->initialize($controller);
+			
+		//Add - Summary email with all changes
+		//Add - Check to make sure deals that are closed because the quantity has been reached are not re-opened.
 		
 		//Close any live deals that are expired
 		//$liveDeals = $deal->find('all', array('conditions' => array('Deal.deal_status_id' => Configure::Read('Deal.Status_Listed'))))
 		
 		$today = date('Y-m-d');
 		$liveDeals = $deal->find('all', array('conditions' => array('Deal.deal_live <=' => $today, 'Deal.deal_close >' => $today)));
-		
+		$newLiveDeals = array();
 		//Check for all deals that should be live and make sure they are
 		foreach ($liveDeals as $thisDeal) {
 			if($thisDeal['Deal']['deal_status_id'] != Configure::Read('Deal.Status_Listed')) {
 				$thisDeal['Deal']['deal_status_id'] = Configure::Read('Deal.Status_Listed');
 				$deal->save($thisDeal);
+				array_push($newLiveDeals, $thisDeal);
 			}
-			//echo $thisDeal['Deal']['id'].' '.$thisDeal['Deal']['name'];
-			//echo '<br/>';
 		}
+		$controller->set('newLiveDeals', $newLiveDeals);
+		$notification->sendHtmlAMMail('dealsChanged'); 	
+		
+		
+	/*	App::import('Component', 'Email');
+		$email = new Email();
+		$email->smtpOptions = array(
+			'port'=>'25', 
+			'timeout'=>'30',
+			'host' => '67.210.113.84',
+			'username'=>'registration@traveltipping.com',
+			'password'=>'43Temp68',
+		);
+		$email->delivery = 'smtp';
+		//$email->to = 'account.manager@traveltipping.com';
+		$email->to = 'davejroth@gmail.com';
+		$email->subject = 'Test';
+		$email->replyTo = 'donotreply@traveltipping.com';
+		$email->from = 'TravelTipping <donotreply@traveltipping.com>';
+		$email->template = 'accountmanagers//dealApproved'; // note no '.ctp'
+		$email->layout = 'no_footer';
+		$email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
+		$email->send(); */
+
 
 	  //die( 0 );
 
