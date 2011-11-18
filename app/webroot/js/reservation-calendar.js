@@ -63,10 +63,17 @@ $('.clear_dates').click(function(){
 
 function addReservation(){
 	if($('.checkInDate').length == 0){
+	
 		checkInDateObj = convertDate($(this).attr('id'))
 		checkOutDateObj = convertDate($(this).attr('id'))
 		$(this).addClass('checkInDate');
-		$.getJSON(window.location.pathname, function(data) {
+		//alert(window.location.pathname);
+		$.ajaxSetup({ cache: false });
+		$.ajax({
+				url: window.location.pathname, 
+				dataType: 'json',
+				success: function(data) {
+				alert('json')
 			//alert(data.Deal.max_nights);
 			//checkOutDateObj = checkInDateObj.add({ days: data.Deal.max_nights}).toString("yyyy-MM-dd");
 			checkOutDateObj = checkOutDateObj.add({ days: data.Deal.max_nights});
@@ -89,7 +96,8 @@ function addReservation(){
   			//alert(daySelection);
   			$('#'+daySelection).addClass('dateSelection');
   		}
-		});
+  		$.ajaxSetup({ cache: true });
+		}});
 	}
 	else{
 		return false;
