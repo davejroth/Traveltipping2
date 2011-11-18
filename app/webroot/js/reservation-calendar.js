@@ -73,7 +73,7 @@ function addReservation(){
 				url: window.location.pathname, 
 				dataType: 'json',
 				success: function(data) {
-				alert('json')
+				//alert('json')
 			//alert(data.Deal.max_nights);
 			//checkOutDateObj = checkInDateObj.add({ days: data.Deal.max_nights}).toString("yyyy-MM-dd");
 			checkOutDateObj = checkOutDateObj.add({ days: data.Deal.max_nights});
