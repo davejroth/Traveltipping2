@@ -255,7 +255,17 @@ class DealsController extends AppController {
 		$this->Session->setFlash(__('Deal was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
-	
+	function getDealInfo($id){
+		$dealInfo = $this->Deal->find('first',array(
+		'condition' => array('Deal.id' => $id),
+		'recursive' => 0,
+		'fields' => array('Deal.max_nights','Deal.id','Deal.discounted_price'),
+		'limit' => 1
+		));
+		//debug(json_encode($dealInfo));
+		//exit;
+		$this->set('dealInfo',json_encode($dealInfo));
+	}
 /*
  * Book
  * First page of deal purchase process.  Users book their dates on this page.
@@ -264,6 +274,10 @@ class DealsController extends AppController {
  * and cost and passes to the purchase controller.
  */ 
 	function book($id = null) {
+		
+		if($this->RequestHandler->isAjax()){
+			$this->redirect(array('controller' => 'deals', 'action'=>'getDealInfo',$id));
+		}
 		$deal = $this->Deal->read(null, $id);
 		$reservationType = $this->Deal->GetReservationType($id);
 		$this->Deal->DealPurchase->set($this->data);
@@ -320,12 +334,8 @@ class DealsController extends AppController {
 			$availableDates = $this->DealAvailability->getAvailableDates($id);
 			$this->loadModel('DealPurchase');
 			$reservedDates = $this->DealPurchase->getReservations($id);
-			//Temp function for loading dates
-			$dates = array();
-			for ($i = 1; $i<=31; $i++) {
-				$dates['2011-6-'. $i] = '2011-6-' . $i;
-			} 
-			$this->set(compact('dates', 'deal'));
+
+			$this->set(compact('deal'));
 			if($reservationType == Configure::read('ReservationType.Fixed')){
 			  	$this->render('book_fixed');
 			}

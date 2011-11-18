@@ -28,7 +28,8 @@ class AppController extends Controller {
         'newPassword',
         'loginredirect',
         'check_session',
-        'get_header'
+        'get_header',
+        'getDealInfo'
         ));
 		$this->Auth->fields = array(
 			'username' => 'email',
