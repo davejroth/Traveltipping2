@@ -29,7 +29,7 @@ class AppController extends Controller {
         'loginredirect',
         'check_session',
         'get_header',
-        'getDealInfo'
+        'getDealInfo',
 		'subscribe',
         ));
 		$this->Auth->fields = array(
