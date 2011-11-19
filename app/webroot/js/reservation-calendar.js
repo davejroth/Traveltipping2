@@ -190,7 +190,7 @@ function cancelReservation(){
 			dataType: 'json',
 			success: function(data) {
 				if(data.Deal.reservation_type_id == 1){
-					$('checkInDate').removeClass('checkInDate');
+					$('.checkInDate').removeClass('checkInDate');
 					$('.checkOutDate').removeClass('checkOutDate');
 					$('.dateSelection').removeClass('dateSelection');
 					$('.check_in').text('');
