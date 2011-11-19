@@ -33,6 +33,25 @@ function getDateText(dateObj){
 }
 
 /**
+* Calculate days between 2 dates
+*/
+function days_between(date1, date2) {
+
+    // The number of milliseconds in one day
+    var ONE_DAY = 1000 * 60 * 60 * 24
+
+    // Convert both dates to milliseconds
+    var date1_ms = date1.getTime()
+    var date2_ms = date2.getTime()
+
+    // Calculate the difference in milliseconds
+    var difference_ms = Math.abs(date1_ms - date2_ms)
+    
+    // Convert back to days and return
+    return Math.floor(difference_ms/ONE_DAY)
+}
+
+/**
 * Formatted date to date object
 */
 function convertDate(myDate){
@@ -63,58 +82,145 @@ $('.clear_dates').click(function(){
 
 function addReservation(){
 	if($('.checkInDate').length == 0){
-	
 		checkInDateObj = convertDate($(this).attr('id'))
 		checkOutDateObj = convertDate($(this).attr('id'))
+		//checkOutDateObj2 = $('').attr('id');
 		$(this).addClass('checkInDate');
-		//alert(window.location.pathname);
 		$.ajaxSetup({ cache: false });
 		$.ajax({
-				url: window.location.pathname, 
-				dataType: 'json',
-				success: function(data) {
-				//alert('json')
-			//alert(data.Deal.max_nights);
-			//checkOutDateObj = checkInDateObj.add({ days: data.Deal.max_nights}).toString("yyyy-MM-dd");
-			checkOutDateObj = checkOutDateObj.add({ days: data.Deal.max_nights});
-			total = data.Deal.discounted_price * data.Deal.max_nights;
-			checkInDate = checkInDateObj.toString("yyyy-MM-dd")
-			checkOutDate = checkOutDateObj.toString("yyyy-MM-dd")
-			$('.check_in').text(getDateText(checkInDateObj));
-			$('.check_out').text(getDateText(checkOutDateObj));
-			$('.num_of_nights').text(data.Deal.max_nights);
-			$('.summary_total_value').text('$'+total);
-			$('input[name="data[DealPurchase][start_date]"]').val(checkInDate);
-  		$('input[name="data[DealPurchase][end_date]"]').val(checkOutDate);
-  		$('#'+checkOutDate).addClass('checkOutDate');
-  		//alert(checkInDateObj);
-  		for(x = 1; x < data.Deal.max_nights; x++ ){
-  			temp = null;
-  			temp = checkInDateObj;
-  			temp.add({ days: 1});
-  			daySelection = temp.toString("yyyy-MM-dd");
-  			//alert(daySelection);
-  			$('#'+daySelection).addClass('dateSelection');
-  		}
-  		$.ajaxSetup({ cache: true });
-		}});
+			url: window.location.pathname, 
+			dataType: 'json',
+			success: function(data) {
+				if(data.Deal.reservation_type_id == 1){
+					checkOutDateObj = checkOutDateObj.add({ days: data.Deal.max_nights});
+					total = data.Deal.discounted_price * data.Deal.max_nights;
+					checkInDate = checkInDateObj.toString("yyyy-MM-dd")
+					checkOutDate = checkOutDateObj.toString("yyyy-MM-dd")
+					$('.check_in').text(getDateText(checkInDateObj));
+					$('.check_out').text(getDateText(checkOutDateObj));
+					$('.num_of_nights').text(data.Deal.max_nights);
+					$('.summary_total_value').text('$'+total);
+					$('input[name="data[DealPurchase][start_date]"]').val(checkInDate);
+		  		$('input[name="data[DealPurchase][end_date]"]').val(checkOutDate);
+		  		$('#'+checkOutDate).addClass('checkOutDate');
+		  		
+		  		for(x = 1; x < data.Deal.max_nights; x++ ){
+		  			temp = null;
+		  			temp = checkInDateObj;
+		  			temp.add({ days: 1});
+		  			daySelection = temp.toString("yyyy-MM-dd");
+		  			$('#'+daySelection).addClass('dateSelection');
+		  		}
+	  		}
+	  		else if(data.Deal.reservation_type_id == 2){
+	  			checkInDate = checkInDateObj.toString("yyyy-MM-dd")
+	  			$('.check_in').text(getDateText(checkInDateObj));
+	  			$('input[name="data[DealPurchase][start_date]"]').val(checkInDate);
+	  			
+	  			if($('.checkOutDate').length != 0){
+	  				checkOutDateObj = convertDate($('.checkOutDate').attr('id'))
+	  				checkInDate = checkInDateObj.toString("yyyy-MM-dd")
+	  				numOfNights = days_between(checkInDateObj, checkOutDateObj)
+	  				total = data.Deal.discounted_price * numOfNights;
+	  				$('.check_in').text(getDateText(checkInDateObj));
+	  				$('input[name="data[DealPurchase][start_date]"]').val(checkInDate);
+	  				$('.num_of_nights').text(numOfNights);
+						$('.summary_total_value').text('$'+total);
+	  				
+						for(x = 1; x < numOfNights; x++ ){
+							temp = null;
+							temp = checkInDateObj;
+							temp.add({ days: 1});
+							daySelection = temp.toString("yyyy-MM-dd");
+							$('#'+daySelection).addClass('dateSelection');
+						}
+	  			}
+	  			
+	  		}
+	  		$.ajaxSetup({ cache: true });
+			}
+		});
+	}
+	else if($('.checkOutDate').length == 0){
+		checkInDateObj = convertDate($('.checkInDate').attr('id'))
+		checkOutDateObj = convertDate($(this).attr('id'))
+		//alert($(this).attr('id'));
+		$(this).addClass('checkOutDate');
+		$.ajaxSetup({ cache: false });
+		$.ajax({
+			url: window.location.pathname, 
+			dataType: 'json',
+			success: function(data) {
+				numOfNights = days_between(checkInDateObj, checkOutDateObj)
+				//checkOutDateObj = checkOutDateObj.add({ days: data.Deal.max_nights});
+				total = data.Deal.discounted_price * numOfNights;
+				checkOutDate = checkOutDateObj.toString("yyyy-MM-dd")
+				$('.check_out').text(getDateText(checkOutDateObj));
+				$('.num_of_nights').text(numOfNights);
+				$('.summary_total_value').text('$'+total);
+	  		$('input[name="data[DealPurchase][end_date]"]').val(checkOutDate);
+	  		
+	  		for(x = 1; x < numOfNights; x++ ){
+	  			temp = null;
+	  			temp = checkInDateObj;
+	  			temp.add({ days: 1});
+	  			daySelection = temp.toString("yyyy-MM-dd");
+	  			$('#'+daySelection).addClass('dateSelection');
+	  		}
+	  		$.ajaxSetup({ cache: true });
+			}
+		});
 	}
 	else{
 		return false;
 	}
 }
 
+function addVariableReservation(){
+	
+}
+
 function cancelReservation(){
 	//alert('cancel');
-	$(this).removeClass('checkInDate');
-	$('.checkOutDate').removeClass('checkOutDate');
-	$('.dateSelection').removeClass('dateSelection');
-	$('.check_in').text('');
-	$('.check_out').text('');
-	$('.num_of_nights').text('');
-	$('.summary_total_value').text('');
-	$('input[name="data[DealPurchase][start_date]"]').val('');
-  $('input[name="data[DealPurchase][end_date]"]').val('');
+	checkInClick = $(this).hasClass('checkInDate');
+	checkOutClick = $(this).hasClass('checkOutDate');
+	$.ajaxSetup({ cache: false });
+		$.ajax({
+			url: window.location.pathname, 
+			dataType: 'json',
+			success: function(data) {
+				if(data.Deal.reservation_type_id == 1){
+					$(this).removeClass('checkInDate');
+					$('.checkOutDate').removeClass('checkOutDate');
+					$('.dateSelection').removeClass('dateSelection');
+					$('.check_in').text('');
+					$('.check_out').text('');
+					$('.num_of_nights').text('');
+					$('.summary_total_value').text('');
+					$('input[name="data[DealPurchase][start_date]"]').val('');
+					$('input[name="data[DealPurchase][end_date]"]').val('');
+	  		}
+	  		else if(data.Deal.reservation_type_id == 2){
+	  			if(checkInClick){
+	  				$('.checkInDate').removeClass('checkInDate');
+	  				$('.dateSelection').removeClass('dateSelection');
+	  				$('.check_in').text('');
+	  				$('.num_of_nights').text('');
+	  				$('.summary_total_value').text('');
+	  				$('input[name="data[DealPurchase][start_date]"]').val('');
+	  			}
+	  			else if(checkOutClick){
+	  				$('.checkOutDate').removeClass('checkOutDate');
+	  				$('.dateSelection').removeClass('dateSelection');
+	  				$('.check_out').text('');
+	  				$('.num_of_nights').text('');
+	  				$('.summary_total_value').text('');
+	  				$('input[name="data[DealPurchase][end_date]"]').val('');
+	  			}
+	  		}
+	  		$.ajaxSetup({ cache: true });
+			}
+		});
 }
 
 $('.calendar td[class="available"]').toggle(

@@ -259,7 +259,7 @@ class DealsController extends AppController {
 		$dealInfo = $this->Deal->find('first',array(
 		'condition' => array('Deal.id' => $id),
 		'recursive' => 0,
-		'fields' => array('Deal.max_nights','Deal.id','Deal.discounted_price'),
+		'fields' => array('Deal.max_nights','Deal.id','Deal.discounted_price','Deal.reservation_type_id'),
 		'limit' => 1
 		));
 		//debug(json_encode($dealInfo));
