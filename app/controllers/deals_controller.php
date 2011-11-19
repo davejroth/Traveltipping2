@@ -439,27 +439,11 @@ function confirmation($id = null) {
 	
 	$this->set(compact('deal', 'reservation'));
 }
-/**
- * This function is called when merchants approve the deal for listing.
- This was moved to the approve function in the merchant controller
-
-function approve_deal($id = null) {
-	$deal = $this->Deal->read(null, $id);
-	//$deal['Deal']['deal_status_id'] = Configure::read('Deal.Status_Approved');
-	if ($this->Deal->save($deal)) {
-		$this->sendDealMail($this->Deal->id, $thisVenue['Merchant']['id'], "dealRelease");
-		$this->Session->setFlash(__('The deal has been saved', true));
-		$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
-	} else {
-		$this->Session->setFlash(__('The deal could not be saved. Please, try again.', true));
-	}
-}
-*/	
+	
 function deal_details($id = null) {
 	$this->Deal->recursive = 2;
 	$deal = $this->Deal->read(null, $id);
 	$regionString = '';
-	//debug($deal);
 	//Build list of regions linked to the deal.
 	foreach($deal['Region'] as $thisDeal) {
 		if($regionString == '')
@@ -499,12 +483,9 @@ function editAvailabilitiesCall($id = null, $date = null, $newCount = null) {
 		'DealAvailability.reservation_date' => $date,
 		'DealAvailability.deal_id' => $id
 	)));
-		
-	if (!empty($newCount)) {
+	if (!is_null($newCount)) {
 		$this->data['DealAvailability']['num_available'] = $newCount;
 		if ($this->Deal->DealAvailability->save($this->data)) {
-			//$this->Session->setFlash(__('The deal availability has been saved', true));
-			//$this->redirect(array('action' => 'index'));
 		} else {
 			$this->Session->setFlash(__('The deal availability could not be saved. Please, try again.', true));
 		}

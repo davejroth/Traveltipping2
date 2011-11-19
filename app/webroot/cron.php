@@ -70,7 +70,7 @@
 		//$liveDeals = $deal->find('all', array('conditions' => array('Deal.deal_status_id' => Configure::Read('Deal.Status_Listed'))))
 		
 		$today = date('Y-m-d');
-		$liveDeals = $deal->find('all', array('conditions' => array('Deal.deal_live <=' => $today, 'Deal.deal_close >' => $today)));
+		$liveDeals = $deal->find('all', array('conditions' => array('Deal.deal_live' => $today)));
 		$newLiveDeals = array();
 		//Check for all deals that should be live and make sure they are
 		foreach ($liveDeals as $thisDeal) {
@@ -83,28 +83,4 @@
 		$controller->set('newLiveDeals', $newLiveDeals);
 		$notification->sendHtmlAMMail('dealsChanged'); 	
 		
-		
-	/*	App::import('Component', 'Email');
-		$email = new Email();
-		$email->smtpOptions = array(
-			'port'=>'25', 
-			'timeout'=>'30',
-			'host' => '67.210.113.84',
-			'username'=>'registration@traveltipping.com',
-			'password'=>'43Temp68',
-		);
-		$email->delivery = 'smtp';
-		//$email->to = 'account.manager@traveltipping.com';
-		$email->to = 'davejroth@gmail.com';
-		$email->subject = 'Test';
-		$email->replyTo = 'donotreply@traveltipping.com';
-		$email->from = 'TravelTipping <donotreply@traveltipping.com>';
-		$email->template = 'accountmanagers//dealApproved'; // note no '.ctp'
-		$email->layout = 'no_footer';
-		$email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
-		$email->send(); */
-
-
-	  //die( 0 );
-
 	}

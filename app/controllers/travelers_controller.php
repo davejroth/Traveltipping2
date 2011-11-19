@@ -2,7 +2,7 @@
 class TravelersController extends AppController {
 
 	var $name = 'Travelers';
-	var $components = array('Email', 'Notification', 'Auth', 'RequestHandler');
+	var $components = array('Email', 'Notification', 'Auth', 'RequestHandler', 'Cookie');
 	var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript');
 
 /*
@@ -77,22 +77,26 @@ class TravelersController extends AppController {
 		$this->render('ajax_signup','ajax');
 	}
 	
-	function ajax_sign_in() {
+function ajax_sign_in() {
 
 	if(!empty($this->data)) {
-		if($this->Auth->login()) { //This is where the actual login happens.
-			$this->Session->write('Traveler.ajax_login', 1);
-			$this->requestAction('/users/login');
-			/*$thisTraveler = $this->Traveler->findById($this->Session->read('Auth.User.id'));
-			$this->Session->write('Traveler.id', $thisTraveler['Traveler']['id']);
-			$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in')); */
+		
+		$user = $this->Traveler->User->findByEmail($this->data['User']['email']);
+		if($user['User']['role_id'] == Configure::Read('Role.Traveler_ID')) {
+			if($this->Auth->login()) { //This is where the actual login happens.
+				$this->Session->write('Traveler.ajax_login', 1);
+				$this->requestAction('/users/login');
+			}
+			else {
+			$this->Session->setFlash(__('Invalid credentials. Please try again.', true));
+			}
 		}
 		else {
-			$this->Session->setFlash(__('Invalid credentials. Please try again.', true));
+			$this->Session->setFlash(__('Please log in with a traveler account in order to purchase.'));
 		}
 	}
 	$this->render('ajax_sign_in','ajax');
-	}
+}
 
 
 /**
@@ -120,6 +124,18 @@ class TravelersController extends AppController {
 		}
 		 
 	$this->set(compact('purchases', 'purchaseStatus'));
+	}
+	
+	function subscribe() {
+		if (!empty($this->data)) {
+			$this->loadModel('Subscriber');
+			$this->Subscriber->create();
+			if ($this->Subscriber->save($this->data)) {
+				    $this->Cookie->write('email',$this->data['Subscriber']['email']);
+					$this->render('/elements/subscriber_thank_you');
+			}
+			
+		}
 	}
 
 	

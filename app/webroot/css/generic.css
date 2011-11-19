@@ -988,3 +988,93 @@ label{
 		padding:10px 0;
 		border-bottom:1px solid #CCCCCC;
 }
+
+.travelers_title{
+    background:url('../img/travel_button_bg.png') repeat-x 0 0 transparent;
+	border:1px solid #f39004;
+    color: #FFFFFF;
+    font-family: arial;
+    font-size: 29px;
+    font-weight: bold;
+    padding: 0;
+    text-align: center;
+	  width: 226px;
+}
+
+
+
+.its_free{
+    /*background: url("../img/its_free.png") no-repeat scroll 0 0 transparent;*/
+    height: 100px;
+    left: -7px;
+    position: absolute;
+    top: -5px;
+    width: 133px;	
+}
+
+.travelers_title{
+	  display: inline;
+    left: -44px;
+    padding: 0 25px;
+    position: absolute;
+    text-align: left;
+    top: 20px;
+    width: auto;
+}
+
+.travelers_info{
+    color: #37A6C7;
+    font-weight: bold;
+    margin: 50px 0 0;
+    padding: 0 15px;
+	text-align: center;
+}
+
+#travelers_submit{
+ background: url("../img/travel_form_button.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    float: right;
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+.form_box{
+	-moz-border-radius: 15px;
+	-webkit-border-raduis:15px;
+	border-radius: 15px;
+	border:3px solid #37A6C7;
+	background:#fff;
+	padding-bottom: 11px;
+	width: 460px;
+	position:absolute;
+	top:0;
+	display:none;
+	z-index: 2000;
+	padding-top:10px;
+}
+
+.info_box1:hover,
+.info_box2:hover{
+	cursor:pointer;
+}
+
+.info_box1,
+.info_box2{
+	background:url('../img/info_box_bottom.png') no-repeat bottom left transparent;
+	padding-bottom: 11px;
+	 width: 256px;
+}
+
+#overlay{ 
+	display:none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width:100%;
+	height:720px;
+	text-align:center;
+	z-index: 1000;
+	background:url('../img/transparency.png') repeat fixed 0 0 transparent;
+}

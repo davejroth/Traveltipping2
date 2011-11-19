@@ -27,7 +27,7 @@ class MerchantsController extends AppController {
  */
 	function sendDealMail($dealID, $venueID, $template) {
 		$Deal = $this->Deal->read(null, $dealID);
-		
+		$Venue = $this->Merchant->Venue->findById($venueID);
 		$Merchant = $this->Merchant->read(null, $Venue['Merchant']['id']); //Used for name
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
 	

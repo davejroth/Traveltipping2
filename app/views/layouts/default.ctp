@@ -40,7 +40,8 @@
 		</div><!-- #layout_main -->
 		<div id="layout_footer">
 			<?php echo $this->element('footer'); ?>
-		</div><!-- #layout_footer -->	
+		</div><!-- #layout_footer -->
+		
 	</div><!-- #layout_container -->
 </body>
 </html>
