@@ -832,6 +832,20 @@ label{
 
 }
 
+.calendar  .unavailable a {
+	position:relative;
+}
+
+.calendar  .unavailable span{
+    background: url("../img/site/unavail_diaslash.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 3px;
+    top: 8px;
+    width: 15px;
+}
+
 
 .calendar td.checkInDate,
 .calendar td.checkOutDate{
