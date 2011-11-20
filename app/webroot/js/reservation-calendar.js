@@ -137,7 +137,6 @@ function addReservation(){
 	  			}
 	  			
 	  		}
-	  		$.ajaxSetup({ cache: true });
 			}
 		});
 	}
@@ -167,7 +166,6 @@ function addReservation(){
 	  			daySelection = temp.toString("yyyy-MM-dd");
 	  			$('#'+daySelection).addClass('dateSelection');
 	  		}
-	  		$.ajaxSetup({ cache: true });
 			}
 		});
 	}
@@ -218,7 +216,6 @@ function cancelReservation(){
 	  				$('input[name="data[DealPurchase][end_date]"]').val('');
 	  			}
 	  		}
-	  		$.ajaxSetup({ cache: true });
 			}
 		});
 }
