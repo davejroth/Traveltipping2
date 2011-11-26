@@ -37,6 +37,19 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+max_nights = null;
+discounted_price = null;
+reservation_type = null;
 
+	$.ajaxSetup({ cache: false });
+	$.ajax({
+		url: window.location.pathname, 
+		dataType: 'json',
+		success: function(data) {
+			max_nights = data.Deal.max_nights;
+			discounted_price = data.Deal.discounted_price;
+			reservation_type = data.Deal.reservation_type_id;
+		}
+	});
 });
 </script>

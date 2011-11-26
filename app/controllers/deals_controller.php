@@ -256,12 +256,14 @@ class DealsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	function getDealInfo($id){
+		
 		$dealInfo = $this->Deal->find('first',array(
 		'conditions' => array('Deal.id' => $id),
 		'recursive' => 0,
 		'fields' => array('Deal.max_nights','Deal.id','Deal.discounted_price','Deal.reservation_type_id'),
 		'limit' => 1
 		));
+		
 		$this->set('dealInfo',json_encode($dealInfo));
 	}
 /*
