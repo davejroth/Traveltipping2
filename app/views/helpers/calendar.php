@@ -60,7 +60,8 @@ class CalendarHelper extends Helper {
 					$calendar .= '<td class="outside_range"><a href="#">'.$day.'</a></td>';
 				}
 				elseif($datesFull[date('Y-m-d',$currentTime)] == true){
-					$calendar .= '<td class="unavailable"><a href="#">'.$day.'<span>&nbsp;</span></a></td>';
+					$day_padded = str_pad($day,2,"0",STR_PAD_LEFT);
+					$calendar .= '<td id="'.$year.'-'.$month_padded.'-'.$day_padded.'" class="unavailable"><a href="#">'.$day.'<span>&nbsp;</span></a></td>';
 				}
 				else
 				{
