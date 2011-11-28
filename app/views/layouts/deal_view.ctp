@@ -13,11 +13,19 @@
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('site');
 		echo $this->AssetCompress->includeAssets('false');
+		echo $this->Html->script('jquery-ui');
+		echo $this->Html->script('jquery.center');
 		echo $scripts_for_layout;
 	?>
 </head>
 <body class="deal_view">
 	<div id="layout_container">
+		<?php if(!$subscribed) { ?>
+		<div id="overlay"></div>
+		<div id="travelers" class="form_box">
+			<?php echo $this->element('new_subscriber'); 		?>
+			</div>
+			<?php }?>
 		<div id="layout_header">
 			<?php echo $this->element('header'); ?>
 			<div class="clouds"></div>

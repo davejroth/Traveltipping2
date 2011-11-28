@@ -14,6 +14,11 @@ class UsersController extends AppController {
 	
 		$this->Notification->sendHTMLUserMail($user, $template);
 	}
+	
+	function sendNewSubscriberMail($user, $template) {
+		$this->Notification->sendHTMLUserMail($user, $template);
+	
+	}
 	/*
 	 * This is for travelers who sign up during the purchase process
 	 * or for travelers who are already signed in when they come to the purchase
@@ -40,12 +45,14 @@ class UsersController extends AppController {
 		if($this->Auth->user()) {
 			$user = $this->Session->read('Auth.User');
 			$redirect = $this->Auth->redirect();
+			$this->Cookie->write('email',$this->data['User']['email']);
 			if($this->Session->Read('Auth.User.role_id') == Configure::Read('Role.Merchant_ID')){ 
 				App::import('model','Merchant');
 				$merchant = new Merchant();
 				$thisMerchant = $merchant->find('first',
 					array('conditions' => array('Merchant.user_id' => $user['id'])));
 				$this->Session->write('Merchant.id', $thisMerchant['Merchant']['id']);
+
 				if($redirect == '/') {
 					$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 				}
@@ -263,5 +270,36 @@ class UsersController extends AppController {
 		}
 		
 		$this->render('check_session','ajax');
+	}
+	
+	function subscribe() {
+		$this->layout = 'ajax';
+		if (!empty($this->data)) {
+			$this->loadModel('Subscriber');
+			$this->Subscriber->set($this->data);
+			if($this->Subscriber->validates()) {
+				$this->Subscriber->recursive = -1;
+				$this->Traveler->User->recursive = -1;
+				$this->Cookie->write('email',$this->data['Subscriber']['email']);
+				//If you can't find them in the Subscriber db and you can't find them in the User table, create a new Subscriber
+				if(!$this->Subscriber->findByEmail($this->data['Subscriber']['email']) && !$this->Traveler->User->findByEmail($this->data['Subscriber']['email'])) {
+					$this->Subscriber->create();
+					$this->data['User']['email'] = $this->data['Subscriber']['email'];
+					$this->Notification->sendHtmlUserMail($this->data, 'newSubscriber');
+					if ($this->Subscriber->save($this->data)) {
+							$this->render('/elements/subscriber_thank_you');
+					}
+				}
+				else { //They are already subscribed
+					$this->render('/elements/subscriber_close');
+				}
+			}
+			else {
+				$this->render('/elements/new_subscriber');
+			}
+		}
+		else {
+			$this->render('elements/new_subscriber');
+		}
 	}
 }

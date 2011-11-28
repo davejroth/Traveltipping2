@@ -125,18 +125,6 @@ function ajax_sign_in() {
 		 
 	$this->set(compact('purchases', 'purchaseStatus'));
 	}
-	
-	function subscribe() {
-		if (!empty($this->data)) {
-			$this->loadModel('Subscriber');
-			$this->Subscriber->create();
-			if ($this->Subscriber->save($this->data)) {
-				    $this->Cookie->write('email',$this->data['Subscriber']['email']);
-					$this->render('/elements/subscriber_thank_you');
-			}
-			
-		}
-	}
 
 	
 }

@@ -25,10 +25,10 @@ class MerchantsController extends AppController {
 /**
  * Email function used to send Deal information.  
  */
-	function sendDealMail($dealID, $venueID, $template) {
+	function sendDealMail($dealID, $merchantID, $template) {
 		$Deal = $this->Deal->read(null, $dealID);
-		$Venue = $this->Merchant->Venue->findById($venueID);
-		$Merchant = $this->Merchant->read(null, $Venue['Merchant']['id']); //Used for name
+
+		$Merchant = $this->Merchant->read(null, $merchantID); //Used for name
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
 	
 		$this->Notification->sendHtmlDealMail($Merchant, $template);
@@ -271,7 +271,7 @@ class MerchantsController extends AppController {
 				$deal['Deal']['deal_status_id'] = Configure::read('Deal.Status_Approved');
 				if ($this->Deal->save($deal)) {
 					$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $deal['Deal']['venue_id'])));
-					$this->sendDealMail($this->Deal->id, $thisVenue['Venue']['id'], "dealApproved");
+					$this->sendDealMail($this->Deal->id, $this->Session->read('Merchant.id'), "dealApproved");
 					$this->Session->setFlash(__('The deal has been saved', true));
 					$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 				} else {

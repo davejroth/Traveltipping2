@@ -48,17 +48,19 @@ class AppController extends Controller {
 	 */
 	public function beforeRender(){
 
-		$action = array('purchase', 'login');
+		$securityActions = array('purchase', 'login');
 		//debug($this->params['action']);
-		if( in_array( $this->params['action'] , $action ) ){
+		if( in_array( $this->params['action'] , $securityActions ) ){
 			 $this->Ssl->force();
 		}else{
 			 //$this->Ssl->unforce();  Uncommenting this causes the front page to display strangely.  John & David should debug.
 		}
-		
-		$subscribed = false;
-		if($this->Session->read('Auth.User') || $this->Cookie->read('email')) {
-			$subscribed = true;
+		//Assume they do not need a layover unless, (if)if the action requires a layover, they are not logged in
+		//, and they do not have a cookie
+		$layoverActions = array('index', 'view', 'book', 'purchase');
+		$subscribed = true;
+		if((in_array($this->params['action'], $layoverActions) || $this->params['url']['url'] == '/') && !$this->Session->read('Auth.User') && !$this->Cookie->read('email')) {
+			$subscribed = false;
 		}
 		$this->set(compact('subscribed'));
 	}

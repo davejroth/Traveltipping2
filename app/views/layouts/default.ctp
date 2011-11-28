@@ -19,6 +19,8 @@
 		echo $this->Html->script('site');
 		echo $this->Html->script('reservation-calendar');
 		echo $this->Html->script('jquery-ui');
+		echo $this->Html->script('jquery-ui');
+		echo $this->Html->script('jquery.center');
 		//$this->AssetCompress->script('');
 		echo $this->AssetCompress->includeAssets('false');
 		echo $scripts_for_layout;
@@ -26,6 +28,12 @@
 </head>
 <body>
 	<div id="layout_container">
+		<?php if(!$subscribed) { ?>
+		<div id="overlay"></div>
+		<div id="travelers" class="form_box">
+			<?php echo $this->element('new_subscriber'); 		?>
+			</div>
+			<?php }?>
 		<div id="layout_header">
 			<?php echo $this->element('header'); ?>
 			<div class="clouds"></div>
