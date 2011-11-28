@@ -9,7 +9,7 @@
 </div>
 <?php
 if(empty($deals)) {
-	echo "Uh oh, it doesn't look like we have any deals in this region right now.  Come back again soon; we're constantly adding new deals as others expire.";
+	echo '<p class="no_results">Uh oh, it doesn\'t look like we have any deals in this region right now.  Come back again soon; we\'re constantly adding new deals as others expire.</p>';
 }
 else {
 $i = 0;

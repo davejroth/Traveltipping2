@@ -41,11 +41,14 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 			<div id="book_now_bar" class="blue_rounded_mod clearfix grid_21 alpha omega">
 				<h3 class="grid_12"><?php echo $deal['Deal']['title']; ?></h3>
 				<div id="deal_detail_cta" class="grid_8 clearfix">
-					<p class="grid_3"><?php echo __('$').$discounted_price;
+					<?php 
 						if($deal['Deal']['reservation_type_id'] == Configure::Read('ReservationType.Variable')) { 
-							echo "<br /><span class='pernight'>per night</span>";
+							echo '<p class="variable_view grid_3">$'.$discounted_price.'<span class="pernight">per night</span></p>';
 						}
-					?></p>
+						else{
+							echo '<p class="fixed_view grid_3">$'.$discounted_price.'</p>';
+						}
+					?>
 					<?php  echo $this->Html->link('',array('action' => 'book',$deal['Deal']['id']),array('class' => 'book_now_btn')) ?>
 				</div>
 			</div>
