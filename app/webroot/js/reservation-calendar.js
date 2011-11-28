@@ -71,6 +71,12 @@ function addFixedReservation(dateID){
 	total = discounted_price * max_nights;
 	checkInDate = checkInDateObj.toString("yyyy-MM-dd")
 	checkOutDate = checkOutDateObj.toString("yyyy-MM-dd")
+	
+	availability = checkRangeAvailability(checkInDate, checkOutDate);
+	if(!availability){
+		return false
+	}
+	
 	$('#'+dateID).addClass('checkInDate');
 	$('.check_in').text(getDateText(checkInDateObj));
 	$('.check_out').text(getDateText(checkOutDateObj));
@@ -210,10 +216,11 @@ function removeVariableReservation(dateID){
 }
 
 function checkRangeAvailability(checkInID,checkOutID){
+	//alert(checkInID);
+	//alert(checkOutID);
 	var checkInDateObj = convertDate(checkInID);
 	var checkOutDateObj = convertDate(checkOutID);
 	var numOfNights = days_between(checkInDateObj, checkOutDateObj);
-	//alert(numOfNights);
 	
 	for(x = 1; x < numOfNights; x++ ){
 		var temp = null;
@@ -224,11 +231,9 @@ function checkRangeAvailability(checkInID,checkOutID){
 			alert('Not a valid date, Please choose another date');
 			return false;
 		}
-		else{
-			return true;
-		}
 		//$('#'+daySelection).addClass('dateSelection');
-	}	
+	}
+	return true;	
 }
 
 /**
