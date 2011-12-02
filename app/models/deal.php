@@ -90,14 +90,18 @@ class Deal extends AppModel {
 			'insertQuery' => ''
 		)
 	);
-	/*public $validate = array(
-		'deal_expire' => array(
+	public $validate = array(
+		'average_reservations' => array(
+            'reservationCheck' => array('rule' => 'notEmpty','message' => ' Please enter an average reservation count.'),
+		),
+		/*'deal_expire' => array(
 			'expireCheck' => array('rule' => 'expireCheck', 'message' => 'Please make sure that the Deal Expire date is greater than the Deal Valid date.')
 		),
 		'deal_close' => array(
 			'closeCheck' => array('rule' => 'closeCheck', 'message' => 'Please make sure that the Deal Close date is greater than the Deal Live date.')
-		)	
-    );*/
+		)	*/
+    );
+	/*
 	function expireCheck()
 	{
 		//$newValidDateString = $this->data['Deal']['deal_valid']['year'] . '-' . $this->data['Deal']['deal_valid']['month'] . '-' . $this->data['Deal']['deal_valid']['day']; 
@@ -125,7 +129,7 @@ class Deal extends AppModel {
 			return false;
 		}
 	}
-
+     */
 /**
  * GetReservationType returns the reservationtype of the deal id passed to it
  */
@@ -147,8 +151,9 @@ class Deal extends AppModel {
 		//Convert cakePHP input data to match stored date data.
 		$newStart = $data['Deal']['deal_valid']['year'] . '-' . $data['Deal']['deal_valid']['month'] . '-' . $data['Deal']['deal_valid']['day']; 
 		$newEnd = $data['Deal']['deal_expire']['year'] . '-' . $data['Deal']['deal_expire']['month'] . '-' . $data['Deal']['deal_expire']['day']; 
-
-		if($oldStart != $newStart || $oldEnd != $newEnd) { //Deal dates have changed  - Does this also need to check if there are any DealAvailbility records?
+		//If Deal dates have changed, make sure corresponding records are created/deleted
+		// Does this also need to check if there are any DealAvailbility records?
+		if($oldStart != $newStart || $oldEnd != $newEnd) { 
 			$currentDate = date('Y-m-d', strtotime($newStart. ' - 1 days'));
 			$newDates= array(); //Build array of all the new dates
 			do {
@@ -159,14 +164,14 @@ class Deal extends AppModel {
 			$oldRecords = $dealAvailability->find('all', array('conditions' => array('deal_id' => $id), 'recursive' => -1));
 			$oldDates = array();
 			//Mash the two together - if it's still in $oldRecords, delete it.  If it's in $newDates, add it.
+			
 			for($i = 0; $i < count($oldRecords); $i++) {
 				$oldDates[$oldRecords[$i]['DealAvailability']['reservation_date']] = "";
 			}
 			//Add new records
-			
 			$datesToAdd = array_keys(array_diff_key($newDates, $oldDates));
 			$availabilityRecord['DealAvailability']['deal_id'] = $id;
-			$availabilityRecord['DealAvailability']['num_available'] = $data['DealAvailability']['average_reservations'];
+			$availabilityRecord['DealAvailability']['num_available'] = $data['Deal']['average_reservations'];
 			foreach ($datesToAdd as $date) {
 				$dealAvailability = new DealAvailability();
 				$availabilityRecord['DealAvailability']['reservation_date'] = $date;
@@ -181,6 +186,19 @@ class Deal extends AppModel {
 				$dealAvailability->delete($deleteMe['DealAvailability']['id']);
 			}
 			
+		}
+		
+		//If the average_reservations amount changed, update all availability records with the old number of average_reservations
+		if($savedDeal['Deal']['average_reservations'] != $data['Deal']['average_reservations']) {
+			$dealAvailability = new DealAvailability();
+			$oldRecords = $dealAvailability->find('all', array('conditions' => array('deal_id' => $id), 'recursive' => -1));
+			foreach($oldRecords as $thisRecord) {
+				if($thisRecord['DealAvailability']['num_available'] == $savedDeal['Deal']['average_reservations']) {
+					$thisRecord['DealAvailability']['num_available'] = $data['Deal']['average_reservations'];
+					$dealAvailability->save($thisRecord);
+				}
+				
+			}
 		}
 	}
 	

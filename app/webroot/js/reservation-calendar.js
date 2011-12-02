@@ -68,7 +68,7 @@ function addFixedReservation(dateID){
 	checkInDateObj = convertDate(dateID)
 	checkOutDateObj = convertDate(dateID)
 	checkOutDateObj = checkOutDateObj.add({ days: max_nights});
-	total = discounted_price * max_nights;
+	total = discounted_price;
 	checkInDate = checkInDateObj.toString("yyyy-MM-dd")
 	checkOutDate = checkOutDateObj.toString("yyyy-MM-dd")
 	

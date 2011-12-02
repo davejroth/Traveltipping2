@@ -12,11 +12,11 @@ class UsersController extends AppController {
 			'order' => 'PasswordReset.created DESC'));
 		$this->set(compact('passwordReset')); 
 	
-		$this->Notification->sendHTMLUserMail($user, $template);
+		$this->Notification->sendHtmlUserMail($user, $template);
 	}
 	
 	function sendNewSubscriberMail($user, $template) {
-		$this->Notification->sendHTMLUserMail($user, $template);
+		$this->Notification->sendHtmlUserMail($user, $template);
 	
 	}
 	/*

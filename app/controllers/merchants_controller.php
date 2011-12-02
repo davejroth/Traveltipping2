@@ -19,7 +19,7 @@ class MerchantsController extends AppController {
 		$Merchant = $this->Merchant->read(null,$id);
 		$this->set('Merchant', $Merchant); 
 	
-		$this->Notification->sendHTMLMerchantMail($Merchant, $template);
+		$this->Notification->sendHtmlMerchantMail($Merchant, $template);
 		$this->Notification->sendHtmlAmMail($template);
 	}
 /**
@@ -31,7 +31,7 @@ class MerchantsController extends AppController {
 		$Merchant = $this->Merchant->read(null, $merchantID); //Used for name
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
 	
-		$this->Notification->sendHtmlDealMail($Merchant, $template);
+		$this->Notification->sendHtmlMerchantMail($Merchant, $template);
 		$this->Notification->sendHtmlAmMail($template);
 	}
 	

@@ -11,10 +11,6 @@ class DealsController extends AppController {
 	var $components = array('Email', 'Notification', 'RequestHandler','Attachment');
 	var $helpers = array('JavaScript', 'Html', 'Form', 'Ajax', 'Js');
 	
-
-	//var $helpers = array('Text','Js', 'Html', 'Ajax', 'Javascript', 'Form');
-	 //var $helpers = array('Html','Ajax','Javascript');
-	//test
 	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
 	
 /**
@@ -26,7 +22,7 @@ class DealsController extends AppController {
 		$Venue = $this->Deal->Venue->read(null, $venueID); //Used for email address
 		$Merchant = $this->Merchant->read(null, $Venue['Merchant']['id']); //Used for email address
 		$this->set(compact('Deal', 'Merchant')); //Used for Deal info
-		$this->Notification->sendHTMLDealMail($Merchant, $template);
+		$this->Notification->sendHtmlMerchantMail($Merchant, $template);
 		$this->Notification->sendHtmlAmMail($template);
 	}
 /**
@@ -39,7 +35,7 @@ class DealsController extends AppController {
 		$traveler = $this->Traveler->read(null, $travelerID); //Used for email address
 		$this->set(compact('deal', 'traveler', 'dealPurchase')); //Used for Deal info
 	
-		$this->Notification->sendHTMLTravelerMail($traveler, $template);
+		$this->Notification->sendHtmlTravelerMail($traveler, $template);
 	}
 /*
  * Index
@@ -185,8 +181,6 @@ class DealsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			//Make sure Availability records are up to date
-			$this->Deal->DealAvailability->set($this->data);
 			$this->Deal->set($this->data);
 			$savedDeal = $this->Deal->read(null, $id);
 			if($savedDeal['Deal']['deal_status_id'] != $this->data['Deal']['deal_status_id']) {
@@ -195,7 +189,7 @@ class DealsController extends AppController {
 			else {
 				$statusChange = false;
 			}
-			if($this->Deal->DealAvailability->validates() && $this->Deal->validates()) {
+			if($this->Deal->validates()) {
 				$this->Deal->updateAvailabilityRecords($id, $this->data);
 				if ($this->Deal->saveAll($this->data)) {
 					if($statusChange) {

@@ -7,7 +7,7 @@
 		echo '<div class="deal_summary clearfix">';
 		echo $this->Html->image($deal['Deal']['image1'], array('class'=>'grid_3','alt' => 'Featured Deal Image'));
 		echo '<p class="grid_14 title">'.$deal['Deal']['title'].'</p>';  
-		echo '<p class="grid_3 price"> $'.$deal['Deal']['discounted_price'].'<span class="span_block">per night</span></p>';
+		echo '<p class="grid_3 price"> $'.$deal['Deal']['discounted_price'].'<span class="span_block">'.$deal['Deal']['max_nights'].' nights</span></p>';
 		echo '</div>';
 		
 		echo $this->Form->create('Deal', array(

@@ -71,10 +71,10 @@
 			echo '</div>';
 			echo '<div class="field_row clearfix">';
 			if(is_null($this->data['Deal']['deal_valid'])) {
-					echo "Please save the deal to edit the reservations";
+					echo "Please save the deal in order to edit the reservation availability";
 				}
 				else {
-					echo $this->Html->link('Edit Max Reservations for this deal', '//deals/editAvailabilities/' . $this->data['Deal']['id']);
+					echo $this->Html->link('Edit Max Reservation Availability for this deal', '//deals/editAvailabilities/' . $this->data['Deal']['id']);
 				}
 			echo '</div>';
 			
@@ -92,7 +92,7 @@
 				echo $this->Form->input('flat_fee');	
 			echo '</div>';
 			echo '<div class="field_row clearfix">';
-				echo $this->Form->input('DealAvailability.average_reservations', array(
+				echo $this->Form->input('average_reservations', array(
 					'label' => 'Average Nightly Reservation Limit'
 					));
 				echo $this->Form->input('purchase_pad');	

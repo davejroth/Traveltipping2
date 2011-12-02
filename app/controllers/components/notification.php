@@ -2,10 +2,10 @@
 class NotificationComponent extends Object {
     var $components = array('Email');
 
-  	function sendHtmlMerchantMail($Merchant, $template) {
+  	/*function sendHtmlMerchantMail($Merchant, $template) {
 	//This array should be declared as a class variable but I'm not sure how to do it.
-	$merchantEmailSubjects = array('newMerchant' => 'Welcome to TravelTipping –- Account Details');
-	/* SMTP Options */
+	$merchantEmailSubjects = array('newMerchant' => 'Welcome to TravelTipping - Account Details');
+	/* SMTP Options 
     $this->Email->smtpOptions = array(
         'port'=>'25', 
         'timeout'=>'30',
@@ -22,10 +22,10 @@ class NotificationComponent extends Object {
 	$this->Email->layout = 'no_footer';
     $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
     $this->Email->send();
-	}
+	} */
 	//DealMail sends mails that have Deal data set in the deal.  I think we can combine it with 
 	//Merchant Mail
-	function sendHtmlDealMail($Merchant, $template) {
+	function sendHtmlMerchantMail($Merchant, $template) {
 	//This array should be declared as a class variable but I'm not sure how to do it.
 	$merchantEmailSubjects = array('dealApproved' => 'Deal Approved',
 		'dealInitiated' => 'New Deal Created',
@@ -34,7 +34,8 @@ class NotificationComponent extends Object {
 		'dealLive' => 'Your Deal is Now Live',
 		'dealCancelled' => 'Your Deal has been Canceled',
 		'dealClose' => 'Your Deal has Ended!',
-		'paymentMade' => 'A Payment has Been Made to Your Account');
+		'paymentMade' => 'A Payment has Been Made to Your Account',
+		'newMerchant' => 'Welcome to TravelTipping - Account Details');
 	/* SMTP Options */
     $this->Email->smtpOptions = array(
         'port'=>'25', 
