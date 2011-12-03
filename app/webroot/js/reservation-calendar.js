@@ -65,9 +65,16 @@ function convertDate(myDate){
 * @params: dateID (Id of the checkin date being reserverd) 
 */
 function addFixedReservation(dateID){
-	checkInDateObj = convertDate(dateID)
-	checkOutDateObj = convertDate(dateID)
+	
+	checkInDateObj = Date.parse(dateID)
+	checkOutDateObj = Date.parse(dateID)
 	checkOutDateObj = checkOutDateObj.add({ days: max_nights});
+	expireRangeStartObj = Date.parse(deal_expire).add({ days: -max_nights});
+	expireRangeEndObj = Date.parse(deal_expire);
+	if(checkInDateObj.between(expireRangeStartObj, expireRangeEndObj)){
+		alert('Reservation falls within the expire date.  Choose another date.');
+		return false;
+	}
 	total = discounted_price;
 	checkInDate = checkInDateObj.toString("yyyy-MM-dd")
 	checkOutDate = checkOutDateObj.toString("yyyy-MM-dd")
