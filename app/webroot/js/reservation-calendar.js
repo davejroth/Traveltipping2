@@ -128,13 +128,23 @@ function addVariableReservation(dateID){
 * @params: dateID (Id of the checkin date being reserverd) 
 */
 function updateVariableReservation(dateID){
-	
+	if($('.checkInDate').length != 0){
+		var checkOutDateObj2 = Date.parse(dateID);
+		var checkInDateObj2 = Date.parse($('.checkInDate').attr('id'));
+		if(checkInDateObj2.compareTo(checkOutDateObj2) == 1){
+			alert('Checkout date is before Checkin date.  Choose another Date.');
+			return false;
+		}
+	}
 	if($('.checkOutDate').length != 0){
-		checkInDateObj = convertDate(dateID)
-		checkOutDateObj = convertDate(dateID)
+		checkInDateObj = Date.parse(dateID)
 		checkInDate = checkInDateObj.toString("yyyy-MM-dd")
-		checkOutDateObj = convertDate($('.checkOutDate').attr('id'))
+		checkOutDateObj = Date.parse($('.checkOutDate').attr('id'))
 		checkOutDate = checkOutDateObj.toString("yyyy-MM-dd")
+		if(checkOutDateObj.compareTo(checkInDateObj) == -1){
+			alert('Checkin date is after Checkout date.  Choose another Date.');
+			return false;
+		}
 		availability = checkRangeAvailability(checkInDate,checkOutDate);
 		if(!availability){
 			return false
