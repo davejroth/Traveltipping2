@@ -171,6 +171,24 @@ label{
 	margin:5px 0;
 }
 
+.field_column_wrap{
+
+}
+
+.field_column{
+    float: left;
+    margin-right: 50px;
+    width: 250px;
+}
+
+.last_field_column{
+	margin-right:0;
+}
+
+.field_column .input{
+	width:250px;
+}
+
 
 /* +++++++++++++++++ END Form Styles +++++++++++++++++ */
 
@@ -534,9 +552,9 @@ label{
     display: block;
     float: right;
     font-size: 0;
-    height: 46px;
-    margin: 5px 15px 0 0;
-    width: 191px;
+    height: 27px;
+    margin: 0;
+    width: 145px;
 }
 
 
