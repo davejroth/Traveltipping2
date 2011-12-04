@@ -3,8 +3,7 @@
 	
 <?php
 if(empty($deals)) {
-	echo "<p class='sub_heading'>You have no deals yet!</p>";
-	echo "<p>Your dedicated Account Manager will contact you shortly to help develop your new deal.</p>";
+	echo '<div class="no_deal_message"><p class="sub_heading">You have no deals yet!</p><p>Your dedicated Account Manager will contact you shortly to help develop your new deal.</p></div>';
 }
 else {
 $i = 0;
