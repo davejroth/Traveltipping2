@@ -1096,3 +1096,16 @@ label{
 	z-index: 1000;
 	background:url('../img/transparency.png') repeat fixed 0 0 transparent;
 }
+
+/* Definition Lists */
+.table_list dd, .table_list dt{
+	float:left;
+}
+
+.table_list dt{
+    clear: both;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    text-align: right;
+}

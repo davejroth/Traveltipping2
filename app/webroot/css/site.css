@@ -569,8 +569,15 @@ margin:0;
 }
 
 .reset_confirmation{
+    margin: 20px auto 10px;
     padding: 10px 0 15px;
+    text-align: center;
     width: 350px;
+}
+
+.reset_confirmation a{
+    display: block;
+    margin: 10px 0 30px 0;
 }
 
 /* +++++++++++++++++ END Password Reset +++++++++++++++++ */
@@ -982,6 +989,32 @@ float:right;
 .deal_summary .title{ 
     font-weight: bold;
     width: 450px;
+}
+
+.confirmation_page .deal_summary .title {
+    font-weight: bold;
+    width: 400px;
+
+}
+
+.confirmation_page #reservation_details{
+    float: left;
+    margin: 15px 10px;
+    width: 300px;
+}
+
+.confirmation_page #destination_details{
+    float: right;
+    margin: 15px 10px;
+    width: 300px;
+}
+
+.confirmation_page #reservation_details dl dt{
+	width:100px;
+}
+
+.confirmation_page #destination_details dl dt{
+	width:65px;
 }
 
 .deal_summary .price{ 
