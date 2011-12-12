@@ -25,7 +25,7 @@
 	<div id="overlay"></div>
 	<div id="layout_container">
 		<?php if(!$subscribed) { ?>
-		<div id="travelers" class="form_box">
+		<div id="subscribe_form_wrap" class="overlay_form_box">
 			<?php echo $this->element('new_subscriber'); 		?>
 			</div>
 			<?php }?>

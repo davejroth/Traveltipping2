@@ -657,6 +657,17 @@ label{
     width: 146px;
 }
 
+.sign_up_btn{
+    background: url("../img/site/btn_sign_up.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: none;
+    font-size: 0;
+    height: 32px;
+    padding: 0;
+    width: 122px;
+}
+
 /* +++++++++++++++++ END Button Styles +++++++++++++++++ */
 
 .cta_text{
@@ -1007,64 +1018,18 @@ label{
 		border-bottom:1px solid #CCCCCC;
 }
 
-.travelers_title{
-    background:url('../img/travel_button_bg.png') repeat-x 0 0 transparent;
-	border:1px solid #f39004;
-    color: #FFFFFF;
-    font-family: arial;
-    font-size: 29px;
-    font-weight: bold;
-    padding: 0;
-    text-align: center;
-	  width: 226px;
-}
 
 
 
-.its_free{
-    /*background: url("../img/its_free.png") no-repeat scroll 0 0 transparent;*/
-    height: 100px;
-    left: -7px;
-    position: absolute;
-    top: -5px;
-    width: 133px;	
-}
+/* Overlay Styles*/
 
-.travelers_title{
-	  display: inline;
-    left: -44px;
-    padding: 0 25px;
-    position: absolute;
-    text-align: left;
-    top: 20px;
-    width: auto;
-}
-
-.travelers_info{
-    color: #37A6C7;
-    font-weight: bold;
-    margin: 50px 0 0;
-    padding: 0 15px;
-	text-align: center;
-}
-
-#travelers_submit{
- background: url("../img/travel_form_button.png") repeat-x scroll 0 0 transparent;
-    border: 1px solid #FFFFFF;
-    color: #FFFFFF;
-    float: right;
-    font-weight: bold;
-    padding: 5px;
-}
-
-
-.form_box{
+.overlay_form_box{
 	-moz-border-radius: 15px;
 	-webkit-border-raduis:15px;
 	border-radius: 15px;
-	border:3px solid #37A6C7;
+	border:3px solid #DDDDDD;
 	background:#fff;
-	padding-bottom: 11px;
+	padding:10px;
 	width: 460px;
 	position:absolute;
 	top:0;
@@ -1072,29 +1037,79 @@ label{
 	z-index: 2000;
 	padding-top:10px;
 }
-
-.info_box1:hover,
-.info_box2:hover{
-	cursor:pointer;
-}
-
-.info_box1,
-.info_box2{
-	background:url('../img/info_box_bottom.png') no-repeat bottom left transparent;
-	padding-bottom: 11px;
-	 width: 256px;
-}
-
 #overlay{ 
 	display:none;
 	position: absolute;
 	left: 0px;
 	top: 0px;
 	width:100%;
-	height:960px;
 	text-align:center;
 	z-index: 1000;
-	background:url('../img/transparency.png') repeat fixed 0 0 transparent;
+	background:url('../img/site/transparency.png') repeat fixed 0 0 transparent;
+}
+
+.subscriber_title{
+    color: #37A6C7;
+    font-size: 20px;
+    text-align: center;
+}
+
+.subscriber_cta{
+    color: #37A6C7;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.subscribe_nav{
+    clear: both;
+    float: right;
+    margin: 5px 0;
+}
+.subscribe_nav li{
+    border-right: 1px solid #999999;
+    float: left;
+    line-height: 11px;
+    list-style: none outside none;
+    margin-left: 0;
+ }
+
+.subscribe_nav li a{
+    color: #999999;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+.subscriber_form{
+	overflow:hidden;	
+}
+
+.subscriber_form .input{
+    float: left;
+    margin-top: 10px;
+}
+
+.subscriber_form .submit{
+    clear: none;
+    float: left;
+    margin-left: 20px;
+    margin-top: 23px;
+}
+
+.subscriber_form .field_row{
+    clear: both;
+    margin: 26px auto 0;
+    width: 400px;
+}
+
+.subscriber_form .horizontal_list{
+	
+}
+
+.subscriber_form .error-message{
+	
 }
 
 /* Definition Lists */
