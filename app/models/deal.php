@@ -102,6 +102,26 @@ class Deal extends AppModel {
 		)	*/
     );
 	/*
+	 * Override paginateCount so that it counts the number of deals for pagination on the deals index page correctly.  This was a huge PITA
+	 */
+	public function paginateCount($conditions = null, $recursive = 0, $extra = array()) {
+
+		$results = $this->find('all', array('group' => 'Deal.id', 'conditions' => array($conditions)));
+		return count($results);
+	}
+
+	
+	/**
+	 * Override paginate function.  CakePHP has a bug in which it doesn't pass sort by parameters for derived fields.  The sort by
+	 * is passed in using $extra array and loaded into $order if there is something.
+	 */
+	function paginate($conditions, $fields, $order, $limit, $page = 1, $recursive = null, $extra = array()) {
+	   if(empty($order) && !empty($extra['passit'])){  //This prevents an error when hitting the default page with no sorting
+			$order = array($extra['passit']['sort'] => $extra['passit']['direction']);
+		}
+    return $this->find('all', compact('conditions', 'fields', 'order', 'limit', 'page', 'recursive'));
+	} 
+	/*
 	function expireCheck()
 	{
 		//$newValidDateString = $this->data['Deal']['deal_valid']['year'] . '-' . $this->data['Deal']['deal_valid']['month'] . '-' . $this->data['Deal']['deal_valid']['day']; 
@@ -130,13 +150,15 @@ class Deal extends AppModel {
 		}
 	}
      */
-/**
- * GetReservationType returns the reservationtype of the deal id passed to it
- */
+	 
+	/**
+	 * GetReservationType returns the reservationtype of the deal id passed to it
+	 */
 	function getReservationType($id) {
 	$thisDeal = $this->find('first', array('conditions' => array('Deal.id' => $id)));
 	return $thisDeal['Deal']['reservation_type_id'];
 	}
+	
 	/**
 	 * updateAvailabilityRecords updates the DealAvailability records when the deal_live or deal_expire date change.  It builds an array
 	 * of the new dates and an array of the saved dates and runs a dif on them.  Records that are in the new array but not the old are

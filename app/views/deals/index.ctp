@@ -2,9 +2,32 @@
 <div class="filter_bar">
 	<ul id="sort_options">
 		<li class="list_title"><strong>Sort By:</strong></li>
-		<li><?php echo $this->Paginator->sort('Remaining Quantity','current_purchases');?></li>
-		<li><?php echo $this->Paginator->sort('Discounted %','discounted_price');?></li>
-		<li><?php echo $this->Paginator->sort('Price','discounted_price');?></li>
+		<li><?php 
+		/*Replace the paginator->sort links with links because CakePHP has a bug that prevents it from passing sort order 
+			correctly for derived fields. */
+		//echo $this->Paginator->sort('Remaining Quantity','current_purchases');
+		echo $html->link(__('Remaining Quantity', true), array(
+			'controller' => 'deals',
+			'action' => 'index',
+			'page' => (!empty($this->passedArgs['page']))?$this->passedArgs['page'] : '',
+			'sort' => 'remaining_quantity',
+			'direction' => (empty($this->passedArgs['direction']) || $this->passedArgs['direction'] == 'asc')?'desc' : 'asc',
+			'limit' => (!empty($this->passedArgs['limit']))?$this->passedArgs['limit'] : '',
+		));
+		?></li>
+		
+		<li><?php //echo $this->Paginator->sort('Discounted %','discount_percentage');
+			echo $html->link(__('Discounted %', true), array(
+			'controller' => 'deals',
+			'action' => 'index',
+			'page' => (!empty($this->passedArgs['page']))?$this->passedArgs['page'] : '',
+			'sort' => 'discount_percentage',
+			'direction' => (empty($this->passedArgs['direction']) || $this->passedArgs['direction'] == 'asc')?'desc' : 'asc',
+			'limit' => (!empty($this->passedArgs['limit']))?$this->passedArgs['limit'] : '',
+		));
+		?></li>
+		
+		<li><?php echo $this->Paginator->sort('Price','discounted_price');?></li> <!-- Discounted price is not derived -->
 	</ul>
 </div>
 <?php
@@ -23,6 +46,7 @@ $remaining_quantity = $max_quantity - $current_quantity;
 
 //Progress Bar Calculation
 $progress_value = ($current_quantity/$max_quantity)*100;
+//debug($deal['Deal']);
 
 ?>
 

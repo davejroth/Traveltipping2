@@ -131,7 +131,8 @@ function passwordCheck()
     }
 
     public function afterSave($created) {
-        if ($created) {
+		//Create a new ARO record when a new User is created
+	   if ($created) {
             $parent = $this->parentNode();
             $parent = $this->node($parent);
             $node = $this->node();
@@ -140,15 +141,15 @@ function passwordCheck()
 			$aro['Aro']['alias'] = $this->data['User']['email'];
             $this->Aro->save($aro);
         }
-    }
-	/*
-	public function beforeSave($created) {
+		//If the User has been saved before, make sure their Aro alias is updated with any changes to their email
 		if(!$created) {
-			$oldDeal = $this->findById($this->data['Deal']['id']);
-			debug($oldDeal);
+			$oldAro = $this->Aro->findByForeignKey($this->data['User']['id']);
+			$oldAro['Aro']['alias'] = $this->data['User']['email'];
+			$this->Aro->save($oldAro);
+		
 		}
-	}
-    */
+    }
+ 
 
 }
 ?>

@@ -39,7 +39,11 @@ class UsersController extends AppController {
 	
 	$this->render('ajax_logged_in', 'ajax');
 	}
-	
+/**
+  * Login
+  * This function is called when users login.  It writes a cookie then redirects them to the appropriate page.  If they reached
+  * the login page because they were denied access to a page based on ARO, they are redirected to the page they were attempting to access.
+  */  
 	
 	function login() {
 		if($this->Auth->user()) {
@@ -52,10 +56,8 @@ class UsersController extends AppController {
 				$thisMerchant = $merchant->find('first',
 					array('conditions' => array('Merchant.user_id' => $user['id'])));
 				$this->Session->write('Merchant.id', $thisMerchant['Merchant']['id']);
-
-				if($redirect == '/') {
-					$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
-				}
+				//Merchants should always be logged into their my_deals section
+				$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 			} 
 			elseif($this->Session->Read('Auth.User.role_id') == Configure::Read('Role.Traveler_ID')){
 				App::import('model','Traveler');
@@ -67,7 +69,7 @@ class UsersController extends AppController {
 					$this->Session->write('Traveler.ajax_login', 0);
 					$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
 				}
-				elseif($redirect == '/') {
+				elseif($redirect == '/' || $redirect == 'travelers/signup') {
 					$this->redirect(array('controller' => 'travelers', 'action' => 'my_deals', 'upcoming'));
 				}
 			}
@@ -271,7 +273,12 @@ class UsersController extends AppController {
 		
 		$this->render('check_session','ajax');
 	}
-	
+/**
+ * Subscribe
+ * This function is called when users enter their email address into the layover that pops up when the user has no cookie.  It checks
+ * that they entered a valid email address and then stores their email address in the Subscriber table if their email has never been
+ * entered before.
+ */ 
 	function subscribe() {
 		$this->layout = 'ajax';
 		if (!empty($this->data)) {
@@ -286,16 +293,12 @@ class UsersController extends AppController {
 					$this->Subscriber->create();
 					$this->data['User']['email'] = $this->data['Subscriber']['email'];
 					$this->Notification->sendHtmlUserMail($this->data, 'newSubscriber');
-					if ($this->Subscriber->save($this->data)) {
-							$this->render('/elements/subscriber_thank_you');
-					}
+					$this->Subscriber->save($this->data);
 				}
-				else { //They are already subscribed
-					$this->render('/elements/subscriber_close');
-				}
+				$this->render('/elements/subscriber_close');  //Close the layover
 			}
 			else {
-				$this->render('/elements/new_subscriber');
+				$this->render('/elements/new_subscriber'); //Redirect them back to the layover so the validation errors show
 			}
 		}
 		else {
