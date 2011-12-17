@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 2.11.9.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2011 at 02:59 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Generation Time: Dec 17, 2011 at 11:55 AM
+-- Server version: 5.0.67
+-- PHP Version: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -26,14 +26,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `acos` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(10) DEFAULT NULL,
-  `model` varchar(255) DEFAULT NULL,
-  `foreign_key` int(10) DEFAULT NULL,
-  `alias` varchar(255) DEFAULT NULL,
-  `lft` int(10) DEFAULT NULL,
-  `rght` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(10) NOT NULL auto_increment,
+  `parent_id` int(10) default NULL,
+  `model` varchar(255) default NULL,
+  `foreign_key` int(10) default NULL,
+  `alias` varchar(255) default NULL,
+  `lft` int(10) default NULL,
+  `rght` int(10) default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=96 ;
 
 --
@@ -144,15 +144,15 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 --
 
 CREATE TABLE IF NOT EXISTS `aros` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(10) DEFAULT NULL,
-  `model` varchar(255) DEFAULT NULL,
-  `foreign_key` int(10) DEFAULT NULL,
-  `alias` varchar(255) DEFAULT NULL,
-  `lft` int(10) DEFAULT NULL,
-  `rght` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+  `id` int(10) NOT NULL auto_increment,
+  `parent_id` int(10) default NULL,
+  `model` varchar(255) default NULL,
+  `foreign_key` int(10) default NULL,
+  `alias` varchar(255) default NULL,
+  `lft` int(10) default NULL,
+  `rght` int(10) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `aros`
@@ -160,25 +160,31 @@ CREATE TABLE IF NOT EXISTS `aros` (
 
 INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
 (1, NULL, 'Role', 1, 'Admin', 1, 4),
-(2, NULL, 'Role', 5, 'Merchant', 5, 16),
-(3, NULL, 'Role', 6, 'Traveler', 17, 40),
+(2, NULL, 'Role', 5, 'Merchant', 5, 20),
+(3, NULL, 'Role', 6, 'Traveler', 21, 52),
 (4, 1, 'User', 20, 'admin@tt.com', 2, 3),
-(5, 3, 'User', 27, 'ajax@tt.com', 18, 19),
-(6, 3, 'User', 28, 'ajax2@tt.com', 20, 21),
-(7, 3, 'User', 31, 'ajax3@tt.com', 22, 23),
-(8, 3, 'User', 32, 'ajax4@tt.com', 24, 25),
-(9, 3, 'User', 33, 'ajax5@tt.com', 26, 27),
-(10, 3, 'User', 35, 'briamh@tt.com', 28, 29),
+(5, 3, 'User', 27, 'ajax@tt.com', 22, 23),
+(6, 3, 'User', 28, 'ajax2@tt.com', 24, 25),
+(7, 3, 'User', 31, 'ajax3@tt.com', 26, 27),
+(8, 3, 'User', 32, 'ajax4@tt.com', 28, 29),
+(9, 3, 'User', 33, 'ajax5@tt.com', 30, 31),
+(10, 3, 'User', 35, 'briamh@tt.com', 32, 33),
 (11, 2, 'User', 44, 'dave@traveltipping.com', 6, 7),
 (12, 2, 'User', 51, 'davejroth@gmail.com', 8, 9),
 (13, 2, 'User', 24, 'merchant@tt.com', 10, 11),
 (14, 2, 'User', 26, 'merchant2@tt.com', 12, 13),
-(15, 3, 'User', 52, 'mr.roth.school@gmail.com', 30, 31),
-(16, 3, 'User', 29, 'redirect@tt.com', 32, 33),
-(17, 3, 'User', 30, 'test2@tt.com', 34, 35),
-(18, 3, 'User', 34, 'test6@tt.com', 36, 37),
+(15, 3, 'User', 52, 'mr.roth.school@gmail.com', 34, 35),
+(16, 3, 'User', 29, 'redirect@tt.com', 36, 37),
+(17, 3, 'User', 30, 'test2@tt.com', 38, 39),
+(18, 3, 'User', 34, 'test6@tt.com', 40, 41),
 (19, 2, 'User', 50, 'tester@test.com', 14, 15),
-(20, 3, 'User', 22, 'traveler@tt.com', 38, 39);
+(20, 3, 'User', 22, 'traveler@tt.com', 42, 43),
+(21, 3, 'User', 68, 'newtraveler@tt.com', 44, 45),
+(22, 2, 'User', 69, 'newmerchant8@tt.com', 16, 17),
+(23, 2, 'User', 70, 'newmerchant81@tt.com', 18, 19),
+(24, 3, 'User', 71, 'test1213@tt.com', 46, 47),
+(25, 3, 'User', 72, 'ohman@tt.com', 48, 49),
+(26, 3, 'User', 73, 'mr.roth.school@gmail.com', 50, 51);
 
 -- --------------------------------------------------------
 
@@ -187,14 +193,14 @@ INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 --
 
 CREATE TABLE IF NOT EXISTS `aros_acos` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL auto_increment,
   `aro_id` int(10) NOT NULL,
   `aco_id` int(10) NOT NULL,
-  `_create` varchar(2) NOT NULL DEFAULT '0',
-  `_read` varchar(2) NOT NULL DEFAULT '0',
-  `_update` varchar(2) NOT NULL DEFAULT '0',
-  `_delete` varchar(2) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
+  `_create` varchar(2) NOT NULL default '0',
+  `_read` varchar(2) NOT NULL default '0',
+  `_update` varchar(2) NOT NULL default '0',
+  `_delete` varchar(2) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
 
@@ -252,11 +258,11 @@ INSERT INTO `aros_acos` (`id`, `aro_id`, `aco_id`, `_create`, `_read`, `_update`
 --
 
 CREATE TABLE IF NOT EXISTS `business_types` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
@@ -275,11 +281,11 @@ INSERT INTO `business_types` (`id`, `created`, `modified`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
@@ -299,12 +305,12 @@ INSERT INTO `categories` (`id`, `created`, `modified`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cities` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
   `state_id` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -325,11 +331,11 @@ INSERT INTO `cities` (`id`, `created`, `modified`, `name`, `state_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `countries` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=230 ;
 
 --
@@ -574,69 +580,70 @@ INSERT INTO `countries` (`id`, `created`, `modified`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `deals` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `slug` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `fine_print` text COLLATE utf8_unicode_ci,
-  `highlights` text COLLATE utf8_unicode_ci,
-  `venue_info` text COLLATE utf8_unicode_ci,
-  `getting_there` text COLLATE utf8_unicode_ci,
-  `things_to_do` text COLLATE utf8_unicode_ci,
-  `things_to_do2` text COLLATE utf8_unicode_ci,
-  `things_to_do3` text COLLATE utf8_unicode_ci,
-  `things_to_do4` text COLLATE utf8_unicode_ci,
-  `things_to_do5` text COLLATE utf8_unicode_ci,
-  `destination` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `original_price` double(10,2) unsigned DEFAULT NULL,
-  `discounted_price` double(10,2) unsigned DEFAULT NULL,
-  `deal_live` date DEFAULT NULL,
-  `deal_close` date DEFAULT NULL,
-  `deal_valid` date DEFAULT NULL,
-  `deal_expire` date DEFAULT NULL,
-  `is_timed` tinyint(1) DEFAULT NULL,
-  `max_purchases` int(11) unsigned DEFAULT NULL,
-  `max_nights` int(11) unsigned DEFAULT NULL,
-  `flat_fee` double(10,2) DEFAULT NULL,
-  `comission_percentage` double(10,2) unsigned DEFAULT NULL,
-  `private_note` text COLLATE utf8_unicode_ci,
-  `purchase_pad` int(11) NOT NULL DEFAULT '0',
-  `image1` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image2` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image3` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image4` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image5` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image6` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `deal_status_id` bigint(20) DEFAULT NULL,
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
+  `title` varchar(250) collate utf8_unicode_ci NOT NULL,
+  `slug` varchar(250) collate utf8_unicode_ci default NULL,
+  `description` text collate utf8_unicode_ci,
+  `fine_print` text collate utf8_unicode_ci,
+  `highlights` text collate utf8_unicode_ci,
+  `venue_info` text collate utf8_unicode_ci,
+  `getting_there` text collate utf8_unicode_ci,
+  `things_to_do` text collate utf8_unicode_ci,
+  `things_to_do2` text collate utf8_unicode_ci,
+  `things_to_do3` text collate utf8_unicode_ci,
+  `things_to_do4` text collate utf8_unicode_ci,
+  `things_to_do5` text collate utf8_unicode_ci,
+  `destination` varchar(250) collate utf8_unicode_ci default NULL,
+  `original_price` double(10,2) unsigned default NULL,
+  `discounted_price` double(10,2) unsigned default NULL,
+  `deal_live` date default NULL,
+  `deal_close` date default NULL,
+  `deal_valid` date default NULL,
+  `deal_expire` date default NULL,
+  `is_timed` tinyint(1) default NULL,
+  `max_purchases` int(11) unsigned default NULL,
+  `max_nights` int(11) unsigned default NULL,
+  `average_reservations` int(11) NOT NULL,
+  `flat_fee` double(10,2) default NULL,
+  `comission_percentage` double(10,2) unsigned default NULL,
+  `private_note` text collate utf8_unicode_ci,
+  `purchase_pad` int(11) NOT NULL default '0',
+  `image1` varchar(250) collate utf8_unicode_ci default NULL,
+  `image2` varchar(250) collate utf8_unicode_ci default NULL,
+  `image3` varchar(250) collate utf8_unicode_ci default NULL,
+  `image4` varchar(250) collate utf8_unicode_ci default NULL,
+  `image5` varchar(250) collate utf8_unicode_ci default NULL,
+  `image6` varchar(250) collate utf8_unicode_ci default NULL,
+  `deal_status_id` bigint(20) default NULL,
   `reservation_type_id` bigint(20) unsigned NOT NULL,
   `venue_id` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `deals`
 --
 
-INSERT INTO `deals` (`id`, `created`, `modified`, `name`, `title`, `slug`, `description`, `fine_print`, `highlights`, `venue_info`, `getting_there`, `things_to_do`, `things_to_do2`, `things_to_do3`, `things_to_do4`, `things_to_do5`, `destination`, `original_price`, `discounted_price`, `deal_live`, `deal_close`, `deal_valid`, `deal_expire`, `is_timed`, `max_purchases`, `max_nights`, `flat_fee`, `comission_percentage`, `private_note`, `purchase_pad`, `image1`, `image2`, `image3`, `image4`, `image5`, `image6`, `deal_status_id`, `reservation_type_id`, `venue_id`) VALUES
-(2, '2011-07-31 16:32:41', '2011-11-19 14:39:28', 'Mexican Cruise', '35% off 7 night Mexican cruise to Cancun ', '', '<p>The moment you reach your first stop on your cruise, you&rsquo;ll understand why it&rsquo;s one of our top favorites. With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top level of the ship with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, the chef insists that everyone try their local style cerviche.</p>\r\n<p>Enjoy the solitude or go out on the town, as the ship has everything you could imagine. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with other passengers. &nbsp;There are multiple restaurants, bars, swimming pools, spas, theaters and dance halls. &nbsp;They even have a rock climbing gym to stay fit.</p>\r\n<p>If you have any additional requests or needs, your captain and crew encourage you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Visit the best beaches of Mexico</li>\r\n<li>All food and drinks included</li>\r\n<li>Complementary room upgrade</li>\r\n<li>Free onboard internet connection</li>\r\n</ul>', 'With over 100 members staff members onboard your ship, you will be pampered in the best class service possible.\r\n', '<p>Plane</p>\r\n<p>The best way to get to your departure port is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from the ship&rsquo;s pier. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p>Train</p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p>Other</p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;Call them directly and they&rsquo;ll be happy to make all the arrangements.</p>', '<div class="slide first_slide"><img src="http://demo.traveltipping.com/uploads/Image%202.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 1 </strong></p>\r\n<p>Lay on the whitest and cleanest beaches you&rsquo;ve ever seen. Relax, sleep and get a tan.</p>\r\n</div>\r\n</div>', '<div class="slide second_slide"><img src="http://demo.traveltipping.com/uploads/Image%203.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 2 </strong></p>\r\n<p>Visit this ancient temple, one of the most famous in the world. It&rsquo;s said that many people have been cured by the healing powers of the water here.</p>\r\n</div>\r\n</div>', '<div class="slide third_slide"><img src="http://demo.traveltipping.com/uploads/Image%201.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 3 </strong></p>\r\n<p>Hike to the top of this Elnis Mountain. You&rsquo;ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.</p>\r\n</div>\r\n</div>', '<div class="slide fourth_slide"><img src="http://demo.traveltipping.com/uploads/Image%204.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 4 </strong></p>\r\n<p>Want to taste the best seafood known to man? Try the Fresh Restaurant to appease your saltwater appetite. This restaurant is world renowned.</p>\r\n</div>\r\n</div>', '<div class="slide fifth_slide"><img src="http://demo.traveltipping.com/uploads/Image%207.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 5 </strong></p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night. There&rsquo;s live music, dancing. It''s one of the best night scenes around.</p>\r\n</div>\r\n</div>', 'Cancun', 1000.00, 650.00, '2011-07-16', '2012-07-31', '2011-09-02', '2011-09-24', 1, 45, 5, NULL, 15.00, '', 14, 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', 4, 1, 2),
-(3, '2011-07-31 19:24:57', '2011-10-03 20:43:26', 'Getaway in Israel', '45% one week stay on the most beautiful island in Thailand', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites.&nbsp;&nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away.&nbsp; It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life.&nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor.&nbsp; They serve the best specialties dishes of the region.&nbsp; In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. You can stay out all night, dancing, eating, drinking and mingling with friendly locals. It''s also well situated between two public transit stops for those taking public transportation. You''ll find a grocery store two blocks away and the beach one step from your room.</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Stay in one of the world''s most ancient cities</li>\r\n<li>Cottage directly on the beach</li>\r\n<li>Includes two Thai Massages</li>\r\n<li>Includes dinner for two at the Thai Restaurant</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.  If you need to make any special requests, they''ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. Once landed you can take the 45 bus line which will stop within 500 feet from where you''re staying. You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. The closest stop is the Termini station. Once there, you can take a short cab ride. It should be less than $10. Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. You can also rent a car, which will run about $50 a day - more if you want to get better insurance coverage.</p>', '<div class="slide"><img src="http://demo.traveltipping.com/uploads/Image%202.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Title 1 </strong></p>\r\n<p>Visit this ancient temple, one of the most famous in the world. It''s said that many people have been cured by the healing powers of the water here.</p>\r\n</div>\r\n</div>', '<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Title 1\r\n</strong>\r\n</p>\r\n<p> Hike to the top of this Elnis Mountain. You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.</p>\r\n</div>\r\n</div>', '<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%206.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Title 1\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.</p>\r\n</div>\r\n</div>', '<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.</p>\r\n</div>\r\n</div>', '<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Visit the world''s largest petrified wood forest.  You''ll find an entire groove of petrified trees dating back from the time dinosaurs roamed the earth.</p>\r\n</div>\r\n</div>', 'Cambodia', 124.00, 45.00, '2012-07-31', '2012-09-11', '2011-11-01', '2012-02-01', 0, 250, 3, NULL, 10.00, '', 0, 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', 2, 1, 4),
-(4, '2011-07-31 20:28:08', '2011-11-03 14:54:27', 'Hotel in Peru', '50% off 4 night stay in Peru ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Stay in one of the world&rsquo;s most ancient cities</li>\r\n<li>Complementary breakfast</li>\r\n<li>One walking tour of the city included</li>\r\n<li>Free museum passes for two</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.<span style="mso-spacerun: yes;">&nbsp; </span>If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p>Plane</p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p>&nbsp;</p>\r\n<p>Train</p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p>&nbsp;</p>\r\n<p>Other</p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '<div class="slide first_slide"><img src="http://demo.traveltipping.com/uploads/Image%202.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 1 </strong></p>\r\n<p>Visit this ancient temple, one of the most famous in the world. It''s said that many people have been cured by the healing powers of the water here.</p>\r\n</div>\r\n</div>', '<div class="slide second_slide"><img src="http://demo.traveltipping.com/uploads/Image%203.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 2. Things To Do Number 2 </strong></p>\r\n<p>Hike to the top of this Elnis Mountain. You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.</p>\r\n</div>\r\n</div>', '<div class="slide third_slide"><img src="http://demo.traveltipping.com/uploads/Image%201.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 3. Things To Do Number 3 </strong></p>\r\n<p>Want to taste the best seafood known to man? Try the Fresh Restaurant to appease your saltwater appetite. This restaurant is world renowned.</p>\r\n</div>\r\n</div>', '<div class="slide fourth_slide"><img src="http://demo.traveltipping.com/uploads/Image%204.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 4. Things To Do Number 4 </strong></p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night. There''s live music, dancing. It''s one of the best night scenes around.</p>\r\n</div>\r\n</div>', '<div class="slide fifth_slide"><img src="http://demo.traveltipping.com/uploads/Image%207.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 5. Things To Do Number 5 </strong></p>\r\n<p>Visit the world''s largest petrified wood forest. You''ll find an entire groove of petrified trees dating back from the time dinosaurs roamed the earth.</p>\r\n</div>\r\n</div>', 'Peru', 520.00, 260.00, '2011-07-31', '2011-09-12', '2011-09-27', '2011-12-31', 0, 9, 5, NULL, 15.00, '', 0, 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/Woman%20on%20the%20Beach.jpg', 5, 2, 3),
-(5, '2011-07-31 20:44:04', '2011-11-03 15:23:47', 'Fiji Cottage', '75% cottage on the white sands of Fiji ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>One week stay on Fiji&rsquo;s main island</li>\r\n<li>Cottage directly on the beach</li>\r\n<li>Includes two oceanside massages</li>\r\n<li>Includes dinner for two at the Fresh Restaurant</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.<span style="mso-spacerun: yes;">&nbsp; </span>If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '', '<div class="slide second_slide"><img src="http://demo.traveltipping.com/uploads/Image%203.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 2. Things To Do Number 2 </strong></p>\r\n<p>Visit this ancient temple, one of the most famous in the world. It''s said that many people have been cured by the healing powers of the water here.</p>\r\n</div>\r\n</div>', '<div class="slide third_slide"><img src="http://demo.traveltipping.com/uploads/Image%201.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 3. Things To Do Number 3 </strong></p>\r\n<p>Hike to the top of this Elnis Mountain. You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.</p>\r\n</div>\r\n</div>', '<div class="slide fourth_slide"><img src="http://demo.traveltipping.com/uploads/Image%204.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 4. Things To Do Number 4 </strong></p>\r\n<p>Want to taste the best seafood known to man? Try the Fresh Restaurant to appease your saltwater appetite. This restaurant is world renowned.</p>\r\n</div>\r\n</div>', '', 'Fiji', 2500.00, 625.00, '2011-07-31', '2011-12-31', '2011-09-30', '2012-03-09', 1, 80, 7, NULL, 15.00, '', 20, 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/venice.png', 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 4, 1, 5),
-(6, '2011-07-31 21:03:52', '2011-07-31 21:03:52', 'Tahiti Villa', '40% the most amazing villa in the world ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p><span style="font-family: mceinline;">Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</span></p>\r\n<p><span style="font-family: mceinline;">Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</span></p>\r\n<p><span style="font-family: mceinline;">If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</span></p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>One week stay on Tahiti&rsquo;s main island</li>\r\n<li>Cottage directly on the beach</li>\r\n<li>Includes two oceanside massages</li>\r\n<li>Includes dinner for two at the Fresh Restaurant</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family. &nbsp;If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Laying on the whitest and cleanest beaches you''ve ever seen.  Relax, sleep and get a tan.\r\n\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide second_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide third_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide fourth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide fifth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'Tahiti', 190.00, 114.00, '2011-07-31', '2011-09-20', '2011-10-18', '2011-12-31', 1, 30, 8, NULL, 15.00, '', 0, 'http://demo.traveltipping.com/uploads/Woman%20on%20the%20Beach.jpg', 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 5, 1, 6),
-(7, '2011-08-01 08:34:23', '2011-08-01 08:34:23', 'Greek Isle Hotel', '55% off Greek isle hotel with amazing views ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Stay in one of the world&rsquo;s most ancient cities</li>\r\n<li>Complementary breakfast</li>\r\n<li>One walking tour of the city included</li>\r\n<li>Free museum passes for two</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.<span style="mso-spacerun: yes;">&nbsp; </span>If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '\r\n<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Laying on the whitest and cleanest beaches you''ve ever seen.  Relax, sleep and get a tan.\r\n', '\r\n</p>\r\n</div>\r\n</div>\r\n\r\n<div class="slide second_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide third_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide fourth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide fifth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'Greece', 150.00, 68.00, '2011-08-01', '2011-12-30', '2011-12-20', '2012-12-01', 1, 75, 14, NULL, 15.00, '', 0, 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Woman%20on%20the%20Beach.jpg', 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 4, 1, 7),
-(8, '2011-08-01 18:44:11', '2011-08-01 18:44:11', 'Tuscany', '42% off hotel in the heart of Tuscany ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Stay in one of the world&rsquo;s most ancient cities</li>\r\n<li>Complementary breakfast</li>\r\n<li>One walking tour of the city included</li>\r\n<li>Free museum passes for two</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.<span style="mso-spacerun: yes;">&nbsp; </span>If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '\r\n<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Visit this ancient coliseum, where gladiators fought for the Roman Empire in 65AD.  It''s only a half mile walk away.\r\n\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide second_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide third_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide fourth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide fifth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'Tuscany', 182.00, 106.00, '2011-08-01', '2011-10-01', '2011-10-01', '2011-12-01', 1, 200, 5, NULL, NULL, '', 0, 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 'http://demo.traveltipping.com/uploads/Image%202.jpg', 4, 1, 8),
-(9, '2011-08-02 20:32:22', '2011-08-02 20:32:22', 'Asia 3', '68% off 14 day jungle tour of Cambodia ', '', '<p>The moment you reach your first stop on your tour, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>&nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>14 Day tour of Cambodia</li>\r\n<li>Breakfast included</li>\r\n<li>Includes all transportation and accommodation costs</li>\r\n<li>Visit 7 cities and 4 ancient temples</li>\r\n</ul>', '<p>This tour is operated by the Tour Company, and they&rsquo;ve been guiding tours in the country for more than 20 years.</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Laying on the whitest and cleanest beaches you''ve ever seen.  Relax, sleep and get a tan.\r\n\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'Cambodia', 4063.00, 1300.00, '2011-08-06', '2012-08-02', '2011-10-02', '2011-11-02', 0, 25, 3, NULL, 10.00, '', 0, 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', '', 4, 1, 9),
-(10, '2011-08-02 20:51:53', '2011-08-02 20:51:53', '', '52% off hotel night in California wine country', '', '<p>The moment you reach your first stop on your tour, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>&nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>14 Day tour of Cambodia</li>\r\n<li>Breakfast included</li>\r\n<li>Includes all transportation and accommodation costs</li>\r\n<li>Visit 7 cities and 4 ancient temples</li>\r\n</ul>', '<p>This tour is operated by the Tour Company, and they&rsquo;ve been guiding tours in the country for more than 20 years.</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Laying on the whitest and cleanest beaches you''ve ever seen.  Relax, sleep and get a tan.\r\n\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'California', 105.00, 50.00, '2011-08-09', '2011-08-02', '2011-08-02', '2011-08-02', 0, 100, 6, NULL, 10.00, '', 0, 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', '', 4, 1, 10),
-(24, '2011-10-06 17:51:00', '2011-10-06 17:51:00', 'Cronned!', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2011-10-02', '2011-10-06', '2011-10-06', '2011-10-10', 1, NULL, NULL, NULL, NULL, '', 0, '', '', '', '', '', '', 1, 1, 1),
-(26, '2011-10-08 21:47:26', '2011-11-03 19:45:37', 'It''s a great deal', '', '', '', '', '', NULL, '', '', '', '', '', '', NULL, NULL, NULL, '2011-10-08', '2011-11-08', '2011-11-08', '2011-12-08', 1, NULL, NULL, NULL, NULL, '', 0, '', '', '', '', '', '', 2, 1, 11),
-(27, '2011-10-12 19:55:42', '2011-10-12 21:51:29', 'Admin created deal', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2011-10-12', '2012-10-31', '2011-10-12', '2012-12-12', 1, NULL, NULL, NULL, NULL, '', 0, '', '', '', '', '', '', 4, 1, 1),
-(28, '2011-10-13 16:30:03', '2011-10-13 16:30:03', '10/13 Deal', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '/uploads/default.jpg', NULL, NULL, NULL, NULL, NULL, 1, 0, 1),
-(31, '2011-10-16 14:05:37', '2011-10-16 14:05:37', 'New Venue Deal', 'Extravagant hotel', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, 180.00, 40.00, '2011-10-16', '2011-10-16', '2011-11-16', '2012-03-16', 1, 100, 4, NULL, 15.00, '', 0, '/uploads/default.jpg', '', '', '', '', '', 1, 1, 13),
-(33, '2011-10-16 15:51:11', '2011-10-16 15:51:11', 'Merchant Initiation Test 2', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '/uploads/default.jpg', NULL, NULL, NULL, NULL, NULL, 3, 0, 15),
-(34, '2011-10-22 10:57:26', '2011-10-22 10:57:26', 'Test 4 Deal', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '/uploads/default.jpg', NULL, NULL, NULL, NULL, NULL, 1, 0, 16);
+INSERT INTO `deals` (`id`, `created`, `modified`, `name`, `title`, `slug`, `description`, `fine_print`, `highlights`, `venue_info`, `getting_there`, `things_to_do`, `things_to_do2`, `things_to_do3`, `things_to_do4`, `things_to_do5`, `destination`, `original_price`, `discounted_price`, `deal_live`, `deal_close`, `deal_valid`, `deal_expire`, `is_timed`, `max_purchases`, `max_nights`, `average_reservations`, `flat_fee`, `comission_percentage`, `private_note`, `purchase_pad`, `image1`, `image2`, `image3`, `image4`, `image5`, `image6`, `deal_status_id`, `reservation_type_id`, `venue_id`) VALUES
+(2, '2011-07-31 16:32:41', '2011-12-17 11:52:44', 'Mexican Cruise', '35% off 7 night Mexican cruise to Cancun ', '', '<p>The moment you reach your first stop on your cruise, you&rsquo;ll understand why it&rsquo;s one of our top favorites. With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top level of the ship with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, the chef insists that everyone try their local style cerviche.</p>\r\n<p>Enjoy the solitude or go out on the town, as the ship has everything you could imagine. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with other passengers. &nbsp;There are multiple restaurants, bars, swimming pools, spas, theaters and dance halls. &nbsp;They even have a rock climbing gym to stay fit.</p>\r\n<p>If you have any additional requests or needs, your captain and crew encourage you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Visit the best beaches of Mexico</li>\r\n<li>All food and drinks included</li>\r\n<li>Complementary room upgrade</li>\r\n<li>Free onboard internet connection</li>\r\n</ul>', 'With over 100 members staff members onboard your ship, you will be pampered in the best class service possible.\r\n', '<p>Plane</p>\r\n<p>The best way to get to your departure port is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from the ship&rsquo;s pier. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p>Train</p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p>Other</p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;Call them directly and they&rsquo;ll be happy to make all the arrangements.</p>', '<div class="slide first_slide"><img src="http://demo.traveltipping.com/uploads/Image%202.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 1 </strong></p>\r\n<p>Lay on the whitest and cleanest beaches you&rsquo;ve ever seen. Relax, sleep and get a tan.</p>\r\n</div>\r\n</div>', '<div class="slide second_slide"><img src="http://demo.traveltipping.com/uploads/Image%203.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 2 </strong></p>\r\n<p>Visit this ancient temple, one of the most famous in the world. It&rsquo;s said that many people have been cured by the healing powers of the water here.</p>\r\n</div>\r\n</div>', '<div class="slide third_slide"><img src="http://demo.traveltipping.com/uploads/Image%201.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 3 </strong></p>\r\n<p>Hike to the top of this Elnis Mountain. You&rsquo;ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.</p>\r\n</div>\r\n</div>', '<div class="slide fourth_slide"><img src="http://demo.traveltipping.com/uploads/Image%204.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 4 </strong></p>\r\n<p>Want to taste the best seafood known to man? Try the Fresh Restaurant to appease your saltwater appetite. This restaurant is world renowned.</p>\r\n</div>\r\n</div>', '<div class="slide fifth_slide"><img src="http://demo.traveltipping.com/uploads/Image%207.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 5 </strong></p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night. There&rsquo;s live music, dancing. It''s one of the best night scenes around.</p>\r\n</div>\r\n</div>', 'Cancun', 1000.00, 650.00, '2011-07-16', '2012-07-31', '2011-09-02', '2011-09-24', 1, 45, 5, 12, NULL, 15.00, '', 14, 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', 4, 1, 2),
+(3, '2011-07-31 19:24:57', '2011-10-03 20:43:26', 'Getaway in Israel', '45% one week stay on the most beautiful island in Thailand', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites.&nbsp;&nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away.&nbsp; It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life.&nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor.&nbsp; They serve the best specialties dishes of the region.&nbsp; In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. You can stay out all night, dancing, eating, drinking and mingling with friendly locals. It''s also well situated between two public transit stops for those taking public transportation. You''ll find a grocery store two blocks away and the beach one step from your room.</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Stay in one of the world''s most ancient cities</li>\r\n<li>Cottage directly on the beach</li>\r\n<li>Includes two Thai Massages</li>\r\n<li>Includes dinner for two at the Thai Restaurant</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.  If you need to make any special requests, they''ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. Once landed you can take the 45 bus line which will stop within 500 feet from where you''re staying. You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. The closest stop is the Termini station. Once there, you can take a short cab ride. It should be less than $10. Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. You can also rent a car, which will run about $50 a day - more if you want to get better insurance coverage.</p>', '<div class="slide"><img src="http://demo.traveltipping.com/uploads/Image%202.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Title 1 </strong></p>\r\n<p>Visit this ancient temple, one of the most famous in the world. It''s said that many people have been cured by the healing powers of the water here.</p>\r\n</div>\r\n</div>', '<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Title 1\r\n</strong>\r\n</p>\r\n<p> Hike to the top of this Elnis Mountain. You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.</p>\r\n</div>\r\n</div>', '<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%206.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Title 1\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.</p>\r\n</div>\r\n</div>', '<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.</p>\r\n</div>\r\n</div>', '<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Visit the world''s largest petrified wood forest.  You''ll find an entire groove of petrified trees dating back from the time dinosaurs roamed the earth.</p>\r\n</div>\r\n</div>', 'Cambodia', 124.00, 45.00, '2012-07-31', '2012-09-11', '2011-11-01', '2012-02-01', 0, 250, 3, 0, NULL, 10.00, '', 0, 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', 2, 1, 4),
+(4, '2011-07-31 20:28:08', '2011-11-03 14:54:27', 'Hotel in Peru', '50% off 4 night stay in Peru ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Stay in one of the world&rsquo;s most ancient cities</li>\r\n<li>Complementary breakfast</li>\r\n<li>One walking tour of the city included</li>\r\n<li>Free museum passes for two</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.<span style="mso-spacerun: yes;">&nbsp; </span>If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p>Plane</p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p>&nbsp;</p>\r\n<p>Train</p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p>&nbsp;</p>\r\n<p>Other</p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '<div class="slide first_slide"><img src="http://demo.traveltipping.com/uploads/Image%202.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 1. Things To Do Number 1 </strong></p>\r\n<p>Visit this ancient temple, one of the most famous in the world. It''s said that many people have been cured by the healing powers of the water here.</p>\r\n</div>\r\n</div>', '<div class="slide second_slide"><img src="http://demo.traveltipping.com/uploads/Image%203.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 2. Things To Do Number 2 </strong></p>\r\n<p>Hike to the top of this Elnis Mountain. You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.</p>\r\n</div>\r\n</div>', '<div class="slide third_slide"><img src="http://demo.traveltipping.com/uploads/Image%201.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 3. Things To Do Number 3 </strong></p>\r\n<p>Want to taste the best seafood known to man? Try the Fresh Restaurant to appease your saltwater appetite. This restaurant is world renowned.</p>\r\n</div>\r\n</div>', '<div class="slide fourth_slide"><img src="http://demo.traveltipping.com/uploads/Image%204.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 4. Things To Do Number 4 </strong></p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night. There''s live music, dancing. It''s one of the best night scenes around.</p>\r\n</div>\r\n</div>', '<div class="slide fifth_slide"><img src="http://demo.traveltipping.com/uploads/Image%207.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 5. Things To Do Number 5 </strong></p>\r\n<p>Visit the world''s largest petrified wood forest. You''ll find an entire groove of petrified trees dating back from the time dinosaurs roamed the earth.</p>\r\n</div>\r\n</div>', 'Peru', 520.00, 260.00, '2011-07-31', '2011-09-12', '2011-09-27', '2011-12-31', 0, 9, 5, 0, NULL, 15.00, '', 0, 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/Woman%20on%20the%20Beach.jpg', 5, 2, 3),
+(5, '2011-07-31 20:44:04', '2011-11-03 15:23:47', 'Fiji Cottage', '75% cottage on the white sands of Fiji ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>One week stay on Fiji&rsquo;s main island</li>\r\n<li>Cottage directly on the beach</li>\r\n<li>Includes two oceanside massages</li>\r\n<li>Includes dinner for two at the Fresh Restaurant</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.<span style="mso-spacerun: yes;">&nbsp; </span>If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '', '<div class="slide second_slide"><img src="http://demo.traveltipping.com/uploads/Image%203.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 2. Things To Do Number 2 </strong></p>\r\n<p>Visit this ancient temple, one of the most famous in the world. It''s said that many people have been cured by the healing powers of the water here.</p>\r\n</div>\r\n</div>', '<div class="slide third_slide"><img src="http://demo.traveltipping.com/uploads/Image%201.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 3. Things To Do Number 3 </strong></p>\r\n<p>Hike to the top of this Elnis Mountain. You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.</p>\r\n</div>\r\n</div>', '<div class="slide fourth_slide"><img src="http://demo.traveltipping.com/uploads/Image%204.jpg" alt="" />\r\n<div class="things_to_do_content">\r\n<p><strong> 4. Things To Do Number 4 </strong></p>\r\n<p>Want to taste the best seafood known to man? Try the Fresh Restaurant to appease your saltwater appetite. This restaurant is world renowned.</p>\r\n</div>\r\n</div>', '', 'Fiji', 2500.00, 625.00, '2011-07-31', '2011-12-31', '2011-09-30', '2012-03-09', 1, 80, 7, 0, NULL, 15.00, '', 20, 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/venice.png', 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 4, 1, 5),
+(6, '2011-07-31 21:03:52', '2011-07-31 21:03:52', 'Tahiti Villa', '40% the most amazing villa in the world ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p><span style="font-family: mceinline;">Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</span></p>\r\n<p><span style="font-family: mceinline;">Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</span></p>\r\n<p><span style="font-family: mceinline;">If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</span></p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>One week stay on Tahiti&rsquo;s main island</li>\r\n<li>Cottage directly on the beach</li>\r\n<li>Includes two oceanside massages</li>\r\n<li>Includes dinner for two at the Fresh Restaurant</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family. &nbsp;If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Laying on the whitest and cleanest beaches you''ve ever seen.  Relax, sleep and get a tan.\r\n\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide second_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide third_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide fourth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide fifth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'Tahiti', 190.00, 114.00, '2011-07-31', '2011-09-20', '2011-10-18', '2011-12-31', 1, 30, 8, 0, NULL, 15.00, '', 0, 'http://demo.traveltipping.com/uploads/Woman%20on%20the%20Beach.jpg', 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 5, 1, 6),
+(7, '2011-08-01 08:34:23', '2011-08-01 08:34:23', 'Greek Isle Hotel', '55% off Greek isle hotel with amazing views ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Stay in one of the world&rsquo;s most ancient cities</li>\r\n<li>Complementary breakfast</li>\r\n<li>One walking tour of the city included</li>\r\n<li>Free museum passes for two</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.<span style="mso-spacerun: yes;">&nbsp; </span>If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '\r\n<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Laying on the whitest and cleanest beaches you''ve ever seen.  Relax, sleep and get a tan.\r\n', '\r\n</p>\r\n</div>\r\n</div>\r\n\r\n<div class="slide second_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide third_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide fourth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide fifth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'Greece', 150.00, 68.00, '2011-08-01', '2011-12-30', '2011-12-20', '2012-12-01', 1, 75, 14, 0, NULL, 15.00, '', 0, 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Woman%20on%20the%20Beach.jpg', 'http://demo.traveltipping.com/uploads/Santorini.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 4, 1, 7),
+(8, '2011-08-01 18:44:11', '2011-08-01 18:44:11', 'Tuscany', '42% off hotel in the heart of Tuscany ', '', '<p>The moment you reach this hotel, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>If you have any additional requests or needs, your host encourages you to ask. &nbsp;They are more than happy to accommodate your group as needed. &nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>Stay in one of the world&rsquo;s most ancient cities</li>\r\n<li>Complementary breakfast</li>\r\n<li>One walking tour of the city included</li>\r\n<li>Free museum passes for two</li>\r\n</ul>', '<p>This quaint hotel is owned and operated by the Figora family.<span style="mso-spacerun: yes;">&nbsp; </span>If you need to make any special requests, they&rsquo;ll be happy to help!</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '\r\n<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Visit this ancient coliseum, where gladiators fought for the Roman Empire in 65AD.  It''s only a half mile walk away.\r\n\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide second_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide third_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide fourth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide fifth_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'Tuscany', 182.00, 106.00, '2011-08-01', '2011-10-01', '2011-10-01', '2011-12-01', 1, 200, 5, 0, NULL, NULL, '', 0, 'http://demo.traveltipping.com/uploads/Tuscany.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 'http://demo.traveltipping.com/uploads/Image%202.jpg', 4, 1, 8),
+(9, '2011-08-02 20:32:22', '2011-08-02 20:32:22', 'Asia 3', '68% off 14 day jungle tour of Cambodia ', '', '<p>The moment you reach your first stop on your tour, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>&nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>14 Day tour of Cambodia</li>\r\n<li>Breakfast included</li>\r\n<li>Includes all transportation and accommodation costs</li>\r\n<li>Visit 7 cities and 4 ancient temples</li>\r\n</ul>', '<p>This tour is operated by the Tour Company, and they&rsquo;ve been guiding tours in the country for more than 20 years.</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Laying on the whitest and cleanest beaches you''ve ever seen.  Relax, sleep and get a tan.\r\n\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'Cambodia', 4063.00, 1300.00, '2011-08-06', '2012-08-02', '2011-10-02', '2011-11-02', 0, 25, 3, 0, NULL, 10.00, '', 0, 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Beach.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Beach%20View.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', '', 4, 1, 9),
+(10, '2011-08-02 20:51:53', '2011-08-02 20:51:53', '', '52% off hotel night in California wine country', '', '<p>The moment you reach your first stop on your tour, you&rsquo;ll understand why it&rsquo;s one of our top favorites. &nbsp; With grand views of the surrounding area, you&rsquo;ll be immersed in culture, history and relaxing activities that will take your breath away. &nbsp;It&rsquo;s a great way to spend a vacation holiday with your significant other, away from the stress of work and everyday life. &nbsp;</p>\r\n<p>Your room is on the top floor with it&rsquo;s own private balcony. Your accommodation also has AC, free wifi, free parking, plenty of outdoor gear for roaming the countryside, laundry and a restaurant on the ground floor. &nbsp;They serve the best specialties dishes of the region. &nbsp;In fact, your host insists that everyone try their local style cerviche, the best in town.</p>\r\n<p>Enjoy the solitude or go out on the town, as your host is situated only a short walk from the city center. &nbsp;You can stay out all night, dancing, eating, drinking and mingling with friendly locals. &nbsp;It&rsquo; also well situated between two public transit stops for those taking public transportation. &nbsp;You&rsquo;ll find a grocery store two blocks away and the beach one step from your room.</p>\r\n<p>&nbsp;</p>', '<p>Package includes taxes and fees.</p>\r\n<p>Voucher cannot be applied towards previous reservations or groups.</p>\r\n<p>Normal property cancellation policies apply; voucher subject to forfeiture value.</p>\r\n<p>Sales are non-refundable, changes are subject to availability.</p>', '<ul>\r\n<li>14 Day tour of Cambodia</li>\r\n<li>Breakfast included</li>\r\n<li>Includes all transportation and accommodation costs</li>\r\n<li>Visit 7 cities and 4 ancient temples</li>\r\n</ul>', '<p>This tour is operated by the Tour Company, and they&rsquo;ve been guiding tours in the country for more than 20 years.</p>', '<p><strong>Plane</strong></p>\r\n<p>The best way to get to your destination is by flying into the Chiampano Airport located 45 miles away. &nbsp;Once landed you can take the 45 bus line which will stop within 500 feet from where you&rsquo;re staying. &nbsp;You can also take a cab from the airport, which will cost around $30.</p>\r\n<p><strong>Train</strong></p>\r\n<p>You can also arrive by train. &nbsp;The closest stop is the Termini station. &nbsp;Once there, you can take a short cab ride. It should be less than $10. &nbsp;Just make sure you take a metered cab!</p>\r\n<p><strong>Other</strong></p>\r\n<p>Your host can also provide for a pickup from the train station or the airport. &nbsp;You can also rent a car, which will run about $50 a day &ndash; more if you want to get better insurance coverage.</p>', '<div class="slide first_slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%202.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n1. Things To Do Number 1\r\n</strong>\r\n</p>\r\n<p>Laying on the whitest and cleanest beaches you''ve ever seen.  Relax, sleep and get a tan.\r\n\r\n</p>\r\n</div>\r\n</div>', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%203.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n2. Things To Do Number 2\r\n</strong>\r\n</p>\r\n<p>Visit this ancient temple, one of the most famous in the world.  It''s said that many people have been cured by the healing powers of the water here.\r\n\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%201.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n3. Things To Do Number 3\r\n</strong>\r\n</p>\r\n<p>Hike to the top of this Elnis Mountain.  You''ll be rewarded with the most amazing views in the entire area and a beautiful sunset if you make the trek in the evening.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%204.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n4. Things To Do Number 4\r\n</strong>\r\n</p>\r\n<p>Want to taste the best seafood known to man?  Try the Fresh Restaurant to appease your saltwater appetite.  This restaurant is world renowned.\r\n</p>\r\n</div>\r\n</div>\r\n', '\r\n<div class="slide">\r\n<img src="http://demo.traveltipping.com/uploads/Image%207.jpg">\r\n<div class="things_to_do_content">\r\n<p>\r\n<strong>\r\n5. Things To Do Number 5\r\n</strong>\r\n</p>\r\n<p>This small village, located only five miles for you, has a fantastic open festival every Friday night.  There''s live music, dancing.  It''s one of the best night scenes around.\r\n</p>\r\n</div>\r\n</div>', 'California', 105.00, 50.00, '2011-08-09', '2011-08-02', '2011-08-02', '2011-08-02', 0, 100, 6, 0, NULL, 10.00, '', 0, 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Lodge.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', 'http://demo.traveltipping.com/uploads/Venice.jpg', 'http://demo.traveltipping.com/uploads/Greece.jpg', '', 4, 1, 10),
+(24, '2011-10-06 17:51:00', '2011-10-06 17:51:00', 'Cronned!', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2011-10-02', '2011-10-06', '2011-10-06', '2011-10-10', 1, NULL, NULL, 0, NULL, NULL, '', 0, '', '', '', '', '', '', 1, 1, 1),
+(26, '2011-10-08 21:47:26', '2011-11-03 19:45:37', 'It''s a great deal', '', '', '', '', '', NULL, '', '', '', '', '', '', NULL, NULL, NULL, '2011-10-08', '2011-11-08', '2011-11-08', '2011-12-08', 1, NULL, NULL, 0, NULL, NULL, '', 0, '', '', '', '', '', '', 2, 1, 11),
+(27, '2011-10-12 19:55:42', '2011-10-12 21:51:29', 'Admin created deal', '', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2011-10-12', '2012-10-31', '2011-10-12', '2012-12-12', 1, NULL, NULL, 0, NULL, NULL, '', 0, '', '', '', '', '', '', 1, 1, 1),
+(28, '2011-10-13 16:30:03', '2011-10-13 16:30:03', '10/13 Deal', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, '/uploads/default.jpg', NULL, NULL, NULL, NULL, NULL, 1, 0, 1),
+(31, '2011-10-16 14:05:37', '2011-10-16 14:05:37', 'New Venue Deal', 'Extravagant hotel', '', '', '', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, 180.00, 40.00, '2011-10-16', '2011-10-16', '2011-11-16', '2012-03-16', 1, 100, 4, 0, NULL, 15.00, '', 0, '/uploads/default.jpg', '', '', '', '', '', 1, 1, 13),
+(33, '2011-10-16 15:51:11', '2011-10-16 15:51:11', 'Merchant Initiation Test 2', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, '/uploads/default.jpg', NULL, NULL, NULL, NULL, NULL, 3, 0, 15),
+(34, '2011-10-22 10:57:26', '2011-10-22 10:57:26', 'Test 4 Deal', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, '/uploads/default.jpg', NULL, NULL, NULL, NULL, NULL, 1, 0, 16);
 
 -- --------------------------------------------------------
 
@@ -645,13 +652,13 @@ INSERT INTO `deals` (`id`, `created`, `modified`, `name`, `title`, `slug`, `desc
 --
 
 CREATE TABLE IF NOT EXISTS `deals_categories` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `deal_id` bigint(20) DEFAULT NULL,
-  `category_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=155 ;
+  `deal_id` bigint(20) default NULL,
+  `category_id` bigint(20) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=157 ;
 
 --
 -- Dumping data for table `deals_categories`
@@ -661,7 +668,7 @@ INSERT INTO `deals_categories` (`id`, `created`, `modified`, `deal_id`, `categor
 (21, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 2),
 (52, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 2),
 (53, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, 3),
-(154, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1);
+(156, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -670,13 +677,13 @@ INSERT INTO `deals_categories` (`id`, `created`, `modified`, `deal_id`, `categor
 --
 
 CREATE TABLE IF NOT EXISTS `deals_regions` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `deal_id` bigint(20) DEFAULT NULL,
-  `region_id` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=259 ;
+  `deal_id` bigint(20) default NULL,
+  `region_id` bigint(20) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=263 ;
 
 --
 -- Dumping data for table `deals_regions`
@@ -695,8 +702,8 @@ INSERT INTO `deals_regions` (`id`, `created`, `modified`, `deal_id`, `region_id`
 (248, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, 6),
 (249, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 2),
 (250, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 3),
-(257, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 4),
-(258, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 6);
+(261, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 4),
+(262, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, 6);
 
 -- --------------------------------------------------------
 
@@ -705,13 +712,13 @@ INSERT INTO `deals_regions` (`id`, `created`, `modified`, `deal_id`, `region_id`
 --
 
 CREATE TABLE IF NOT EXISTS `deal_availabilities` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `deal_id` bigint(20) unsigned DEFAULT NULL,
-  `reservation_date` date DEFAULT NULL,
-  `num_available` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `deal_id` bigint(20) unsigned default NULL,
+  `reservation_date` date default NULL,
+  `num_available` int(11) default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=793 ;
 
 --
@@ -1187,28 +1194,28 @@ INSERT INTO `deal_availabilities` (`id`, `created`, `modified`, `deal_id`, `rese
 (466, '2011-10-12 21:49:57', '2011-10-12 21:49:57', 27, NULL, NULL),
 (467, '2011-10-12 21:50:42', '2011-10-12 21:50:42', 27, NULL, NULL),
 (468, '2011-10-12 21:51:29', '2011-10-12 21:51:29', 27, NULL, NULL),
-(486, '2011-10-12 22:06:01', '2011-10-12 22:06:01', 2, NULL, NULL),
-(487, '2011-10-12 22:06:33', '2011-10-12 22:06:33', 2, NULL, NULL),
-(488, '2011-10-12 22:07:19', '2011-10-12 22:07:19', 2, NULL, NULL),
-(489, '2011-10-12 22:08:02', '2011-10-12 22:08:02', 2, NULL, NULL),
-(490, '2011-10-12 22:09:25', '2011-10-12 22:09:25', 2, NULL, NULL),
-(491, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-05', NULL),
-(492, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-06', NULL),
-(493, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-07', NULL),
-(494, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-08', NULL),
-(495, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-09', NULL),
-(496, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-10', NULL),
-(497, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-11', NULL),
-(498, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-12', NULL),
-(499, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-13', NULL),
-(500, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-14', NULL),
-(501, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-15', NULL),
-(502, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-16', NULL),
-(503, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-17', NULL),
-(504, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-18', NULL),
-(505, '2011-10-12 22:15:00', '2011-10-12 22:15:00', 2, '2011-09-19', NULL),
-(506, '2011-10-12 22:15:00', '2011-10-12 22:15:00', 2, '2011-09-20', 0),
-(507, '2011-10-12 22:17:20', '2011-10-12 22:17:20', 2, '2011-09-04', NULL),
+(486, '2011-10-12 22:06:01', '2011-10-12 22:06:01', 2, NULL, 12),
+(487, '2011-10-12 22:06:33', '2011-10-12 22:06:33', 2, NULL, 12),
+(488, '2011-10-12 22:07:19', '2011-10-12 22:07:19', 2, NULL, 12),
+(489, '2011-10-12 22:08:02', '2011-10-12 22:08:02', 2, NULL, 12),
+(490, '2011-10-12 22:09:25', '2011-10-12 22:09:25', 2, NULL, 12),
+(491, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-05', 12),
+(492, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-06', 12),
+(493, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-07', 12),
+(494, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-08', 12),
+(495, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-09', 12),
+(496, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-10', 12),
+(497, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-11', 12),
+(498, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-12', 12),
+(499, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-13', 12),
+(500, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-14', 12),
+(501, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-15', 12),
+(502, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-16', 12),
+(503, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-17', 12),
+(504, '2011-10-12 22:14:59', '2011-10-12 22:14:59', 2, '2011-09-18', 12),
+(505, '2011-10-12 22:15:00', '2011-10-12 22:15:00', 2, '2011-09-19', 12),
+(506, '2011-10-12 22:15:00', '2011-10-12 22:15:00', 2, '2011-09-20', 12),
+(507, '2011-10-12 22:17:20', '2011-10-12 22:17:20', 2, '2011-09-04', 12),
 (508, '2011-10-16 04:47:25', '2011-10-16 04:47:25', NULL, NULL, NULL),
 (509, '2011-10-16 05:01:52', '2011-10-16 05:01:52', NULL, NULL, NULL),
 (510, '2011-10-16 05:17:14', '2011-10-16 05:17:14', NULL, NULL, NULL),
@@ -1406,9 +1413,9 @@ INSERT INTO `deal_availabilities` (`id`, `created`, `modified`, `deal_id`, `rese
 (702, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-24', 15),
 (703, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-25', 15),
 (704, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-26', 15),
-(705, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-27', 15);
+(705, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-27', 15),
+(706, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-28', 15);
 INSERT INTO `deal_availabilities` (`id`, `created`, `modified`, `deal_id`, `reservation_date`, `num_available`) VALUES
-(706, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-28', 15),
 (707, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-29', 15),
 (708, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-30', 15),
 (709, '2011-11-03 15:23:45', '2011-11-03 15:23:45', 5, '2011-12-31', 15),
@@ -1492,7 +1499,7 @@ INSERT INTO `deal_availabilities` (`id`, `created`, `modified`, `deal_id`, `rese
 (787, '2011-11-19 14:38:49', '2011-11-19 14:38:49', NULL, NULL, NULL),
 (788, '2011-11-19 14:39:28', '2011-11-19 14:39:28', 2, '2011-09-21', 19),
 (789, '2011-11-19 14:39:28', '2011-11-19 14:39:28', 2, '2011-09-22', 19),
-(790, '2011-11-19 14:39:28', '2011-11-19 14:39:28', 2, '2011-09-23', 0),
+(790, '2011-11-19 14:39:28', '2011-11-19 14:39:28', 2, '2011-09-23', 12),
 (791, '2011-11-19 14:39:28', '2011-11-19 14:39:28', 2, '2011-09-24', 19),
 (792, '2011-11-19 14:39:28', '2011-11-19 14:39:28', NULL, NULL, NULL);
 
@@ -1503,17 +1510,17 @@ INSERT INTO `deal_availabilities` (`id`, `created`, `modified`, `deal_id`, `rese
 --
 
 CREATE TABLE IF NOT EXISTS `deal_purchases` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `deal_id` bigint(20) unsigned DEFAULT NULL,
-  `traveler_id` bigint(20) unsigned DEFAULT NULL,
-  `confirmation_code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
-  `purchase_amount` double DEFAULT NULL,
-  `braintree_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `deal_id` bigint(20) unsigned default NULL,
+  `traveler_id` bigint(20) unsigned default NULL,
+  `confirmation_code` varchar(10) collate utf8_unicode_ci default NULL,
+  `start_date` date default NULL,
+  `end_date` date default NULL,
+  `purchase_amount` double default NULL,
+  `braintree_id` varchar(20) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=33 ;
 
 --
@@ -1559,11 +1566,11 @@ INSERT INTO `deal_purchases` (`id`, `created`, `modified`, `deal_id`, `traveler_
 --
 
 CREATE TABLE IF NOT EXISTS `deal_statuses` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
@@ -1585,14 +1592,14 @@ INSERT INTO `deal_statuses` (`id`, `created`, `modified`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `destinations` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `top_five` text COLLATE utf8_unicode_ci,
-  `getting_there` text COLLATE utf8_unicode_ci,
-  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `country_id` bigint(20) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `top_five` text collate utf8_unicode_ci,
+  `getting_there` text collate utf8_unicode_ci,
+  `title` varchar(250) collate utf8_unicode_ci NOT NULL,
+  `country_id` bigint(20) unsigned default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
@@ -1612,24 +1619,24 @@ INSERT INTO `destinations` (`id`, `created`, `modified`, `top_five`, `getting_th
 --
 
 CREATE TABLE IF NOT EXISTS `images` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(20) DEFAULT NULL,
-  `user_id` int(20) NOT NULL DEFAULT '0',
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `body` text COLLATE utf8_unicode_ci NOT NULL,
-  `excerpt` text COLLATE utf8_unicode_ci,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `mime_type` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `sticky` tinyint(1) NOT NULL DEFAULT '0',
-  `lft` int(11) DEFAULT NULL,
-  `rght` int(11) DEFAULT NULL,
-  `visibility_roles` text COLLATE utf8_unicode_ci,
-  `type` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'node',
+  `id` int(20) NOT NULL auto_increment,
+  `parent_id` int(20) default NULL,
+  `user_id` int(20) NOT NULL default '0',
+  `title` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `body` text collate utf8_unicode_ci NOT NULL,
+  `excerpt` text collate utf8_unicode_ci,
+  `status` tinyint(1) NOT NULL default '0',
+  `mime_type` varchar(100) collate utf8_unicode_ci default NULL,
+  `path` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `sticky` tinyint(1) NOT NULL default '0',
+  `lft` int(11) default NULL,
+  `rght` int(11) default NULL,
+  `visibility_roles` text collate utf8_unicode_ci,
+  `type` varchar(100) collate utf8_unicode_ci NOT NULL default 'node',
   `updated` datetime NOT NULL,
   `created` datetime NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `slug` (`slug`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
@@ -1647,26 +1654,26 @@ INSERT INTO `images` (`id`, `parent_id`, `user_id`, `title`, `slug`, `body`, `ex
 --
 
 CREATE TABLE IF NOT EXISTS `merchants` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `about_us` text COLLATE utf8_unicode_ci,
-  `website` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `business_reviews` text COLLATE utf8_unicode_ci,
-  `business_name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `city` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `postal_code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `second_address` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `about_us` text collate utf8_unicode_ci,
+  `website` varchar(250) collate utf8_unicode_ci default NULL,
+  `business_reviews` text collate utf8_unicode_ci,
+  `business_name` varchar(250) collate utf8_unicode_ci default NULL,
+  `city` varchar(100) collate utf8_unicode_ci default NULL,
+  `postal_code` varchar(20) collate utf8_unicode_ci default NULL,
+  `address` varchar(250) collate utf8_unicode_ci default NULL,
+  `second_address` varchar(250) collate utf8_unicode_ci default NULL,
   `user_id` bigint(20) unsigned NOT NULL,
-  `state` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `first_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `state` varchar(20) collate utf8_unicode_ci NOT NULL,
+  `first_name` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `last_name` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `phone` varchar(20) collate utf8_unicode_ci NOT NULL,
   `country_id` bigint(20) unsigned NOT NULL,
   `business_type_id` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `merchants`
@@ -1685,7 +1692,9 @@ INSERT INTO `merchants` (`id`, `created`, `modified`, `about_us`, `website`, `bu
 (21, '2011-11-09 08:21:49', '2011-11-09 08:21:49', NULL, '', NULL, 'Merchant 6', 'jkl', '9112', 'tjkl', 'jkl', 63, 'jk', 'Test 6', 'merchant 6', '78', 1, 1),
 (22, '2011-11-09 08:23:14', '2011-11-09 08:23:14', NULL, '', NULL, 'Merchant 6', 'jkl', '9112', 'tjkl', 'jkl', 64, 'jk', 'Test 6', 'merchant 6', '78', 1, 1),
 (23, '2011-11-09 08:27:02', '2011-11-09 08:27:02', NULL, '', NULL, 'Merchant 6', 'jkl', '9112', 'tjkl', 'jkl', 65, 'jk', 'Test 6', 'merchant 6', '78', 1, 1),
-(24, '2011-11-09 08:27:48', '2011-11-09 08:27:48', NULL, '', NULL, 'Merchant 6', 'jkl', '9112', 'tjkl', 'jkl', 66, 'jk', 'Test 6', 'merchant 6', '78', 1, 1);
+(24, '2011-11-09 08:27:48', '2011-11-09 08:27:48', NULL, '', NULL, 'Merchant 6', 'jkl', '9112', 'tjkl', 'jkl', 66, 'jk', 'Test 6', 'merchant 6', '78', 1, 1),
+(25, '2011-12-09 06:34:29', '2011-12-09 06:34:29', NULL, '', NULL, 'New Merchant', 'jp', '91kjp', 'jko', 'jol', 69, 'CA', 'Tester', 'Merchant', '81180', 1, 1),
+(26, '2011-12-09 06:36:36', '2011-12-09 06:36:36', NULL, 'jlk', NULL, 'Test 2', 'jikojkl', 'jp', 'jio190', 'jkl100', 70, 'jl', 'jklpj', 'mmkop', '123', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1694,16 +1703,16 @@ INSERT INTO `merchants` (`id`, `created`, `modified`, `about_us`, `website`, `bu
 --
 
 CREATE TABLE IF NOT EXISTS `passengers` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `birthday` date NOT NULL,
   `country_id` bigint(20) unsigned NOT NULL,
-  `is_primary` tinyint(1) DEFAULT NULL,
+  `is_primary` tinyint(1) default NULL,
   `deal_purchase_id` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -1722,12 +1731,12 @@ INSERT INTO `passengers` (`id`, `created`, `modified`, `first_name`, `last_name`
 --
 
 CREATE TABLE IF NOT EXISTS `password_resets` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `confirmation` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
@@ -1758,11 +1767,11 @@ INSERT INTO `password_resets` (`id`, `created`, `modified`, `user_id`, `confirma
 --
 
 CREATE TABLE IF NOT EXISTS `regions` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
@@ -1784,11 +1793,11 @@ INSERT INTO `regions` (`id`, `created`, `modified`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `reservation_types` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
@@ -1807,12 +1816,12 @@ INSERT INTO `reservation_types` (`id`, `created`, `modified`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `alias` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  `updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `alias` varchar(100) collate utf8_unicode_ci default NULL,
+  `created` datetime default NULL,
+  `updated` datetime default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `alias` (`alias`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
@@ -1832,14 +1841,14 @@ INSERT INTO `roles` (`id`, `title`, `alias`, `created`, `updated`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `set_trip_durations` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `num_availabile` int(11) NOT NULL,
   `deal_id` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
@@ -1856,12 +1865,12 @@ INSERT INTO `set_trip_durations` (`id`, `created`, `modified`, `start_date`, `en
 --
 
 CREATE TABLE IF NOT EXISTS `states` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
   `country_id` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
@@ -1882,12 +1891,12 @@ INSERT INTO `states` (`id`, `created`, `modified`, `name`, `country_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `subscribers` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `email` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `subscribers`
@@ -1905,7 +1914,9 @@ INSERT INTO `subscribers` (`id`, `created`, `modified`, `email`) VALUES
 (9, '2011-11-19 09:53:33', '2011-11-19 09:53:33', 'jklkp'),
 (10, '2011-11-19 09:55:27', '2011-11-19 09:55:27', 'm,lq'),
 (11, '2011-11-19 09:56:01', '2011-11-19 09:56:01', '1jklp'),
-(12, '2011-11-19 14:30:44', '2011-11-19 14:30:44', 'test@t.com');
+(12, '2011-11-19 14:30:44', '2011-11-19 14:30:44', 'test@t.com'),
+(13, '2011-12-13 08:07:20', '2011-12-13 08:07:20', 'jiozjkl@jio.com'),
+(14, '2011-12-16 07:55:20', '2011-12-16 07:55:20', 'dave@tt.com');
 
 -- --------------------------------------------------------
 
@@ -1914,18 +1925,18 @@ INSERT INTO `subscribers` (`id`, `created`, `modified`, `email`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `travelers` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
-  `is_male` tinyint(1) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
-  `state_id` bigint(20) unsigned DEFAULT NULL,
-  `postal_code` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `first_name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `last_name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=46 ;
+  `is_male` tinyint(1) default NULL,
+  `birthday` date default NULL,
+  `state_id` bigint(20) unsigned default NULL,
+  `postal_code` varchar(20) collate utf8_unicode_ci default NULL,
+  `first_name` varchar(250) collate utf8_unicode_ci default NULL,
+  `last_name` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `travelers`
@@ -1957,7 +1968,11 @@ INSERT INTO `travelers` (`id`, `created`, `modified`, `user_id`, `is_male`, `bir
 (42, '2011-11-06 16:29:30', '2011-11-06 16:29:30', 58, NULL, NULL, NULL, NULL, 'Lipton', 'Iced Tea'),
 (43, '2011-11-06 16:37:15', '2011-11-06 16:37:15', 59, NULL, NULL, NULL, NULL, 'Da', 'da'),
 (44, '2011-11-06 16:38:33', '2011-11-06 16:38:33', 60, NULL, NULL, NULL, NULL, 'da 2', 'at'),
-(45, '2011-11-09 08:29:05', '2011-11-09 08:29:05', 67, NULL, NULL, NULL, NULL, 'Test', 'Traveler');
+(45, '2011-11-09 08:29:05', '2011-11-09 08:29:05', 67, NULL, NULL, NULL, NULL, 'Test', 'Traveler'),
+(46, '2011-12-08 18:14:53', '2011-12-08 18:14:53', 68, NULL, NULL, NULL, NULL, 'New', 'Test'),
+(50, '2011-12-13 08:19:01', '2011-12-13 08:19:01', 71, NULL, NULL, NULL, NULL, 'test1213', 'test'),
+(51, '2011-12-13 08:20:44', '2011-12-13 19:58:19', 72, NULL, NULL, NULL, NULL, 'test12132', 'test2'),
+(55, '2011-12-13 20:18:34', '2011-12-13 20:18:34', 73, NULL, NULL, NULL, NULL, 'David', 'Roth');
 
 -- --------------------------------------------------------
 
@@ -1966,21 +1981,21 @@ INSERT INTO `travelers` (`id`, `created`, `modified`, `user_id`, `is_male`, `bir
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `id` int(20) NOT NULL auto_increment,
   `role_id` int(11) NOT NULL,
-  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `website` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `activation_key` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `bio` text COLLATE utf8_unicode_ci,
-  `timezone` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `password` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `name` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `email` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `website` varchar(100) collate utf8_unicode_ci default NULL,
+  `activation_key` varchar(60) collate utf8_unicode_ci NOT NULL,
+  `image` varchar(255) collate utf8_unicode_ci default NULL,
+  `bio` text collate utf8_unicode_ci,
+  `timezone` varchar(10) collate utf8_unicode_ci NOT NULL default '0',
+  `status` tinyint(1) NOT NULL default '0',
   `updated` datetime NOT NULL,
   `created` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=68 ;
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=74 ;
 
 --
 -- Dumping data for table `users`
@@ -2009,7 +2024,7 @@ INSERT INTO `users` (`id`, `role_id`, `password`, `name`, `email`, `website`, `a
 (55, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'rusty2@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-10-30 17:22:04', '2011-10-30 17:22:04'),
 (56, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'rusty3@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-10-30 17:23:26', '2011-10-30 17:23:26'),
 (57, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'newmerchant@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-11-03 19:55:27', '2011-11-03 19:55:27'),
-(58, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'mr.roth.school@gmail.com', NULL, '', NULL, NULL, '0', 1, '2011-11-06 16:29:30', '2011-11-06 16:29:30'),
+(58, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'mr.roth.school23@gmail.com', NULL, '', NULL, NULL, '0', 1, '2011-11-06 16:29:30', '2011-11-06 16:29:30'),
 (59, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'da@la.com', NULL, '', NULL, NULL, '0', 1, '2011-11-06 16:37:15', '2011-11-06 16:37:15'),
 (60, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'da2@tjklz.com', NULL, '', NULL, NULL, '0', 1, '2011-11-06 16:38:33', '2011-11-06 16:38:33'),
 (61, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'dabusss@bkla.com', NULL, '', NULL, NULL, '0', 1, '2011-11-06 16:39:18', '2011-11-06 16:39:18'),
@@ -2018,7 +2033,13 @@ INSERT INTO `users` (`id`, `role_id`, `password`, `name`, `email`, `website`, `a
 (64, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'testmerchant7@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-11-09 08:23:14', '2011-11-09 08:23:14'),
 (65, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'testmerchant8@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-11-09 08:27:02', '2011-11-09 08:27:02'),
 (66, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'testmerchant9@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-11-09 08:27:48', '2011-11-09 08:27:48'),
-(67, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'testtraveler@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-11-09 08:29:05', '2011-11-09 08:29:05');
+(67, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'testtraveler@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-11-09 08:29:05', '2011-11-09 08:29:05'),
+(68, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'newtraveler8@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-12-08 18:14:53', '2011-12-08 18:14:53'),
+(69, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'newmerchant8@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-12-09 06:34:29', '2011-12-09 06:34:29'),
+(70, 5, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'newmerchant81@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-12-09 06:36:36', '2011-12-09 06:36:36'),
+(71, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'test1213@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-12-13 08:19:01', '2011-12-13 08:19:01'),
+(72, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'ohman@tt.com', NULL, '', NULL, NULL, '0', 1, '2011-12-13 19:58:19', '2011-12-13 08:20:44'),
+(73, 6, 'aa361d06c20a989716f6747d0041a47f90bbf920', '', 'mr.roth.school@gmail.com', NULL, '', NULL, NULL, '0', 1, '2011-12-13 20:18:33', '2011-12-13 20:18:33');
 
 -- --------------------------------------------------------
 
@@ -2027,21 +2048,21 @@ INSERT INTO `users` (`id`, `role_id`, `password`, `name`, `email`, `website`, `a
 --
 
 CREATE TABLE IF NOT EXISTS `venues` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `website` varchar(100) DEFAULT NULL,
-  `address1` varchar(100) DEFAULT NULL,
-  `address2` varchar(100) DEFAULT NULL,
-  `city` varchar(100) DEFAULT NULL,
-  `state` varchar(100) DEFAULT NULL,
-  `postal_code` varchar(100) DEFAULT NULL,
+  `id` bigint(20) unsigned NOT NULL auto_increment,
+  `created` datetime default NULL,
+  `modified` datetime default NULL,
+  `name` varchar(100) default NULL,
+  `email` varchar(100) default NULL,
+  `website` varchar(100) default NULL,
+  `address1` varchar(100) default NULL,
+  `address2` varchar(100) default NULL,
+  `city` varchar(100) default NULL,
+  `state` varchar(100) default NULL,
+  `postal_code` varchar(100) default NULL,
   `country_id` bigint(20) unsigned NOT NULL,
   `business_type_id` bigint(20) unsigned NOT NULL,
   `merchant_id` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
@@ -2050,7 +2071,7 @@ CREATE TABLE IF NOT EXISTS `venues` (
 
 INSERT INTO `venues` (`id`, `created`, `modified`, `name`, `email`, `website`, `address1`, `address2`, `city`, `state`, `postal_code`, `country_id`, `business_type_id`, `merchant_id`) VALUES
 (1, '2011-07-31 14:02:51', '2011-07-31 14:02:51', 'calistogahotel', 'contact@calistogahotel.com', 'www.calistogahotel.ex', '', '', '', '', '', 1, 0, 13),
-(2, '2011-07-31 16:25:17', '2011-11-19 14:39:28', 'Cruise Mexico', 'info@cruisemexico.com', 'www.cruisemexico.ex', 'Rising Sun Ave', '', '', '', '', 2, 1, 13),
+(2, '2011-07-31 16:25:17', '2011-12-17 11:52:44', 'Cruise Mexico', 'info@cruisemexico.com', 'www.cruisemexico.ex', 'Rising Sun Ave', '', '', '', '', 2, 1, 13),
 (3, '2011-07-31 16:25:52', '2011-11-03 14:54:27', 'Peru Hotel', 'contact@peruhotel.com', 'www.peruhotel.ex', '', '', '', '', '', 1, 1, 13),
 (4, '2011-07-31 19:19:34', '2011-07-31 19:19:34', 'Ko Phi Phi', 'contact@kophiphi.com', 'www.kophiphi.ex', '', '', '', '', '', 1, 0, 13),
 (5, '2011-07-31 20:39:43', '2011-11-03 15:23:47', 'Fiji Cottage', 'service@fijicottage.com', 'www.fijicottage.ex', '', '', '', '', '', 1, 1, 13),
@@ -2063,7 +2084,3 @@ INSERT INTO `venues` (`id`, `created`, `modified`, `name`, `email`, `website`, `
 (13, '2011-10-16 14:05:37', '2011-10-16 14:05:37', 'Dave''s Test', 'email@test.com', '', 'SunRise Ave', '', '', '', '94110', 1, 1, 14),
 (15, '2011-10-16 15:51:11', '2011-10-16 15:51:11', 'Delta', 'delta@info.com', '', 'Flying', '', '', '', '', 1, 1, 13),
 (16, '2011-10-22 10:57:26', '2011-10-22 10:57:26', 'Amazing Adventures', 'david@amazing.com', '', '28 Test', '', 'Oak', 'CA', '', 1, 1, 16);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
