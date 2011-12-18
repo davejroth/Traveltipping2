@@ -154,6 +154,10 @@ function updateVariableReservation(dateID){
 		}
 	}
 	if($('.checkOutDate').length != 0){
+		if($('#'+dateID).hasClass('checkOutDate')){
+			removeVariableReservation(dateID);
+			return false;
+		}
 		checkInDateObj = Date.parse(dateID)
 		checkInDate = checkInDateObj.toString("yyyy-MM-dd")
 		checkOutDateObj = Date.parse($('.checkOutDate').attr('id'))
@@ -193,6 +197,7 @@ function updateVariableReservation(dateID){
 			removeVariableReservation(dateID);
 			return false;
 		}
+		
 		checkInDateObj = convertDate($('.checkInDate').attr('id'))
 		checkOutDateObj = convertDate($('#'+dateID).attr('id'))
 		
