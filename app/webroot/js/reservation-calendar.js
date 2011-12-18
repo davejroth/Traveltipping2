@@ -72,7 +72,13 @@ function addFixedReservation(dateID){
 	expireRangeStartObj = Date.parse(deal_expire).add({ days: -max_nights});
 	expireRangeEndObj = Date.parse(deal_expire);
 	if(checkInDateObj.between(expireRangeStartObj, expireRangeEndObj)){
-		alert('Reservation falls within the expire date.  Choose another date.');
+		
+		$('#layout_center').prepend('<div class="error_notification notification"><p>Reservation falls within the expire date.  Choose another date.</p></div>')
+			
+			$('.notification').fadeOut(3000,'linear',function(){
+				$('.notification').remove()
+			});
+			
 		return false;
 	}
 	total = discounted_price;
@@ -139,7 +145,11 @@ function updateVariableReservation(dateID){
 		var checkOutDateObj2 = Date.parse(dateID);
 		var checkInDateObj2 = Date.parse($('.checkInDate').attr('id'));
 		if(checkInDateObj2.compareTo(checkOutDateObj2) == 1){
-			alert('Checkout date is before Checkin date.  Choose another Date.');
+			
+			$('#layout_center').prepend('<div class="error_notification notification"><p>Checkout date is before Checkin date.  Choose another Date.</p></div>')
+			$('.notification').fadeOut(3000,'linear',function(){
+				$('.notification').remove()
+			});
 			return false;
 		}
 	}
@@ -149,7 +159,11 @@ function updateVariableReservation(dateID){
 		checkOutDateObj = Date.parse($('.checkOutDate').attr('id'))
 		checkOutDate = checkOutDateObj.toString("yyyy-MM-dd")
 		if(checkOutDateObj.compareTo(checkInDateObj) == -1){
-			alert('Checkin date is after Checkout date.  Choose another Date.');
+			
+			$('#layout_center').prepend('<div class="error_notification notification"><p>Checkin date is after Checkout date.  Choose another Date.</p></div>')
+			$('.notification').fadeOut(3000,'linear',function(){
+				$('.notification').remove()
+			});
 			return false;
 		}
 		availability = checkRangeAvailability(checkInDate,checkOutDate);
@@ -245,7 +259,11 @@ function checkRangeAvailability(checkInID,checkOutID){
 		temp.add({ days: 1});
 		var daySelection = temp.toString("yyyy-MM-dd");
 		if($('#'+daySelection).hasClass('unavailable')){
-			alert('Not a valid date, Please choose another date');
+			
+			$('#layout_center').prepend('<div class="error_notification notification"><p>Not a valid date, Please choose another date</p></div>')
+			$('.notification').fadeOut(3000,'linear',function(){
+				$('.notification').remove()
+			});
 			return false;
 		}
 		//$('#'+daySelection).addClass('dateSelection');
