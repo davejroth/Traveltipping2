@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	
 	/* Home Map Region Hover/Clicks */
 	$('.region').each(function(e){

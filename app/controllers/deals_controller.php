@@ -322,6 +322,7 @@ class DealsController extends AppController {
 			}
 		}
 			$this->set('errors', $this->Deal->DealPurchase->validationErrors);
+			
 			//Load Availability and Purchase arrays
 			//This could probably be refactored to just load a DealsRemaining array?
 			$this->loadModel('DealAvailability');

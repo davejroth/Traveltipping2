@@ -53,5 +53,7 @@ reservation_type = null;
 			reservation_type = data.Deal.reservation_type_id;
 		}
 	});
+	
+
 });
 </script>

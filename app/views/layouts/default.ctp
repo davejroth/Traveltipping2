@@ -51,5 +51,14 @@
 		</div><!-- #layout_footer -->
 		
 	</div><!-- #layout_container -->
+	
+	<script type="text/javascript">
+$(document).ready(function() {
+$('.notification').fadeOut(3000,'linear',function(){
+	$('.notification').remove()
+});
+
+});
+</script>
 </body>
 </html>

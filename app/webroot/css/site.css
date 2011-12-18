@@ -862,6 +862,10 @@ float:right;
     width: 250px;	
 }
 
+.credit_fields select{
+	margin-left:10px;
+}
+
 .billing_terms{
     float: right;
     margin-top: 20px;
@@ -1264,9 +1268,10 @@ span.pernight {
 }
 
 .no_results{
-	font-size: 15px;
-	font-weight: bold;
-	margin: 20px 25px;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 20px 25px;
+    text-align: center;
 }
 
 #UserResetPasswordForm .subtitle{

@@ -41,10 +41,10 @@ class DealPurchase extends AppModel {
 	
 	public $validate = array(
 		'start_date' => array(
-			'startCheck' => array('rule' => 'notEmpty', 'message' => 'Please choose a start and end date.')
+			'startCheck' => array('rule' => 'notEmpty', 'message' => '<div class="error_notification notification"><p>Please choose a start and end date.</p></div>')
 		),
 		'end_date' => array(
-			'endCheck' => array('rule' => 'notEmpty', 'message' => 'Please choose a start and end date.')
+			'endCheck' => array('rule' => 'notEmpty', 'message' => '<div class="error_notification notification"><p>Please choose a start and end date.</p></div>')
 		)	
     );
 	

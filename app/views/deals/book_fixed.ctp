@@ -53,5 +53,8 @@ deal_expire = null;
 			deal_expire = data.Deal.deal_expire;
 		}
 	});
+	
+
+
 });
 </script>
