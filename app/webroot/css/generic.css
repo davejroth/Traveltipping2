@@ -1030,7 +1030,7 @@ label{
 	border:3px solid #DDDDDD;
 	background:#fff;
 	padding:10px;
-	width: 460px;
+	width: 715px;
 	position:absolute;
 	top:0;
 	
@@ -1050,12 +1050,20 @@ label{
 
 .subscriber_title{
     color: #37A6C7;
-    font-size: 20px;
+    font-size: 25px;
+    margin: 15px auto 25px;
     text-align: center;
+}
+
+.subscriber_title span{
+	color: #2dab14;
 }
 
 .subscriber_cta{
     color: #37A6C7;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.2;
     margin: 0;
     padding: 0;
     text-align: left;
@@ -1075,7 +1083,7 @@ label{
  }
 
 .subscribe_nav li a{
-    color: #999999;
+		color: #37A6C7;
     font-size: 11px;
     font-weight: bold;
     padding: 0 5px;
@@ -1091,17 +1099,12 @@ label{
     margin-top: 10px;
 }
 
-.subscriber_form .submit{
-    clear: none;
-    float: left;
-    margin-left: 20px;
-    margin-top: 23px;
-}
 
 .subscriber_form .field_row{
     clear: both;
+    float: right;
     margin: 26px auto 0;
-    width: 400px;
+    width: 300px;
 }
 
 .subscriber_form .horizontal_list{

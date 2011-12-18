@@ -25,11 +25,11 @@ $(document).ready(function() {
 
 });
 </script>
-
+	<h3 class="subscriber_title">Get <span>outrageous</span> discounts on <br/>Hotels, Resorts, Villas, Cruises and Tours</h3>
 <?php echo $this->Form->create('Subscriber',array('class'=>'subscriber_form'));?>
 
-	<h3 class="subscriber_title">Get outrageous discounts on <br/>Hotels, Resorts, Villas, Cruises and Tours</h3>
 
+<?php echo $this->Html->image('/img/site/overlay_graphic.png',array('class'=>'overlay_img')); ?>
 <?php
 	echo $this->Session->flash();	
 	echo '<div class="field_row">';
