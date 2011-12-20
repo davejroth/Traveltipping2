@@ -7,7 +7,7 @@
 	<fieldset>
 		<legend><?php __('Merchant Information'); ?></legend>
 
-		<?php //debug($deal);
+		<?php debug($this->data);
 			echo $thisVenue['Merchant']['business_name'];
 			echo $this->Form->input('Deal.id');
 			echo $this->Form->input('Venue.id');?>
@@ -48,8 +48,7 @@
 	<fieldset>
 
 		<legend><?php __('Deal Business Details'); ?></legend>
-		<?php
-			
+		<?php	
 			
 			echo '<div class="field_row clearfix">';
 				echo $this->Form->input('original_price');
@@ -92,7 +91,7 @@
 				echo $this->Form->input('flat_fee');	
 			echo '</div>';
 			echo '<div class="field_row clearfix">';
-				echo $this->Form->input('average_reservations', array(
+				echo $this->Form->input('Deal.average_reservations', array(
 					'label' => 'Average Nightly Reservation Limit'
 					));
 				echo $this->Form->input('purchase_pad');	
