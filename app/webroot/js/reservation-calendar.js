@@ -279,7 +279,7 @@ function checkRangeAvailability(checkInID,checkOutID){
 /**
 * Available dates Event Handler
 */
-$('.calendar td[class="available"]').click(function(e){
+$('.booking_calendar .calendar td[class="available"]').click(function(e){
 	dateID = $(this).attr('id');
 	if(reservation_type == 1){
 		if($(this).hasClass('checkInDate')){

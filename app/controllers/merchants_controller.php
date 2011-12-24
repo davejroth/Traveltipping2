@@ -236,25 +236,39 @@ class MerchantsController extends AppController {
 * Reservations
 */	
 	function reservations($id = null) {
+		if($this->RequestHandler->isAjax()){
+			$this->redirect(array('controller' => 'merchants', 'action'=>'getReservationInfo',$id));
+		}
 		$this->loadModel('DealAvailability');
 		$availableDates = $this->DealAvailability->getAvailableDates($id);
 		//debug($availableDates);
 		$this->loadModel('DealPurchase');
 		$this->loadModel('Deal');
 		$deal = $this->Deal->find('first', array('conditions' => array('Deal.id' => $id)));
+		
+		
+
+			$this->set('dealID', $id);
+			$this->set(compact('availableDates', 'dates', 'reservedDates','deal'));
+
+	}
+	
+	function getReservationInfo($id){
+		$this->loadModel('DealPurchase');
 		$reservedDates = $this->DealPurchase->getReservations($id);
 		$reservations_arr = array();
 		$i = 0;
 		foreach($reservedDates as $key => $value){
-			$reservations_arr[$key] = "$value";
+			
+			$reservations_arr[$i] = array('date' => $key, 'number' => $value);
 			$i++;
 		}
-		$reservations_arr = json_encode($reservations_arr);
-
-
-			$this->set('dealID', $id);
-			$this->set(compact('availableDates', 'dates', 'reservedDates','deal','reservations_arr'));
-
+		
+		$reservations_arr = json_encode(array('dealID' => $id,'num_of_reserved_dates' => ($i+1), 'reservations' => $reservations_arr));
+		
+		
+		$this->set('reservations_arr',$reservations_arr);
+	
 	}
 
 /**

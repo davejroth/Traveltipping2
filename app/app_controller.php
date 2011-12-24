@@ -23,14 +23,15 @@ class AppController extends Controller {
         'ajax_sign_in',
         'resetPassword',
         'resendPassword',
-		'confirmReset',
+				'confirmReset',
         'sendForgotPasswordMail',
         'newPassword',
         'loginredirect',
         'check_session',
         'get_header',
         'getDealInfo',
-		'subscribe',
+        'getReservationInfo',
+				'subscribe',
         ));
 		$this->Auth->fields = array(
 			'username' => 'email',

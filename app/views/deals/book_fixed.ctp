@@ -1,4 +1,4 @@
-<div id="layout_left" class="grid_22">
+<div id="layout_left" class="grid_22 booking_calendar">
 	<h2 class="page_title">Reservations Fixed Page</h2>
 	<?php 
 		if(!empty($errors)) {
