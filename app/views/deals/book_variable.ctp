@@ -16,7 +16,10 @@
 		'class' => 'clearfix'
 		));
 		echo $this->Calendar->dealCalendars($deal['Deal']['id']);
+		echo '<div class="clearfix">';
+		echo '<p class="unavailable_legend">Unavailable</p>';
 		echo '<a class="clear_dates" href="#">'.$this->Html->image('/img/site/clear_dates.png').'</a>';
+		echo '</div>';
 	?>
 	<div class="reservation_info">
 		<div><div class="date_legend"></div><p>Check In Date: <span class="check_in"></span></p></div>
