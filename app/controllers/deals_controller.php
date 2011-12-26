@@ -59,7 +59,7 @@ class DealsController extends AppController {
 			$conditions['DealsRegion.region_id'] = $regions;
 		}
 		$this->Deal->bindModel(array('hasOne' => array('DealsRegion')), false);
-	    $this->paginate = array('limit' => 4, 'fields'=>array('DISTINCT Deal.id'
+	    $this->paginate = array('limit' => 200, 'fields'=>array('DISTINCT Deal.id'
 			,'Deal.*'
 			,"(Deal.max_purchases - (SELECT COUNT(*) FROM `deal_purchases` WHERE deal_id = Deal.id) + Deal.purchase_pad) AS remaining_quantity"
 			,'((Deal.original_price - Deal.discounted_price)/Deal.original_price) AS discount_percentage')

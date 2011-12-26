@@ -1165,3 +1165,9 @@ float: right;
     padding-top: 0;
     text-align: left;
 }
+
+/* Temp pagination */
+
+.pagination{
+	display:none;
+}
