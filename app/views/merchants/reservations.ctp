@@ -12,7 +12,7 @@
 
 <div id="layout_right" class="grid_8">
 	
-	<?php echo $this->element('Manage_Reservations'); ?>
+	<?php echo $this->element('manage_reservations'); ?>
 
 
 
