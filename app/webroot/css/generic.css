@@ -1027,7 +1027,7 @@ label{
 	-moz-border-radius: 15px;
 	-webkit-border-raduis:15px;
 	border-radius: 15px;
-	border:3px solid #DDDDDD;
+	border:3px solid #37A6C7;
 	background:#fff;
 	padding:10px;
 	width: 715px;
@@ -1070,9 +1070,9 @@ label{
 }
 
 .subscribe_nav{
-    clear: both;
+    clear: none;
     float: right;
-    margin: 5px 0;
+    margin: 0;
 }
 .subscribe_nav li{
     border-right: 1px solid #999999;
@@ -1083,7 +1083,7 @@ label{
  }
 
 .subscribe_nav li a{
-		color: #37A6C7;
+		color: #999999;
     font-size: 11px;
     font-weight: bold;
     padding: 0 5px;
@@ -1091,7 +1091,10 @@ label{
 }
 
 .subscriber_form{
-	overflow:hidden;	
+    float: right;
+    margin-bottom: 80px;
+    overflow: hidden;
+    width: 295px;	
 }
 
 .subscriber_form .input{
@@ -1104,7 +1107,7 @@ label{
     clear: both;
     float: right;
     margin: 26px auto 0;
-    width: 300px;
+    width: 295px;
 }
 
 .subscriber_form .horizontal_list{
@@ -1113,6 +1116,17 @@ label{
 
 .subscriber_form .error-message{
 	
+}
+
+
+.form_column{
+float: right;
+    width: 302px;
+}
+
+.overlay_img{
+	  float: left;
+    margin: 5px;
 }
 
 /* Definition Lists */

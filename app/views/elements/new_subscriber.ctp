@@ -26,16 +26,19 @@ $(document).ready(function() {
 });
 </script>
 	<h3 class="subscriber_title">Get <span>outrageous</span> discounts on <br/>Hotels, Resorts, Villas, Cruises and Tours</h3>
-<?php echo $this->Form->create('Subscriber',array('class'=>'subscriber_form'));?>
-
 
 <?php echo $this->Html->image('/img/site/overlay_graphic.png',array('class'=>'overlay_img')); ?>
-<?php
+
+
+<?php 
+echo '<div class="form_column">';
+	echo $this->Form->create('Subscriber',array('class'=>'subscriber_form'));
+
 	echo $this->Session->flash();	
 	echo '<div class="field_row">';
-	echo '<p class="subscriber_cta">Sign Up and never miss an opportunity to travel the world!</p>';
+	echo '<p class="subscriber_cta">Sign Up and gain access <br/>to amazing travel deals!</p>';
 	echo $this->Form->input('Subscriber.email',array('label'=>'Enter Email Address'));
-
+	echo '</div>';
 	/*
 	echo $this->Js->submit('Subscribe',
 	array(
@@ -45,13 +48,18 @@ $(document).ready(function() {
 	'url' => array('controller'=> 'users', 'action'=>'subscribe'), 
 	'buffer'=>true));*/
 	
+
+	
 	echo $this->Form->end(array('class'=>'sign_up_btn','id'=> 'travelers_submit'));
-	echo '</div>';
-	echo '<ul class="subscribe_nav">';
+	
+	
+			echo '<ul class="subscribe_nav">';
 		echo '<li>'.$this->Html->link('Privacy Policy', array('controller' => 'pages', 'action' => 'display','user-policies')).'</li>';
 		echo '<li class="last_li">'.$this->Html->link('Log in', array('controller' => 'users', 'action' => 'login')).'</li>';
 		
 	echo '</ul>';
+	echo '</div>';
+
 	?>
 		
 
