@@ -56,7 +56,7 @@ class UsersController extends AppController {
 				$thisMerchant = $merchant->find('first',
 					array('conditions' => array('Merchant.user_id' => $user['id'])));
 				$this->Session->write('Merchant.id', $thisMerchant['Merchant']['id']);
-				//Merchants should always be logged into their my_deals section
+				//Merchants should always be redirected to their my_deals section
 				$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
 			} 
 			elseif($this->Session->Read('Auth.User.role_id') == Configure::Read('Role.Traveler_ID')){
@@ -69,11 +69,12 @@ class UsersController extends AppController {
 					$this->Session->write('Traveler.ajax_login', 0);
 					$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
 				}
-				elseif($redirect == '/' || $redirect == 'travelers/signup') {
+				//Only redirect travelers if they were on the main page or the signup page
+				elseif($redirect == '/' || $redirect == 'travelers/signup') { 
 					$this->redirect(array('controller' => 'travelers', 'action' => 'my_deals', 'upcoming'));
 				}
 			}
-			$this->redirect($redirect);
+			$this->redirect($redirect); //If they were on a a page other than the main page or signup page, they will be redirected there
 		} 
 		if ($this->Session->read('Auth.User')) {
 			$this->Session->setFlash('You are logged in!', 'success_flash');

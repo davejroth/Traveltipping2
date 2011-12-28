@@ -1,30 +1,14 @@
 <?php
+/**
+  * Notification.php
+  * Authored By: David
+  * This class is a helper that sends out emais to merchants, travelers, and AMs.  Each type has their own function
+  */
+
 class NotificationComponent extends Object {
     var $components = array('Email');
 
-  	/*function sendHtmlMerchantMail($Merchant, $template) {
-	//This array should be declared as a class variable but I'm not sure how to do it.
-	$merchantEmailSubjects = array('newMerchant' => 'Welcome to TravelTipping - Account Details');
-	/* SMTP Options 
-    $this->Email->smtpOptions = array(
-        'port'=>'25', 
-        'timeout'=>'30',
-        'host' => '67.210.113.84',
-        'username'=>'registration@traveltipping.com',
-        'password'=>'43Temp68',
-    );
-	$this->Email->delivery = 'smtp';
-    $this->Email->to = $Merchant['User']['email'];
-    $this->Email->subject = $merchantEmailSubjects[$template];;
-    $this->Email->replyTo = 'advertise@traveltipping.com';
-    $this->Email->from = 'TravelTipping Registration <registration@traveltipping.com>';
-	$this->Email->template = 'merchants//' . $template; // note no '.ctp'
-	$this->Email->layout = 'no_footer';
-    $this->Email->sendAs = 'both'; // Send as 'html', 'text' or 'both' (default is 'text')
-    $this->Email->send();
-	} */
-	//DealMail sends mails that have Deal data set in the deal.  I think we can combine it with 
-	//Merchant Mail
+  	//Merchant Mail
 	function sendHtmlMerchantMail($Merchant, $template) {
 	//This array should be declared as a class variable but I'm not sure how to do it.
 	$merchantEmailSubjects = array('dealApproved' => 'Deal Approved',

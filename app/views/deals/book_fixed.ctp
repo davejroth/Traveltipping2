@@ -29,7 +29,14 @@
  <input class="resDates" name="data[DealPurchase][start_date]" type="hidden" value="" />
 <input class="resDates" name="data[DealPurchase][end_date]" type="hidden" value="" />
 
-<?php echo $this->Form->end(array('class' => 'continue_btn'))?>
+<?php 
+	if(!$this->Session->read('Merchant.id')) {
+		echo $this->Form->end(array('class' => 'continue_btn'));
+	}
+	else {
+		echo "<div id='book_merchant_logout'>Please sign out of your merchant account in order to continue to the purchase page.</div>";
+	}
+?>
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">

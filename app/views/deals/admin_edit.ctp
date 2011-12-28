@@ -7,7 +7,7 @@
 	<fieldset>
 		<legend><?php __('Merchant Information'); ?></legend>
 
-		<?php debug($this->data);
+		<?php //debug($this->data);
 			echo $thisVenue['Merchant']['business_name'];
 			echo $this->Form->input('Deal.id');
 			echo $this->Form->input('Venue.id');?>
