@@ -255,6 +255,37 @@ class DealsController extends AppController {
 		$this->Session->setFlash(__('Deal was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+/**
+  * Admin_Clone
+  * This function clones an existing deal.  All deal details, the venue, and the merchant are the same other than the name of 
+  * the deal, which changes to 'Clone of ...'
+  */
+	function admin_clone ($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for deal', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		else{
+			$this->Deal->recursive = -1;
+			$dealToClone = $this->Deal->read(null, $id);
+			unset($dealToClone['Deal']['id']);
+			unset($dealToClone['Deal']['created']);
+			$dealToClone['Deal']['name'] = 'Clone of ' . $dealToClone['Deal']['name'];
+			$dealToClone['Deal']['title'] = 'Clone of ' . $dealToClone['Deal']['title'];
+			$this->Deal->create();
+			if($this->Deal->save($dealToClone['Deal'])) {
+				$this->Session->setFlash(__('Deal cloned successfully', true));
+				$this->redirect(array('action'=>'index'));
+			}
+			else {
+				$this->Session->setFlash(__('There was an issue cloning the deal', true));
+				$this->redirect(array('action'=>'index'));
+			}
+		
+		}
+	
+	}
 	function getDealInfo($id){
 		
 		$dealInfo = $this->Deal->find('first',array(

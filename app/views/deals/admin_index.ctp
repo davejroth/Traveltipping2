@@ -53,6 +53,7 @@
 
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $deal['Deal']['id'], 'admin' => 0)); ?>
+			<?php echo $this->Html->link(__('Clone', true), array('action' => 'clone', $deal['Deal']['id']), null, "Are you sure you would like to clone this deal?"); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $deal['Deal']['id'])); ?>
 			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $deal['Deal']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $deal['Deal']['id'])); ?>
 		</td>
