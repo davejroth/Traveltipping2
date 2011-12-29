@@ -4,7 +4,8 @@
  *  and automatically opens or closes deals based on the deal's start/end date.  There is also a email that is sent to AMs and 
  *  merchants.  It only makes deals live that are scheduled to go live on the day that it is run, so if it misses a day, deals that 
  *  should be live will not be made live.  This is to prevent it from making a deal live that was closed intentionally before it's close date.
- *  Authored by: David
+ *  Revisions:
+ *  12/28/11 	David Roth		Added logic to only make deals live if their current status was "Approved by Merchant"
  * Licensed under GNU GPL License. 
  */
 
@@ -59,7 +60,7 @@
 		App::import('Model', 'Venue');
 		$deal = new Deal();
 		$merchant = new Merchant();
-		$venue - new Venue();
+		$venue = new Venue();
 		
 		//These are imported for the email
 		App::import('Component', 'Notification');
@@ -75,7 +76,7 @@
 		//Open up new deals
 		$today = date('Y-m-d');
 		//Pull all deals to make live
-		$dealsToOpen = $deal->find('all', array('conditions' => array('Deal.deal_live' => $today)));
+		$dealsToOpen = $deal->find('all', array('conditions' => array('Deal.deal_live' => $today, 'Deal.deal_status_id' => Configure::Read('Deal.Status_Approved'))));
 		$newLiveDeals = array(); //This array keeps track of all the deals that were made live
 		//Check for all deals that should be live and make sure they are
 		foreach ($dealsToOpen as $thisDeal) {
@@ -87,24 +88,24 @@
 				//Send notification to merchant
 				$thisVenue = $venue->findById($thisDeal['Deal']['venue_id']);
 				$thisMerchant = $merchant->findById($thisVenue['Merchant']['id']);
-				$controller->set('Deal', $thisDeal);
+				$controller->set(array('Deal' => $thisDeal, 'Merchant' => $thisMerchant));
 				$notification->sendHtmlMerchantMail($thisMerchant, 'dealLive'); 	
 				
 			}
 		}
 		$newClosedDeals = array();
 		//Close any live deals that are expired
-		$allLiveDeals = $deal->find('all', array('conditions' => array('Deal.deal_status_id' => Configure::Read('Deal.Status_Listed'))))
+		$allLiveDeals = $deal->find('all', array('conditions' => array('Deal.deal_status_id' => Configure::Read('Deal.Status_Listed'))));
 		foreach ($allLiveDeals as $thisDeal) {
 			if($thisDeal['Deal']['deal_close'] == $today) {
 				$thisDeal['Deal']['deal_status_id'] = Configure::Read('Deal.Status_Closed');
 				$deal->save($thisDeal);
 				array_push($newClosedDeals, $thisDeal);
-				
+			
 				//Send notification to merchant
 				$thisVenue = $venue->findById($thisDeal['Deal']['venue_id']);
 				$thisMerchant = $merchant->findById($thisVenue['Merchant']['id']);
-				$controller->set('Deal', $thisDeal);
+				$controller->set(array('Deal' => $thisDeal, 'Merchant' => $thisMerchant));
 				$notification->sendHtmlMerchantMail($thisMerchant, 'dealClose'); 
 			}
 		
