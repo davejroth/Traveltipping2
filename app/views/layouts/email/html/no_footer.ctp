@@ -51,7 +51,7 @@ table td {
                                         <td width="20">&nbsp;&nbsp; </td>
                                         <td align="left" width="558"><table align="center" bgcolor="#ffffff" cellpadding="0" cellspacing="0" width="556">
                                                 <tr>
-                                                    <td style="font-family:'arial';font-size:14px;color:#444545;padding-top:15px;padding-bottom:25px;"> Title,<br />
+                                                    <td style="font-family:'arial';font-size:14px;color:#444545;padding-top:15px;padding-bottom:25px;">
 															<?php echo $content_for_layout; ?> 
 													</td>
 												</tr>
