@@ -16,8 +16,13 @@
 
 	
 <?php
-foreach ($purchases as $purchase):
+if(empty($purchases)) {
+	echo '<div class="no_deal_message"><p class="sub_heading">You have no trips yet!</p></div>';
+}
 
+else{
+
+foreach ($purchases as $purchase):
 ?>
 
 <div id="purchase_<?php echo $purchase['DealPurchase']['id']?>"  class="traveler_purchase white_mod_694_wrap">
@@ -70,7 +75,9 @@ foreach ($purchases as $purchase):
 
 </div>
 
-<?php endforeach; ?>
+<?php endforeach; }?>
+
+
 </div><!-- layout_left -->
 
 <div id="layout_right" class="grid_8">
