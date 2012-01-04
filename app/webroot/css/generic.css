@@ -865,7 +865,7 @@ label{
 	position:relative;
 }
 
-.calendar  .unavailable span{
+.calendar .unavailable span.slash{
     background: url("../img/site/unavail_diaslash.png") no-repeat scroll 0 0 transparent;
     display: block;
     height: 10px;
@@ -977,6 +977,10 @@ label{
 	font-weight: bold;
 	padding: 0 0 0 5px;
 	text-align: left;
+}
+
+.merchant_reservations .calendar .unavailable span.slash{
+	display:none;
 }
 
 /**

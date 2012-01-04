@@ -390,6 +390,16 @@ $('.calendar td.available').hover(
   	}
 );
 
+$('.merchant_reservations .calendar td.unavailable' ).hover(
+  	function(){
+  		$(this).addClass('calendarHover')
+  	},
+  	function(){
+  		$(this).removeClass('calendarHover')
+  	}
+);
+
+
 /**
 * Calendar Date Click Events
 */
