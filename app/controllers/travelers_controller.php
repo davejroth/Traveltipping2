@@ -29,10 +29,10 @@ class TravelersController extends AppController {
 			$this->data['User']['role_id'] = $this->Session->read('Auth.User.role_id');
 			//debug($this->data);
 			if ($this->Traveler->saveAll($this->data, array('validate' => 'first'))) {
-				$this->Session->setFlash(__('Your profile has been saved', true));
+				$this->Session->setFlash(__('Your profile has been saved',true),'success_flash');
 				$this->redirect('/travelers/profile');
 			} else {
-				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true),'error_flash');
 			} 
 		}
 		if (empty($this->data)) {

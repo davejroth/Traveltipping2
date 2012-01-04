@@ -76,7 +76,7 @@ class UsersController extends AppController {
 			$this->redirect($redirect);
 		} 
 		if ($this->Session->read('Auth.User')) {
-			$this->Session->setFlash('You are logged in!');
+			$this->Session->setFlash('You are logged in!', 'success_flash');
 			$this->redirect('/', null, false);
 		}
 	} 
@@ -93,7 +93,7 @@ class UsersController extends AppController {
 		
 		$id = $this->Session->read('Auth.User.id');
 		if (!$id && empty($this->data)) {  //This if statement seems like it should be removed.
-			$this->Session->setFlash(__('Invalid user profile', true));
+			$this->Session->setFlash(__('Invalid user profile', true),'error_flash');
 			$this->redirect(array('action' => 'edit'));
 		}
 		if (!empty($this->data)) {
@@ -101,7 +101,7 @@ class UsersController extends AppController {
 			$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
 			$this->data['User']['role_id'] = $this->Session->read('Auth.User.role_id');
 			if ($this->User->save($this->data)) {
-				$this->Session->setFlash(__('Your password has been saved.', true));
+				$this->Session->setFlash(__('Your password has been saved.', true),'success_flash');
 				//If merchant, redirect to merchant profile.  If traveler, redirect to traveler)
 				if($this->Session->read('Auth.User.role_id') == Configure::Read('Role.Merchant_ID')) 
 				{
@@ -115,7 +115,7 @@ class UsersController extends AppController {
 				
 				
 			} else {
-				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true),'error_flash');
 			}
 		}
 		if (empty($this->data)) {
@@ -171,12 +171,12 @@ class UsersController extends AppController {
 			$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
 			$this->data['User']['role_id'] = $thisUser['User']['role_id'];
 			if($this->User->save($this->data)) {
-				$this->Session->setFlash(__('Your password has been reset.', true));
+				$this->Session->setFlash(__('Your password has been reset.', true),'success_flash');
 				$this->redirect(array('controller' => 'users', 'action' => 'login'));
 			}
 			else
 			{
-				$this->Session->setFlash(__('Sorry, we couldn\'t save your new password.', true));
+				$this->Session->setFlash(__('Sorry, we couldn\'t save your new password.', true),'error_flash');
 			}
 			
 		}
@@ -185,7 +185,7 @@ class UsersController extends AppController {
 			$passwordReset = $this->PasswordReset->findByConfirmation($confirmation);
 			//Or condition - The difference between 'created' and now is greater than 24 hours
 			if(is_null($passwordReset) || (strtotime($passwordReset['PasswordReset']['created']) < strtotime('24 hours ago'))) { //Not the right confirmation
-				$this->Session->setFlash(__('Sorry, your request has expired.  Please generate a new request.', true));
+				$this->Session->setFlash(__('Sorry, your request has expired.  Please generate a new request.', true),'error_flash');
 				$this->redirect(array('controller' => 'users', 'action' => 'resetPassword'));
 			}
 			else {
@@ -203,7 +203,7 @@ class UsersController extends AppController {
 
 	function admin_view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid user', true));
+			$this->Session->setFlash(__('Invalid user', true),'error_flash');
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('user', $this->User->read(null, $id));
@@ -213,10 +213,10 @@ class UsersController extends AppController {
 		if (!empty($this->data)) {
 			$this->User->create();
 			if ($this->User->save($this->data)) {
-				$this->Session->setFlash(__('The user has been saved', true));
+				$this->Session->setFlash(__('The user has been saved', true),'success_flash');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true),'error_flash');
 			}
 		}
 		//$roles = $this->User->Role->find('list');
@@ -225,7 +225,7 @@ class UsersController extends AppController {
 
 	function admin_edit($id = null) {
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid user', true));
+			$this->Session->setFlash(__('Invalid user', true),'error_flash');
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
