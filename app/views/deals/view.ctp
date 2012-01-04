@@ -21,7 +21,14 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 
 
 ?>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="layout_left" class="grid_22">
 	<div id="deal_view_details"  class="white_mod_694_wrap">
 		<div class="white_mod_694_top"></div>
@@ -79,7 +86,15 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 		
 		<div class="white_mod_694_content clearfix">
 			<div class="grid_14">
-				<h3>Description</h3>
+				<div class="description-meta clearfix">
+					<h3>Description</h3>
+					<div class="description-social">
+					<div class="twitter-count">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+					</div>
+					<div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
+					</div>
+				</div>
 				<?php echo $deal['Deal']['description']; ?>
 				
 				<h3>The Fine Print</h3>
@@ -92,6 +107,10 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 					<?php echo $deal['Deal']['highlights']; ?>
 				</div>
 				</div>
+				
+				<div class="fb-like-box" data-href="http://www.facebook.com/traveltipping" data-width="212" data-height="275" data-show-faces="true" data-border-color="#ccc" data-stream="false" data-header="false"></div>
+				
+				
 			</div>
 		</div>
 	</div>
@@ -152,7 +171,7 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 </div>
 </div><!-- #layout_right -->
 
-
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 <script type="text/javascript"> 
 $(document).ready(function() {

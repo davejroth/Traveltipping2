@@ -309,7 +309,9 @@
 }
 
 #deal_view_description h3{
-	font-size:16px;	
+    font-size: 16px;
+    margin-bottom: 10px;
+
 }
 
 #detail_prices span{
@@ -817,6 +819,10 @@ a.deal_listing{
 	text-decoration:none;
 }
 
+.highlight_list{
+	clear:both;
+}
+
 .highlight_list ul{
 	list-style:none;
 	margin:0;
@@ -1279,3 +1285,43 @@ span.pernight {
   margin: 5px 0 15px;
   text-align: center;
 }
+
+/* +++++++++++++++++ START Social Styling +++++++++++++++++ */
+
+.description-meta{
+	
+}
+
+.description-meta h3{
+		float:left;
+}
+
+
+.description-social{
+    float: right;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+
+.description-social div{
+	float:left;	
+}
+
+.twitter-count{
+	width:80px;
+}
+.fb-like{
+	width:120px;
+}
+
+
+.fb-like-box{
+	margin-top:15px;
+}
+
+.fan_box .connect_action .name{
+	display:block;	
+}
+
+/* +++++++++++++++++ END Social Styling  +++++++++++++++++ */
