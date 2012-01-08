@@ -122,7 +122,16 @@ class DealPurchase extends AppModel {
 	
 	function numPurchases($dealId) {
 		return $this->find('count', array('conditions' => array('DealPurchase.deal_id' => $dealId)));
+	}
 	
+	/**
+	 * getTotalSales
+	 * Returns the dollar amount of all deals purchased
+	 */
+	function getTotalSales($dealId) {
+		$totalSalesArray = $this->query('SELECT SUM(purchase_amount) FROM `deal_purchases` WHERE deal_id = ' . $dealId);
+		$totalSales = $totalSalesArray[0][0]['SUM(purchase_amount)']; //CakePHP returns the SQL result in a funky format
+		return $totalSales;
 	}
 	//After each deal purchase, check if the deal purchase limit has been reached and close the deal if necessary.
 	function afterSave($created) {

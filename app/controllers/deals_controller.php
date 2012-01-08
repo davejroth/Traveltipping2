@@ -88,7 +88,8 @@ class DealsController extends AppController {
 		
 		$count = $this->Deal->DealPurchase->find('count', array('conditions' => array('DealPurchase.deal_id' => $id )));
 		$count += $deal['Deal']['purchase_pad'];
-		$this->set(compact('count', 'deal'));
+		$title_for_layout = $deal['Deal']['title'];
+		$this->set(compact('count', 'deal', 'title_for_layout'));
 	}
 	function admin_index() {
 		$this->Deal->recursive = 2;

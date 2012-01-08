@@ -14,12 +14,11 @@ else {
 	$i = 0;
 	foreach ($deals as $deal):
 	$remaining_quantity = $deal['Deal']['max_purchases'] - $deal['Deal']['current_purchases'];
-	$sales = $deal['Deal']['current_purchases'] * $deal['Deal']['discounted_price'];
+	$sales = intval($deal['Deal']['total_sales']);
 	$commissions = $sales * ($deal['Deal']['comission_percentage']/100);
 	$revenue = $sales - $commissions;
 	$progress_value = ($deal['Deal']['current_purchases']/$deal['Deal']['max_purchases'])*100;
 	
-	//$time_remaining = $deal['Deal']['deal_end_date'];
 	
 	?>
 	

@@ -4,7 +4,6 @@
 	<?php echo $this->Html->script('tiny_mce/tiny_mce.js'); ?>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php __('TravelTipping'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php

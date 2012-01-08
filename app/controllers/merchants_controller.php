@@ -98,6 +98,7 @@ class MerchantsController extends AppController {
 			for ($i = 0; $i < $count; $i++) {
 				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
 				array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
+				$deals[$i]['Deal']['total_sales'] = $this->Deal->DealPurchase->getTotalSales($deals[$i]['Deal']['id']);
 			}
 			$this->set(compact('deals'));
 			$this->render('deals_live');
@@ -112,6 +113,7 @@ class MerchantsController extends AppController {
 				for ($i = 0; $i < $count; $i++) {
 				$deals[$i]['Deal']['current_purchases'] = $this->Deal->DealPurchase->find('count',
 				array('conditions' => array('DealPurchase.deal_id' => $deals[$i]['Deal']['id'])));
+				$deals[$i]['Deal']['total_sales'] = $this->Deal->DealPurchase->getTotalSales($deals[$i]['Deal']['id']);
 			}
 			$this->set(compact('deals'));
 			$this->render('deals_past');
