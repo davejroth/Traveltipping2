@@ -1,4 +1,10 @@
 <?php
+require_once(Configure::read('Braintree.location'));
+Braintree_Configuration::environment('sandbox');
+Braintree_Configuration::merchantId('y5hkzv2fqmddchw9');
+Braintree_Configuration::publicKey('jq7dbvmd4bdthf3m');
+Braintree_Configuration::privateKey('cp3yyr7ndgh9qzt9');
+
 /**
  * The Transaction model is used on the deal purchase page to validate the billing info.
  */
@@ -37,7 +43,10 @@ class Transaction extends AppModel {
 			'tosCheck' => array('rule' => array('comparison', '!=', 0),  'message' => 'Please agree to TravelTipping\'s TOS in order to proceed.',),
 		),
 	);
-
+	/**
+	 * buildBrainTreeTransaction
+	 * Builds a formatted array that is required for BrainTree's transactions
+	 */
 	function buildBrainTreeTransaction($data, $traveler) {
 		return array(
 					'amount' => $data['Transaction']['cost'], 
@@ -65,8 +74,13 @@ class Transaction extends AppModel {
 					  'options' => array(
 						'submitForSettlement' => true
 					)
-					);
-	
-	
+		);
+	}
+	/**
+	 * makeBTTransaction
+	 * Uses BrainTree API to make the transaction
+	 */
+	function makeBTTransaction($data, $traveler) {
+		return Braintree_Transaction::sale($this->buildBrainTreeTransaction($data, $traveler));
 	}
 }

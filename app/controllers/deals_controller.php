@@ -1,9 +1,5 @@
 <?php
-require_once(Configure::read('Braintree.location'));
-Braintree_Configuration::environment('sandbox');
-Braintree_Configuration::merchantId('y5hkzv2fqmddchw9');
-Braintree_Configuration::publicKey('jq7dbvmd4bdthf3m');
-Braintree_Configuration::privateKey('cp3yyr7ndgh9qzt9');
+
 
 class DealsController extends AppController {
 
@@ -116,7 +112,7 @@ class DealsController extends AppController {
 		$deals = $dealInfo;
 		$this->set(compact('deals'));
 	}
-    //I played with this function to test Braintree Transactions.
+    /* DR - I used this function to test Braintree_Transactions
 	function admin_view($id = null) {
 			$result = Braintree_Transaction::sale(array(
 			'amount' => '1000.00',
@@ -154,7 +150,7 @@ class DealsController extends AppController {
 		}
 		$this->set('deal', $this->Deal->read(null, $id));
 	}
-
+	*/
 	function admin_add() {
 		if (!empty($this->data)) {
 			$this->Deal->create();
@@ -399,7 +395,8 @@ class DealsController extends AppController {
 				$this->Transaction->set($this->data);
 				//Billing info was entered.  Now process the credit card
 				if($this->Transaction->validates()) { //If CC info entered correctly
-					$result = Braintree_Transaction::sale($this->Transaction->buildBrainTreeTransaction($this->data, $traveler));
+					$result = $this->Transaction->MakeBTTransaction($this->data, $traveler);
+					//$result = Braintree_Transaction::sale($this->Transaction->buildBrainTreeTransaction($this->data, $traveler));
 					if ($result->success) { //Braintree validation Success
 						$purchase['DealPurchase']['deal_id'] = $id;
 						$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
