@@ -81,6 +81,7 @@ class DealPurchase extends AppModel {
 			$reservationStart = $currentReservation['DealPurchase']['start_date'];
 			$reservationEnd = $currentReservation['DealPurchase']['end_date'];
 			$reservationStart = date('Y-m-d', strtotime($reservationStart. ' - 1 days')); //Take one day off so that last day is added
+			$reservationEnd = date('Y-m-d', strtotime($reservationEnd. ' - 1 days')); //Take one day off so that the last day is not counted as a reservation
 			do {
 				$reservationStart = date('Y-m-d', strtotime($reservationStart. ' + 1 days'));
 				$reservedDates[$reservationStart]++;

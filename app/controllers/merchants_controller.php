@@ -181,10 +181,7 @@ class MerchantsController extends AppController {
 		$conditions = array('DealPurchase.deal_id =' => $id);
 		if($chosenDate != null) {
 		array_push($conditions, array('DealPurchase.start_date <=' => $chosenDate, 
-			'DealPurchase.end_date >=' => $chosenDate));
-		//$conditions['DealPurchase.start_date <='] = $chosenDate;
-		/*$conditions = array('DealPurchase.start_date <=' => $chosenDate, 
-			'DealPurchase.end_date >=' => $chosenDate); */
+			'DealPurchase.end_date >' => $chosenDate)); //Don't show people who are checking out on the day selected
 			
 		}
 		if($deal['Deal']['reservation_type_id'] != 3) {
