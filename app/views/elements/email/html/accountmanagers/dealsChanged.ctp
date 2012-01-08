@@ -3,6 +3,7 @@
 								echo $deal['Deal']['title'] . "<br/>";
 							}
 							?>
+							<br>
 							<b><u>The following deals closed:</u></b><br /><br />
 							<?php foreach($newClosedDeals as $deal) {
 								echo $deal['Deal']['title'] . "<br/>";
