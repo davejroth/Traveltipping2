@@ -94,13 +94,46 @@ class Deal extends AppModel {
 		'average_reservations' => array(
             'reservationCheck' => array('rule' => 'notEmpty','message' => ' Please enter an average reservation count.'),
 		),
-		/*'deal_expire' => array(
+		'deal_expire' => array(
 			'expireCheck' => array('rule' => 'expireCheck', 'message' => 'Please make sure that the Deal Expire date is greater than the Deal Valid date.')
 		),
 		'deal_close' => array(
 			'closeCheck' => array('rule' => 'closeCheck', 'message' => 'Please make sure that the Deal Close date is greater than the Deal Live date.')
-		)	*/
+		)
     );
+	
+	/*
+	 * expireCheck
+	 * Checks to make sure that the expire date is greater than the deal valid date.
+	 */
+	function expireCheck()
+	{
+		$newValidDate = strtotime($this->data['Deal']['deal_valid']);
+		$newExpireDate = strtotime($this->data['Deal']['deal_expire']);
+		if($newExpireDate > $newValidDate) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	/*
+	 * closeCheck
+	 * Checks to make sure that the close date is greater than the deal live date.
+	 */
+	function closeCheck()
+	{
+		$newLiveDate = strtotime($this->data['Deal']['deal_live']);
+		$newCloseDate = strtotime($this->data['Deal']['deal_close']);
+			
+		if($newCloseDate > $newLiveDate) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	/*
 	 * Override paginateCount so that it counts the number of deals for pagination on the deals index page correctly.  This was a huge PITA
 	 */
@@ -121,42 +154,13 @@ class Deal extends AppModel {
 		}
     return $this->find('all', compact('conditions', 'fields', 'order', 'limit', 'page', 'recursive'));
 	} 
-	/*
-	function expireCheck()
-	{
-		//$newValidDateString = $this->data['Deal']['deal_valid']['year'] . '-' . $this->data['Deal']['deal_valid']['month'] . '-' . $this->data['Deal']['deal_valid']['day']; 
-		$newValidDate = strtotime($this->data['Deal']['deal_valid']);
-		//$newExpireDateString = $this->data['Deal']['deal_expire']['year'] . '-' . $this->data['Deal']['deal_expire']['month'] . '-' . $this->data['Deal']['deal_expire']['day']; 
-		$newExpireDate = strtotime($this->data['Deal']['deal_expire']);
-			
-		if($newExpireDate > $newValidDate) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	function closeCheck()
-	{
-		$newLiveDate = strtotime($this->data['Deal']['deal_live']);
-		$newCloseDate = strtotime($this->data['Deal']['deal_close']);
-			
-		if($newCloseDate > $newLiveDate) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-     */
 	 
 	/**
 	 * GetReservationType returns the reservationtype of the deal id passed to it
 	 */
 	function getReservationType($id) {
-	$thisDeal = $this->find('first', array('conditions' => array('Deal.id' => $id)));
-	return $thisDeal['Deal']['reservation_type_id'];
+		$thisDeal = $this->find('first', array('conditions' => array('Deal.id' => $id)));
+		return $thisDeal['Deal']['reservation_type_id'];
 	}
 	
 	/**

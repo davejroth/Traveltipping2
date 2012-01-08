@@ -187,7 +187,6 @@ class DealsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			$this->Deal->set($this->data);
 			$savedDeal = $this->Deal->read(null, $id);
 			if($savedDeal['Deal']['deal_status_id'] != $this->data['Deal']['deal_status_id']) {
 				$statusChange = true;
@@ -195,6 +194,7 @@ class DealsController extends AppController {
 			else {
 				$statusChange = false;
 			}
+			$this->Deal->set($this->data);
 			if($this->Deal->validates()) {
 				$this->Deal->updateAvailabilityRecords($id, $this->data);
 				if ($this->Deal->saveAll($this->data)) {
@@ -229,7 +229,7 @@ class DealsController extends AppController {
 		if(empty($this->data)) {
 			$this->data = $this->Deal->read(null, $id);
 		}
-		$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Deal']['venue_id'])));
+		$thisVenue = $this->Deal->Venue->find('first', array('conditions' => array('Venue.id' => $this->data['Venue']['id'])));
 		$countries = $this->Deal->Venue->Country->find('list');
 		$businessTypes = $this->Deal->Venue->BusinessType->find('list');
 		$merchants = $this->Deal->Venue->Merchant->find('list');
