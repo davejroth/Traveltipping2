@@ -4,13 +4,14 @@ class CalendarHelper extends Helper {
 	var $helpers = array('Html');
 	
 	function renderMonth($month,$year, $deal_valid, $deal_expire, $datesFull){
-		
+		date_default_timezone_set('UTC'); //This is required by PHP for strtotime to function correctly.  See man page.
 		$validTime = strtotime($deal_valid);
 		$expireTime = strtotime($deal_expire);
 		/**
 		* Initialze Calendar Variables
 		*/
 		$firstdate = mktime(0, 0, 0, $month, 1, $year);
+		$currentTime = $firstdate; //Exclude days outside the range
 		$lastdate = mktime(0, 0, 0, $month+1, 0, $year);
 		//echo($lastdate);
 		$firstday = strftime("%a", $firstdate);
@@ -28,7 +29,6 @@ class CalendarHelper extends Helper {
 		
 		$month_padded = str_pad($month,2,"0",STR_PAD_LEFT);
 		
-		
 		$calendar = '<div id="calendar_'.$year.'_'.$month_padded.'" class="month_wrap">';
 		$calendar .= '<div class="calendar_heading clearfix"> <h3>'.$month_array[$month].' '.$year.'</h3>';
 		$calendar .= '</div>'; 
@@ -45,7 +45,7 @@ class CalendarHelper extends Helper {
 		/**
 		* First Week
 		*/
-		$currentTime = $firstdate; //Exclude days outside the range
+
 		$calendar .= '<tr>';
 		for($i=0; $i<=41; $i++){
 			if($i % 7 ==0 && $i != 0)
@@ -56,7 +56,7 @@ class CalendarHelper extends Helper {
 				$calendar .= '<td class="blank"><a href="#">&nbsp;</a></td>';
 			}
 			else{
-				if($currentTime < $validTime || $currentTime >= $expireTime) {
+				if($currentTime < $validTime || $currentTime > $expireTime) {
 					$calendar .= '<td class="outside_range"><a href="#">'.$day.'</a></td>';
 				}
 				elseif($datesFull[date('Y-m-d',$currentTime)] == true){
@@ -177,15 +177,15 @@ class CalendarHelper extends Helper {
 		$secondDate = date_parse($deal_expire);
 		$secondMonth = $secondDate['month'];
 		
-		if($secondMonth < $firstMonth) {
-			$secondMonth = $secondMonth + 12;  //This is assuming deals will only cross one year.
-		}
+		//In case the endmonth is in a different year than the start month
+		$yearsDifference = $secondDate['year'] - $firstDate['year'];
+		$secondMonth += $yearsDifference * 12;
+		
 		$interval = $secondMonth - $firstMonth;
 		$calendar['months'] = $interval;
 		
 		$first_date = date_parse($deal_valid);
 		$last_date = date_parse($deal_expire);
-		
 		/**
 		* Create Calendar Objects
 		*/
