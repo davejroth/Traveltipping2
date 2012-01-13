@@ -4,24 +4,36 @@ class Venue extends AppModel {
 	var $displayField = 'name';
 	var $validate = array(
 		'country_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			'numeric' => array('rule' => array('numeric'),
 			),
 		),
 		'merchant_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			'numeric' => array('rule' => array('numeric'),
 			),
+		),
+		'name' => array(
+            'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter a name for the deal.'),
+		),
+		'email' => array(
+            'emailCheck' => array('rule' => 'notEmpty','message' => ' Please enter an email for the deal.'),
+		),
+		'address1' => array(
+            'address1Check' => array('rule' => 'notEmpty','message' => ' Please enter an address for the deal.'),
+		),
+		'city' => array(
+            'cityCheck' => array('rule' => 'notEmpty','message' => ' Please enter a city for the deal.'),
+		),
+		'state' => array(
+            'stateCheck' => array('rule' => 'notEmpty','message' => ' Please enter a state or province for the deal.'),
+		),
+		'postal_code' => array(
+            'postal_codeCheck' => array('rule' => 'notEmpty','message' => ' Please enter a postal or area code for the deal.'),
+		),
+		'country_id' => array(
+            'country_idCheck' => array('rule' => 'notEmpty','message' => ' Please enter a country for the deal.'),
+		),
+		'business_type_id' => array(
+            'business_typeCheck' => array('rule' => 'notEmpty','message' => ' Please enter a business type for the deal.'),
 		),
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

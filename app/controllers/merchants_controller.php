@@ -142,12 +142,11 @@ class MerchantsController extends AppController {
 				$this->Session->setFlash(__('The venue could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$venues = $this->Venue->find('list',array('conditions' => array('Venue.merchant_id' => $this->Session->read('Merchant.id'))));
-			$countries = $this->Venue->Country->find('list');
-			$businessTypes = $this->Venue->BusinessType->find('list');
-			$this->set(compact('venues', 'countries', 'businessTypes'));
-		}
+
+		$venues = $this->Venue->find('list',array('conditions' => array('Venue.merchant_id' => $this->Session->read('Merchant.id'))));
+		$countries = $this->Venue->Country->find('list');
+		$businessTypes = $this->Venue->BusinessType->find('list');
+		$this->set(compact('venues', 'countries', 'businessTypes'));
 
 	}
 	
