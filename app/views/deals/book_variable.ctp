@@ -52,6 +52,7 @@ $(document).ready(function() {
 max_nights = null;
 discounted_price = null;
 reservation_type = null;
+deal_expire = null;
 
 	$.ajaxSetup({ cache: false });
 	$.ajax({
@@ -61,6 +62,7 @@ reservation_type = null;
 			max_nights = data.Deal.max_nights;
 			discounted_price = data.Deal.discounted_price;
 			reservation_type = data.Deal.reservation_type_id;
+			deal_expire = data.Deal.deal_expire;
 		}
 	});
 	

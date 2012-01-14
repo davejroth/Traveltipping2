@@ -128,6 +128,15 @@ function cancelReservation(){
 * @params: dateID (Id of the checkin date being reserverd) 
 */
 function addVariableReservation(dateID){
+	
+	if($('#'+dateID).attr('id') == deal_expire){
+		$('#layout_center').prepend('<div class="error_notification notification"><p>Cannot check in on the last day of deal.  Choose another Date.</p></div>')
+			$('.notification').fadeOut(3000,'linear',function(){
+				$('.notification').remove()
+			});
+			return false;
+	}
+	
 	checkInDateObj = convertDate(dateID)
 	checkOutDateObj = convertDate(dateID)
 	checkInDate = checkInDateObj.toString("yyyy-MM-dd")
