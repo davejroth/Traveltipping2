@@ -86,7 +86,7 @@ function addFixedReservation(dateID){
 		
 		$('#layout_center').prepend('<div class="error_notification notification"><p>Reservation falls within the expire date.  Choose another date.</p></div>')
 			
-			$('.notification').fadeOut(3000,'linear',function(){
+			$('.notification').fadeOut(2000,'easeInCubic',function(){
 				$('.notification').remove()
 			});
 			
@@ -142,7 +142,7 @@ function addVariableReservation(dateID){
 	
 	if($('#'+dateID).attr('id') == deal_expire){
 		$('#layout_center').prepend('<div class="error_notification notification"><p>Cannot check in on the last day of deal.  Choose another Date.</p></div>')
-			$('.notification').fadeOut(3000,'linear',function(){
+			$('.notification').fadeOut(2000,'easeInCubic',function(){
 				$('.notification').remove()
 			});
 			return false;
@@ -167,7 +167,7 @@ function updateVariableReservation(dateID){
 		if(checkInDateObj2.compareTo(checkOutDateObj2) == 1){
 			
 			$('#layout_center').prepend('<div class="error_notification notification"><p>Checkout date is before Checkin date.  Choose another Date.</p></div>')
-			$('.notification').fadeOut(3000,'linear',function(){
+			$('.notification').fadeOut(2000,'easeInCubic',function(){
 				$('.notification').remove()
 			});
 			return false;
@@ -185,7 +185,7 @@ function updateVariableReservation(dateID){
 		if(checkOutDateObj.compareTo(checkInDateObj) == -1){
 			
 			$('#layout_center').prepend('<div class="error_notification notification"><p>Checkin date is after Checkout date.  Choose another Date.</p></div>')
-			$('.notification').fadeOut(3000,'linear',function(){
+			$('.notification').fadeOut(2000,'easeInCubic',function(){
 				$('.notification').remove()
 			});
 			return false;
@@ -286,7 +286,7 @@ function checkRangeAvailability(checkInID,checkOutID){
 		if($('#'+daySelection).hasClass('unavailable')){
 			
 			$('#layout_center').prepend('<div class="error_notification notification"><p>Not a valid date, Please choose another date</p></div>')
-			$('.notification').fadeOut(3000,'linear',function(){
+			$('.notification').fadeOut(2000,'easeInCubic',function(){
 				$('.notification').remove()
 			});
 			return false;
@@ -435,6 +435,8 @@ $('.calendar td[class!="available"] a').click(
 function(){
 	return false;
 });
+
+
 
 
 	
