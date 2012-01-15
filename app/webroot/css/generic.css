@@ -1201,6 +1201,24 @@ float: right;
     text-align: left;
 }
 
+/* AJAX Loader */
+.calendar_wrap{
+	visibility:hidden;
+}
+.loader{
+    background: url("../img/site/ajax-loader.gif") no-repeat scroll 0 0 transparent;
+    display:none;
+    height: 32px;
+    left: 325px;
+    position: absolute;
+    top: 175px;
+    width: 32px;
+}
+
+#DealBookForm{
+	position:relative;
+}
+
 /* Temp pagination */
 
 .pagination{

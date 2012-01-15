@@ -1,8 +1,19 @@
+function monthDiff(d1, d2) {
+    var months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth() + 1;
+    months += d2.getMonth() + 1;
+    return months;
+}
+
+
 $(document).ready(function() {
 
 /**
 * ++++++++++++++++++++++	CALENDAR FUNCTIONS ++++++++++++++++++++++++++++++++
 */
+
+
 
 /**
 * Add days to a date
@@ -344,6 +355,7 @@ $('.clear_dates').click(function(){
 /*
 * Calendar Navigation Controls
 */
+start_position = 0;
 $('.prev_cal').click(function(){
 	$(".calendar_slider").animate({
 	  left: '+=330'
@@ -352,7 +364,7 @@ $('.prev_cal').click(function(){
 		css_position = $(".calendar_slider").css('left');
 		last_slide = Math.floor(num_of_months - (Math.abs(position.left)/month_width));
 
-		if(css_position == '0px'){
+		if(css_position == start_position+'px'){
 			$('.prev_cal').hide();
 			$('.next_cal').show();
 		}
