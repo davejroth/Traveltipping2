@@ -88,10 +88,8 @@ current_date = current_date_obj.toString("yyyy-MM-dd");
 			month_diff = monthDiff(deal_valid_obj, current_date_obj);
 			num_calendar = $('.month_wrap').length;
 			
-	
 			if(num_calendar == 1){
 				$('.calendar_controls').css({'display': 'none'})
-		
 			}
 			
 			/* Check to see if current date is past deal valid date */
