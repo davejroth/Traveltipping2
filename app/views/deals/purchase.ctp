@@ -179,7 +179,7 @@ $.getJSON('/users/check_session', function(json) {
 	  ?>
 	  <div class="billing_terms">
 		<p>You have 7 days from purchase to cancel your reservation and receive a full refund.  If you need to change your 
-			reservation in the future, you can do sy contacting the travel supplier directly, subject to availability.</p>
+			reservation in the future, you can do so by contacting the travel supplier directly, subject to availability.</p>
 	  <?php 
 	  		$term_link = $this->Html->link('Terms of Service',array('controller' => 'pages', 'action' => 'user-terms'), array());
 			echo $this->Form->input('Transaction.tos', array('type'=>'checkbox','label' =>'I agree to TravelTippings '.$term_link));

@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 });
 </script>
-	<h3 class="subscriber_title">Get <span>outrageous</span> discounts on <br/>Hotels, Resorts, Villas, Cruises and Tours</h3>
+	<h3 class="subscriber_title">Get <span>outrageous</span> discounts on <br/>vacation villas, hotels and resorts</h3>
 
 <?php echo $this->Html->image('/img/site/overlay_graphic.png',array('class'=>'overlay_img')); ?>
 
@@ -36,7 +36,7 @@ echo '<div class="form_column">';
 
 	echo $this->Session->flash();	
 	echo '<div class="field_row">';
-	echo '<p class="subscriber_cta">Sign Up and gain access <br/>to amazing travel deals!</p>';
+	echo '<p class="subscriber_cta">Sign up and gain access <br/>to amazing travel deals!</p>';
 	echo $this->Form->input('Subscriber.email',array('label'=>'Enter Email Address'));
 	echo '</div>';
 	/*

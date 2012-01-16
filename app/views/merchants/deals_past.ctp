@@ -8,7 +8,7 @@
 <?php
 
 if(empty($deals)) {
-	echo '<div class="no_deal_message"><p class="sub_heading">You have no deals yet!</p></div>';
+	echo '<div class="no_deal_message"><p class="sub_heading">You have no past deals yet.</p></div>';
 }
 else {
 	$i = 0;
