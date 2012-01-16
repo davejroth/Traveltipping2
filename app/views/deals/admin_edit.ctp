@@ -113,6 +113,10 @@
 			echo '</div>';
 			
 			echo '<div class="field_row clearfix">';
+				echo $this->Form->input('destination', array('label' => 'Location (displayed publicly)'));
+			echo '</div>';
+			
+			echo '<div class="field_row clearfix">';
 				echo $this->Form->input('Region', array('multiple' => 'checkbox', 'class' => 'deal_checkboxes'));
 				echo $this->Form->input('Category', array('multiple' => 'checkbox', 'class' => 'deal_checkboxes'));
 			echo '</div>';
@@ -120,6 +124,7 @@
 			echo $this->Form->input('description');
 			echo $this->Form->input('fine_print');
 			echo $this->Form->input('highlights');
+			echo $this->Form->input('venue_info', array('label' => 'About your host'));
 			echo $this->Form->input('getting_there');
 			echo $this->Form->input('things_to_do');
 			echo $this->Form->input('things_to_do2');
