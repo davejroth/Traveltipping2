@@ -56,8 +56,13 @@ class UsersController extends AppController {
 				$thisMerchant = $merchant->find('first',
 					array('conditions' => array('Merchant.user_id' => $user['id'])));
 				$this->Session->write('Merchant.id', $thisMerchant['Merchant']['id']);
-				//Merchants should always be redirected to their my_deals section
-				$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
+				//If a merchant has live deals, take them there.  Otherwise, take them to upcoming deals.
+				if($merchant->hasLiveDeals($thisMerchant['Merchant']['id'])) {
+					$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'live'));
+				}
+				else{
+					$this->redirect(array('controller' => 'merchants', 'action' => 'my_deals', 'upcoming'));
+				}
 			} 
 			elseif($this->Session->Read('Auth.User.role_id') == Configure::Read('Role.Traveler_ID')){
 				App::import('model','Traveler');

@@ -53,11 +53,11 @@ class MerchantsController extends AppController {
 			$this->data['User']['id'] = $this->Session->read('Auth.User.id');
 			$this->data['User']['role_id'] = $this->Session->read('Auth.User.role_id');
 			if ($this->Merchant->saveAll($this->data)) {
-				$this->Session->setFlash(__('Your profile has been saved.', true));
+				$this->Session->setFlash(__('You successfully updated your account details', true),'success_flash');
 				$this->redirect('/merchants/profile');
 			} else {
 				//debug($this->data);
-				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Please fix the errors and try again', true),'error_flash');
 			}
 		}
 		if (empty($this->data)) {

@@ -67,20 +67,20 @@ class User extends AppModel {
             ),
         ),
 		'password' => array(
-			'passwordlength' => array('rule' => 'passwordLength','message' => 'Please create a password with more than 5 characters.'),
-			'passwordequal'  => array('rule' =>'checkpasswords','message' => 'Passwords do not match.')
+			'passwordlength' => array('rule' => 'passwordLength','message' => 'Please create a password with more than 5 characters'),
+			'passwordequal'  => array('rule' =>'checkpasswords','message' => 'Passwords do not match')
 		),
 		'current_password' => array(
-			'passwordCheck' => array('rule' => 'passwordCheck', 'message' => 'Password entered does not match your saved password.')
+			'passwordCheck' => array('rule' => 'passwordCheck', 'message' => 'Password entered does not match your saved password')
 		),
 		'resetEmail' => array(
 			'emailExists' => array(
 					'rule' => 'emailExists',
-					'message' => 'There\'s no account with this email address.'
+					'message' => 'There\'s no account with this email address'
 			),
 			'isEmail' => array(
 					'rule' => 'email',
-					'message' => 'Please enter a valid email address.',
+					'message' => 'Please enter a valid email address',
 			),
 		)
 				

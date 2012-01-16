@@ -101,4 +101,19 @@ function isFalse() {
 	return false;
 }
 
+/**
+ * hasLiveDeals
+ * Checks if a merchant has live deals.  Returns true if they do.  Returns false if they don't.
+ */
+function hasLiveDeals($merchantID) {
+	$liveDeals = $this->query('SELECT deals.* FROM venues
+				LEFT JOIN deals
+				ON venues.id = deals.venue_id
+				WHERE deals.deal_status_id = ' . Configure::Read('Deal.Status_Listed') . ' AND venues.merchant_id = ' . $merchantID);
+	if(!empty($liveDeals))
+		return true;
+	else
+		return false;
+}
+
 }
