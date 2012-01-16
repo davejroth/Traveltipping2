@@ -1,9 +1,19 @@
 <?php
 require_once(Configure::read('Braintree.location'));
-Braintree_Configuration::environment('sandbox');
+
+/* Testing - Sandbox Environment
+Braintree_Configuration::environment('sandbox'); 
 Braintree_Configuration::merchantId('y5hkzv2fqmddchw9');
 Braintree_Configuration::publicKey('jq7dbvmd4bdthf3m');
-Braintree_Configuration::privateKey('cp3yyr7ndgh9qzt9');
+Braintree_Configuration::privateKey('cp3yyr7ndgh9qzt9'); */
+
+//Live environment
+Braintree_Configuration::environment('production'); 
+Braintree_Configuration::merchantId('78x9nnp6cr3m63zp');
+Braintree_Configuration::publicKey('d6374974prgqmjj3');
+Braintree_Configuration::privateKey('97r4bgjq2zgp3hpt'); 
+
+
 
 /**
  * The Transaction model is used on the deal purchase page to validate the billing info.
