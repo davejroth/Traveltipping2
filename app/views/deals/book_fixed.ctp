@@ -85,9 +85,18 @@ current_date = current_date_obj.toString("yyyy-MM-dd");
 			deal_valid_obj =  Date.parse(deal_valid);
 			deal_valid_obj2 =  Date.parse(deal_valid);
 			
+			month_diff = monthDiff(deal_valid_obj, current_date_obj);
+			num_calendar = $('.month_wrap').length;
+			
+	
+			if(num_calendar == 1){
+				$('.calendar_controls').css({'display': 'none'})
+		
+			}
+			
 			/* Check to see if current date is past deal valid date */
 			if(current_date_obj.compareTo(deal_valid_obj) == 1){
-				month_diff = monthDiff(deal_valid_obj, current_date_obj);
+				
 				
 				calendar_pos = month_diff * 330;
 				$('.calendar_slider').css({
