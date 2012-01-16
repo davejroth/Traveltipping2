@@ -1007,6 +1007,11 @@ label{
 #reservation_list{
 	clear:both;
 }
+/* Temp fix for hiding pagination */
+#reservation_list #pagination{
+	display:none;
+}
+
 
 .reservation_table{
   margin: 10px auto;

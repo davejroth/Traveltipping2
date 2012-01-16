@@ -7,8 +7,8 @@ class MerchantsController extends AppController {
 
 	
 	var $paginate = array(
-		'DealPurchase' => array('limit' => 10),
-		'Passenger' => array('limit' => 10),
+		'DealPurchase' => array('limit' => 100),
+		'Passenger' => array('limit' => 100),
 		);
 	
 /*
