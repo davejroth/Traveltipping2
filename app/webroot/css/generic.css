@@ -50,6 +50,7 @@
 
 .white_mod_960_content .page_content{
 	margin-bottom:0;
+	overflow:hidden;
 }
 
 .header_img{
