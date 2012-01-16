@@ -4,3 +4,4 @@
 /vendors
 /app/webroot/img
 /app/config/database.php
+/app/vendors/braintree/lib/BTConfig.php
