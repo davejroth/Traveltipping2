@@ -504,7 +504,8 @@ margin:0;
 
 #UserLoginForm,
 #UserResetPasswordForm,
-#UserEditPasswordForm{
+#UserEditPasswordForm,
+#UserNewPasswordForm{
 	width:420px;
 	margin:0 auto;
 }
@@ -581,6 +582,16 @@ margin:0;
     display: block;
     margin: 10px 0 30px 0;
 }
+
+
+
+#UserNewPasswordForm .submit {
+    clear: none;
+    float: left;
+    margin-top: 60px;
+    width: 100px;
+}
+
 
 /* +++++++++++++++++ END Password Reset +++++++++++++++++ */
 
