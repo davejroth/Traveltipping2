@@ -31,7 +31,7 @@ foreach ($purchases as $purchase):
 		<div class="deal_img_section">
 		<?php 
 			echo $this->Html->image($purchase['Deal']['image1'], array('class'=>'grid_5','alt' => 'Featured Deal Image'));
-			echo $this->Html->link($purchase['Deal']['Venue']['website'],'http://'.$purchase['Deal']['Venue']['website'],array('class' => 'grid_5'));
+			echo $this->Html->link('website',$purchase['Deal']['Venue']['website'],array('class' => 'grid_5','target' => '_blank'));
 		?>
 		</div>
 		<div class="traveler_destination_details">
@@ -56,7 +56,7 @@ foreach ($purchases as $purchase):
 				<dl class="clearfix grid_8">
 				<?php echo __('<dt>Company:</dt><dd>').$purchase['Deal']['Venue']['name']; 
 					echo '</dd>';
-					echo __('<dt>Address:</dt><dd>').$purchase['Deal']['Venue']['address1']; 
+					echo __('<dt>Address:</dt><dd>').$purchase['Deal']['Venue']['address1'].'<br/>'; 
 					
 					echo $purchase['Deal']['Venue']['city'] . ", " . $purchase['Deal']['Venue']['state'] . " " . $purchase['Deal']['Venue']['postal_code']; echo "<br>";
 					echo $purchase['Deal']['Venue']['Country']['name']; 
