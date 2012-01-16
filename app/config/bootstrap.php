@@ -148,5 +148,6 @@ Configure :: write('acl.gui.users_permissions.ajax', true);
  Configure :: write('ReservationType.Variable', 2);
  Configure :: write('ReservationType.Set', 3);
  Configure :: write('Braintree.location', $_SERVER['DOCUMENT_ROOT'] . '/app/vendors/braintree/lib/Braintree.php');
+ Configure :: write('Braintree.configuration', $_SERVER['DOCUMENT_ROOT'] . '/app/vendors/braintree/lib/BTConfig.php');
  //on server - //home/trave125/public_html/stage/app/vendors/braintree/lib/Braintree.php
 ?>
