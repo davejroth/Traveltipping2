@@ -31,7 +31,6 @@ foreach ($purchases as $purchase):
 		<div class="deal_img_section">
 		<?php 
 			echo $this->Html->image($purchase['Deal']['image1'], array('class'=>'grid_5','alt' => 'Featured Deal Image'));
-			echo $this->Html->link('website',$purchase['Deal']['Venue']['website'],array('class' => 'grid_5','target' => '_blank'));
 		?>
 		</div>
 		<div class="traveler_destination_details">
