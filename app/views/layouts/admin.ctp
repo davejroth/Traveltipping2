@@ -43,7 +43,15 @@
 			<?php echo $this->element('footer'); ?>
 		</div><!-- #layout_footer -->	
 	</div><!-- #layout_container -->
+			<script type="text/javascript">
+$(document).ready(function() {
 	
+$('.notification').fadeOut(3000,'easeInCubic',function(){
+	$('.notification').remove()
+});
+
+});
+</script>
 
 </body>
 </html>

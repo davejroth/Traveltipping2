@@ -1156,6 +1156,8 @@ float: right;
 }
 
 /* Notifications*/
+
+
 .success_notification{
     background: none repeat scroll 0 0 #d3f6da;
     border: 2px solid #188003;
@@ -1167,17 +1169,10 @@ float: right;
     top: 150px;
     width: 690px;
     z-index: 2000;
-    left:158px;
+    left:280px;
 }
 
-.success_notification p{
-    background: url("../img/site/success.png") no-repeat scroll 0 0 transparent;
-    line-height: 33px;
-    margin: 15px;
-    padding-left: 41px;
-    padding-top: 0;
-    text-align: left;
-}
+
 
 .error_notification{
     background: none repeat scroll 0 0 #F9F0F2;
@@ -1190,7 +1185,21 @@ float: right;
     top: 150px;
     width: 690px;
     z-index: 2000;
-    left:158px;
+    left:280px;
+}
+
+#layout_left .error_notification,
+#layout_left .success_notification{
+	left:158px;
+}
+
+.success_notification p{
+    background: url("../img/site/success.png") no-repeat scroll 0 0 transparent;
+    line-height: 33px;
+    margin: 15px;
+    padding-left: 41px;
+    padding-top: 0;
+    text-align: left;
 }
 
 .error_notification p{
