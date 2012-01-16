@@ -35,7 +35,7 @@ foreach ($purchases as $purchase):
 		?>
 		</div>
 		<div class="traveler_destination_details">
-			<h3 class="listing_desination_title"><?php echo $purchase['Deal']['destination'] ?><?php echo $this->Html->link('View Page &raquo;', array('controller' => 'deals', 'action' => 'view', $purchase['Deal']['id']),array('escape' => false)); ?></h3>
+			<h3 class="listing_desination_title"><?php echo $purchase['Deal']['destination'] ?><?php echo $this->Html->link('View Deal &raquo;', array('controller' => 'deals', 'action' => 'view', $purchase['Deal']['id']),array('escape' => false)); ?></h3>
 			<div>
 				<p><?php echo __('Reservation Details: ');?></p>
 				<dl class="clearfix grid_8">
@@ -51,7 +51,7 @@ foreach ($purchases as $purchase):
 					?>
 				</dl>
 			</div>
-			<div>
+			<div class="destination_details">
 				<p><?php echo __('Destination Details')?></p>
 				<dl class="clearfix grid_8">
 				<?php echo __('<dt>Company:</dt><dd>').$purchase['Deal']['Venue']['name']; 

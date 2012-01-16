@@ -1218,6 +1218,11 @@ display:inline;
     width: 100px;
 }
 
+
+.traveler_purchase .destination_details dl dt{
+	width:60px;
+}
+
 .traveler_purchase dl dd{ 
 	float:left;
 }
