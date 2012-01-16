@@ -411,6 +411,7 @@ label{
 }
 
 .advertise_page .highlight_list{
+    clear: none;
     display: block;
     float: left;
     margin: 10px 30px;
