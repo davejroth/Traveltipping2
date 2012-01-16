@@ -125,8 +125,8 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 			<p class="venue_name"><?php echo $deal['Venue']['name']; ?></p>
 			<?php echo $deal['Deal']['venue_info']; ?>
 			<ul class="venue_contacts">
-				<li class="venue_email"><?php echo $this->Html->link($deal['Venue']['email'],'mailto:'.$deal['Venue']['email']) ?></li>
-				<li class="venue_website"><?php echo $this->Html->link($deal['Venue']['website'], $deal['Venue']['website']) ?></li>
+				<li class="venue_email"><?php echo $this->Html->link('Email','mailto:'.$deal['Venue']['email']) ?></li>
+				<li class="venue_website"><?php echo $this->Html->link('Website', $deal['Venue']['website']) ?></li>
 			</ul>
 		</div>
 	</div>

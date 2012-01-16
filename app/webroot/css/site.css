@@ -803,12 +803,14 @@ a.deal_listing{
     list-style: none outside none;
     margin: 5px 0 0;
     padding: 5px 0;
+    padding-top:8px;
 }
 
 
 .venue_contacts li.venue_email{
     background: url("../img/site/email_icon.png") no-repeat scroll 0 8px transparent;
     padding-left: 23px;
+    padding-top: 7px;
 }
 
 .venue_contacts li.venue_website{
