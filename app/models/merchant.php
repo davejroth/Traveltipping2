@@ -46,7 +46,7 @@ class Merchant extends AppModel {
 	
 var $validate = array(
 		'business_name' => array(
-			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter a name for your business',),
+			'notempty' => array('rule' => array('notempty'),'message' => 'Please enter the name of your business',),
 		),
 		'business_type_id' => array(
 			'numeric' => array('rule' => array('numeric')),

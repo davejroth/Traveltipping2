@@ -429,17 +429,19 @@ class DealsController extends AppController {
 							if ($this->Passenger->saveAll($purchase)) {
 								$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
 							} else {
-								$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
+								$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true),'error_flash');
 							}
 						}
 					} 
 					else { //Braintree validation failed
 						
-						$this->Session->setFlash(__('Purchase failed: please check your billing information again or try another card'));
+						$this->Session->setFlash(__('Purchase failed: please check your billing information again or try another card', true),'error_flash');
+						/* Debugging code
 						print_r("\n  message: " . $result->message);
 						print_r("\nValidation errors: \n");
 						print_r($result->errors->deepAll());
 						print_r($expirationDate);
+						*/
 					} 
 				
 				} else {//CC info not entered correctly

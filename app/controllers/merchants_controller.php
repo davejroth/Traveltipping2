@@ -212,15 +212,14 @@ class MerchantsController extends AppController {
 		
 			$this->data['User']['role_id'] = Configure::read('Role.Merchant_ID');
 			$this->data['User']['status'] = 1;
-			
 
 			if ($this->Merchant->saveAll($this->data)) {
 				$this->sendMerchantMail($this->Merchant->id, "newMerchant");
-				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
+				$this->Session->setFlash(__('You successfully created your account!', true),'success_flash');
 				$this->Auth->login();
 				$this->requestAction('/users/login');
 			} else {
-				$this->Session->setFlash(__('The merchant detail could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Please fix the errors and try again.', true),'error_flash');
 			}
 		}
 		$countries = $this->Merchant->Country->find('list');

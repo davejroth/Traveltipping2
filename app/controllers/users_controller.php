@@ -77,8 +77,11 @@ class UsersController extends AppController {
 			$this->redirect($redirect); //If they were on a a page other than the main page or signup page, they will be redirected there
 		} 
 		if ($this->Session->read('Auth.User')) {
-			$this->Session->setFlash('You are logged in!', 'success_flash');
 			$this->redirect('/', null, false);
+		}
+		elseif(!empty($this->data)) {
+			$this->Session->setFlash(__('Wrong email or password. Please try again.', true),'error_flash');
+		
 		}
 	} 
 
@@ -131,7 +134,6 @@ class UsersController extends AppController {
 		if(!empty($this->data)) {
 			$this->User->set($this->data);
 			if($this->User->validates()) {
-				//$this->loadModel('PasswordReset');
 				$thisUser = $this->User->findByEmail($this->data['User']['resetEmail']);
 				$random_hash = substr(md5(uniqid(rand(), true)), -10, 10);
 				$newPasswordReset['PasswordReset']['user_id'] = $thisUser['User']['id'];
@@ -141,6 +143,9 @@ class UsersController extends AppController {
 				$this->sendForgotPasswordMail($thisUser, 'resetPassword');
 				//Create new passwordChange record and email address
 				$this->redirect(array('action' => 'confirmReset', $this->data['User']['resetEmail']));
+			}
+			else {
+				$this->Session->setFlash(__('Please fix the errors and try again.', true),'error_flash');
 			}
 		}
 		

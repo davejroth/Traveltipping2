@@ -63,12 +63,12 @@ class User extends AppModel {
             ),
             'isUnique' => array(
                 'rule' => 'isUnique',
-                'message' => 'Email address already in use.',
+                'message' => 'Username is already taken.',
             ),
         ),
 		'password' => array(
-			'passwordlength' => array('rule' => 'passwordLength','message' => 'Enter between 5 and 20 characters'),
-			'passwordequal'  => array('rule' =>'checkpasswords','message' => 'Passwords do not match')
+			'passwordlength' => array('rule' => 'passwordLength','message' => 'Please create a password with more than 5 characters.'),
+			'passwordequal'  => array('rule' =>'checkpasswords','message' => 'Passwords do not match.')
 		),
 		'current_password' => array(
 			'passwordCheck' => array('rule' => 'passwordCheck', 'message' => 'Password entered does not match your saved password.')
@@ -76,11 +76,11 @@ class User extends AppModel {
 		'resetEmail' => array(
 			'emailExists' => array(
 					'rule' => 'emailExists',
-					'message' => 'Sorry, we couldnt find that address in our database'
+					'message' => 'There\'s no account with this email address.'
 			),
 			'isEmail' => array(
 					'rule' => 'email',
-					'message' => 'Please provide a valid email address.',
+					'message' => 'Please enter a valid email address.',
 			),
 		)
 				

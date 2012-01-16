@@ -7,7 +7,7 @@ class Subscriber extends AppModel {
         'email' => array(
             'email' => array(
                 'rule' => 'email',
-                'message' => 'Please provide a valid email address.',
+                'message' => 'Please enter a valid email address.',
             )
 		)
 	);
