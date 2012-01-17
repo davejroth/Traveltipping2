@@ -17,7 +17,7 @@
 	
 <?php
 if(empty($purchases)) {
-	echo '<div class="no_deal_message"><p class="sub_heading">You have no trips yet!</p></div>';
+	echo '<div class="no_deal_message"><p class="sub_heading">You have no trips!</p></div>';
 }
 
 else{

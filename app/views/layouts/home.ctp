@@ -63,7 +63,8 @@
 	
 		<script type="text/javascript">
 $(document).ready(function() {
-	
+		$('.notification').center();
+	$('.notification').css('display','block')
 $('.notification').fadeOut(3000,'easeInCubic',function(){
 	$('.notification').remove()
 });

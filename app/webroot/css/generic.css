@@ -1163,7 +1163,9 @@ float: right;
 
 /* Notifications*/
 
-
+.notification{
+	display:none;
+}
 .success_notification{
     background: none repeat scroll 0 0 #d3f6da;
     border: 2px solid #188003;
