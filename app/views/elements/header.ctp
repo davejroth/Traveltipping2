@@ -32,7 +32,23 @@
 						?></ul>
 					<div class="subscribe_cta">
 
-						<?php echo $this->Html->tag('h3', 'Get up to <span>75%</span> Off Hotels, Villas, and Resorts around the world', array('class' => 'cta_text'));?>
+						<?php echo $this->Html->tag('h3', 'Get up to <span>75%</span> off our travel deals in', array('class' => 'cta_text'));?>
+						<table id="table" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td colspan="8"><div class="numbers" id="count2" style="text-align: center;"></div></td>
+    </tr>
+    <tr>
+        <td align="right"><div class="numbers" id="dday"></div></td>        
+        <td align="left"><div class="table-title" id="days">Days</div></td>
+        <td align="right"><div class="numbers" id="dhour"></div></td>
+        <td align="left"><div class="table-title" id="hours">Hours</div></td>
+        <td align="right"><div class="numbers" id="dmin"></div></td>
+        <td align="left"><div class="table-title" id="minutes">Minutes</div></td>
+      
+      
+    </tr>
+</table>
+
 					</div>
 				</div>
 			</div>

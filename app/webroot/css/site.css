@@ -56,8 +56,9 @@
 }
 
 .subscribe_cta .cta_text{
-    float: right;
+    float: left;
     line-height: 27px;
+    margin-right: 5px;
 }
 
 .subscribe_cta .cta_text span{
@@ -1344,3 +1345,34 @@ span.pernight {
 }
 
 /* +++++++++++++++++ END Social Styling  +++++++++++++++++ */
+
+/* Time table */
+
+
+.numbers{
+    background: url("../img/site/cnt_down_orange.png") no-repeat scroll center center transparent;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    width: 33px;
+}
+.table-title {    /* the styles below will affect the title next to the numbers, i.e., "Days", "Hours", etc. */
+    color: #3A3A3A;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+    padding: 4px 9px 0 3px;
+    text-align: left;
+}
+#table {
+    float: left;
+    margin: 0 auto;
+    width: auto;
+}
