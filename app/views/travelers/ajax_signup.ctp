@@ -13,6 +13,16 @@
 	echo $form->end(array('class' => 'ajax_signup'));
 ?>
 
+	<script type="text/javascript">
+$(document).ready(function() {
+	
+$('.notification').fadeOut(3000,'easeInCubic',function(){
+	$('.notification').remove()
+});
+
+});
+</script>
+
 
 
 

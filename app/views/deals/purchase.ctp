@@ -97,11 +97,15 @@ $.getJSON('/users/check_session', function(json) {
 							$('#ajax_account_info').empty();
 							$('#ajax_account_info').append(htmlData);
 							$('#billing_info').show();
+								
 						}
 						else{
 							$('#sign_in').empty();
 							$('#sign_in').append(htmlData);
 							$('#billing_info').hide();
+							$('.notification').fadeOut(3000,'easeInCubic',function(){ //Fade out the error message
+								$('.notification').remove()
+							});	
 						}
 					});
 					

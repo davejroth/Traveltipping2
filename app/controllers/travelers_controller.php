@@ -53,12 +53,13 @@ class TravelersController extends AppController {
 				$this->Auth->login();
 				$this->requestAction('/users/login');
 			} else {
-				$this->Session->setFlash(__('Please fix the errors and try again',true),'error_flash');;
+				$this->Session->setFlash(__('Please fix the errors and try again',true),'error_flash');
 			}
 		}
 	}
 	
 	function ajax_signup() {
+	
 			if (!empty($this->data)) {
 			$this->Traveler->User->create();
 			$this->Traveler->create();
@@ -66,14 +67,13 @@ class TravelersController extends AppController {
 			$this->data['User']['status'] = 1;
 			if ($this->Traveler->saveAll($this->data)) {
 				$this->sendTravelerMail($this->Traveler->id, 'newTraveler');
-				$this->Session->setFlash(__('Your account has been created.  Welcome to traveltipping', true));
 				$this->Auth->login();
 				$this->Session->write('User.new', 1);
 				$this->Session->write('Traveler.ajax_login', 1);
 				$this->requestAction('/users/login');
 				$this->redirect(array('controller' => 'users', 'action' => 'ajax_logged_in'));
 			} else {
-				$this->Session->setFlash(__('The user detail could not be saved. Please, try again.', true));
+				//$this->Session->setFlash(__('Wrong user credentials! Please try again',true),'error_flash'); This flashes when you go to the next page.
 			}
 		}
 		$this->render('ajax_signup','ajax');
@@ -89,12 +89,9 @@ function ajax_sign_in() {
 				$this->Session->write('Traveler.ajax_login', 1);
 				$this->requestAction('/users/login');
 			}
-			else {
-			$this->Session->setFlash(__('Invalid credentials. Please try again.', true));
-			}
 		}
 		else {
-			$this->Session->setFlash(__('Please log in with a traveler account in order to purchase.'));
+			$this->Session->setFlash(__('Wrong email or password.  Please try again',true),'error_flash');
 		}
 	}
 	$this->render('ajax_sign_in','ajax');

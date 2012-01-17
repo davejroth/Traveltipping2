@@ -445,7 +445,7 @@ class DealsController extends AppController {
 					} 
 				
 				} else {//CC info not entered correctly
-					$this->Session->setFlash(__('Billing information missing or formatted incorrectly.  Please fix the errors and try again', true));
+					$this->Session->setFlash(__('Billing information missing or formatted incorrectly.  Please fix the errors and try again', true), 'error_flash');
 				}	
 			}
 		}//No data submitted.  Load the page.

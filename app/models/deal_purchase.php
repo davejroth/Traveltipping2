@@ -138,11 +138,43 @@ class DealPurchase extends AppModel {
 		App::import('model','Deal');
 		$deal = new Deal();
 		$thisDeal = $deal->findById($this->data['DealPurchase']['deal_id']);
+		$purchaseCount = $this->numPurchases($thisDeal['Deal']['id']);
+		$purchasePad = $thisDeal['Deal']['purchase_pad'];
+		$maxPurchases = $thisDeal['Deal']['max_purchases'];
+		
+		//Check to make sure that purchasePad + purchaseCount is not greater than the maxPurchases.  Decrease purchasePad if necessary. 
+		if($purchasePad != 0 && $purchaseCount + $purchasePad >= $maxPurchases) {
+			$thisDeal['Deal']['purchase_pad'] = $maxPurchases - $purchaseCount - 1; //Make sure there is at least one actual purchase left
+			$deal->save($thisDeal);
+		}
+
 		if($thisDeal['Deal']['is_timed'] == 0) {
-			$purchaseCount = $this->numPurchases($thisDeal['Deal']['id']);
-			if($purchaseCount >= $thisDeal['Deal']['max_purchases']) {
+			if($purchaseCount >= $maxPurchases) {
 				$thisDeal['Deal']['deal_status_id'] = Configure :: Read('Deal.Status_Closed');
 				$deal->save($thisDeal);
+				
+				//These are imported for the email
+				App::import('Component', 'Notification');
+				App::import('Component', 'Email');
+				App::import('Core', 'Controller');
+				App::import('Model', 'Merchant');
+				App::import('Model', 'Venue');
+				
+				$merchant = new Merchant();
+				$venue = new Venue();
+				
+				$notification = new NotificationComponent();
+				$controller = new Controller();
+				$notification->Email = new EmailComponent(); 
+				$notification->Email->initialize($controller);
+				
+				//Send notification to merchant
+				$thisVenue = $venue->findById($thisDeal['Deal']['venue_id']);
+				$thisMerchant = $merchant->findById($thisVenue['Merchant']['id']);
+				$controller->set(array('Deal' => $thisDeal, 'Merchant' => $thisMerchant));
+				$notification->sendHtmlMerchantMail($thisMerchant, 'dealClose'); 
+				$notification->sendHtmlAmMail('dealClose');
+
 			}
 		}
 	
