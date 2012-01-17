@@ -417,6 +417,7 @@ class DealsController extends AppController {
 							if ($this->DealPurchase->save($purchase)) {
 								$this->sendPurchaseMail($id, $travelerID, $this->DealPurchase->id, 'dealConfirmation');
 								$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
+							}
 						}
 						//Insert Passenger records for DealType 3
 						elseif($reservationType == Configure::read('ReservationType.Set')) {
