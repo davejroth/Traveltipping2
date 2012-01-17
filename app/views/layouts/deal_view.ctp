@@ -31,6 +31,7 @@
 
 </script>
 
+
 </head>
 <body class="deal_view">
 	<div id="layout_container">
