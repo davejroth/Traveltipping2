@@ -32,7 +32,7 @@
 						?></ul>
 					<div class="subscribe_cta">
 
-						<?php echo $this->Html->tag('h3', 'Get up to <span>75%</span> off our travel deals in', array('class' => 'cta_text'));?>
+						<?php echo $this->Html->tag('h3', 'Get up to <span>75%</span> off travel deals in', array('class' => 'cta_text'));?>
 						<table id="table" cellspacing="0" cellpadding="0" border="0">
     <tr>
         <td colspan="8"><div class="numbers" id="count2" style="text-align: center;"></div></td>
