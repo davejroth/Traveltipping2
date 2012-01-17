@@ -40,7 +40,7 @@ class Transaction extends AppModel {
 			'ccvNumeric' => array('rule' => 'numeric', 'message' => 'Please enter your CCV number without any spaces or dashes.')
 		),
 		'tos' => array(
-			'tosCheck' => array('rule' => array('comparison', '!=', 0),  'message' => 'Please agree to TravelTipping\'s TOS in order to proceed.',),
+			'tosCheck' => array('rule' => array('comparison', '!=', 0),  'message' => 'Please agree to TravelTipping\'s Terms of Service',),
 		),
 	);
 	/**

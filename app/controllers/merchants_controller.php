@@ -137,9 +137,10 @@ class MerchantsController extends AppController {
 			$this->Deal->create();
 			if ($this->Deal->saveAll($this->data)) {
 				$this->sendDealMail($this->Deal->id, $this->Session->read('Merchant.id'), "dealInitiated");
+				$this->Session->setFlash(__('You succesfully created a new deal', true),'success_flash');
 				$this->redirect(array('action' => 'my_deals','upcoming'));
 			} else {
-				$this->Session->setFlash(__('The venue could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Please fix the errors and try again', true),'error_flash');
 			}
 		}
 
@@ -150,8 +151,7 @@ class MerchantsController extends AppController {
 
 	}
 	
-
-	
+//I believe create_venue is deprecated and not in use anymore. - DR 1/16/12
 	function create_venue(){
 		$this->loadModel('Venue');
 		if (!empty($this->data)) {

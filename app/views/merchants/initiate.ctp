@@ -9,7 +9,7 @@
 			echo '<div class="field_column clearfix">';
 				echo $this->Form->input('Deal.name', array('label' => 'Name of your deal <em>(for your reference only)</em>'));
 				echo $this->Form->input('Venue.name', array('label' => 'Name of the business being advertised'));
-				echo $this->Form->input('Venue.email', array('label' => 'Public contact email for this deal <em>(this will be displayed on the advertising page)</em>'));
+				echo $this->Form->input('Venue.email', array('label' => 'Public contact email for this deal'));
 				echo $this->Form->input('Venue.business_type_id', array('label' => 'Business Type for this deal'));
 				echo $this->Form->input('Venue.website', array('label' => 'Website for this deal'));
 			echo '</div>';

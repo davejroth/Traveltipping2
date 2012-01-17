@@ -12,28 +12,31 @@ class Venue extends AppModel {
 			),
 		),
 		'name' => array(
-            'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter a name for the deal.'),
+            'nameCheck' => array('rule' => 'notEmpty','message' => 'Please enter the name of the business being advertised'),
 		),
 		'email' => array(
-            'emailCheck' => array('rule' => 'notEmpty','message' => ' Please enter an email for the deal.'),
+            'emailCheck' => array('rule' => 'notEmpty','message' => 'Please enter the contact email for this deal'),
 		),
 		'address1' => array(
-            'address1Check' => array('rule' => 'notEmpty','message' => ' Please enter an address for the deal.'),
+            'address1Check' => array('rule' => 'notEmpty','message' => 'Please enter an address'),
 		),
 		'city' => array(
-            'cityCheck' => array('rule' => 'notEmpty','message' => ' Please enter a city for the deal.'),
+            'cityCheck' => array('rule' => 'notEmpty','message' => 'Please enter a city'),
 		),
 		'state' => array(
-            'stateCheck' => array('rule' => 'notEmpty','message' => ' Please enter a state or province for the deal.'),
+            'stateCheck' => array('rule' => 'notEmpty','message' => 'Please enter a state/province'),
 		),
 		'postal_code' => array(
-            'postal_codeCheck' => array('rule' => 'notEmpty','message' => ' Please enter a postal or area code for the deal.'),
+            'postal_codeCheck' => array('rule' => 'notEmpty','message' => 'Please enter a postal code'),
 		),
 		'country_id' => array(
-            'country_idCheck' => array('rule' => 'notEmpty','message' => ' Please enter a country for the deal.'),
+            'country_idCheck' => array('rule' => 'notEmpty','message' => 'Please select your country'),
 		),
 		'business_type_id' => array(
-            'business_typeCheck' => array('rule' => 'notEmpty','message' => ' Please enter a business type for the deal.'),
+            'business_typeCheck' => array('rule' => 'notEmpty','message' => 'Please enter a business type for the deal'),
+		),
+		'website' => array(
+            'websiteCheck' => array('rule' => 'notEmpty','message' => 'Please enter a valid website'),
 		),
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

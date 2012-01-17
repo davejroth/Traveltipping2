@@ -40,10 +40,10 @@ class Traveler extends AppModel {
 	//There is nothing to protect against SQL injection.  Cake does that automatically
 	public $validate = array(
 		'first_name' => array(
-            'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter your first name.'),
+            'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter your first name'),
 		),
 		'last_name' => array(
-            'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter your last name.')
+            'nameCheck' => array('rule' => 'notEmpty','message' => ' Please enter your last name')
         )
 	); 
 	

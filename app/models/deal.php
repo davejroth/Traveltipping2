@@ -101,7 +101,7 @@ class Deal extends AppModel {
 			'closeCheck' => array('rule' => 'closeCheck', 'message' => 'Please make sure that the Deal Close date is greater than the Deal Live date.')
 		),
 		'name' => array(
-			'nameCheck' => array('rule' => 'notEmpty', 'message' => 'Please give your deal a name.')
+			'nameCheck' => array('rule' => 'notEmpty', 'message' => 'Please create a name for this deal')
 		)
     );
 	

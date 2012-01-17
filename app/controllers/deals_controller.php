@@ -26,10 +26,12 @@ class DealsController extends AppController {
  */
 	function sendPurchaseMail($dealID, $travelerID, $purchaseID, $template) {
 		$this->loadModel('Traveler');
+		$this->loadModel('Venue');
 		$deal = $this->Deal->read(null, $dealID);
 		$dealPurchase = $this->Deal->DealPurchase->read(null, $purchaseID);
+		$venue = $this->Venue->read(null, $deal['Deal']['venue_id']);
 		$traveler = $this->Traveler->read(null, $travelerID); //Used for email address
-		$this->set(compact('deal', 'traveler', 'dealPurchase')); //Used for Deal info
+		$this->set(compact('deal', 'traveler', 'dealPurchase', 'venue')); //Used for Deal info
 	
 		$this->Notification->sendHtmlTravelerMail($traveler, $template);
 	}
@@ -415,9 +417,6 @@ class DealsController extends AppController {
 							if ($this->DealPurchase->save($purchase)) {
 								$this->sendPurchaseMail($id, $travelerID, $this->DealPurchase->id, 'dealConfirmation');
 								$this->redirect(array('controller' => 'deals', 'action'=>'confirmation',$id));
-							} else {
-							$this->Session->setFlash(__('The deal purchase could not be saved. Please, try again.', true));
-							}
 						}
 						//Insert Passenger records for DealType 3
 						elseif($reservationType == Configure::read('ReservationType.Set')) {
@@ -435,7 +434,7 @@ class DealsController extends AppController {
 					} 
 					else { //Braintree validation failed
 						
-						$this->Session->setFlash(__('Purchase failed: please check your billing information again or try another card', true),'error_flash');
+						$this->Session->setFlash(__('Unable to process your transaction. Please check your billing information and try again', true),'error_flash');
 						/* Debugging code
 						print_r("\n  message: " . $result->message);
 						print_r("\nValidation errors: \n");
@@ -445,7 +444,7 @@ class DealsController extends AppController {
 					} 
 				
 				} else {//CC info not entered correctly
-					$this->Session->setFlash(__('Some of your billing information is missing or formatted incorrectly.  Please see the error messages below.', true));
+					$this->Session->setFlash(__('Billing information missing or formatted incorrectly.  Please fix the errors and try again', true));
 				}	
 			}
 		}//No data submitted.  Load the page.

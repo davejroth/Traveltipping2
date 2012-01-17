@@ -110,7 +110,7 @@ class UsersController extends AppController {
 			$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
 			$this->data['User']['role_id'] = $this->Session->read('Auth.User.role_id');
 			if ($this->User->save($this->data)) {
-				$this->Session->setFlash(__('Your password has been saved.', true),'success_flash');
+				$this->Session->setFlash(__('You succesfully changed your password', true),'success_flash');
 				//If merchant, redirect to merchant profile.  If traveler, redirect to traveler)
 				if($this->Session->read('Auth.User.role_id') == Configure::Read('Role.Merchant_ID')) 
 				{
@@ -124,7 +124,7 @@ class UsersController extends AppController {
 				
 				
 			} else {
-				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.', true),'error_flash');
+				$this->Session->setFlash(__('Please fix the errors and try again.', true),'error_flash');
 			}
 		}
 		if (empty($this->data)) {
