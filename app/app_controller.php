@@ -18,7 +18,7 @@ class AppController extends Controller {
         'index',
         'view',
         'book',
-        'purchase',
+        //'purchase',
         'ajax_signup',
         'ajax_sign_in',
         'resetPassword',
