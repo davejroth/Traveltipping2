@@ -41,9 +41,6 @@
 			
 <script type="text/javascript">
 $(document).ready(function() {
-var launch = new Date();
-launch.add({ days: 5, months: 1 }); 
 $('.countdown').countdown({until:new Date(2012,2-1,22),layout:'<span class="timebox">{dn}</span><span class="timetext"> Days</span> <span class="timebox">{hnn}</span><span class="timetext">Hours</span> <span class="timebox">{mnn}</span><span class="timetext">  Mins</span>'});
-
 });
 </script>
