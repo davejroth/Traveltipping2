@@ -21,6 +21,7 @@
 		echo $this->Html->script('jquery-ui');
 		echo $this->Html->script('jquery.center');
 		echo $this->Html->script('/js/tiny_mce/tiny_mce');
+		echo $this->Html->script('jquery.countdown');
 		//$this->AssetCompress->script('');
 		echo $this->AssetCompress->includeAssets('false');
 		//echo $scripts_for_layout;

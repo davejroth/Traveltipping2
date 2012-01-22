@@ -14,6 +14,7 @@
 		echo $this->AssetCompress->includeAssets('false');
 		echo $this->Html->script('jquery-ui');
 		echo $this->Html->script('jquery.center');
+		echo $this->Html->script('jquery.countdown');
 		echo $scripts_for_layout;
 	?>
 	

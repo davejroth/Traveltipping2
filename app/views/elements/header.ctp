@@ -32,9 +32,18 @@
 						?></ul>
 					<div class="subscribe_cta">
 
-						<?php echo $this->Html->tag('h3', 'Get up to <span>75%</span> off travel deals soon...', array('class' => 'cta_text'));?>
-
+						<?php echo $this->Html->tag('h3', 'Get up to <span>75%</span> off travel deals in ', array('class' => 'cta_text'));?>
+<div class="countdown"></div>
 
 					</div>
 				</div>
 			</div>
+			
+<script type="text/javascript">
+$(document).ready(function() {
+var launch = new Date();
+launch.add({ days: 5, months: 1 }); 
+$('.countdown').countdown({until:new Date(2012,2-1,22),layout:'<span class="timebox">{dn}</span><span class="timetext"> Days</span> <span class="timebox">{hnn}</span><span class="timetext">Hours</span> <span class="timebox">{mnn}</span><span class="timetext">  Mins</span>'});
+
+});
+</script>

@@ -1344,3 +1344,43 @@ span.pernight {
 }
 
 /* +++++++++++++++++ END Social Styling  +++++++++++++++++ */
+
+
+/* Countdown styles */
+
+
+
+.timebox{
+    background: url("../img/site/cnt_down_orange.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+   dispaly:block;
+    font-size: 16px;
+    font-weight: bold;
+    height: 26px;
+    width: 33px;
+    line-height:26px;
+    text-align:center;
+    float:left;
+}
+
+.timetext{
+	margin:4px 5px;
+	font-size:16px;
+}
+
+.countdown{
+	float:left;
+}
+
+.countdown span{
+	float:left;	
+}
+
+.subscribe_cta .cta_text{
+	float:left;
+	margin-right: 8px;
+}
+
+.subscribe_cta{
+	margin-top:25px;
+}
