@@ -26,9 +26,9 @@ class Venue extends AppModel {
 		'state' => array(
             'stateCheck' => array('rule' => 'notEmpty','message' => 'Please enter a state/province'),
 		),
-		'postal_code' => array(
-            'postal_codeCheck' => array('rule' => 'notEmpty','message' => 'Please enter a postal code'),
-		),
+		//'postal_code' => array(
+          //  'postal_codeCheck' => array('rule' => 'notEmpty','message' => 'Please enter a postal code'),
+		//),
 		'country_id' => array(
             'country_idCheck' => array('rule' => 'notEmpty','message' => 'Please select your country'),
 		),
