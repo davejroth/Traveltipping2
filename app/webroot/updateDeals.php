@@ -89,7 +89,7 @@
 				$thisVenue = $venue->findById($thisDeal['Deal']['venue_id']);
 				$thisMerchant = $merchant->findById($thisVenue['Merchant']['id']);
 				$controller->set(array('Deal' => $thisDeal, 'Merchant' => $thisMerchant));
-				$notification->sendHtmlMerchantMail($thisMerchant, 'dealLive'); 	
+				//$notification->sendHtmlMerchantMail($thisMerchant, 'dealLive'); 	
 				
 			}
 		}
@@ -106,7 +106,7 @@
 				$thisVenue = $venue->findById($thisDeal['Deal']['venue_id']);
 				$thisMerchant = $merchant->findById($thisVenue['Merchant']['id']);
 				$controller->set(array('Deal' => $thisDeal, 'Merchant' => $thisMerchant));
-				$notification->sendHtmlMerchantMail($thisMerchant, 'dealClose'); 
+				//$notification->sendHtmlMerchantMail($thisMerchant, 'dealClose'); 
 			}
 		
 		}
@@ -114,5 +114,6 @@
 		//Send AM update
 		$controller->set(compact('newLiveDeals', 'newClosedDeals'));
 		$notification->sendHtmlAMMail('dealsChanged'); 	
+		
 		
 	}
