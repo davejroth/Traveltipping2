@@ -1,6 +1,6 @@
 <?php
 /**
- *	Cron.php - This file begins with a standard cron startup - custom code is below.  The file is run every night at 12:05 AM (?) 
+ *	updateDeals.php - This file begins with a standard cron startup - custom code is below.  The file is run every night at 12:05 AM (?) 
  *  and automatically opens or closes deals based on the deal's start/end date.  There is also a email that is sent to AMs and 
  *  merchants.  It only makes deals live that are scheduled to go live on the day that it is run, so if it misses a day, deals that 
  *  should be live will not be made live.  This is to prevent it from making a deal live that was closed intentionally before it's close date.
@@ -52,7 +52,7 @@
 	} else {
 
 	  /**
-	      Cron custom code start here
+	      Custom code start here
 	  */
 		//This is imported to check deal live/close dates and to notify the appropriate merchants.
 	  	App::import('Model','Deal');
@@ -89,7 +89,7 @@
 				$thisVenue = $venue->findById($thisDeal['Deal']['venue_id']);
 				$thisMerchant = $merchant->findById($thisVenue['Merchant']['id']);
 				$controller->set(array('Deal' => $thisDeal, 'Merchant' => $thisMerchant));
-				//$notification->sendHtmlMerchantMail($thisMerchant, 'dealLive'); 	
+				$notification->sendHtmlMerchantMail($thisMerchant, 'dealLive'); 	
 				
 			}
 		}
@@ -106,7 +106,7 @@
 				$thisVenue = $venue->findById($thisDeal['Deal']['venue_id']);
 				$thisMerchant = $merchant->findById($thisVenue['Merchant']['id']);
 				$controller->set(array('Deal' => $thisDeal, 'Merchant' => $thisMerchant));
-				//$notification->sendHtmlMerchantMail($thisMerchant, 'dealClose'); 
+				$notification->sendHtmlMerchantMail($thisMerchant, 'dealClose'); 
 			}
 		
 		}

@@ -231,5 +231,26 @@ class Deal extends AppModel {
 		}
 	}
 	
+	/**
+	 * getDealsEmailContact
+	 * This function takes a deal ID and returns the email address of the merchant who owns the deal
+	 */
+	function getDealsMerchant($dealID)
+	{
+	
+		
+		$thisMerchant = $this->query("SELECT users.*, merchants.* FROM users
+						INNER JOIN merchants
+						ON users.id = merchants.user_id
+						INNER JOIN venues 
+						ON merchants.id = venues.merchant_id
+						INNER JOIN deals
+						ON venues.id = deals.venue_id
+						WHERE deals.id =" . $dealID);
+		$cakeMerchant['Merchant'] = $thisMerchant[0]['merchants'];	//Format so that it looks like a cake find return	
+		$cakeMerchant['User'] = $thisMerchant[0]['users'];
+		return $cakeMerchant;
+	}
+	
 
 }
