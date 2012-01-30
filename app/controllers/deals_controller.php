@@ -9,9 +9,50 @@ class DealsController extends AppController {
 	
 	var $paginate = array('Deal'=>array('group'=>'Deal.id'));
 	
-/**
- * Email function used to send Deal information.  
- */
+   /**
+	* beforeFilter
+	* Checks to make sure that the action is accessible for the current user.
+	* Admins can see everything
+	* Merchants can see their deals, regardless of the deal's state, except the purchase page
+	* Travelers can only see live deals
+	*/
+	function beforeFilter() {
+		parent::beforeFilter();  //Use the beforeFilter in the app_controller
+		$restrictedActions = array("view", "book", "purchase", "confirmation", "deal_details");
+		if(in_array($this->action, $restrictedActions)) {
+			if(!$this->Session->read('Auth') || $this->Session->read('Auth.User.role_id') == Configure::Read('Role.Traveler_ID')) { 
+				//User is either not logged in or a traveler
+				$dealId = $this->params['pass'][0];
+				$dealToAccess = $this->Deal->read(null, $dealId);
+				//If deal is not live, don't allow access
+				if($dealToAccess['Deal']['deal_status_id'] != Configure::Read('Deal.Status_Listed')) {
+					$this->Session->setFlash(__('Sorry, that page is unavailable.', true),'error_flash');
+					$this->redirect(array('action' => 'index'));
+				}
+			}
+			elseif($this->Session->read('Auth.User.role_id') == Configure::Read('Role.Merchant_ID')) {
+				//User is a merchant
+				$dealId = $this->params['pass'][0];
+				$dealToAccess = $this->Deal->read(null, $dealId);
+				$dealOwner = $this->Deal->getDealsMerchant($dealId);
+				//If deal is not live and merchant does not own or if deal status is initiated, don't allow access.
+				if(($dealToAccess['Deal']['deal_status_id'] != Configure::Read('Deal.Status_Listed') 
+					&& $dealOwner['Merchant']['id'] != $this->Session->read('Merchant.id')) 
+					|| $dealToAccess['Deal']['deal_status_id'] == Configure::Read('Deal.Status_Initiated')){
+					
+					$this->Session->setFlash(__('Sorry, that page is unavailable.', true),'error_flash');
+					$this->redirect(array('action' => 'index'));
+			
+				}
+			}
+		}
+		
+
+	}
+	
+	/**
+	 * Email function used to send Deal information.  
+	 */
 	function sendDealMail($dealID, $venueID, $template) {
 		$this->loadModel('Merchant');
 		$Deal = $this->Deal->read(null, $dealID);
@@ -21,9 +62,9 @@ class DealsController extends AppController {
 		$this->Notification->sendHtmlMerchantMail($Merchant, $template);
 		$this->Notification->sendHtmlAmMail($template);
 	}
-/**
- * Email function used to send purchase information to a traveler
- */
+	/**
+	 * Email function used to send purchase information to a traveler
+	 */
 	function sendPurchaseMail($dealID, $travelerID, $purchaseID, $template) {
 		$this->loadModel('Traveler');
 		$this->loadModel('Venue');
