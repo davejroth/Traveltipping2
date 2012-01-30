@@ -20,7 +20,7 @@ class NotificationComponent extends Object {
 		'dealClose' => 'Your Deal has Ended!',
 		'paymentMade' => 'A Payment has Been Made to Your Account',
 		'newMerchant' => 'Welcome to TravelTipping - Account Details',
-		'purchaseSummary' => 'Summary of Today\'s Purchases');
+		'purchaseSummary' => 'Summary of Today\'s Reservations');
 	/* SMTP Options */
     $this->Email->smtpOptions = array(
         'port'=>'25', 
