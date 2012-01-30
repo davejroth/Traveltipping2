@@ -39,11 +39,11 @@
                                     
                                   </td>
                                    <td width="91" align="left" style="margin:0 auto;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;font-weight:normal;font-family:'arial';font-size:12px;color:#444545;" valign="top">
-                                    <?php echo date_format(date_create($DealPurchases[$i]['DealPurchase']['start_date']), 'F jS, Y'); ?>
+                                    <?php echo date_format(date_create($DealPurchases[$i]['DealPurchase']['start_date']), 'M j, Y'); ?>
                                     
                                   </td>
                                    <td width="92" align="left" style="margin:0 auto;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;font-weight:normal;font-family:'arial';font-size:12px;color:#444545;" valign="top">
-                                    <?php echo date_format(date_create($DealPurchases[$i]['DealPurchase']['end_date']), 'F jS, Y'); ?>
+                                    <?php echo date_format(date_create($DealPurchases[$i]['DealPurchase']['end_date']), 'M j, Y'); ?>
                                     
                                   </td>
                                 </tr>
