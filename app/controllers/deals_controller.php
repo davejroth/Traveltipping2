@@ -20,7 +20,7 @@ class DealsController extends AppController {
 		parent::beforeFilter();  //Use the beforeFilter in the app_controller
 		$restrictedActions = array("view", "book", "purchase", "confirmation", "deal_details");
 		if(in_array($this->action, $restrictedActions)) {
-			if(!$this->Session->read('Auth') || $this->Session->read('Auth.User.role_id') == Configure::Read('Role.Traveler_ID')) { 
+			if(!$this->Session->read('Auth.User') || $this->Session->read('Auth.User.role_id') == Configure::Read('Role.Traveler_ID')) { 
 				//User is either not logged in or a traveler
 				$dealId = $this->params['pass'][0];
 				$dealToAccess = $this->Deal->read(null, $dealId);
