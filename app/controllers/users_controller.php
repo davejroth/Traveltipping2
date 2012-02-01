@@ -49,7 +49,7 @@ class UsersController extends AppController {
 		if($this->Auth->user()) {
 			$user = $this->Session->read('Auth.User');
 			$redirect = $this->Auth->redirect();
-			$this->Cookie->write('email',$this->data['User']['email']);
+			$this->Cookie->write('email',$this->data['User']['email'], true, '3 years');
 			if($this->Session->Read('Auth.User.role_id') == Configure::Read('Role.Merchant_ID')){ 
 				App::import('model','Merchant');
 				$merchant = new Merchant();
@@ -298,7 +298,7 @@ class UsersController extends AppController {
 			if($this->Subscriber->validates()) {
 				$this->Subscriber->recursive = -1;
 				$this->Traveler->User->recursive = -1;
-				$this->Cookie->write('email',$this->data['Subscriber']['email']);
+				$this->Cookie->write('email',$this->data['Subscriber']['email'], true, '3 years');
 				//If you can't find them in the Subscriber db and you can't find them in the User table, create a new Subscriber
 				if(!$this->Subscriber->findByEmail($this->data['Subscriber']['email']) && !$this->Traveler->User->findByEmail($this->data['Subscriber']['email'])) {
 					$this->Subscriber->create();
