@@ -176,6 +176,19 @@ function updateVariableReservation(dateID){
 			});
 			return false;
 		}
+		
+		daysBetween = days_between(checkInDateObj2,checkOutDateObj2)
+		//alert(daysBetween);
+		if(daysBetween > max_nights){
+			$('#layout_center').prepend('<div class="error_notification notification"><p>Reservation allows for '+max_nights+' nights maximum.</p></div>')
+			$('.notification').center();
+			$('.notification').css('display','block')
+			$('.notification').fadeOut(3000,'easeInCubic',function(){
+				$('.notification').remove()
+			});
+			return false;
+		}
+		
 	}
 	if($('.checkOutDate').length != 0){
 		if($('#'+dateID).hasClass('checkOutDate')){
@@ -196,6 +209,19 @@ function updateVariableReservation(dateID){
 			});
 			return false;
 		}
+		
+		daysBetween = days_between(checkInDateObj,checkOutDateObj)
+		//alert(daysBetween);
+		if(daysBetween > max_nights){
+			$('#layout_center').prepend('<div class="error_notification notification"><p>Reservation allows for '+max_nights+' nights maximum.</p></div>')
+			$('.notification').center();
+			$('.notification').css('display','block')
+			$('.notification').fadeOut(3000,'easeInCubic',function(){
+				$('.notification').remove()
+			});
+			return false;
+		}
+		
 		availability = checkRangeAvailability(checkInDate,checkOutDate);
 		if(!availability){
 			return false
@@ -208,7 +234,6 @@ function updateVariableReservation(dateID){
 		$('input[name="data[DealPurchase][start_date]"]').val(checkInDate);
 		$('.num_of_nights').text(numOfNights);
 		$('.summary_total_value').text('$'+total);
-		
 		for(x = 1; x < numOfNights; x++ ){
 			temp = null;
 			temp = checkInDateObj;
