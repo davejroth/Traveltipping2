@@ -8,14 +8,20 @@
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
+		
 		echo $this->Html->css('styles');
+		echo $this->Html->css('/css/ui-lightness/jquery-ui');
 		echo $this->Html->script('jquery');
+		echo $this->Html->script('helpers');
+		echo $this->Html->script('date');
 		echo $this->Html->script('site');
-		echo $this->AssetCompress->includeAssets('false');
+		echo $this->Html->script('reservation-calendar');
 		echo $this->Html->script('jquery-ui');
 		echo $this->Html->script('jquery.center');
 		echo $this->Html->script('jquery.countdown');
-		echo $scripts_for_layout;
+		//$this->AssetCompress->script('');
+		echo $this->AssetCompress->includeAssets('false');
+		//echo $scripts_for_layout;
 	?>
 	
 	<script type="text/javascript">
@@ -38,7 +44,7 @@
 	<div id="layout_container">
 		<?php if(!$subscribed) { ?>
 		<div id="overlay"></div>
-		<div id="travelers" class="form_box">
+		<div id="subscribe_form_wrap" class="overlay_form_box">
 			<?php echo $this->element('new_subscriber'); 		?>
 			</div>
 			<?php }?>
