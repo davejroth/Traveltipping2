@@ -36,7 +36,7 @@
 				</p>
 				<p>TravelTipping Inc. shall remit Payment to Supplier following the close of the Sale in accordance with Supplier&#8217;s contract with TravelTipping Inc.  
 				</p>	
-				<p>Payment will be sent through Wire Transfer or ACH.  TravelTipping Inc. is not responsible for any incoming money transfer fees imposed by the Supplier&#8217;s bank or currency conversion fees associated with payment.
+				<p>Payment will be sent through Wire Transfer, ACH or through an authorized credit card charge.  TravelTipping Inc. is not responsible for any incoming money transfer fees imposed by the Supplier&#8217;s bank or currency conversion fees associated with payment.
 				</p>
 				<p>TravelTipping Inc. shall take commission on all finalized purchases of the Supplier&#8217;s Sale as previously agreed upon by TravelTipping Inc. and the Supplier and as written on the Sale&#8217;s details located within the Supplier&#8217;s online account, viewable before Sale approval. 
 				</p>
