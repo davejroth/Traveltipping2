@@ -100,7 +100,7 @@ class DealsController extends AppController {
 		$this->Deal->bindModel(array('hasOne' => array('DealsRegion')), false);
 		//This function adds two fields - remaining_quantity and discount_percentage for sorting purposes in the pagination
 		//Note the paginate function was overwritten in the Deal model
-	    $this->paginate = array('limit' => 500, 'fields'=>array('DISTINCT Deal.id'
+	    $this->paginate = array('limit' => 10, 'fields'=>array('DISTINCT Deal.id'
 				,'Deal.*'
 				,"((SELECT COUNT(*) FROM `deal_purchases` WHERE deal_id = Deal.id) + Deal.purchase_pad)/Deal.max_purchases AS remaining_quantity"
 				,'((Deal.original_price - Deal.discounted_price)/Deal.original_price) AS discount_percentage')

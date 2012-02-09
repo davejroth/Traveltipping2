@@ -79,9 +79,9 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 <!-- Shows the page numbers -->
 <?php 
 echo '<div class="pagination">';
-echo $this->Paginator->prev('Previous', null, null, array('class' => 'disabled')); 
-echo $this->Paginator->numbers(); 
-echo $this->Paginator->next('Next', null, null, array('class' => 'disabled'));
+echo $this->Paginator->prev('Previous', null, null, array('tag' => 'a','class' => 'prev disabled')); 
+echo $this->Paginator->numbers(array('separator' => null,'class'=> 'numbers')); 
+echo $this->Paginator->next('Next', null, null, array('tag' => 'a','class' => 'next disabled'));
 echo '</div>'; 
 }
 
@@ -194,6 +194,14 @@ echo '</div>';
 </div><!-- #layout_right -->
 <script type="text/javascript">
 $(document).ready(function() {
+	paging = $('.pagination .current').length;
+	if(paging == 0){
+		$('.pagination').css('display','none');
+	}
+	pagination_width = $('.pagination').width();
+	$('.pagination').css({'width':pagination_width+'px','float':'none'});
+	
+	
 	
 /* Deals Index Filter */
 $('.checkbox_field input').each(function(e){
