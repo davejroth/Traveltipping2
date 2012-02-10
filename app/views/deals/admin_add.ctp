@@ -36,6 +36,10 @@
 				echo $this->Form->input('Venue.postal_code');
 			echo '</div>';
 			
+			echo '<div class="field_row clearfix">';
+				echo $this->Form->input('Venue.map_link');
+			echo '</div>';
+			
 		?>
 	</fieldset>
 	
