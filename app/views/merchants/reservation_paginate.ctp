@@ -73,12 +73,25 @@
 </table>
 
 
-<div id="pagination">
-<?php echo $this->Paginator->prev('<< ', array(), null, array('class'=>'disabled'));?>
-<!-- Shows the page numbers --><?php echo $this->Paginator->numbers(); ?>
-<!-- Shows the next and previous links -->
-<?php echo $this->Paginator->next(' >>', array(), null, array('class' => 'disabled'));?>
-</div>
+<?php 
+echo '<div class="pagination">';
+echo $this->Paginator->prev('Previous', null, null, array('tag' => 'a','class' => 'prev disabled')); 
+echo $this->Paginator->numbers(array('separator' => null,'class'=> 'numbers')); 
+echo $this->Paginator->next('Next', null, null, array('tag' => 'a','class' => 'next disabled'));
+echo '</div>'; 
+?>
 <?php echo $this->Js->writeBuffer(); ?>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	paging = $('.pagination .current').length;
+	if(paging == 0){
+		$('.pagination').css('display','none');
+	}
+	pagination_width = $('.pagination').width();
+	$('.pagination').css({'width':pagination_width+'px','float':'none'});
+	
+	});
+</script>
 
