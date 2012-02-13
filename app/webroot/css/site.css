@@ -829,6 +829,12 @@ a.deal_listing{
     background: url("../img/site/website_icon.png") no-repeat scroll 0 8px transparent;
     padding-left: 23px;
 }
+
+.venue_contacts li.venue_location{
+    background: url("../img/site/pin_icon.png") no-repeat scroll 2px 8px transparent;
+    padding-left: 23px;
+}
+
 .venue_contacts li a{
 	text-decoration:none;
 }
