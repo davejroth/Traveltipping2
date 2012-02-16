@@ -35,6 +35,7 @@
 
 <script>
 $(document).ready(function() {
+$('.calendar_wrap').css({'visibility': 'visible'});
 
 /**
 * Pad numbers with a leading 0
