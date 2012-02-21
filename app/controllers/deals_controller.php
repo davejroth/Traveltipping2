@@ -25,7 +25,10 @@ class DealsController extends AppController {
 				$dealId = $this->params['pass'][0];
 				$dealToAccess = $this->Deal->read(null, $dealId);
 				//If deal is not live, don't allow access
-				if($dealToAccess['Deal']['deal_status_id'] != Configure::Read('Deal.Status_Listed')) {
+				if(($dealToAccess['Deal']['deal_status_id'] == Configure::Read('Deal.Status_Listed'))  || ($dealToAccess['Deal']['deal_status_id'] == Configure::Read('Deal.Status_Closed'))) {
+					
+				}
+				else{
 					$this->Session->setFlash(__('Sorry, that page is unavailable.', true),'error_flash');
 					$this->redirect(array('action' => 'index'));
 				}

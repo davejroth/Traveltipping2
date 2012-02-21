@@ -516,6 +516,14 @@ label{
     width: 138px;
 }
 
+.sold_out_btn{
+	background: url("../img/site/sold_out_btn.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 41px;
+    width: 138px;
+}
+
 .find_deals_btn{
     background: url("../img/site/find_deals_sprite.png") no-repeat scroll 0 0 transparent;
     border: medium none;

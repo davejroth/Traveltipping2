@@ -56,7 +56,16 @@ $progress_value = ($current_quantity/$max_quantity)*100;
 							echo '<p class="fixed_view grid_3">$'.$discounted_price.'</p>';
 						}
 					?>
-					<?php  echo $this->Html->link('',array('action' => 'book',$deal['Deal']['id']),array('class' => 'book_now_btn')) ?>
+					<?php  
+					if($deal['Deal']['deal_status_id'] == 5){
+						echo '<div class="sold_out_btn"></div>';
+					}
+					else{
+						echo $this->Html->link('',array('action' => 'book',$deal['Deal']['id']),array('class' => 'book_now_btn'));
+					}
+					
+					 
+					?>
 				</div>
 			</div>
 			<div id="progressbar_wrap" class="grid_12">
