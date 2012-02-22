@@ -313,21 +313,37 @@ class DealsController extends AppController {
 		}
 		else{
 			$this->Deal->recursive = -1;
+			$this->Deal->Venue->recursive = -1;
 			$dealToClone = $this->Deal->read(null, $id);
-			unset($dealToClone['Deal']['id']);
-			unset($dealToClone['Deal']['created']);
-			$dealToClone['Deal']['name'] = 'Clone of ' . $dealToClone['Deal']['name'];
-			$dealToClone['Deal']['title'] = 'Clone of ' . $dealToClone['Deal']['title'];
-			$this->Deal->create();
-			if($this->Deal->save($dealToClone['Deal'])) {
-				$this->Session->setFlash(__('Deal cloned successfully', true));
-				$this->redirect(array('action'=>'index'));
+			//Clone venue first
+			$venueToClone = $this->Deal->Venue->read(null, $dealToClone['Deal']['venue_id']);
+			unset($venueToClone['Venue']['id']);
+			unset($venueToClone['Venue']['created']);
+			$venueToClone['Venue']['name'] = 'Clone of ' . $venueToClone['Venue']['name']; 
+			$this->Deal->Venue->create();
+		    if($this->Deal->Venue->save($venueToClone['Venue'])) {
+
+				//Prepare deal for cloning
+				unset($dealToClone['Deal']['id']);
+				unset($dealToClone['Deal']['created']);
+				$dealToClone['Deal']['venue_id'] = $this->Deal->Venue->getInsertID();
+				$dealToClone['Deal']['name'] = 'Clone of ' . $dealToClone['Deal']['name'];
+				$dealToClone['Deal']['title'] = 'Clone of ' . $dealToClone['Deal']['title'];
+				$this->Deal->create();
+
+				if($this->Deal->save($dealToClone['Deal'])) {
+					$this->Session->setFlash(__('Deal cloned successfully', true));
+					$this->redirect(array('action'=>'index'));
+				}
+				else {
+					$this->Session->setFlash(__('There was an issue cloning the deal', true));
+					$this->redirect(array('action'=>'index'));
+				}
 			}
 			else {
-				$this->Session->setFlash(__('There was an issue cloning the deal', true));
-				$this->redirect(array('action'=>'index'));
-			}
-		
+					$this->Session->setFlash(__('There was an issue cloning the venue.  Pease ensure all details are filled in.', true));
+					$this->redirect(array('action'=>'index'));
+				}
 		}
 	
 	}
