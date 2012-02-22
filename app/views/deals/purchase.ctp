@@ -172,7 +172,7 @@ $.getJSON('/users/check_session', function(json) {
 	echo '</div>';
 	echo '<div class="credit_fields">';
 	  echo $this->Form->input('Transaction.cc_number', array('label' => 'Credit Card Number'));
-	  echo $this->Form->input('Transaction.ccv', array('label' => 'CCV Number'));
+	  echo $this->Form->input('Transaction.cvv', array('label' => 'CVV Number'));
 	  echo $this->Form->label('Expiration Date');
 	  echo $this->Form->input('Transaction.expiration_month', array('type' => 'select', 'options' => $months, 'label' => '', 'div' => false));
 	  echo $this->Form->input('Transaction.expiration_year', array('type' => 'select', 'options' => $years, 'label' => '', 'div' => false));

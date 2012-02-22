@@ -34,10 +34,10 @@ class Transaction extends AppModel {
 			'ccLength' => array('rule' => array('between', 15, 16), 'message' => 'Your credit card should be 16 numbers, without spaces'),
 			'ccNumeric' => array('rule' => 'numeric', 'message' => 'Please enter your credit card number without any spaces or dashes')
 		),
-		'ccv' => array(
-			'ccvCheck' => array('rule' => 'notEmpty','message' => ' Please enter the 2 - 3 digit CCV number located on the back of your credit card'),
-			'ccvLength' => array('rule' => array('between', 2, 4), 'message' => 'Your CCV number should be between 2 and 4 digits'),
-			'ccvNumeric' => array('rule' => 'numeric', 'message' => 'Please enter your CCV number without any spaces or dashes')
+		'cvv' => array(
+			'cvvCheck' => array('rule' => 'notEmpty','message' => ' Please enter the 2 - 3 digit CVV number located on the back of your credit card'),
+			'cvvLength' => array('rule' => array('between', 2, 4), 'message' => 'Your CVV number should be between 2 and 4 digits'),
+			'cvvNumeric' => array('rule' => 'numeric', 'message' => 'Please enter your CVV number without any spaces or dashes')
 		),
 		'tos' => array(
 			'tosCheck' => array('rule' => array('comparison', '!=', 0),  'message' => 'Please agree to TravelTipping\'s Terms of Service',),
@@ -55,6 +55,7 @@ class Transaction extends AppModel {
 						'number' => $data['Transaction']['cc_number'],
 						'expirationDate' => $data['Transaction']['expiration_month'] . '/' . $data['Transaction']['expiration_year'],
 						'cardholderName' => $data['Transaction']['name'],
+						'cvv' => $data['Transaction']['cvv']
 						),
 					'customer' => array(
 						'firstName' => $traveler['Traveler']['first_name'],
