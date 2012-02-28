@@ -3,9 +3,11 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php __('TravelTipping'); ?>
-		<?php echo $title_for_layout; ?>
+		<?php echo 'TravelTipping - get real travel deals' ?>
 	</title>
+	<meta name="description" content="Travel the world at a fraction of the price with TravelTipping.  You'll find huge discounts on hotels, resorts, tours and cruises."/>
+	
+	<meta name="keywords" content="Traveltipping, travel tipping, travel deals, deals, deals for travel, traveltipping deals, travel tipping deals, travel deals in asia, real travel deals, cruise deals, tour deals, discount travel, discount travel deals, discount cruises, hotels, hotel, resort, lodge, villas, vacation package, discount vacation package, private discount site, private deals, private travel deals, destination deals"/>
 	<?php
 		echo $this->Html->meta('icon');
 		
