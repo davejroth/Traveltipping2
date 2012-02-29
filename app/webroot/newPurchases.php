@@ -69,7 +69,7 @@
 		$today = date('Y-m-d');
 		$dealPurchase->recursive = 0;
 		$newPurchases = $dealPurchase->find('all', 
-			array('conditions' => array('DealPurchase.created' => $today), 'order' => array('DealPurchase.deal_id')));
+			array('conditions' => array('DealPurchase.created LIKE' => $today . '%'), 'order' => array('DealPurchase.deal_id')));
 
 		//While newPurchases is not empty
 		while(!empty($newPurchases)) {
