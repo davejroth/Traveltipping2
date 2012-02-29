@@ -678,6 +678,17 @@ label{
     width: 122px;
 }
 
+.enter_btn{
+    background: url("../img/site/btn_enter.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    display: block;
+    float: none;
+    font-size: 0;
+    height: 32px;
+    padding: 0;
+    width: 122px;
+}
+
 /* +++++++++++++++++ END Button Styles +++++++++++++++++ */
 
 .cta_text{

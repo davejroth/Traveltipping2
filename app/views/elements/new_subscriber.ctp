@@ -36,8 +36,8 @@ echo '<div class="form_column">';
 
 	echo $this->Session->flash();	
 	echo '<div class="field_row">';
-	echo '<p class="subscriber_cta">Sign up and gain access <br/>to amazing travel deals!</p>';
-	echo $this->Form->input('Subscriber.email',array('label'=>'Enter Email Address'));
+	echo '<p class="subscriber_cta">Submit your email to<br/>enter our private travel site</p>';
+	echo $this->Form->input('Subscriber.email',array('label'=>'Email Address'));
 	echo '</div>';
 	/*
 	echo $this->Js->submit('Subscribe',
@@ -50,7 +50,7 @@ echo '<div class="form_column">';
 	
 
 	
-	echo $this->Form->end(array('class'=>'sign_up_btn','id'=> 'travelers_submit'));
+	echo $this->Form->end(array('class'=>'enter_btn','id'=> 'travelers_submit'));
 	
 	
 			echo '<ul class="subscribe_nav">';
