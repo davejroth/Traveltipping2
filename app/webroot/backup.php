@@ -2,7 +2,7 @@
 
 		/* Backup.php
 		 * Backup Script below - taken from: http://wiki.lunarpages.com/Backup_Databases_using_a_cron
-		 * This script creates a full backup of the whatever database thew cake app is using and emails it to davejroth@gmail.com
+		 * This script creates a full backup of the whatever database thew cake app is using and emails it to backups@traveltipping.com
 		 */
 		 /**
   Standard CakePHP app/webroot/index.php
@@ -52,8 +52,8 @@
 		$dbuser = $dataSource->config['login'];
 		$dbpwd = $dataSource->config['password'];
 		$dbname = $dataSource->config['database'];
-		$filename = $_SERVER['DOCUMENT_ROOT'] . "/backup/backup-$datestamp.sql.gz";
-		
+		$filename = "backup/backup-$datestamp.sql.gz";
+		//echo $_SERVER['DOCUMENT_ROOT']
 
 		/* CONFIGURE THE FOLLOWING SEVEN VARIABLES TO MATCH YOUR SETUP */
 		//$dbuser = "admin";            // Database username
@@ -65,8 +65,10 @@
 		$subject = "$datestamp MySQL backup file";      // Subject of email
 		
 		$command = "mysqldump -u $dbuser --password=$dbpwd $dbname | gzip > $filename";
+		//echo $command;
 		$result = passthru($command);
 		
+		//echo $command;
 		
 		$attachmentname = array_pop(explode("/", $filename));   // If a path was included, strip it out for the attachment name
 		
@@ -92,7 +94,7 @@
 		$content.= "--" . $mime_boundary . "\r\n";
 		
 		mail($to, $subject, $content, $headers);
-		
-		unlink($filename);   //delete the backup file from the server
+
+		//unlink($filename);   //delete the backup file from the server
 	}
 ?>
