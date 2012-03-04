@@ -62,7 +62,7 @@
 		//$filename= "/home/trave125/public_html/dev/backup/backup-$datestamp.sql.gz";   // The name (and optionally path) of the dump file
 		$to = "backups@traveltipping.com";      // Email address to send dump file to
 		$from = "backups@traveltipping.com";      // Email address message will show as coming from.
-		$subject = "$datestamp MySQL backup file";      // Subject of email
+		$subject = "$dbname $datestamp MySQL backup file";      // Subject of email
 		
 		$command = "mysqldump -u $dbuser --password=$dbpwd $dbname | gzip > $filename";
 		//echo $command;
