@@ -142,7 +142,7 @@
                             </td>
                           <td valign="center" align="left" width="277" style="font-family:'arial'; font-size: 14px; color:#cbcaca; padding-top:5px; padding-bottom:5px;"><a href="http://www.traveltipping.com" title="Click here!" target="_blank" style="text-decoration:underline; color:#cbcaca;">Search all deals</a></td>
                           <td valign="center" align="left" width="35" style="margin:0px auto;border-collapse:collapse;"></td>  
-                          <td valign="center" align="left" width="275" style="margin:0px auto;border-collapse:collapse;font-family:'arial'; font-size:14px; color:#cbcaca; padding-top:5px; padding-bottom:5px; "><a href="http://www.traveltipping.com/blog" title="Click here!" target="_blank" style="text-decoration:underline;color:#cbcaca">Visit our blog</a></td>   
+                          <td valign="center" align="left" width="275" style="margin:0px auto;border-collapse:collapse;font-family:'arial'; font-size:14px; color:#cbcaca; padding-top:5px; padding-bottom:5px; "><a href="http://www.traveltipping.com/blog/" title="Click here!" target="_blank" style="text-decoration:underline;color:#cbcaca">Visit our blog</a></td>   
                         </tr>  
                       </tbody>  
                     </table>
