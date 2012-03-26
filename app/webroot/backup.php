@@ -52,7 +52,7 @@
 		$dbuser = $dataSource->config['login'];
 		$dbpwd = $dataSource->config['password'];
 		$dbname = $dataSource->config['database'];
-		$filename = "backup/backup-$datestamp.sql.gz";
+		$filename =  "backup-$datestamp.sql.gz";
 		//echo $_SERVER['DOCUMENT_ROOT']
 
 		/* CONFIGURE THE FOLLOWING SEVEN VARIABLES TO MATCH YOUR SETUP */
@@ -68,7 +68,7 @@
 		//echo $command;
 		$result = passthru($command);
 		
-		//echo $command;
+		//echo __DIR__;
 		
 		$attachmentname = array_pop(explode("/", $filename));   // If a path was included, strip it out for the attachment name
 		
@@ -95,6 +95,6 @@
 		
 		mail($to, $subject, $content, $headers);
 
-		//unlink($filename);   //delete the backup file from the server
+		unlink($filename);   //delete the backup file from the server
 	}
 ?>
